@@ -268,6 +268,296 @@
     .nav-item:hover .nav-icon svg.fill-icon, .nav-item.active .nav-icon svg.fill-icon { fill: var(--gold); }
     .nav-label { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #3a3a3c; transition: color 0.2s ease; }
 
+    /* ── IPHONE INSTAGRAM MOCKUP ── */
+    .iphone-instagram-section {
+      padding: 64px 24px;
+      background: linear-gradient(135deg, #F5F5F7 0%, #FFFFFF 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .iphone-instagram-header {
+      margin-bottom: 48px;
+    }
+
+    .iphone-instagram-header .section-label {
+      margin-bottom: 10px;
+    }
+
+    .iphone-instagram-header .section-title {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .iphone-instagram-header p {
+      font-size: 16px;
+      color: var(--gray);
+      max-width: 420px;
+      line-height: 1.6;
+    }
+
+    .iphone-mockup-container {
+      position: relative;
+      width: 340px;
+      height: 680px;
+      background: #000000;
+      border-radius: 48px;
+      padding: 14px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .iphone-mockup-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 28px;
+      background: #000000;
+      border-radius: 0 0 30px 30px;
+      z-index: 10;
+    }
+
+    .iphone-screen {
+      width: 100%;
+      height: 100%;
+      background: #FFFFFF;
+      border-radius: 42px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .iphone-status-bar {
+      height: 44px;
+      background: #FAFAFA;
+      border-bottom: 1px solid var(--gray-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .iphone-status-left, .iphone-status-right {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .iphone-content {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .iphone-content::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .instagram-header {
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--gray-border);
+      background: #FAFAFA;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .instagram-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .instagram-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .instagram-profile-info h3 {
+      font-size: 13px;
+      font-weight: 700;
+      margin: 0;
+      color: var(--black);
+    }
+
+    .instagram-profile-info p {
+      font-size: 11px;
+      color: var(--gray);
+      margin: 0;
+    }
+
+    .instagram-menu {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .instagram-menu span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--black);
+      border-radius: 1px;
+    }
+
+    .instagram-feed {
+      padding-bottom: 20px;
+    }
+
+    .instagram-post {
+      border-bottom: 1px solid var(--gray-border);
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+    }
+
+    .instagram-post-header {
+      padding: 12px 16px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .instagram-post-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .instagram-post-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    }
+
+    .instagram-post-info h4 {
+      font-size: 12px;
+      font-weight: 700;
+      margin: 0;
+      color: var(--black);
+    }
+
+    .instagram-post-info p {
+      font-size: 10px;
+      color: var(--gray);
+      margin: 0;
+    }
+
+    .instagram-post-more {
+      font-size: 18px;
+      color: var(--gray);
+      cursor: pointer;
+    }
+
+    .instagram-post-image {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(135deg, var(--gray-light), #E8E8E8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray);
+      font-size: 40px;
+    }
+
+    .instagram-post-actions {
+      padding: 8px 16px;
+      display: flex;
+      gap: 12px;
+      font-size: 18px;
+      color: var(--black);
+    }
+
+    .instagram-post-actions span {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .instagram-post-actions span:hover {
+      transform: scale(1.2);
+    }
+
+    .instagram-post-caption {
+      padding: 4px 16px;
+    }
+
+    .instagram-post-caption p {
+      font-size: 11px;
+      color: var(--black);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .instagram-post-caption .username {
+      font-weight: 700;
+    }
+
+    .instagram-post-caption .hashtags {
+      color: var(--gold-dark);
+    }
+
+    .instagram-likes {
+      padding: 4px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .instagram-date {
+      padding: 4px 16px;
+      font-size: 9px;
+      color: var(--gray);
+      text-transform: uppercase;
+    }
+
+    .cta-button-instagram {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 36px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--black);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+    }
+
+    .cta-button-instagram:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4);
+    }
+
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -340,11 +630,164 @@
   </div>
 </section>
 
+<section id="airpods">
+  <div class="section-header reveal">
+    <div><div class="section-label">Accesorios</div><h2 class="section-title">AirPods</h2></div>
+    <span class="section-count">5 modelos</span>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal" data-search="airpods pro 2 generacion" onclick="openWA('AirPods Pro 2da Gen','$349.990')">
+      <div class="product-img-wrap"><span class="product-badge gold">Nuevo</span><svg viewBox="0 0 80 80"><ellipse cx="40" cy="20" rx="8" ry="12" stroke="#1a1a1a" stroke-width="2" fill="none"/><ellipse cx="40" cy="20" rx="5" ry="8" fill="#f0f0f0"/><path d="M35 35 Q35 55 40 60 Q45 55 45 35" stroke="#1a1a1a" stroke-width="2" fill="none"/></svg></div>
+      <div class="product-info"><div class="product-name">AirPods Pro 2da Gen</div><div class="product-spec">Cancelación Activa de Ruido</div><div class="product-price">$349.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+    <div class="product-card reveal" data-search="airpods max" onclick="openWA('AirPods Max','$599.990')">
+      <div class="product-img-wrap"><span class="product-badge gold">Premium</span><svg viewBox="0 0 80 80"><path d="M20 40 Q20 25 40 25 Q60 25 60 40" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="28" cy="48" r="6" fill="#f0f0f0"/><circle cx="52" cy="48" r="6" fill="#f0f0f0"/></svg></div>
+      <div class="product-info"><div class="product-name">AirPods Max</div><div class="product-spec">Sonido Envolvente Espacial</div><div class="product-price">$599.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+    <div class="product-card reveal" data-search="airpods 3 generacion" onclick="openWA('AirPods 3da Gen','$249.990')">
+      <div class="product-img-wrap"><span class="product-badge">Estándar</span><svg viewBox="0 0 80 80"><ellipse cx="40" cy="20" rx="8" ry="12" stroke="#1a1a1a" stroke-width="2" fill="none"/><ellipse cx="40" cy="20" rx="5" ry="8" fill="#f0f0f0"/><path d="M35 35 Q35 55 40 60 Q45 55 45 35" stroke="#1a1a1a" stroke-width="2" fill="none"/></svg></div>
+      <div class="product-info"><div class="product-name">AirPods 3da Generación</div><div class="product-spec">Audio espacial adaptativo</div><div class="product-price">$249.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="ipad">
+  <div class="section-header reveal">
+    <div><div class="section-label">Tablets</div><h2 class="section-title">iPads</h2></div>
+    <span class="section-count">6 modelos</span>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal" data-search="ipad pro m4 13 pulgadas" onclick="openWA('iPad Pro M4 13','$1.899.990')">
+      <div class="product-img-wrap"><span class="product-badge gold">Último</span><svg viewBox="0 0 80 80"><rect x="10" y="8" width="60" height="64" rx="8" stroke="#1a1a1a" stroke-width="2" fill="none"/><rect x="14" y="12" width="52" height="52" rx="4" fill="#f0f0f0"/><circle cx="40" cy="68" r="2.5" fill="#1a1a1a"/></svg></div>
+      <div class="product-info"><div class="product-name">iPad Pro M4 13"</div><div class="product-spec">1TB · Pantalla Liquid Retina</div><div class="product-price">$1.899.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+    <div class="product-card reveal" data-search="ipad air 11 pulgadas" onclick="openWA('iPad Air 11','$799.990')">
+      <div class="product-img-wrap"><span class="product-badge gold">Bestseller</span><svg viewBox="0 0 80 80"><rect x="10" y="15" width="60" height="50" rx="6" stroke="#1a1a1a" stroke-width="2" fill="none"/><rect x="14" y="19" width="52" height="42" rx="3" fill="#f0f0f0"/></svg></div>
+      <div class="product-info"><div class="product-name">iPad Air 11"</div><div class="product-spec">256GB · Chip M2</div><div class="product-price">$799.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+    <div class="product-card reveal" data-search="ipad mini" onclick="openWA('iPad Mini','$599.990')">
+      <div class="product-img-wrap"><span class="product-badge">Compacto</span><svg viewBox="0 0 80 80"><rect x="15" y="12" width="50" height="56" rx="6" stroke="#1a1a1a" stroke-width="2" fill="none"/><rect x="19" y="16" width="42" height="48" rx="3" fill="#f0f0f0"/></svg></div>
+      <div class="product-info"><div class="product-name">iPad Mini</div><div class="product-spec">128GB · Portátil</div><div class="product-price">$599.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="macbooks">
+  <div class="section-header reveal">
+    <div><div class="section-label">Computadores</div><h2 class="section-title">MacBooks</h2></div>
+    <span class="section-count">4 modelos</span>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal" data-search="macbook pro 16 m4 max" onclick="openWA('MacBook Pro 16 M4 Max','$3.499.990')">
+      <div class="product-img-wrap"><span class="product-badge gold">Premium</span><svg viewBox="0 0 80 80"><rect x="6" y="10" width="68" height="48" rx="4" stroke="#1a1a1a" stroke-width="2" fill="#f0f0f0"/><rect x="20" y="60" width="40" height="8" rx="2" fill="#1a1a1a"/></svg></div>
+      <div class="product-info"><div class="product-name">MacBook Pro 16" M4 Max</div><div class="product-spec">512GB · Chip Ultra</div><div class="product-price">$3.499.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+    <div class="product-card reveal" data-search="macbook pro 14 m4" onclick="openWA('MacBook Pro 14 M4','$2.299.990')">
+      <div class="product-img-wrap"><span class="product-badge gold">Desempeño</span><svg viewBox="0 0 80 80"><rect x="6" y="12" width="68" height="40" rx="3" stroke="#1a1a1a" stroke-width="2" fill="#f0f0f0"/><rect x="20" y="56" width="40" height="8" rx="2" fill="#1a1a1a"/></svg></div>
+      <div class="product-info"><div class="product-name">MacBook Pro 14" M4</div><div class="product-spec">256GB · Chip Pro</div><div class="product-price">$2.299.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+    <div class="product-card reveal" data-search="macbook air 15 m3" onclick="openWA('MacBook Air 15 M3','$1.799.990')">
+      <div class="product-img-wrap"><span class="product-badge">Ligero</span><svg viewBox="0 0 80 80"><path d="M8 20 L72 20 Q72 20 72 50 L8 50 Q8 20 8 20" stroke="#1a1a1a" stroke-width="2" fill="#f0f0f0" stroke-linejoin="round"/><rect x="20" y="56" width="40" height="6" rx="2" fill="#1a1a1a"/></svg></div>
+      <div class="product-info"><div class="product-name">MacBook Air 15" M3</div><div class="product-spec">512GB · Ultraligero</div><div class="product-price">$1.799.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="otros">
+  <div class="section-header reveal">
+    <div><div class="section-label">Más Opciones</div><h2 class="section-title">Otros Dispositivos</h2></div>
+    <span class="section-count">8+ productos</span>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal" data-search="samsung galaxy s24 ultra" onclick="openWA('Samsung Galaxy S24 Ultra','$1.599.990')">
+      <div class="product-img-wrap"><span class="product-badge gold">Android</span><svg viewBox="0 0 80 80"><rect x="18" y="4" width="44" height="72" rx="8" stroke="#1a1a1a" stroke-width="2"/><rect x="22" y="10" width="36" height="56" rx="4" fill="#f0f0f0"/><rect x="22" y="68" width="36" height="4" fill="#1a1a1a" rx="1"/></svg></div>
+      <div class="product-info"><div class="product-name">Samsung Galaxy S24 Ultra</div><div class="product-spec">256GB · Negro</div><div class="product-price">$1.599.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+    <div class="product-card reveal" data-search="samsung galaxy tab s10" onclick="openWA('Samsung Galaxy Tab S10','$899.990')">
+      <div class="product-img-wrap"><span class="product-badge">Tablet</span><svg viewBox="0 0 80 80"><rect x="8" y="12" width="64" height="56" rx="6" stroke="#1a1a1a" stroke-width="2" fill="none"/><rect x="12" y="16" width="56" height="48" rx="3" fill="#f0f0f0"/></svg></div>
+      <div class="product-info"><div class="product-name">Samsung Galaxy Tab S10</div><div class="product-spec">128GB · 11 pulgadas</div><div class="product-price">$899.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+    <div class="product-card reveal" data-search="samsung buds 3 pro" onclick="openWA('Samsung Galaxy Buds 3 Pro','$249.990')">
+      <div class="product-img-wrap"><span class="product-badge">Auriculares</span><svg viewBox="0 0 80 80"><circle cx="25" cy="35" r="12" stroke="#1a1a1a" stroke-width="2" fill="#f0f0f0"/><circle cx="55" cy="35" r="12" stroke="#1a1a1a" stroke-width="2" fill="#f0f0f0"/><path d="M30 50 Q36 60 40 60 Q44 60 50 50" stroke="#1a1a1a" stroke-width="1.5" fill="none"/></svg></div>
+      <div class="product-info"><div class="product-name">Samsung Galaxy Buds 3 Pro</div><div class="product-spec">Cancelación Activa</div><div class="product-price">$249.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+    <div class="product-card reveal" data-search="apple watch series 10" onclick="openWA('Apple Watch Series 10','$599.990')">
+      <div class="product-img-wrap"><span class="product-badge gold">Smart</span><svg viewBox="0 0 80 80"><rect x="20" y="15" width="40" height="50" rx="10" stroke="#1a1a1a" stroke-width="2" fill="none"/><rect x="24" y="19" width="32" height="36" rx="6" fill="#f0f0f0"/><circle cx="40" cy="72" r="3" fill="#1a1a1a"/></svg></div>
+      <div class="product-info"><div class="product-name">Apple Watch Series 10</div><div class="product-spec">45mm · GPS</div><div class="product-price">$599.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+    <div class="product-card reveal" data-search="apple tv 4k" onclick="openWA('Apple TV 4K','$199.990')">
+      <div class="product-img-wrap"><span class="product-badge">Streaming</span><svg viewBox="0 0 80 80"><rect x="16" y="28" width="48" height="28" rx="4" stroke="#1a1a1a" stroke-width="2" fill="#f0f0f0"/><circle cx="40" cy="42" r="6" stroke="#1a1a1a" stroke-width="1.5" fill="none"/><polygon points="40,39 40,45 45,42" fill="#1a1a1a"/></svg></div>
+      <div class="product-info"><div class="product-name">Apple TV 4K</div><div class="product-spec">WiFi 6E · Última Gen</div><div class="product-price">$199.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+    <div class="product-card reveal" data-search="beats studio pro" onclick="openWA('Beats Studio Pro','$499.990')">
+      <div class="product-img-wrap"><span class="product-badge">Audio</span><svg viewBox="0 0 80 80"><path d="M20 40 Q20 25 40 25 Q60 25 60 40" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="28" cy="50" r="7" fill="#f0f0f0"/><circle cx="52" cy="50" r="7" fill="#f0f0f0"/></svg></div>
+      <div class="product-info"><div class="product-name">Beats Studio Pro</div><div class="product-spec">Cancelación Activa</div><div class="product-price">$499.990 <small>CLP</small></div><button class="product-btn">Consultar</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="iphone-instagram-section reveal" id="website">
+  <div class="iphone-instagram-header">
+    <div class="section-label">Nuestra Web</div>
+    <h2 class="section-title">Vista Móvil</h2>
+    <p>Así se ve nuestra tienda desde tu celular. Navega fácilmente y encuentra todo lo que necesitas.</p>
+  </div>
+
+  <div class="iphone-mockup-container">
+    <div class="iphone-screen">
+      <!-- Status Bar -->
+      <div class="iphone-status-bar">
+        <div class="iphone-status-left">
+          <span>9:41</span>
+        </div>
+        <div class="iphone-status-right">
+          <span>📡</span>
+          <span>📶</span>
+          <span>🔋</span>
+        </div>
+      </div>
+
+      <!-- Instagram Profile -->
+      <div class="iphone-content">
+        <!-- Browser Header -->
+        <div style="padding: 12px 16px; border-bottom: 1px solid var(--gray-border); display: flex; align-items: center; gap: 12px; background: var(--white); font-size: 13px; font-weight: 600;">
+          <span style="cursor: pointer;">‹</span>
+          <span style="flex: 1; text-align: center; font-size: 12px; color: var(--gray);">iphone-elite.cl</span>
+          <span style="font-size: 16px;">⋯</span>
+        </div>
+
+        <!-- Browser Address Bar -->
+        <div style="padding: 8px 16px; border-bottom: 1px solid var(--gray-border); background: var(--white);">
+          <div style="display: flex; align-items: center; gap: 8px; background: var(--gray-light); border-radius: 20px; padding: 6px 12px;">
+            <span style="font-size: 12px; color: var(--gray);">🔒</span>
+            <span style="font-size: 11px; color: var(--gray); flex: 1;">https://iphone-elite.cl</span>
+            <span style="font-size: 12px; color: var(--gray);">↻</span>
+          </div>
+        </div>
+
+        <!-- Website Content -->
+        <div style="flex: 1; overflow-y: auto; background: var(--white);">
+          <img src="iphone-web.png" alt="iPhone Elite Website" style="width: 100%; height: auto; display: block;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://iphone-elite.cl" target="_blank" class="cta-button-instagram">
+    Visitar Sitio Web 
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+  </a>
+</section>
+
 <footer>
   <div class="footer-logo">iPhone <span>Elite</span></div>
   <div class="footer-links">
     <a href="#inicio">Inicio</a>
     <a href="#iphones">iPhones</a>
+    <a href="#airpods">AirPods</a>
+    <a href="#ipad">iPads</a>
+    <a href="#macbooks">MacBooks</a>
+    <a href="#otros">Otros</a>
     <a href="https://wa.me/56964271938" target="_blank">WhatsApp</a>
   </div>
   <div class="footer-copy">© 2025 iPhone Elite · Santiago, Chile</div>
@@ -359,13 +802,17 @@
     <div class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></div>
     <span class="nav-label">Buscar</span>
   </button>
+  <a href="#iphones" class="nav-item" id="nav-tienda" onclick="setActive('nav-tienda')">
+    <div class="nav-icon"><svg viewBox="0 0 24 24" class="fill-icon"><rect x="4" y="6" width="16" height="2" fill="currentColor"/><path d="M4 9 L5 20 C5 21 6 22 7 22 H17 C18 22 19 21 19 20 L20 9" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="13" r="1.5" fill="currentColor"/></svg></div>
+    <span class="nav-label">Tienda</span>
+  </a>
+  <a href="#website" class="nav-item" id="nav-instagram" onclick="setActive('nav-instagram')">
+    <div class="nav-icon"><svg viewBox="0 0 24 24" class="fill-icon"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></div>
+    <span class="nav-label">Web</span>
+  </a>
   <a href="https://wa.me/56964271938" target="_blank" class="nav-item">
     <div class="nav-icon"><svg viewBox="0 0 24 24" class="fill-icon"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></div>
     <span class="nav-label">WhatsApp</span>
-  </a>
-  <a href="https://www.instagram.com/iphonelite.cl/" target="_blank" class="nav-item">
-    <div class="nav-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg></div>
-    <span class="nav-label">Instagram</span>
   </a>
 </nav>
 
