@@ -20,12 +20,11 @@
       --gray-border: #E5E5EA;
     }
 
-    /* Reset y Base */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
 
-    /* NAVBAR SUPERIOR FIJA */
+    /* NAVBAR */
     .top-nav {
       position: sticky; top: 0; z-index: 1000;
       display: flex; align-items: center; justify-content: space-between;
@@ -38,8 +37,7 @@
 
     .nav-actions { display: flex; align-items: center; gap: 25px; }
     .nav-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; font-family: inherit; font-weight: 600; font-size: 15px; transition: 0.3s; }
-    .nav-btn:hover { color: var(--gold); }
-
+    
     .cart-btn { position: relative; }
     .cart-count {
       position: absolute; top: -10px; right: -10px;
@@ -48,7 +46,7 @@
       display: flex; align-items: center; justify-content: center; font-weight: 700;
     }
 
-    /* HERO - SECCIÓN DE LA IMAGEN GRANDE */
+    /* HERO */
     .hero {
       padding: 40px 20px;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -60,39 +58,41 @@
       letter-spacing: 1px; margin-bottom: 20px; text-transform: uppercase;
     }
     .hero-img-container {
-      width: 100%; max-width: 650px; /* Tamaño aumentado */
+      width: 100%; max-width: 650px;
       margin: 20px auto;
       animation: floatEffect 5s ease-in-out infinite;
     }
-    .hero-img-container img {
-      width: 100%; height: auto;
-      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.12));
-    }
+    .hero-img-container img { width: 100%; height: auto; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.12)); }
+    
     @keyframes floatEffect {
       0%, 100% { transform: translateY(0) rotate(-1deg); }
       50% { transform: translateY(-20px) rotate(1deg); }
     }
 
     .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 56px); font-weight: 800; margin-top: 10px; }
-    .hero-desc { color: var(--gray); font-size: 18px; max-width: 500px; margin: 15px auto 30px; line-height: 1.6; }
 
-    /* GRILLA DE PRODUCTOS */
-    .section-header { padding: 80px 5% 30px; display: flex; justify-content: space-between; align-items: flex-end; }
+    /* GRILLA */
+    .section-header { padding: 80px 5% 30px; border-bottom: 1px solid var(--gray-border); margin-bottom: 30px; }
     .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 5% 60px; }
     @media (min-width: 1024px) { .grid { grid-template-columns: repeat(4, 1fr); } }
 
-    .card { background: white; border: 1px solid var(--gray-border); border-radius: 24px; padding: 20px; transition: 0.4s; cursor: pointer; position: relative; }
+    .card { background: white; border: 1px solid var(--gray-border); border-radius: 24px; padding: 20px; transition: 0.4s; cursor: pointer; position: relative; display: flex; flex-direction: column; }
     .card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
-    .card-img { height: 200px; background: var(--gray-light); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 50px; margin-bottom: 20px; }
+    .card-img { height: 180px; background: var(--gray-light); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 45px; margin-bottom: 15px; }
+    .card-price { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--gold-dark); margin-top: 5px; }
+    .card-badge { position: absolute; top: 15px; left: 15px; background: var(--black); color: white; font-size: 9px; padding: 4px 8px; border-radius: 5px; text-transform: uppercase; }
 
     /* MODAL */
     .modal { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; padding: 20px; }
     .modal-box { background: white; width: 100%; max-width: 550px; border-radius: 30px; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; }
-    .close { position: absolute; top: 25px; right: 25px; font-size: 32px; cursor: pointer; color: var(--gray); }
+    .close { position: absolute; top: 25px; right: 25px; font-size: 32px; cursor: pointer; }
 
-    .btn { width: 100%; padding: 18px; border-radius: 15px; border: none; font-weight: 700; cursor: pointer; font-size: 16px; margin-top: 12px; transition: 0.2s; }
+    .btn { width: 100%; padding: 18px; border-radius: 15px; border: none; font-weight: 700; cursor: pointer; font-size: 16px; margin-top: 10px; }
     .btn-black { background: var(--black); color: white; }
     .btn-gold { background: var(--gold); color: white; }
+
+    /* NO STOCK */
+    .no-stock { grid-column: 1 / -1; text-align: center; padding: 60px; background: var(--gray-light); border-radius: 24px; color: var(--gray); font-weight: 500; }
 
     /* CARRITO SIDEBAR */
     #cart-sidebar {
@@ -101,14 +101,7 @@
       box-shadow: -15px 0 50px rgba(0,0,0,0.15); display: flex; flex-direction: column; padding: 40px;
     }
     #cart-sidebar.open { right: 0; }
-    .cart-list { flex: 1; overflow-y: auto; margin: 25px 0; }
-    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--gray-light); }
-
-    /* SECCIONES EXTRA */
-    .info-section { padding: 80px 5%; background: var(--gray-light); }
-    .faq-item { border-bottom: 1px solid var(--gray-border); padding: 20px 0; cursor: pointer; }
-    .faq-ans { display: none; padding: 15px 0; color: var(--gray); line-height: 1.6; }
-
+    
     .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
   </style>
@@ -131,58 +124,52 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-badge">✦ Colección Certificada 2026</div>
+    <div class="hero-badge">✦ Disponibles para entrega inmediata</div>
     <div class="hero-img-container">
       <img src="animación.png" alt="iPhone Elite Exclusive">
     </div>
     <h1 class="hero-title">iPhone Elite Chile</h1>
-    <p class="hero-desc">Equipos originales con garantía de 3 meses. Calidad premium al mejor precio de Santiago.</p>
-    <a href="#iphones" class="btn btn-black" style="max-width:250px; text-decoration:none; display:inline-block;">Ver Catálogo Completo</a>
+    <p style="color:var(--gray); font-size:18px; margin-bottom:30px;">Recibimos tu equipo en parte de pago.</p>
   </section>
 
   <section id="iphones">
     <div class="section-header reveal">
-      <h2 style="font-family:'Playfair Display'; font-size:32px;">Modelos Disponibles</h2>
-      <span style="color:var(--gray); font-weight:600;">18 iPhones</span>
+      <h2 style="font-family:'Playfair Display'; font-size:32px;">iPhones</h2>
     </div>
-    <div class="grid" id="main-grid">
-      </div>
+    <div class="grid" id="grid-iphones"></div>
   </section>
 
-  <section class="info-section">
-    <h2 class="reveal" style="font-family:'Playfair Display'; margin-bottom:40px; text-align:center;">Experiencias de Clientes</h2>
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-      <div class="card reveal">
-        <div style="color:var(--gold); margin-bottom:10px;">★★★★★</div>
-        <p>"Excelente atención, el iPhone 15 Pro Max llegó sellado y con batería al 100%. Muy confiables."</p>
-        <div style="margin-top:15px; font-weight:700;">- María G.</div>
-      </div>
-      <div class="card reveal">
-        <div style="color:var(--gold); margin-bottom:10px;">★★★★★</div>
-        <p>"Compré el S24 Ultra y el envío a regiones fue súper rápido. El equipo está impecable."</p>
-        <div style="margin-top:15px; font-weight:700;">- Juan P.</div>
-      </div>
+  <section id="otros">
+    <div class="section-header reveal">
+      <h2 style="font-family:'Playfair Display'; font-size:32px;">Otros Modelos</h2>
     </div>
+    <div class="grid" id="grid-otros"></div>
   </section>
 
-  <section style="padding: 80px 5%;" id="faq">
-    <h2 class="reveal" style="font-family:'Playfair Display'; margin-bottom:30px;">Preguntas Frecuentes</h2>
-    <div class="faq-item reveal" onclick="toggleFaq(this)">
-      <strong>¿Cuál es el tiempo de entrega?</strong>
-      <div class="faq-ans">En Santiago entregamos el mismo día. A regiones enviamos por Starken/BlueExpress y demora 24-48h.</div>
+  <section id="ipads">
+    <div class="section-header reveal">
+      <h2 style="font-family:'Playfair Display'; font-size:32px;">iPads</h2>
     </div>
-    <div class="faq-item reveal" onclick="toggleFaq(this)">
-      <strong>¿Tienen garantía real?</strong>
-      <div class="faq-ans">Sí, todos los equipos tienen 3 meses de garantía técnica ante cualquier falla de fábrica.</div>
-    </div>
+    <div class="grid"><div class="no-stock">No tenemos stock disponible de momento en esta sección.</div></div>
   </section>
 
-  <footer style="background:var(--black); color:white; padding:60px 5%; text-align:center;">
+  <section id="macbooks">
+    <div class="section-header reveal">
+      <h2 style="font-family:'Playfair Display'; font-size:32px;">MacBooks</h2>
+    </div>
+    <div class="grid"><div class="no-stock">No tenemos stock disponible de momento en esta sección.</div></div>
+  </section>
+
+  <section id="airpods">
+    <div class="section-header reveal">
+      <h2 style="font-family:'Playfair Display'; font-size:32px;">AirPods</h2>
+    </div>
+    <div class="grid"><div class="no-stock">No tenemos stock disponible de momento en esta sección.</div></div>
+  </section>
+
+  <footer style="background:var(--black); color:white; padding:60px 5%; text-align:center; margin-top:80px;">
     <div class="logo-text" style="color:white; font-size:28px; margin-bottom:20px;">iPhone <span>Elite</span></div>
-    <p style="color:var(--gray); margin-bottom:30px;">Santiago, Chile · Envios a todo el país.</p>
-    <div style="font-size:12px; color:rgba(255,255,255,0.3); border-top:1px solid rgba(255,255,255,0.1); padding-top:20px;">
-      © 2026 iPhone Elite Chile — Especialistas en Apple.
-    </div>
+    <p style="color:var(--gray);">Santiago, Chile · Tecnología 100% Original</p>
   </footer>
 
   <div id="product-modal" class="modal" onclick="closeModal(event)">
@@ -190,10 +177,7 @@
       <span class="close" onclick="closeModal()">&times;</span>
       <h2 id="m-name" style="font-family:'Playfair Display'; font-size:28px;"></h2>
       <div id="m-price" style="font-size:26px; font-weight:700; color:var(--gold); margin:15px 0;"></div>
-      <div style="background:var(--gray-light); padding:20px; border-radius:20px; margin-bottom:20px;">
-        <h4 style="margin-bottom:10px;">Especificaciones</h4>
-        <p id="m-desc" style="color:var(--gray); line-height:1.6;"></p>
-      </div>
+      <div id="m-desc" style="background:var(--gray-light); padding:20px; border-radius:20px; color:var(--black); line-height:1.6; margin-bottom:20px; white-space: pre-line;"></div>
       <button class="btn btn-black" onclick="addToCart()">Agregar al Carrito</button>
       <button class="btn btn-gold" onclick="buyWA()">Comprar por WhatsApp</button>
     </div>
@@ -201,102 +185,105 @@
 
   <div id="cart-sidebar">
     <div style="display:flex; justify-content:space-between; align-items:center;">
-      <h2 style="font-family:'Playfair Display';">Tu Pedido</h2>
+      <h2 style="font-family:'Playfair Display';">Tu Carrito</h2>
       <span style="font-size:30px; cursor:pointer;" onclick="toggleCart()">&times;</span>
     </div>
-    <div class="cart-list" id="cart-list"></div>
+    <div id="cart-list" style="flex:1; overflow-y:auto; margin:25px 0;"></div>
     <div id="cart-total" style="font-size:22px; font-weight:700; border-top:2px solid var(--gray-light); padding-top:20px;"></div>
     <button class="btn btn-gold" style="margin-top:20px;" onclick="checkoutWA()">Finalizar Compra</button>
   </div>
 
   <script>
-    const stock = [
-      { id: 1, name: 'iPhone 11 64GB', price: '$169.990', raw: 169990, desc: 'Color Rojo. Batería 100%. Pantalla Liquid Retina HD.' },
-      { id: 2, name: 'iPhone 12 Pro Max', price: '$379.990', raw: 379990, desc: '128GB Gris. Triple cámara Pro de 12 MP.' },
-      { id: 3, name: 'iPhone 15 Pro Max', price: '$769.990', raw: 769990, desc: '256GB Azul Titanio. Chip A17 Pro. Zoom óptico 5x.' },
-      { id: 4, name: 'Samsung S24 Ultra', price: '$589.990', raw: 589990, desc: '256GB Negro. Galaxy AI integrada. S-Pen.' },
-      { id: 5, name: 'iPhone 16 Pro Max', price: '$879.990', raw: 879990, desc: '128GB Blanco. Botón de Control de Cámara.' },
-      { id: 6, name: 'iPhone 14 Pro Max', price: '$659.990', raw: 659990, desc: '256GB Negro. Dynamic Island y cámara de 48MP.' },
-      { id: 7, name: 'iPhone 11 Pro 64GB', price: '$249.990', raw: 249990, desc: 'Color Verde. Super Retina XDR.' },
-      { id: 8, name: 'iPhone 12 64GB', price: '$249.990', raw: 249990, desc: 'Azul Medianoche. Ceramic Shield.' }
+    const inventory = [
+      // iPhones
+      { category: 'iphone', name: 'iPhone 11', price: '$169.990', raw: 169990, badge: 'Face ID', desc: 'Color Rojo 🟥\n64 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 11 Pro', price: '$249.990', raw: 249990, badge: 'Face ID', desc: 'Color Verde 🎄\n64 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 12', price: '$249.990', raw: 249990, badge: 'Face ID', desc: 'Color Azul Medianoche 🌑\n64 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 12 Pro (Dorado)', price: '$349.990', raw: 349990, badge: 'Face ID', desc: 'Color Dorado 🌟\n128 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 12 Pro (Gris)', price: '$329.990', raw: 329990, badge: 'Face ID', desc: 'Color Gris 🌚\n128 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 12 Pro Max (Gris)', price: '$379.990', raw: 379990, badge: 'Oferta', desc: 'Color Gris 🌚\n128 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 12 Pro Max (Azul)', price: '$379.990', raw: 379990, badge: 'Face ID', desc: 'Color Azul 🥶\n128 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 14 Pro', price: '$589.990', raw: 589990, badge: 'Face ID', desc: 'Color Blanco ⚪️\n128 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 14 Pro Max', price: '$659.990', raw: 659990, badge: '256GB', desc: 'Color Black ⚫️\n256 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 14 Pro Max (E-sim)', price: '$679.990', raw: 679990, badge: 'USA 🇺🇸', desc: 'Color Black ⚫️\n256 GB de almacenamiento\nE-sim (mayor seguridad)\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 15 (Sellado)', price: '$569.990', raw: 569990, badge: 'Nuevo', desc: 'Color Rosado 🐷\n128 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 15 Pro', price: '$669.990', raw: 669990, badge: 'Oferta', desc: 'Color White Titanium ⚪️\n128 GB de almacenamiento\nE-sim (mayor seguridad)\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 15 Pro Max', price: '$769.990', raw: 769990, badge: 'Oferta', desc: 'Color Azul Titanio 🌑\n256 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 16 (Seminuevo)', price: '$669.990', raw: 669990, badge: 'Seminuevo', desc: 'Color Negro ⚫️\n128 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 16 Pro Max (Blanco)', price: '$879.990', raw: 879990, badge: 'Oferta', desc: 'Color Blanco ⚪️\n128 GB de almacenamiento\n100% de batería 🔋\nReacondicionado por piezas originales ✅' },
+      { category: 'iphone', name: 'iPhone 16 Pro Max (Negro)', price: '$949.990', raw: 949990, badge: 'Oferta', desc: 'Color Negro ⚫️\n256 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 17 (Nuevo)', price: '$889.990', raw: 889990, badge: 'Lanzamiento', desc: 'Color Negro ⚫️\n256 GB de almacenamiento\n100% de batería 🔋' },
+      { category: 'iphone', name: 'iPhone 17 Pro', price: '$1.249.990', raw: 1249990, badge: 'Open Box', desc: 'Color Naranja 🍊\n256 GB de almacenamiento\n100% de batería 🔋' },
+      
+      // Otros
+      { category: 'otros', name: 'Samsung S24 Ultra (256GB)', price: '$589.990', raw: 589990, badge: 'Seminuevo', desc: '256 GB / 12 GB RAM\nColor negro ⚫️\nDual sim / Liberado ✅' },
+      { category: 'otros', name: 'Samsung S24 Ultra (512GB)', price: '$619.990', raw: 619990, badge: 'Seminuevo', desc: '512 GB / 12 GB RAM\nColor negro ⚫️\nDual sim / Liberado ✅' },
+      { category: 'otros', name: 'Samsung Z Fold 7', price: '$1.249.990', raw: 1249990, badge: 'Sellado', desc: '256 GB / 12 GB RAM\nCon boleta de compra ✅\nColor azul 🔵' }
     ];
 
     let cart = [];
-    let activeProduct = null;
+    let activeP = null;
 
-    function renderStore(id, list) {
-      const container = document.getElementById(id);
-      container.innerHTML = list.map(p => `
-        <div class="card reveal" onclick="openModal(${p.id})">
+    function renderCategory(cat, gridId) {
+      const filtered = inventory.filter(x => x.category === cat);
+      document.getElementById(gridId).innerHTML = filtered.map(p => `
+        <div class="card reveal" onclick="openP('${p.name}')">
+          <div class="card-badge">${p.badge}</div>
           <div class="card-img">📱</div>
-          <div style="font-weight:700; font-size:15px;">${p.name}</div>
-          <div style="color:var(--gold); font-weight:700; margin-top:5px;">${p.price}</div>
+          <div style="font-weight:700;">${p.name}</div>
+          <div class="card-price">${p.price}</div>
         </div>
       `).join('');
-      initReveal();
     }
 
-    function openModal(id) {
-      activeProduct = stock.find(x => x.id === id);
-      document.getElementById('m-name').innerText = activeProduct.name;
-      document.getElementById('m-price').innerText = activeProduct.price;
-      document.getElementById('m-desc').innerText = activeProduct.desc;
+    function openP(name) {
+      activeP = inventory.find(x => x.name === name);
+      document.getElementById('m-name').innerText = activeP.name;
+      document.getElementById('m-price').innerText = activeP.price;
+      document.getElementById('m-desc').innerText = activeP.desc;
       document.getElementById('product-modal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
 
-    function closeModal() {
-      document.getElementById('product-modal').style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
+    function closeModal() { document.getElementById('product-modal').style.display = 'none'; document.body.style.overflow = 'auto'; }
     function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('open'); }
 
     function addToCart() {
-      cart.push(activeProduct);
-      updateUI();
+      cart.push(activeP);
+      document.getElementById('cart-count').innerText = cart.length;
+      updateCartList();
       closeModal();
       toggleCart();
     }
 
-    function updateUI() {
-      document.getElementById('cart-count').innerText = cart.length;
-      const list = document.getElementById('cart-list');
+    function updateCartList() {
       let total = 0;
-      list.innerHTML = cart.map((item, idx) => {
-        total += item.raw;
-        return `<div class="cart-item"><span>${item.name}</span><strong>${item.price}</strong></div>`;
+      document.getElementById('cart-list').innerHTML = cart.map(x => {
+        total += x.raw;
+        return `<div class="cart-item"><span>${x.name}</span><strong>${x.price}</strong></div>`;
       }).join('');
       document.getElementById('cart-total').innerText = `Total: $${total.toLocaleString('es-CL')}`;
     }
 
     function buyWA() {
-      const msg = `Hola iPhone Elite! Me interesa el ${activeProduct.name} por ${activeProduct.price}`;
+      const msg = `Hola iPhone Elite! Me interesa el ${activeP.name} por ${activeP.price}`;
       window.open(`https://wa.me/56964271938?text=${encodeURIComponent(msg)}`);
     }
 
     function checkoutWA() {
-      if (cart.length === 0) return;
-      let text = "Hola iPhone Elite! Mi pedido es:\n\n";
-      cart.forEach(p => text += `• ${p.name} (${p.price})\n`);
-      const total = cart.reduce((acc, p) => acc + p.raw, 0);
-      text += `\n*Total: $${total.toLocaleString('es-CL')}*`;
-      window.open(`https://wa.me/56964271938?text=${encodeURIComponent(text)}`);
+      if(cart.length === 0) return;
+      let t = "Hola iPhone Elite! Mi pedido:\n";
+      cart.forEach(p => t += `• ${p.name} (${p.price})\n`);
+      window.open(`https://wa.me/56964271938?text=${encodeURIComponent(t)}`);
     }
 
-    function toggleFaq(el) {
-      const ans = el.querySelector('.faq-ans');
-      ans.style.display = (ans.style.display === 'block') ? 'none' : 'block';
-    }
-
-    function initReveal() {
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    }
-
-    renderStore('main-grid', stock);
+    // Init
+    window.onload = () => {
+      renderCategory('iphone', 'grid-iphones');
+      renderCategory('otros', 'grid-otros');
+      const obs = new IntersectionObserver(ents => ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }));
+      document.querySelectorAll('.reveal').forEach(x => obs.observe(x));
+    };
   </script>
 </body>
 </html>
