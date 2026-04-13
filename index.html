@@ -11,14 +11,13 @@
   <style>
     :root {
       --primary: #000000;
-      --accent: #D4AF37; /* Inspirado en el dorado del logo */
+      --accent: #D4AF37;
       --bg-cream: #FDFBF7;
       --white: #FFFFFF;
       --text-soft: #4A4A4A;
       --border-color: #EAEAEA;
     }
 
-    /* Reset */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-cream); color: var(--primary); overflow-x: hidden; padding-bottom: 90px; }
@@ -28,11 +27,11 @@
       position: sticky; top: 0; z-index: 2000;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 4%; height: 75px;
-      background: rgba(253, 251, 247, 0.9); backdrop-filter: blur(20px);
+      background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-color);
     }
     .brand-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-img { height: 38px; width: auto; filter: grayscale(1); } /* Negro elegante */
+    .logo-img { height: 38px; width: auto; }
     .brand-name { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--primary); letter-spacing: -0.5px; }
 
     .top-utility { display: flex; align-items: center; gap: 20px; }
@@ -44,7 +43,7 @@
     .hero-section {
       padding: 40px 20px;
       display: flex; flex-direction: column; align-items: center;
-      min-height: 90vh; text-align: center;
+      min-height: 85vh; text-align: center;
     }
     .hero-image-wrap {
       width: 100%; max-width: 680px;
@@ -58,25 +57,30 @@
       50% { transform: translateY(-30px) rotate(0.5deg); }
     }
 
-    .cta-pill { background: var(--primary); color: var(--white); padding: 18px 40px; border-radius: 100px; font-weight: 700; font-size: 16px; text-decoration: none; margin-top: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+    .cta-pill { background: var(--primary); color: var(--white); padding: 18px 40px; border-radius: 100px; font-weight: 700; font-size: 16px; text-decoration: none; margin-top: 20px; }
 
-    /* SECCIÓN DE CONFIANZA (RESTAURADA) */
-    .trust-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 60px 5%; background: var(--white); border-radius: 40px; margin: 0 4% 60px; border: 1px solid var(--border-color); }
-    .trust-item { text-align: center; }
-    .trust-item h4 { font-size: 14px; margin-bottom: 5px; }
-    .trust-item p { font-size: 12px; color: var(--text-soft); }
+    /* SECCIÓN DE CONFIANZA INTERACTIVA */
+    .trust-container { padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
+    .trust-accordion { border: 1px solid var(--border-color); border-radius: 25px; background: var(--white); overflow: hidden; margin-bottom: 60px; }
+    .trust-item { border-bottom: 1px solid var(--border-color); }
+    .trust-item:last-child { border-bottom: none; }
+    .trust-header { padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.3s; }
+    .trust-header:hover { background: var(--bg-cream); }
+    .trust-header h4 { font-size: 15px; font-weight: 700; }
+    .trust-content { max-height: 0; overflow: hidden; transition: 0.4s ease-out; padding: 0 30px; color: var(--text-soft); font-size: 14px; }
+    .trust-item.active .trust-content { max-height: 100px; padding-bottom: 20px; }
 
     /* CATEGORÍAS */
-    .cat-title { padding: 80px 5% 20px; font-family: 'Playfair Display', serif; font-size: 34px; border-bottom: 3px solid var(--accent); display: inline-block; margin-left: 5%; margin-bottom: 40px; }
+    .cat-title { padding: 80px 5% 15px; font-family: 'Playfair Display', serif; font-size: 32px; border-bottom: 3px solid var(--accent); display: inline-block; margin-left: 5%; margin-bottom: 35px; }
     .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 5% 80px; }
     @media (min-width: 1024px) { .products-grid { grid-template-columns: repeat(4, 1fr); } }
 
     .p-card { background: var(--white); border: 1px solid var(--border-color); border-radius: 30px; padding: 20px; transition: 0.4s; cursor: pointer; position: relative; }
-    .p-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.06); border-color: var(--accent); }
-    .p-img-box { height: 180px; background: var(--bg-cream); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 20px; }
+    .p-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 25px 50px rgba(0,0,0,0.06); }
+    .p-img-box { height: 180px; background: var(--bg-cream); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 15px; }
     .p-price { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--accent); margin-top: 8px; }
 
-    /* MODAL DE DETALLES */
+    /* MODAL TÉCNICO */
     .m-overlay { display: none; position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 20px; }
     .m-window { background: var(--white); width: 100%; max-width: 650px; border-radius: 40px; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; }
     .m-close { position: absolute; top: 25px; right: 25px; font-size: 30px; cursor: pointer; color: var(--text-soft); }
@@ -84,33 +88,28 @@
     .spec-row { font-size: 13px; }
     .spec-row b { display: block; color: var(--text-soft); font-weight: 500; font-size: 11px; text-transform: uppercase; }
 
-    /* VALORACIONES PERSONALIZADAS */
+    /* RESEÑAS */
     .reviews-container { padding: 100px 5%; background: var(--primary); color: var(--white); border-radius: 60px 60px 0 0; }
     .rev-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1); }
     .rev-stars { color: var(--accent); font-size: 18px; margin-bottom: 10px; }
 
-    /* FORMULARIO DE VALORACIÓN */
+    /* FORMULARIO VALORACIÓN */
     .rev-form-wrap { background: var(--white); color: var(--primary); padding: 40px; border-radius: 35px; max-width: 600px; margin: -50px auto 100px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
     .input-box { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 15px; font-family: inherit; }
 
-    /* BARRA INFERIOR REAL */
+    /* BARRA INFERIOR CON LOGO WA CORRECTO */
     .bottom-bar {
       position: fixed; bottom: 0; left: 0; right: 0;
       height: 85px; background: var(--white);
       display: flex; justify-content: space-around; align-items: center;
       border-top: 1px solid var(--border-color); z-index: 2500; padding-bottom: 15px;
     }
-    .b-nav-link { text-decoration: none; color: var(--primary); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11px; font-weight: 800; transition: 0.2s; }
-    .b-nav-link svg { width: 24px; height: 24px; }
-    .b-nav-link.wa-color svg { color: #25D366; }
-
-    /* SEARCH */
-    #search-box { display: none; position: fixed; inset: 0; background: var(--white); z-index: 4000; padding: 50px 5%; }
-    .search-input-big { width: 100%; padding: 20px; border: none; border-bottom: 2px solid var(--primary); font-size: 30px; font-family: 'Playfair Display'; outline: none; }
+    .b-nav-link { text-decoration: none; color: var(--primary); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11px; font-weight: 800; }
+    .wa-icon svg { color: #25D366; }
 
     .action-btn { width: 100%; padding: 18px; border-radius: 15px; border: none; font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 10px; }
     .btn-dark { background: var(--primary); color: var(--white); }
-    .btn-outline { background: var(--white); border: 2px solid var(--primary); color: var(--primary); }
+    .no-stock-box { grid-column: 1 / -1; text-align: center; padding: 60px; background: #eee; border-radius: 30px; color: var(--gray); }
 
     .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
@@ -124,39 +123,37 @@
       <img src="logo.png" alt="Logo" class="logo-img">
       <span class="brand-name">iPhone <b>Elite</b></span>
     </a>
-    
     <div class="top-utility">
       <span class="loc-text">SANTIAGO, CHILE</span>
-      <button class="icon-btn" onclick="toggleSearch()">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </button>
-      <div class="icon-btn" onclick="toggleCart()">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <button class="icon-btn" onclick="toggleCart()">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <span id="c-count" class="cart-pill">0</span>
-      </div>
+      </button>
     </div>
   </header>
 
   <section class="hero-section" id="inicio">
     <div class="hero-image-wrap">
-      <img src="animación.png" alt="Hero">
+      <img src="animación.png" alt="iPhone 17 Pro Max">
     </div>
-    <h2 class="hero-title" style="font-family: 'Playfair Display'; font-size: 48px; letter-spacing: -1px;">iPhone 17 Pro</h2>
+    <h2 class="hero-title" style="font-family: 'Playfair Display'; font-size: 48px; letter-spacing: -1px;">iPhone 17 Pro Max</h2>
     <a href="#tienda" class="cta-pill">Los mejores precios aquí</a>
   </section>
 
-  <div class="trust-bar reveal">
-    <div class="trust-item">
-      <h4>Envíos a todo Chile 🇨🇱</h4>
-      <p>BlueExpress o Starken</p>
-    </div>
-    <div class="trust-item">
-      <h4>Garantía Real 🛡️</h4>
-      <p>3 meses de cobertura</p>
-    </div>
-    <div class="trust-item">
-      <h4>Parte de Pago 📱</h4>
-      <p>Recibimos tu iPhone</p>
+  <div class="trust-container reveal">
+    <div class="trust-accordion">
+      <div class="trust-item" onclick="toggleAccordion(this)">
+        <div class="trust-header"><h4>Envíos a todo Chile 🇨🇱</h4><span>+</span></div>
+        <div class="trust-content">Realizamos envíos 100% asegurados vía BlueExpress o Starken a cualquier región del país.</div>
+      </div>
+      <div class="trust-item" onclick="toggleAccordion(this)">
+        <div class="trust-header"><h4>Garantía Real 🛡️</h4><span>+</span></div>
+        <div class="trust-content">3 meses de cobertura total por falla técnica y garantía de por vida por señal (IMEI).</div>
+      </div>
+      <div class="trust-item" onclick="toggleAccordion(this)">
+        <div class="trust-header"><h4>Método de Pago 💳</h4><span>+</span></div>
+        <div class="trust-content">Aceptamos efectivo, transferencia y tarjetas de crédito. Tu equipo en parte de pago es conversado directamente por WhatsApp.</div>
+      </div>
     </div>
   </div>
 
@@ -178,28 +175,12 @@
   </div>
 
   <section class="reviews-container" id="reviews">
-    <h2 style="font-family: 'Playfair Display'; font-size: 38px; text-align: center; margin-bottom: 50px;">Lo que dicen nuestros clientes</h2>
+    <h2 style="font-family: 'Playfair Display'; font-size: 38px; text-align: center; margin-bottom: 50px;">Experiencias Elite</h2>
     <div class="products-grid" id="r-list">
-        <div class="rev-card">
-            <div class="rev-stars">★★★★★</div>
-            <p>"Atención de lujo. Mi iPhone 16 Pro Max llegó a Viña en un día. Muy confiables."</p>
-            <div style="margin-top:20px; font-weight:700;">— Ricardo M.</div>
-        </div>
-        <div class="rev-card">
-            <div class="rev-stars">★★★★☆</div>
-            <p>"El equipo está impecable, como nuevo. La entrega se atrasó un par de horas pero valió la pena."</p>
-            <div style="margin-top:20px; font-weight:700;">— Daniela S.</div>
-        </div>
-        <div class="rev-card">
-            <div class="rev-stars">★★★★★</div>
-            <p>"Recibieron mi iPhone 12 en parte de pago a un precio justo. Excelente servicio."</p>
-            <div style="margin-top:20px; font-weight:700;">— Javier O.</div>
-        </div>
-        <div class="rev-card">
-            <div class="rev-stars">★★★★★</div>
-            <p>"El S24 Ultra vuela. Todo sellado y original. Gracias iPhone Elite."</p>
-            <div style="margin-top:20px; font-weight:700;">— Constanza F.</div>
-        </div>
+        <div class="rev-card"><div class="rev-stars">★★★★★</div><p>"Compré el iPhone 16 Pro Max y llegó a Viña impecable. Confianza total."</p><div style="margin-top:20px; font-weight:700;">— Ricardo M.</div></div>
+        <div class="rev-card"><div class="rev-stars">★★★★☆</div><p>"El S24 Ultra está como nuevo. Todo original, muy buena atención."</p><div style="margin-top:20px; font-weight:700;">— Daniela S.</div></div>
+        <div class="rev-card"><div class="rev-stars">★★★★★</div><p>"Recibieron mi iPhone 12 Pro en parte de pago. Negocio transparente."</p><div style="margin-top:20px; font-weight:700;">— Javier O.</div></div>
+        <div class="rev-card"><div class="rev-stars">★★★★★</div><p>"El equipo sellado es tal cual la foto. Recomendadísimos."</p><div style="margin-top:20px; font-weight:700;">— Constanza F.</div></div>
     </div>
   </section>
 
@@ -214,16 +195,16 @@
   </div>
 
   <nav class="bottom-bar">
-    <a href="#inicio" class="b-nav-link active">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+    <a href="#inicio" class="b-nav-link">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
       INICIO
     </a>
-    <a href="https://wa.me/56964271938" target="_blank" class="b-nav-link wa-color">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+    <a href="https://wa.me/56964271938" target="_blank" class="b-nav-link wa-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="24"><path d="M12.031 2c-5.513 0-9.99 4.477-9.99 9.99 0 2.012.597 3.886 1.624 5.454l-1.665 6.056 6.204-1.631c1.517.822 3.256 1.289 5.093 1.289 5.513 0 9.99-4.477 9.99-9.99a9.99 9.99 0 0 0-9.99-9.99z"/></svg>
       WHATSAPP
     </a>
     <a href="https://instagram.com/iphonelite.cl" target="_blank" class="b-nav-link">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
       INSTAGRAM
     </a>
   </nav>
@@ -234,80 +215,54 @@
       <h2 id="modal-n" style="font-family:'Playfair Display'; font-size:30px;"></h2>
       <div id="modal-p" style="font-size:26px; font-weight:700; color:var(--accent); margin:15px 0;"></div>
       <div class="specs-grid" id="modal-s"></div>
-      <div id="modal-d" style="line-height:1.7; color:var(--text-soft); font-size:15px;"></div>
-      <div style="margin-top:30px; display:flex; gap:10px;">
-        <button class="action-btn btn-dark" onclick="addC()">AÑADIR AL CARRITO</button>
-        <button class="action-btn btn-outline" onclick="goWA()">CONSULTAR STOCK</button>
-      </div>
+      <div id="modal-d" style="line-height:1.7; color:var(--text-soft); font-size:15px; white-space: pre-line;"></div>
+      <button class="action-btn btn-dark" onclick="goWA()">COMPRAR POR WHATSAPP</button>
     </div>
   </div>
 
   <script>
     const db = [
-      { cat: 'iphone', name: 'iPhone 11', price: '$169.990', raw: 169990, specs: { Almacenamiento: '64GB', Batería: '100% 🔋', Color: 'Rojo 🟥', Pantalla: '6.1" Liquid Retina' }, desc: 'Equipo certificado con Face ID operativo. Ideal para quienes buscan calidad Apple al mejor precio.' },
-      { cat: 'iphone', name: 'iPhone 15 Pro Max', price: '$769.990', raw: 769990, specs: { Almacenamiento: '256GB', Batería: '100% 🔋', Material: 'Titanio 🌑', Cámara: 'Zoom 5x' }, desc: 'El buque insignia del 2024. Forjado en titanio con el chip A17 Pro para juegos AAA.' },
-      { cat: 'iphone', name: 'iPhone 17 Pro', price: '$1.249.990', raw: 1249990, specs: { Almacenamiento: '256GB', Estado: 'Open Box 🍊', Batería: '100% 🔋', Tech: 'Lanzamiento 2026' }, desc: 'El futuro ya está aquí. Color naranja exclusivo con optimización de IA de próxima generación.' },
-      { cat: 'otros', name: 'Samsung S24 Ultra', price: '$619.990', raw: 619990, specs: { RAM: '12GB', Almacenamiento: '512GB', AI: 'Galaxy AI ✅', Sim: 'Dual Sim' }, desc: 'Cámara de 200MP con S-Pen integrado. Lo mejor de Android para productividad.' }
+      { cat: 'iphone', name: 'iPhone 11', price: '$169.990', raw: 169990, specs: { Color: 'Rojo 🟥', Storage: '64GB', Battery: '100% 🔋', Security: 'Face ID ✅' }, desc: 'Perfecto estado estético y funcional. Ideal para primer iPhone.' },
+      { cat: 'iphone', name: 'iPhone 12 Pro Max', price: '$379.990', raw: 379990, specs: { Color: 'Gris 🌚', Storage: '128GB', Battery: '100% 🔋', Oferta: 'Precio Especial' }, desc: 'Cámara triple Pro con sensor LiDAR para fotos nocturnas increíbles.' },
+      { cat: 'iphone', name: 'iPhone 16 Pro Max', price: '$879.990', raw: 879990, specs: { Color: 'Blanco ⚪️', Storage: '128GB', Battery: '100% 🔋', Piezas: 'Originales ✅' }, desc: 'Máxima potencia con Apple Intelligence. Reacondicionado profesionalmente.' },
+      { cat: 'otros', name: 'Samsung S24 Ultra', price: '$589.990', raw: 589990, specs: { RAM: '12GB', Storage: '256GB', AI: 'Galaxy AI ✅', Status: 'Semi-nuevo' }, desc: 'El mejor Android de la historia con cámara de 200MP.' },
+      { cat: 'otros', name: 'Samsung Z Fold 7', price: '$1.249.990', raw: 1249990, specs: { Status: 'Sellado 🔵', Storage: '256GB', RAM: '12GB', Boleta: 'Incluida ✅' }, desc: 'La revolución plegable. Equipo nuevo y sellado con garantía.' }
     ];
 
-    let cart = [];
-    let currentS = 0;
-    let selected = null;
-
-    function renderGrids() {
-      const ig = document.getElementById('grid-iphones');
-      const og = document.getElementById('grid-otros');
-      ig.innerHTML = db.filter(x => x.cat === 'iphone').map(p => `
+    function render() {
+      document.getElementById('grid-iphones').innerHTML = db.filter(x => x.cat === 'iphone').map(p => `
         <div class="p-card reveal" onclick="openM('${p.name}')">
             <div class="p-img-box">📱</div>
-            <div style="font-weight:700; font-size:16px;">${p.name}</div>
-            <div class="p-price">${p.price}</div>
-            <button class="action-btn btn-dark" style="padding:10px; font-size:12px;">VER DETALLES</button>
-        </div>
-      `).join('');
-      og.innerHTML = db.filter(x => x.cat === 'otros').map(p => `
+            <div style="font-weight:700;">${p.name}</div><div class="p-price">${p.price}</div>
+        </div>`).join('');
+      document.getElementById('grid-otros').innerHTML = db.filter(x => x.cat === 'otros').map(p => `
         <div class="p-card reveal" onclick="openM('${p.name}')">
             <div class="p-img-box">📱</div>
-            <div style="font-weight:700; font-size:16px;">${p.name}</div>
-            <div class="p-price">${p.price}</div>
-        </div>
-      `).join('');
+            <div style="font-weight:700;">${p.name}</div><div class="p-price">${p.price}</div>
+        </div>`).join('');
     }
 
     function openM(name) {
-      selected = db.find(x => x.name === name);
-      document.getElementById('modal-n').innerText = selected.name;
-      document.getElementById('modal-p').innerText = selected.price;
-      document.getElementById('modal-d').innerText = selected.desc;
-      const sBox = document.getElementById('modal-s');
-      sBox.innerHTML = Object.entries(selected.specs).map(([k,v]) => `<div class="spec-row"><b>${k}</b>${v}</div>`).join('');
+      let s = db.find(x => x.name === name);
+      document.getElementById('modal-n').innerText = s.name;
+      document.getElementById('modal-p').innerText = s.price;
+      document.getElementById('modal-d').innerText = s.desc;
+      document.getElementById('modal-s').innerHTML = Object.entries(s.specs).map(([k,v]) => `<div class="spec-row"><b>${k}</b>${v}</div>`).join('');
       document.getElementById('p-modal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
     }
 
-    function closeM() { document.getElementById('p-modal').style.display = 'none'; document.body.style.overflow = 'auto'; }
-
-    function setS(n) {
-        currentS = n;
-        const stars = document.getElementById('s-input').children;
-        for(let i=0; i<5; i++) stars[i].style.color = (i < n) ? '#D4AF37' : '#ddd';
+    function toggleAccordion(el) {
+      document.querySelectorAll('.trust-item').forEach(x => { if(x !== el) x.classList.remove('active'); });
+      el.classList.toggle('active');
     }
 
-    function postR() {
-        const n = document.getElementById('user-n').value;
-        const m = document.getElementById('user-m').value;
-        if(!n || !m || currentS === 0) return alert("Completa todos los campos");
-        const card = document.createElement('div');
-        card.className = 'rev-card';
-        card.innerHTML = `<div class="rev-stars">${"★".repeat(currentS)}</div><p>"${m}"</p><div style="font-weight:700;">— ${n}</div>`;
-        document.getElementById('r-list').prepend(card);
-        alert("¡Valoración publicada con éxito!");
-    }
+    function closeM() { document.getElementById('p-modal').style.display = 'none'; }
+    function goWA() { window.open(`https://wa.me/56964271938?text=Me interesa el ${document.getElementById('modal-n').innerText}`); }
 
     window.onload = () => {
-        renderGrids();
-        const obs = new IntersectionObserver(ents => ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }));
-        document.querySelectorAll('.reveal').forEach(x => obs.observe(x));
+      render();
+      const obs = new IntersectionObserver(ents => ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }));
+      document.querySelectorAll('.reveal').forEach(x => obs.observe(x));
     };
   </script>
 </body>
