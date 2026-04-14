@@ -3,50 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>iPhone Elite — Catálogo Completo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>iPhone Elite | Catálogo Maestro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --primary: #000000; --accent: #D4AF37; --bg: #FDFBF7; --border: #EAEAEA; }
+    :root { --primary: #000000; --accent: #D4AF37; --bg: #FDFBF7; --white: #FFFFFF; --border: #EAEAEA; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--primary); padding-bottom: 100px; }
 
-    /* HEADER */
-    header { position: sticky; top: 0; z-index: 1000; background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(20px); padding: 15px 4%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+    /* NAVBAR */
+    header { position: sticky; top: 0; z-index: 2000; background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(20px); padding: 0 5%; height: 75px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: black; }
-    .brand img { height: 40px; }
+    .brand img { height: 40px; filter: grayscale(1); }
     .brand span { font-family: 'Playfair Display'; font-size: 24px; font-weight: 700; }
 
-    /* GRID */
-    .container { padding: 20px 4%; }
-    .section-title { font-family: 'Playfair Display'; font-size: 32px; margin: 40px 0 20px; border-bottom: 3px solid var(--accent); display: inline-block; }
-    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    /* HERO */
+    .hero { padding: 60px 20px; text-align: center; min-height: 80vh; display: flex; flex-direction: column; align-items: center; }
+    .hero img { width: 100%; max-width: 650px; animation: float 6s ease-in-out infinite; filter: drop-shadow(0 40px 80px rgba(0,0,0,0.1)); }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+    /* ACORDEÓN CONFIANZA */
+    .trust-box { max-width: 800px; margin: 0 auto 60px; padding: 0 5%; }
+    .acc-item { background: white; border: 1px solid var(--border); border-radius: 20px; margin-bottom: 10px; overflow: hidden; }
+    .acc-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; }
+    .acc-content { max-height: 0; padding: 0 20px; transition: 0.4s; color: #666; font-size: 14px; }
+    .acc-item.active .acc-content { max-height: 200px; padding-bottom: 20px; }
+
+    /* GRILLA */
+    .section-title { padding: 40px 5% 20px; font-family: 'Playfair Display'; font-size: 32px; border-bottom: 3px solid var(--accent); display: inline-block; margin-left: 5%; margin-bottom: 30px; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 5% 60px; }
     @media (min-width: 1024px) { .grid { grid-template-columns: repeat(4, 1fr); } }
 
-    .card { background: white; padding: 20px; border-radius: 30px; border: 1px solid var(--border); transition: 0.3s; cursor: pointer; text-align: center; }
-    .card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .card { background: white; border: 1px solid var(--border); border-radius: 30px; padding: 25px; transition: 0.4s; cursor: pointer; text-align: center; }
+    .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
     .card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
-    .card h3 { font-size: 16px; font-weight: 700; }
 
-    /* MODAL DINÁMICO */
+    /* MODAL */
     .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 3000; align-items: center; justify-content: center; padding: 20px; }
-    .modal-box { background: white; width: 100%; max-width: 600px; border-radius: 40px; padding: 35px; position: relative; max-height: 90vh; overflow-y: auto; }
+    .modal-box { background: white; width: 100%; max-width: 550px; border-radius: 40px; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; }
     .close { position: absolute; top: 25px; right: 25px; font-size: 30px; cursor: pointer; }
 
-    .selector-label { font-size: 11px; font-weight: 700; text-transform: uppercase; margin: 20px 0 10px; display: block; color: #888; letter-spacing: 1px; }
-    .options { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
-    .opt-btn { padding: 10px 18px; border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; font-size: 13px; font-weight: 600; transition: 0.2s; }
-    .opt-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .selector-label { font-size: 11px; font-weight: 700; text-transform: uppercase; margin: 20px 0 10px; display: block; color: #999; }
+    .options { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .opt-btn { padding: 10px 15px; border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; font-size: 13px; font-weight: 600; }
+    .opt-btn.active { background: black; color: white; border-color: black; }
 
-    .modal-imgs { display: flex; gap: 15px; margin: 25px 0; }
-    .modal-imgs img { width: 50%; height: 220px; object-fit: contain; background: #f5f5f7; border-radius: 20px; }
+    .modal-imgs { display: flex; gap: 15px; margin-bottom: 25px; }
+    .modal-imgs img { width: 50%; height: 200px; object-fit: contain; background: #f5f5f7; border-radius: 20px; }
 
-    .price-tag { font-family: 'Playfair Display'; font-size: 30px; font-weight: 700; color: var(--accent); margin-bottom: 20px; }
-    .btn-wa { background: #000; color: white; width: 100%; padding: 20px; border-radius: 18px; border: none; font-weight: 700; font-size: 16px; cursor: pointer; text-decoration: none; display: block; text-align: center; }
+    .btn-wa { background: #000; color: white; width: 100%; padding: 20px; border-radius: 15px; border: none; font-weight: 700; cursor: pointer; text-decoration: none; display: block; text-align: center; }
 
-    /* BARRA INFERIOR */
-    .nav-bottom { position: fixed; bottom: 0; left: 0; right: 0; height: 85px; background: white; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid var(--border); z-index: 2500; padding-bottom: 15px; }
+    /* BOTTOM NAV */
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 85px; background: white; border-top: 1px solid var(--border); display: flex; justify-content: space-around; align-items: center; z-index: 2500; padding-bottom: 10px; }
     .nav-item { text-decoration: none; color: black; display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; }
-    .wa-color { color: #25D366; }
+    .wa-link { color: #25D366; }
   </style>
 </head>
 <body>
@@ -56,130 +66,142 @@
     <img src="logo.png" alt="Logo">
     <span>iPhone Elite</span>
   </a>
-  <div style="font-size: 11px; font-weight: 700;">SANTIAGO, CHILE</div>
+  <div style="font-size: 10px; font-weight: 700;">SANTIAGO, CHILE</div>
 </header>
 
-<div class="container" id="inicio">
-  <h2 class="section-title">Catálogo de iPhones</h2>
+<section class="hero" id="inicio">
+  <img src="animación.png" alt="iPhone 17 Pro Max">
+  <h1 style="font-family: 'Playfair Display'; font-size: 42px; margin-top: 20px;">Los mejores precios aquí</h1>
+</section>
+
+<div class="trust-box">
+  <div class="acc-item" onclick="this.classList.toggle('active')">
+    <div class="acc-header">ENVÍOS A TODO CHILE 🇨🇱 <span>+</span></div>
+    <div class="acc-content"><p>Asegurados por BlueExpress o Starken. Entrega inmediata en Santiago.</p></div>
+  </div>
+  <div class="acc-item" onclick="this.classList.toggle('active')">
+    <div class="acc-header">GARANTÍA REAL 🛡️ <span>+</span></div>
+    <div class="acc-content"><p>3 meses de garantía técnica y garantía de señal (IMEI) de por vida.</p></div>
+  </div>
+</div>
+
+<div id="tienda">
+  <h2 class="section-title">iPhone</h2>
   <div class="grid" id="iphone-grid"></div>
 
-  <h2 class="section-title">Samsung & Otros</h2>
+  <h2 class="section-title">Otros Modelos</h2>
   <div class="grid" id="otros-grid"></div>
 </div>
 
 <div id="p-modal" class="modal" onclick="closeM()">
   <div class="modal-box" onclick="event.stopPropagation()">
     <span class="close" onclick="closeM()">&times;</span>
-    <h2 id="m-title" style="font-family:'Playfair Display'; font-size:32px;"></h2>
-    
-    <span class="selector-label">Selecciona Color</span>
+    <h2 id="m-title" style="font-family:'Playfair Display';"></h2>
+    <div id="m-price" style="font-size:26px; font-weight:700; color:var(--accent); margin:10px 0;"></div>
+
+    <span class="selector-label">Color</span>
     <div class="options" id="m-colors"></div>
 
     <span class="selector-label">Capacidad</span>
     <div class="options" id="m-storage"></div>
 
     <div class="modal-imgs">
-      <img id="img-front" src="" alt="Front">
-      <img id="img-back" src="" alt="Back">
+      <img id="img-f" src="" alt="Frente">
+      <img id="img-b" src="" alt="Atrás">
     </div>
 
-    <div class="price-tag" id="m-price"></div>
-    <a href="#" id="wa-link" class="btn-wa" target="_blank">CONSULTAR POR WHATSAPP</a>
+    <a href="#" id="wa-btn" class="btn-wa" target="_blank">CONSULTAR POR WHATSAPP</a>
   </div>
 </div>
 
-<nav class="nav-bottom">
+<nav class="bottom-nav">
   <a href="#inicio" class="nav-item">
-    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
     INICIO
   </a>
-  <a href="https://wa.me/56964271938" class="nav-item wa-color">
+  <a href="https://wa.me/56964271938" class="nav-item wa-link">
     <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.513 0-9.99 4.477-9.99 9.99 0 2.012.597 3.886 1.624 5.454l-1.665 6.056 6.204-1.631c1.517.822 3.256 1.289 5.093 1.289 5.513 0 9.99-4.477 9.99-9.99a9.99 9.99 0 0 0-9.99-9.99z"/></svg>
     WHATSAPP
   </a>
   <a href="https://instagram.com/iphonelite.cl" class="nav-item">
-    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
     INSTAGRAM
   </a>
 </nav>
 
 <script>
-  const inventory = [
-    // SERIE 11
-    { cat:'ip', name:'iPhone 11', price:'$169.990', colors:['Rojo','Negro','Blanco','Amarillo','Verde','Morado'], storage:['64GB','128GB','256GB'] },
-    { cat:'ip', name:'iPhone 11 Pro', price:'$249.990', colors:['Verde Noche','Gris Espacial','Plata','Dorado'], storage:['64GB','256GB','512GB'] },
-    { cat:'ip', name:'iPhone 11 Pro Max', price:'$299.990', colors:['Verde Noche','Gris Espacial','Plata','Dorado'], storage:['64GB','256GB','512GB'] },
-    
-    // SERIE 12
-    { cat:'ip', name:'iPhone 12 mini', price:'$219.990', colors:['Negro','Blanco','Rojo','Azul','Verde','Morado'], storage:['64GB','128GB','256GB'] },
-    { cat:'ip', name:'iPhone 12', price:'$239.990', colors:['Azul','Verde','Rojo','Blanco','Negro','Morado'], storage:['64GB','128GB','256GB'] },
-    { cat:'ip', name:'iPhone 12 Pro', price:'$329.990', colors:['Azul Pacífico','Grafito','Dorado','Plata'], storage:['128GB','256GB','512GB'] },
-    { cat:'ip', name:'iPhone 12 Pro Max', price:'$379.990', colors:['Azul Pacífico','Grafito','Dorado','Plata'], storage:['128GB','256GB','512GB'] },
-
-    // SERIE 13
-    { cat:'ip', name:'iPhone 13 mini', price:'$310.000', colors:['Medianoche','Estelar','Azul','Rosa','Rojo','Verde'], storage:['128GB','256GB','512GB'] },
-    { cat:'ip', name:'iPhone 13', price:'$380.000', colors:['Medianoche','Estelar','Azul','Rosa','Rojo','Verde'], storage:['128GB','256GB','512GB'] },
-    { cat:'ip', name:'iPhone 13 Pro', price:'$449.990', colors:['Sierra Blue','Grafito','Dorado','Plata','Verde Alpino'], storage:['128GB','256GB','512GB','1TB'] },
-    { cat:'ip', name:'iPhone 13 Pro Max', price:'$499.990', colors:['Sierra Blue','Grafito','Dorado','Plata','Verde Alpino'], storage:['128GB','256GB','512GB','1TB'] },
-
-    // SERIE 14
-    { cat:'ip', name:'iPhone 14', price:'$450.000', colors:['Medianoche','Púrpura','Estelar','Azul','Rojo','Amarillo'], storage:['128GB','256GB','512GB'] },
-    { cat:'ip', name:'iPhone 14 Plus', price:'$510.000', colors:['Medianoche','Púrpura','Estelar','Azul','Rojo','Amarillo'], storage:['128GB','256GB','512GB'] },
-    { cat:'ip', name:'iPhone 14 Pro', price:'$589.990', colors:['Morado Oscuro','Oro','Plata','Negro Espacial'], storage:['128GB','256GB','512GB','1TB'] },
-    { cat:'ip', name:'iPhone 14 Pro Max', price:'$659.990', colors:['Morado Oscuro','Oro','Plata','Negro Espacial'], storage:['128GB','256GB','512GB','1TB'] },
-
-    // SERIE 15
-    { cat:'ip', name:'iPhone 15', price:'$569.990', colors:['Rosa','Amarillo','Verde','Azul','Negro'], storage:['128GB','256GB','512GB'] },
-    { cat:'ip', name:'iPhone 15 Plus', price:'$620.000', colors:['Rosa','Amarillo','Verde','Azul','Negro'], storage:['128GB','256GB','512GB'] },
-    { cat:'ip', name:'iPhone 15 Pro', price:'$669.990', colors:['Titanio Natural','Titanio Azul','Titanio Blanco','Titanio Negro'], storage:['128GB','256GB','512GB','1TB'] },
-    { cat:'ip', name:'iPhone 15 Pro Max', price:'$769.990', colors:['Titanio Natural','Titanio Azul','Titanio Blanco','Titanio Negro'], storage:['256GB','512GB','1TB'] },
-
-    // SERIE 16
-    { cat:'ip', name:'iPhone 16', price:'$669.990', colors:['Negro','Blanco','Rosa','Teal','Ultramarino'], storage:['128GB','256GB','512GB'] },
-    { cat:'ip', name:'iPhone 16 Plus', price:'$740.000', colors:['Negro','Blanco','Rosa','Teal','Ultramarino'], storage:['128GB','256GB','512GB'] },
-    { cat:'ip', name:'iPhone 16 Pro', price:'$820.000', colors:['Titanio Desierto','Titanio Natural','Titanio Blanco','Titanio Negro'], storage:['128GB','256GB','512GB','1TB'] },
-    { cat:'ip', name:'iPhone 16 Pro Max', price:'$879.990', colors:['Titanio Desierto','Titanio Natural','Titanio Blanco','Titanio Negro'], storage:['256GB','512GB','1TB'] },
-    { cat:'ip', name:'iPhone 16e', price:'$599.990', colors:['Negro','Blanco'], storage:['128GB','256GB'] },
-
-    // SERIE 17 (FUTUROS)
-    { cat:'ip', name:'iPhone 17', price:'$889.990', colors:['Negro','Blanco'], storage:['128GB','256GB'] },
-    { cat:'ip', name:'iPhone 17 Air', price:'$999.990', colors:['Titanio'], storage:['256GB'] },
-    { cat:'ip', name:'iPhone 17 Pro', price:'$1.149.990', colors:['Titanio Oscuro','Naranja'], storage:['256GB','512GB'] },
-    { cat:'ip', name:'iPhone 17 Pro Max', price:'$1.249.990', colors:['Titanio Oscuro','Naranja'], storage:['256GB','512GB','1TB'] },
-
+  const catalog = [
+    // 11
+    { id:'11', cat:'ip', name:'iPhone 11', price:'$169.990', colors:['Rojo','Negro','Blanco','Verde','Morado'], storage:['64GB','128GB','256GB'] },
+    { id:'11p', cat:'ip', name:'iPhone 11 Pro', price:'$249.990', colors:['Verde Noche','Gris Espacial','Oro','Plata'], storage:['64GB','256GB','512GB'] },
+    { id:'11pm', cat:'ip', name:'iPhone 11 Pro Max', price:'$289.990', colors:['Verde Noche','Gris Espacial','Oro','Plata'], storage:['64GB','256GB','512GB'] },
+    // 12
+    { id:'12m', cat:'ip', name:'iPhone 12 mini', price:'$219.990', colors:['Azul','Verde','Rojo','Blanco','Negro','Morado'], storage:['64GB','128GB','256GB'] },
+    { id:'12', cat:'ip', name:'iPhone 12', price:'$239.990', colors:['Azul','Verde','Rojo','Blanco','Negro','Morado'], storage:['64GB','128GB','256GB'] },
+    { id:'12p', cat:'ip', name:'iPhone 12 Pro', price:'$329.990', colors:['Azul Pacífico','Grafito','Oro','Plata'], storage:['128GB','256GB','512GB'] },
+    { id:'12pm', cat:'ip', name:'iPhone 12 Pro Max', price:'$379.990', colors:['Azul Pacífico','Grafito','Oro','Plata'], storage:['128GB','256GB','512GB'] },
+    // 13
+    { id:'13m', cat:'ip', name:'iPhone 13 mini', price:'$310.000', colors:['Medianoche','Estelar','Azul','Rosa','Rojo','Verde'], storage:['128GB','256GB','512GB'] },
+    { id:'13', cat:'ip', name:'iPhone 13', price:'$380.000', colors:['Medianoche','Estelar','Azul','Rosa','Rojo','Verde'], storage:['128GB','256GB','512GB'] },
+    { id:'13p', cat:'ip', name:'iPhone 13 Pro', price:'$449.990', colors:['Sierra Blue','Grafito','Oro','Plata','Verde Alpino'], storage:['128GB','256GB','512GB','1TB'] },
+    { id:'13pm', cat:'ip', name:'iPhone 13 Pro Max', price:'$499.990', colors:['Sierra Blue','Grafito','Oro','Plata','Verde Alpino'], storage:['128GB','256GB','512GB','1TB'] },
+    // 14
+    { id:'14', cat:'ip', name:'iPhone 14', price:'$450.000', colors:['Medianoche','Púrpura','Estelar','Azul','Rojo','Amarillo'], storage:['128GB','256GB','512GB'] },
+    { id:'14pl', cat:'ip', name:'iPhone 14 Plus', price:'$510.000', colors:['Medianoche','Púrpura','Estelar','Azul','Rojo','Amarillo'], storage:['128GB','256GB','512GB'] },
+    { id:'14p', cat:'ip', name:'iPhone 14 Pro', price:'$589.990', colors:['Morado Oscuro','Oro','Plata','Negro Espacial'], storage:['128GB','256GB','512GB','1TB'] },
+    { id:'14pm', cat:'ip', name:'iPhone 14 Pro Max', price:'$659.990', colors:['Morado Oscuro','Oro','Plata','Negro Espacial'], storage:['128GB','256GB','512GB','1TB'] },
+    // 15
+    { id:'15', cat:'ip', name:'iPhone 15', price:'$569.990', colors:['Rosa','Amarillo','Verde','Azul','Negro'], storage:['128GB','256GB','512GB'] },
+    { id:'15pl', cat:'ip', name:'iPhone 15 Plus', price:'$620.000', colors:['Rosa','Amarillo','Verde','Azul','Negro'], storage:['128GB','256GB','512GB'] },
+    { id:'15p', cat:'ip', name:'iPhone 15 Pro', price:'$669.990', colors:['Titanio Natural','Titanio Azul','Titanio Blanco','Titanio Negro'], storage:['128GB','256GB','512GB','1TB'] },
+    { id:'15pm', cat:'ip', name:'iPhone 15 Pro Max', price:'$769.990', colors:['Titanio Natural','Titanio Azul','Titanio Blanco','Titanio Negro'], storage:['256GB','512GB','1TB'] },
+    // 16
+    { id:'16', cat:'ip', name:'iPhone 16', price:'$669.990', colors:['Negro','Blanco','Rosa','Teal','Ultramarino'], storage:['128GB','256GB','512GB'] },
+    { id:'16pl', cat:'ip', name:'iPhone 16 Plus', price:'$740.000', colors:['Negro','Blanco','Rosa','Teal','Ultramarino'], storage:['128GB','256GB','512GB'] },
+    { id:'16p', cat:'ip', name:'iPhone 16 Pro', price:'$820.000', colors:['Titanio Desierto','Titanio Natural','Titanio Blanco','Titanio Negro'], storage:['128GB','256GB','512GB','1TB'] },
+    { id:'16pm', cat:'ip', name:'iPhone 16 Pro Max', price:'$879.990', colors:['Titanio Desierto','Titanio Natural','Titanio Blanco','Titanio Negro'], storage:['256GB','512GB','1TB'] },
+    { id:'16e', cat:'ip', name:'iPhone 16e', price:'$599.990', colors:['Negro','Blanco'], storage:['128GB','256GB'] },
+    // 17
+    { id:'17', cat:'ip', name:'iPhone 17', price:'$889.990', colors:['Negro','Blanco'], storage:['128GB','256GB'] },
+    { id:'17a', cat:'ip', name:'iPhone 17 Air', price:'$999.990', colors:['Titanio'], storage:['256GB'] },
+    { id:'17p', cat:'ip', name:'iPhone 17 Pro', price:'$1.149.990', colors:['Titanio','Oro'], storage:['256GB','512GB'] },
+    { id:'17pm', cat:'ip', name:'iPhone 17 Pro Max', price:'$1.249.990', colors:['Titanio','Oro'], storage:['256GB','512GB','1TB'] },
     // OTROS
-    { cat:'ot', name:'Samsung S26 Ultra', price:'$999.990', colors:['Blue'], storage:['256GB'] },
-    { cat:'ot', name:'Samsung S24 Ultra', price:'$589.990', colors:['Negro'], storage:['256GB','512GB'] }
+    { id:'s26u', cat:'ot', name:'Samsung S26 Ultra', price:'$999.990', colors:['Blue'], storage:['256GB'] },
+    { id:'s24u', cat:'ot', name:'Samsung S24 Ultra', price:'$589.990', colors:['Negro'], storage:['256GB','512GB'] }
   ];
 
-  let selectedP = null;
+  let selected = null;
 
   function render() {
-    const ipGrid = document.getElementById('iphone-grid');
-    const otGrid = document.getElementById('otros-grid');
-    inventory.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.onclick = () => openM(p.name);
-      card.innerHTML = `<img src="https://via.placeholder.com/300?text=${p.name.replace(/ /g,'+')}" alt="${p.name}"><h3>${p.name}</h3><div style="color:var(--accent); font-weight:700;">${p.price}</div>`;
-      if(p.cat === 'ip') ipGrid.appendChild(card);
-      else otGrid.appendChild(card);
+    const ig = document.getElementById('iphone-grid');
+    const og = document.getElementById('otros-grid');
+    catalog.forEach(p => {
+      const card = `
+        <div class="card" onclick="openM('${p.id}')">
+          <img src="https://via.placeholder.com/300?text=${p.name.replace(/ /g,'+')}" alt="${p.name}">
+          <div style="font-weight:700; font-size:14px; margin-top:10px;">${p.name}</div>
+          <div style="color:var(--accent); font-weight:700; margin-top:5px;">${p.price}</div>
+        </div>
+      `;
+      if(p.cat === 'ip') ig.innerHTML += card;
+      else og.innerHTML += card;
     });
   }
 
-  function openM(name) {
-    selectedP = inventory.find(x => x.name === name);
-    document.getElementById('m-title').innerText = selectedP.name;
-    document.getElementById('m-price').innerText = selectedP.price;
+  function openM(id) {
+    selected = catalog.find(x => x.id === id);
+    document.getElementById('m-title').innerText = selected.name;
+    document.getElementById('m-price').innerText = selected.price;
 
     const cBox = document.getElementById('m-colors');
-    cBox.innerHTML = selectedP.colors.map((c, i) => `<div class="opt-btn ${i===0?'active':''}" onclick="setOpt(this,'m-colors')">${c}</div>`).join('');
+    cBox.innerHTML = selected.colors.map((c, i) => `<div class="opt-btn ${i===0?'active':''}" onclick="setOpt(this,'m-colors')">${c}</div>`).join('');
 
     const sBox = document.getElementById('m-storage');
-    sBox.innerHTML = selectedP.storage.map((s, i) => `<div class="opt-btn ${i===0?'active':''}" onclick="setOpt(this,'m-storage')">${s}</div>`).join('');
+    sBox.innerHTML = selected.storage.map((s, i) => `<div class="opt-btn ${i===0?'active':''}" onclick="setOpt(this,'m-storage')">${s}</div>`).join('');
 
-    document.getElementById('img-front').src = `https://via.placeholder.com/300?text=${selectedP.name.replace(/ /g,'+')}+Front`;
-    document.getElementById('img-back').src = `https://via.placeholder.com/300?text=${selectedP.name.replace(/ /g,'+')}+Back`;
+    document.getElementById('img-f').src = `https://via.placeholder.com/300?text=${selected.name.replace(/ /g,'+')}+Front`;
+    document.getElementById('img-b').src = `https://via.placeholder.com/300?text=${selected.name.replace(/ /g,'+')}+Back`;
 
     updateWA();
     document.getElementById('p-modal').style.display = 'flex';
@@ -195,11 +217,11 @@
   function updateWA() {
     const c = document.querySelector('#m-colors .active').innerText;
     const s = document.querySelector('#m-storage .active').innerText;
-    const msg = `Hola! Me interesa el ${selectedP.name} de ${s} color ${c} que vi en la web.`;
-    document.getElementById('wa-link').href = `https://wa.me/56964271938?text=${encodeURIComponent(msg)}`;
+    const msg = `Hola! Me interesa el ${selected.name} de ${s} color ${c} que vi en la web.`;
+    document.getElementById('wa-btn').href = `https://wa.me/56964271938?text=${encodeURIComponent(msg)}`;
   }
 
-  function closeM() { document.getElementById('p-modal').style.display = 'none'; document.body.style.overflow = 'auto'; }
+  function closeM() { document.getElementById('p-modal').style.display = 'none'; document.body.style.overflow = ''; }
 
   window.onload = render;
 </script>
