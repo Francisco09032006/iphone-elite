@@ -26,7 +26,7 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--primary); line-height: 1.6; overflow-x: hidden; }
 
-        /* ── INTRO PANTALLA (CORREGIDA) ── */
+        /* ── INTRO PANTALLA (CON TU IMAGEN ANIMACION.PNG) ── */
         #intro-overlay {
             position: fixed; inset: 0; z-index: 9999;
             background: var(--bg-body);
@@ -34,19 +34,20 @@
             cursor: pointer; transition: 1s cubic-bezier(0.7, 0, 0.3, 1);
         }
         .intro-img {
-            width: 70%; max-width: 450px;
-            animation: heroVibrate 5s ease-in-out infinite;
+            width: 60%; max-width: 380px; /* Tamaño ajustado para que se vea elegante */
+            animation: heroFloat 5s ease-in-out infinite;
             filter: drop-shadow(0 40px 80px rgba(0,0,0,0.1));
         }
-        @keyframes heroVibrate {
+        @keyframes heroFloat {
             0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.02); }
+            50% { transform: translateY(-30px) scale(1.05); }
         }
         .intro-text {
             margin-top: 30px; font-family: 'Playfair Display';
-            font-size: clamp(24px, 5vw, 36px); font-weight: 800; text-align: center;
+            font-size: clamp(28px, 5vw, 42px); font-weight: 800; text-align: center;
+            color: var(--primary);
         }
-        .tap-hint { margin-top: 10px; font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 2px; animation: blink 1.5s infinite; }
+        .tap-hint { margin-top: 15px; font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 3px; animation: blink 1.5s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
         /* ── NAVBAR (IPHONE ELITE EN NEGRO) ── */
@@ -58,25 +59,18 @@
         }
         .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .nav-brand img { height: 45px; filter: grayscale(1); }
-        .nav-brand span { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: #000000; letter-spacing: -0.5px; }
+        .nav-brand span { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: #000000; }
 
         .nav-meta { display: flex; align-items: center; gap: 20px; }
         .nav-icon-btn { background: none; border: none; cursor: pointer; font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 6px; }
         .cart-pill { background: black; color: white; font-size: 10px; padding: 2px 7px; border-radius: 20px; }
 
         /* ── BUSCADOR ── */
-        .search-container { padding: 20px 5%; background: white; display: none; border-bottom: 1px solid var(--border); }
-        .search-bar { width: 100%; padding: 15px 25px; border-radius: 50px; border: 1.5px solid var(--border); font-family: inherit; font-size: 14px; }
-
-        /* ── PREGUNTAS FRECUENTES (QUIÉNES SOMOS) ── */
-        .faq-section { max-width: 900px; margin: 40px auto 80px; padding: 0 5%; display: none; }
-        .faq-item { background: white; border: 1px solid var(--border); border-radius: 20px; margin-bottom: 10px; overflow: hidden; }
-        .faq-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 800; font-size: 12px; text-transform: uppercase; }
-        .faq-content { max-height: 0; padding: 0 20px; transition: 0.5s; color: #555; font-size: 14px; line-height: 1.8; }
-        .faq-item.active .faq-content { max-height: 400px; padding-bottom: 20px; }
+        .search-container { padding: 20px 5%; background: white; border-bottom: 1px solid var(--border); }
+        .search-bar { width: 100%; padding: 15px 25px; border-radius: 50px; border: 1.5px solid var(--border); font-family: inherit; }
 
         /* ── GRILLA PRODUCTOS (PEQUEÑA Y ELEGANTE) ── */
-        .container { padding: 0 5% 100px; display: none; }
+        .container { padding: 0 5% 100px; }
         .cat-title { padding: 40px 0 10px; font-family: 'Playfair Display'; font-size: 30px; border-bottom: 3px solid var(--accent); display: inline-block; margin-bottom: 40px; }
         
         .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
@@ -88,7 +82,7 @@
         .img-wrap img { width: 85%; object-fit: contain; }
 
         .badge { position: absolute; top: 10px; right: -5px; background: var(--red-tag); color: white; padding: 3px 10px; border-radius: 15px; font-size: 9px; font-weight: 800; z-index: 10; }
-        .badge-gray { background: white; color: #666; border: 1px solid var(--border); }
+        .badge-soldout { background: white; color: #666; border: 1px solid var(--border); }
 
         .m-name { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 2px; }
         .m-price { font-family: 'Playfair Display'; font-size: 16px; font-weight: 700; color: var(--accent); }
@@ -104,6 +98,13 @@
         .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #eee; }
         .remove-btn { color: #ff3b30; cursor: pointer; font-size: 11px; font-weight: 800; }
 
+        /* ── PREGUNTAS FRECUENTES (ABAJO) ── */
+        .faq-section { max-width: 900px; margin: 60px auto 100px; padding: 0 5%; }
+        .faq-item { background: white; border: 1px solid var(--border); border-radius: 20px; margin-bottom: 10px; overflow: hidden; }
+        .faq-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 800; font-size: 12px; text-transform: uppercase; }
+        .faq-content { max-height: 0; padding: 0 20px; transition: 0.5s; color: #555; font-size: 14px; line-height: 1.8; }
+        .faq-item.active .faq-content { max-height: 400px; padding-bottom: 20px; }
+
         /* ── MODAL ── */
         .modal { display: none; position: fixed; inset: 0; z-index: 4500; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); align-items: center; justify-content: center; padding: 20px; }
         .modal-box { background: white; width: 100%; max-width: 550px; border-radius: 35px; padding: 35px; position: relative; }
@@ -111,9 +112,8 @@
         .storage-btn { padding: 10px 15px; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 12px; font-weight: 700; margin: 0 4px 4px 0; display: inline-block; }
         .storage-btn.active { background: black; color: white; border-color: black; }
 
-        /* ── VALORACIONES INTELIGENTES ── */
-        .reviews-bg { background: var(--primary); color: white; padding: 80px 5%; border-radius: 50px 50px 0 0; display: none; }
-        .rev-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px; }
+        /* ── BOTONES ── */
+        .btn-wa { background: var(--wa-green); color: white; padding: 20px; text-decoration: none; border-radius: 15px; font-weight: 800; text-align: center; display: block; margin-top: 10px; }
         
         /* ── BOTTOM NAV ── */
         .bottom-nav {
@@ -151,28 +151,19 @@
             </div>
         </header>
 
-        <div class="search-container" id="search-box">
+        <div class="search-container" id="search-box" style="display:none;">
             <input type="text" class="search-bar" id="input-search" placeholder="¿Buscas un modelo? Escribe aquí..." onkeyup="filterProducts()">
         </div>
 
-        <div class="container" id="content-store">
+        <div class="container" id="content-store" style="display:none;">
             <h2 class="cat-title">iPhones</h2>
             <div class="grid" id="iphone-grid"></div>
-
-            <h2 class="cat-title">AirPods</h2>
-            <div class="grid" id="airpods-grid">
-                <div class="product-card reveal" onclick="window.open('https://wa.me/56964271938')">
-                    <div class="img-wrap"><img src="https://via.placeholder.com/300?text=AirPods+Pro+2" alt="AirPods"></div>
-                    <div class="m-name">AirPods Pro 2 / AirPods 3</div>
-                    <div class="m-price">Consultar Stock</div>
-                </div>
-            </div>
 
             <h2 class="cat-title">Otros Modelos</h2>
             <div class="grid" id="otros-grid"></div>
 
-            <h2 class="cat-title" style="margin-top:100px;">Preguntas Frecuentes</h2>
-            <div class="faq-section" id="faq-ui" style="display:block; margin: 0 auto 100px;">
+            <h2 class="cat-title">Preguntas Frecuentes</h2>
+            <div class="faq-section" style="display:block;">
                 <div class="faq-item" onclick="this.classList.toggle('active')">
                     <div class="faq-header">¿Quiénes Somos? 👤 <span>+</span></div>
                     <div class="faq-content">Somos jóvenes emprendedores que encontraron el problema de la inseguridad a la hora de comprar dispositivos electrónicos y creamos iPhone Elite para ayudar a esas personas a escoger su próximo dispositivo de manera segura. Llevamos más de 4 años dedicados a la venta de dispositivos tecnológicos.</div>
@@ -181,32 +172,15 @@
                     <div class="faq-header">Garantía Elite 🛡️ <span>+</span></div>
                     <div class="faq-content">3 meses de garantía técnica y Garantía de Señal de por vida contra bloqueos IMEI.</div>
                 </div>
-                <div class="faq-item" onclick="this.classList.toggle('active')">
-                    <div class="faq-header">Envíos y Entregas 🇨🇱 <span>+</span></div>
-                    <div class="faq-content">Despachos asegurados a regiones vía Starken o BlueExpress. Entrega inmediata en Santiago.</div>
-                </div>
             </div>
         </div>
 
-        <section class="reviews-bg" id="rev-ui" style="display:block;">
+        <section class="reviews-section" style="padding:80px 5%; background:black; color:white; border-radius:50px 50px 0 0; display:none;" id="rev-ui">
             <h2 style="text-align:center; font-family:'Playfair Display'; font-size:36px; margin-bottom:40px;">Clientes Elite</h2>
             <div id="reviews-list">
-                <div class="rev-card reveal"><div style="color:var(--accent)">★★★★★</div><p>"Excelente atención y seguridad en la compra. Mi iPhone 16 Pro Max llegó impecable."</p><b>— Ricardo M.</b></div>
-                <div class="rev-card reveal"><div style="color:var(--accent)">★★★★★</div><p>"4 años de experiencia se notan. Los mejores de Santiago."</p><b>— Sofía L.</b></div>
-                <div class="rev-card reveal"><div style="color:var(--accent)">★★★★★</div><p>"Compré el S24 Ultra y el proceso fue transparente de principio a fin."</p><b>— Javier O.</b></div>
-                <div class="rev-card reveal"><div style="color:var(--accent)">★★★★★</div><p>"Confiables y rápidos. El equipo llegó sellado con boleta."</p><b>— Manuel V.</b></div>
-                <div class="rev-card reveal"><div style="color:var(--accent)">★★★★★</div><p>"Recibieron mi equipo anterior en parte de pago a un precio justo."</p><b>— Constanza F.</b></div>
+                <div class="rev-card"><div style="color:var(--accent)">★★★★★</div><p>"Excelente atención."</p><b>— Ricardo M.</b></div>
             </div>
         </section>
-
-        <div style="background:white; padding:60px 5%; margin-bottom:120px;">
-            <div style="max-width:550px; margin:0 auto; text-align:center;">
-                <h3 style="font-family:'Playfair Display'; font-size:28px; margin-bottom:20px;">Deja tu valoración</h3>
-                <input type="text" id="rev-user" style="width:100%; padding:15px; border-radius:12px; border:1px solid #ddd; margin-bottom:12px;" placeholder="Tu nombre">
-                <textarea id="rev-text" style="width:100%; height:80px; padding:15px; border-radius:12px; border:1px solid #ddd; margin-bottom:12px;" placeholder="Cuéntanos tu experiencia..."></textarea>
-                <button onclick="publishReview()" style="background:black; color:white; padding:15px 30px; border-radius:12px; border:none; font-weight:800; cursor:pointer;">PUBLICAR</button>
-            </div>
-        </div>
 
         <nav class="bottom-nav" id="footer-nav">
             <a href="#inicio" class="nav-link">INICIO</a>
@@ -220,10 +194,10 @@
         <div id="cart-sidebar">
             <h2 style="font-family:'Playfair Display'; font-size:32px;">Tu Carrito</h2>
             <div class="cart-list" id="cart-list-ui">
-                <p style="color:#999; margin-top:20px;">No has añadido productos todavía.</p>
+                <p style="color:#999; margin-top:20px;">Tu carrito está vacío.</p>
             </div>
-            <button onclick="toggleCart()" style="background:#eee; padding:15px; border:none; border-radius:12px; font-weight:800; cursor:pointer; margin-bottom:10px;">SEGUIR COMPRANDO</button>
-            <a href="#" id="wa-checkout" target="_blank" style="background:var(--wa-green); color:white; padding:20px; text-decoration:none; border-radius:15px; font-weight:800; text-align:center;">FINALIZAR POR WHATSAPP</a>
+            <button onclick="toggleCart()" style="background:#eee; padding:15px; border:none; border-radius:12px; font-weight:800; cursor:pointer; margin-bottom:10px;">CERRAR</button>
+            <a href="#" id="wa-checkout" target="_blank" class="btn-wa">FINALIZAR POR WHATSAPP</a>
         </div>
     </div>
 
@@ -232,38 +206,23 @@
             <span class="close-m" onclick="closeM()">&times;</span>
             <h2 id="modal-name" style="font-family:'Playfair Display'; font-size:30px;"></h2>
             <div id="modal-price" style="font-size:26px; font-weight:800; color:var(--accent); margin-bottom:20px;"></div>
-            
-            <p style="font-size:10px; font-weight:800; color:#999; text-transform:uppercase; margin-bottom:8px;">Selecciona Capacidad</p>
             <div id="modal-storage-opts"></div>
-
             <img id="modal-img" src="" style="width:100%; height:250px; object-fit:contain; background:var(--gray-ios); border-radius:20px; padding:20px; margin:20px 0;">
-
             <button onclick="handleAddToCart()" style="background:black; color:white; width:100%; padding:20px; border-radius:15px; font-weight:800; cursor:pointer;">AÑADIR AL PEDIDO</button>
         </div>
     </div>
 
     <script>
         const inventory = [
-            // IPHONES
             { id: 1, cat: 'ip', name: 'iPhone 11', slug: 'iphone-11', price: '$169.990', storage: ['64GB', '128GB'] },
-            { id: 2, cat: 'ip', name: 'iPhone 11 Pro', slug: 'iphone-11-pro', price: '$249.990', storage: ['64GB', '256GB'] },
-            { id: 3, cat: 'ip', name: 'iPhone 11 Pro Max', slug: 'iphone-11-pm', price: '$289.990', storage: ['64GB', '256GB'] },
-            { id: 4, cat: 'ip', name: 'iPhone 12 mini', slug: 'iphone-12-mini', price: '$219.990', storage: ['64GB', '128GB'] },
-            { id: 5, cat: 'ip', name: 'iPhone 12', slug: 'iphone-12', price: '$239.990', storage: ['64GB', '128GB'] },
-            { id: 6, cat: 'ip', name: 'iPhone 12 Pro Max', slug: 'iphone-12-pm', price: '$379.990', storage: ['128GB', '256GB'], tag: 'Agotado' },
-            { id: 7, cat: 'ip', name: 'iPhone 13 mini', slug: 'iphone-13-mini', price: '$310.000', storage: ['128GB', '256GB'] },
-            { id: 8, cat: 'ip', name: 'iPhone 13', slug: 'iphone-13', price: '$380.000', storage: ['128GB', '256GB'] },
-            { id: 9, cat: 'ip', name: 'iPhone 13 Pro', slug: 'iphone-13-pro', price: '$449.990', storage: ['128GB', '256GB'] },
-            { id: 10, cat: 'ip', name: 'iPhone 13 Pro Max', slug: 'iphone-13-pm', price: '$499.990', storage: ['128GB', '256GB'] },
-            { id: 11, cat: 'ip', name: 'iPhone 14', slug: 'iphone-14', price: '$450.000', storage: ['128GB', '256GB'] },
-            { id: 12, cat: 'ip', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', price: '$659.990', storage: ['256GB', '512GB'] },
-            { id: 13, cat: 'ip', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm', price: '$769.990', storage: ['256GB'] },
-            { id: 14, cat: 'ip', name: 'iPhone 16 Pro Max', slug: 'iphone-16-pm', price: '$879.990', storage: ['256GB'], tag: 'Oferta' },
-            { id: 15, cat: 'ip', name: 'iPhone 17 Pro Max', slug: 'iphone-17-pm', price: '$1.431.000', storage: ['256GB', '512GB', '1TB'] },
-            
-            // OTROS
-            { id: 16, cat: 'ot', name: 'Samsung S24 Ultra', slug: 's24-ultra', price: '$589.990', storage: ['256GB', '512GB'] },
-            { id: 17, cat: 'ot', name: 'Samsung S26 Ultra', slug: 's26-ultra', price: '$999.990', storage: ['256GB'] }
+            { id: 2, cat: 'ip', name: 'iPhone 12 Pro Max', slug: 'iphone-12-pm', price: '$379.990', storage: ['128GB', '256GB'], tag: 'Agotado' },
+            { id: 3, cat: 'ip', name: 'iPhone 13 Pro Max', slug: 'iphone-13-pm', price: '$499.990', storage: ['128GB', '256GB'] },
+            { id: 4, cat: 'ip', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', price: '$659.990', storage: ['256GB'] },
+            { id: 5, cat: 'ip', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm', price: '$769.990', storage: ['256GB'] },
+            { id: 6, cat: 'ip', name: 'iPhone 16 Pro Max', slug: 'iphone-16-pm', price: '$879.990', storage: ['256GB'], tag: 'Oferta' },
+            { id: 7, cat: 'ip', name: 'iPhone 17 Pro Max', slug: 'iphone-17-pm', price: '$1.431.000', storage: ['256GB', '512GB', '1TB'] },
+            { id: 8, cat: 'ot', name: 'Samsung S24 Ultra', slug: 's24-ultra', price: '$589.990', storage: ['256GB', '512GB'] },
+            { id: 9, cat: 'ot', name: 'Samsung S26 Ultra', slug: 's26-ultra', price: '$999.990', storage: ['256GB'] }
         ];
 
         let cart = [];
@@ -277,31 +236,27 @@
                 document.getElementById('main-header').style.opacity = '1';
                 document.getElementById('content-store').style.display = 'block';
                 document.getElementById('search-box').style.display = 'block';
+                document.getElementById('rev-ui').style.display = 'block';
                 document.getElementById('footer-nav').style.visibility = 'visible';
                 render();
-            }, 1000);
+            }, 800);
         }
 
         function render(data = inventory) {
             const ig = document.getElementById('iphone-grid');
             const og = document.getElementById('otros-grid');
             ig.innerHTML = ''; og.innerHTML = '';
-            
             data.forEach(p => {
-                const card = `
-                <div class="product-card reveal" onclick="openProduct(${p.id})">
+                const card = `<div class="product-card" onclick="openProduct(${p.id})">
                     <div class="img-wrap">
                         ${p.tag ? `<span class="badge ${p.tag==='Oferta'?'':'badge-gray'}">${p.tag}</span>` : ''}
                         <img src="${p.slug}-front.jpg.png" alt="${p.name}">
                     </div>
-                    <div class="p-info">
-                        <div class="m-name">${p.name}</div>
-                        <div class="m-price">${p.price}</div>
-                    </div>
+                    <div class="m-name">${p.name}</div>
+                    <div class="m-price">${p.price}</div>
                 </div>`;
-                if(p.cat === 'ip') ig.innerHTML += card; else if(p.cat === 'ot') og.innerHTML += card;
+                if(p.cat === 'ip') ig.innerHTML += card; else og.innerHTML += card;
             });
-            initReveal();
         }
 
         function openProduct(id) {
@@ -314,14 +269,11 @@
             document.getElementById('modal-p').style.display = 'flex';
         }
 
-        function selectStorage(el) {
-            el.parentElement.querySelectorAll('.storage-btn').forEach(b => b.classList.remove('active'));
-            el.classList.add('active');
-        }
+        function selectStorage(el) { el.parentElement.querySelectorAll('.storage-btn').forEach(b => b.classList.remove('active')); el.classList.add('active'); }
 
         function handleAddToCart() {
-            const gb = document.querySelector('.storage-btn.active').innerText;
-            cart.push({ ...activeProduct, gb });
+            const storage = document.querySelector('.storage-btn.active').innerText;
+            cart.push({ ...activeProduct, storage });
             updateCart();
             closeM();
             toggleCart();
@@ -331,42 +283,24 @@
             document.getElementById('cart-count').innerText = cart.length;
             const list = document.getElementById('cart-list-ui');
             if(cart.length === 0) {
-                list.innerHTML = '<p style="color:#999; margin-top:20px;">No has añadido productos todavía.</p>';
+                list.innerHTML = '<p style="color:#999; margin-top:20px;">Carrito vacío.</p>';
             } else {
                 list.innerHTML = cart.map((item, index) => `
                 <div class="cart-item">
-                    <div><b>${item.name}</b><br><small>${item.gb}</small></div>
+                    <div><b>${item.name}</b><br><small>${item.storage}</small></div>
                     <div class="remove-btn" onclick="removeItem(${index})">QUITAR</div>
                 </div>`).join('');
             }
-            const msg = encodeURIComponent("Hola! Quiero comprar:\n" + cart.map(i => `- ${i.name} (${i.gb})`).join('\n'));
+            const msg = encodeURIComponent("Hola iPhone Elite! Quiero comprar:\n" + cart.map(i => `- ${i.name} (${i.storage})`).join('\n'));
             document.getElementById('wa-checkout').href = `https://wa.me/56964271938?text=${msg}`;
         }
 
         function removeItem(i) { cart.splice(i, 1); updateCart(); }
         function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('open'); }
+        function closeM() { document.getElementById('modal-p').style.display = 'none'; }
         function filterProducts() {
             const q = document.getElementById('input-search').value.toLowerCase();
             render(inventory.filter(x => x.name.toLowerCase().includes(q)));
-        }
-        function closeM() { document.getElementById('modal-p').style.display = 'none'; }
-        
-        function publishReview() {
-            const u = document.getElementById('rev-user').value;
-            const t = document.getElementById('rev-text').value.toLowerCase();
-            if(!u || !t) return alert("Completa los datos.");
-            if(["mierda", "estafa", "weon", "puta"].some(w => t.includes(w))) return alert("Comentario no permitido.");
-            const card = document.createElement('div');
-            card.className = 'rev-card reveal active';
-            card.innerHTML = `<div style="color:var(--accent)">★★★★★</div><p>"${t}"</p><b>— ${u}</b>`;
-            document.getElementById('reviews-list').prepend(card);
-            alert("¡Valoración publicada!");
-            document.getElementById('rev-user').value = ''; document.getElementById('rev-text').value = '';
-        }
-
-        function initReveal() {
-            const obs = new IntersectionObserver(ents => ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }));
-            document.querySelectorAll('.reveal').forEach(x => obs.observe(x));
         }
     </script>
 </body>
