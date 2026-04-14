@@ -1,326 +1,208 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>iPhone Elite — Tecnología de Lujo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>iPhone Elite — Catálogo Completo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #000000;
-      --accent: #D4AF37;
-      --bg-cream: #FDFBF7;
-      --white: #FFFFFF;
-      --gray-soft: #F5F5F7;
-      --border: #EAEAEA;
-    }
-
+    :root { --primary: #000000; --accent: #D4AF37; --bg: #FDFBF7; --border: #EAEAEA; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-cream); color: var(--primary); overflow-x: hidden; padding-bottom: 90px; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--primary); padding-bottom: 100px; }
 
-    /* NAVBAR SUPERIOR */
-    .top-nav {
-      position: sticky; top: 0; z-index: 2000;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 4%; height: 75px;
-      background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; cursor: pointer; }
-    .logo-img { height: 40px; width: auto; filter: grayscale(1); }
-    .brand-name { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--primary); font-weight: 700; }
+    /* HEADER */
+    header { position: sticky; top: 0; z-index: 1000; background: rgba(253, 251, 247, 0.95); backdrop-filter: blur(20px); padding: 15px 4%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: black; }
+    .brand img { height: 40px; }
+    .brand span { font-family: 'Playfair Display'; font-size: 24px; font-weight: 700; }
 
-    .nav-utils { display: flex; align-items: center; gap: 20px; }
-    .loc-tag { font-size: 11px; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
-    .cart-btn { background: none; border: none; cursor: pointer; position: relative; display: flex; align-items: center; gap: 5px; font-weight: 700; }
-    .cart-badge { background: var(--primary); color: white; font-size: 10px; padding: 2px 7px; border-radius: 20px; }
-
-    /* HERO GIGANTE */
-    .hero {
-      padding: 40px 20px;
-      display: flex; flex-direction: column; align-items: center;
-      min-height: 90vh; text-align: center;
-    }
-    .hero-img-box {
-      width: 100%; max-width: 650px;
-      margin: 20px auto;
-      animation: floatHero 5s ease-in-out infinite;
-    }
-    .hero-img-box img { width: 100%; height: auto; filter: drop-shadow(0 40px 80px rgba(0,0,0,0.15)); }
-    
-    @keyframes floatHero {
-      0%, 100% { transform: translateY(0) rotate(-0.5deg); }
-      50% { transform: translateY(-25px) rotate(0.5deg); }
-    }
-
-    /* ACORDEONES DE CONFIANZA */
-    .trust-container { padding: 40px 5%; max-width: 800px; margin: 0 auto; }
-    .accordion { border: 1px solid var(--border); border-radius: 25px; background: var(--white); overflow: hidden; margin-bottom: 50px; }
-    .acc-item { border-bottom: 1px solid var(--border); }
-    .acc-header { padding: 22px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 700; font-size: 14px; }
-    .acc-content { max-height: 0; overflow: hidden; transition: 0.4s; padding: 0 30px; color: #666; font-size: 14px; line-height: 1.6; }
-    .acc-item.active .acc-content { max-height: 150px; padding-bottom: 22px; }
-
-    /* GRILLA DE PRODUCTOS */
-    .cat-title { padding: 60px 5% 15px; font-family: 'Playfair Display', serif; font-size: 32px; border-bottom: 3px solid var(--accent); display: inline-block; margin-left: 5%; margin-bottom: 35px; }
-    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 0 5% 60px; }
+    /* GRID */
+    .container { padding: 20px 4%; }
+    .section-title { font-family: 'Playfair Display'; font-size: 32px; margin: 40px 0 20px; border-bottom: 3px solid var(--accent); display: inline-block; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
     @media (min-width: 1024px) { .grid { grid-template-columns: repeat(4, 1fr); } }
 
-    .card { background: var(--white); border: 1px solid var(--border); border-radius: 30px; padding: 20px; transition: 0.4s; cursor: pointer; text-align: center; }
-    .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-    .card-img { height: 180px; background: var(--gray-soft); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 15px; }
-    .card-price { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--accent); margin-top: 8px; }
+    .card { background: white; padding: 20px; border-radius: 30px; border: 1px solid var(--border); transition: 0.3s; cursor: pointer; text-align: center; }
+    .card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+    .card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
+    .card h3 { font-size: 16px; font-weight: 700; }
 
     /* MODAL DINÁMICO */
-    .modal { display: none; position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 20px; }
-    .modal-box { background: var(--white); width: 100%; max-width: 550px; border-radius: 40px; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; }
-    .m-close { position: absolute; top: 25px; right: 25px; font-size: 30px; cursor: pointer; }
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 3000; align-items: center; justify-content: center; padding: 20px; }
+    .modal-box { background: white; width: 100%; max-width: 600px; border-radius: 40px; padding: 35px; position: relative; max-height: 90vh; overflow-y: auto; }
+    .close { position: absolute; top: 25px; right: 25px; font-size: 30px; cursor: pointer; }
 
-    .selector-label { font-size: 11px; font-weight: 700; text-transform: uppercase; margin: 20px 0 10px; display: block; color: var(--gray-soft); }
-    .opt-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .selector-label { font-size: 11px; font-weight: 700; text-transform: uppercase; margin: 20px 0 10px; display: block; color: #888; letter-spacing: 1px; }
+    .options { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
     .opt-btn { padding: 10px 18px; border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; font-size: 13px; font-weight: 600; transition: 0.2s; }
-    .opt-btn.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
+    .opt-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
 
     .modal-imgs { display: flex; gap: 15px; margin: 25px 0; }
-    .modal-imgs img { width: 50%; height: 200px; object-fit: contain; background: var(--gray-soft); border-radius: 20px; }
+    .modal-imgs img { width: 50%; height: 220px; object-fit: contain; background: #f5f5f7; border-radius: 20px; }
 
-    .specs-list { background: var(--gray-soft); padding: 20px; border-radius: 20px; margin-bottom: 25px; font-size: 14px; }
-    .spec-line { display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-
-    /* RESEÑAS */
-    .reviews-hub { padding: 80px 5%; background: var(--primary); color: var(--white); border-radius: 50px 50px 0 0; }
-    .rev-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .rev-card { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1); }
-    
-    .rev-form { background: var(--white); color: var(--primary); padding: 40px; border-radius: 35px; max-width: 600px; margin: -50px auto 80px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
-    .stars-in { display: flex; gap: 8px; margin-bottom: 20px; font-size: 28px; color: #ddd; cursor: pointer; }
-    .stars-in .active { color: var(--accent); }
+    .price-tag { font-family: 'Playfair Display'; font-size: 30px; font-weight: 700; color: var(--accent); margin-bottom: 20px; }
+    .btn-wa { background: #000; color: white; width: 100%; padding: 20px; border-radius: 18px; border: none; font-weight: 700; font-size: 16px; cursor: pointer; text-decoration: none; display: block; text-align: center; }
 
     /* BARRA INFERIOR */
-    .bottom-nav {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      height: 85px; background: var(--white); border-top: 1px solid var(--border);
-      display: flex; justify-content: space-around; align-items: center; z-index: 2500; padding-bottom: 15px;
-    }
-    .b-link { text-decoration: none; color: var(--primary); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 11px; font-weight: 800; }
-    .wa-icon svg { color: #25D366; }
-
-    .btn-main { width: 100%; padding: 18px; border-radius: 15px; border: none; font-weight: 700; cursor: pointer; font-size: 16px; margin-top: 10px; }
-    .btn-black { background: var(--primary); color: var(--white); }
-    .btn-gold { background: var(--accent); color: var(--white); }
-
-    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+    .nav-bottom { position: fixed; bottom: 0; left: 0; right: 0; height: 85px; background: white; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid var(--border); z-index: 2500; padding-bottom: 15px; }
+    .nav-item { text-decoration: none; color: black; display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; }
+    .wa-color { color: #25D366; }
   </style>
 </head>
-
 <body>
 
-  <header class="top-nav">
-    <a href="#inicio" class="brand">
-      <img src="logo.png" alt="Logo" class="logo-img">
-      <span class="brand-name">iPhone Elite</span>
-    </a>
-    <div class="nav-utils">
-      <span class="loc-tag">SANTIAGO, CHILE</span>
-      <div class="cart-btn" onclick="toggleCart()">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        <span id="c-badge" class="cart-badge">0</span>
-      </div>
-    </div>
-  </header>
+<header>
+  <a href="#inicio" class="brand">
+    <img src="logo.png" alt="Logo">
+    <span>iPhone Elite</span>
+  </a>
+  <div style="font-size: 11px; font-weight: 700;">SANTIAGO, CHILE</div>
+</header>
 
-  <section class="hero" id="inicio">
-    <div class="hero-img-box">
-      <img src="animación.png" alt="iPhone 17 Pro Max">
-    </div>
-    <h1 style="font-family:'Playfair Display'; font-size:48px; margin-top:20px;">Los mejores precios aquí</h1>
-    <p style="color:var(--gray-soft); font-size:18px; margin-top:10px;">Entrega inmediata en Santiago y envíos a todo Chile.</p>
-  </section>
+<div class="container" id="inicio">
+  <h2 class="section-title">Catálogo de iPhones</h2>
+  <div class="grid" id="iphone-grid"></div>
 
-  <div class="trust-container reveal">
-    <div class="accordion">
-      <div class="acc-item" onclick="toggleAcc(this)">
-        <div class="acc-header">ENVÍOS A TODO CHILE 🇨🇱 <span>+</span></div>
-        <div class="acc-content">Realizamos envíos asegurados vía BlueExpress o Starken. Entrega inmediata en Santiago ⚡️</div>
-      </div>
-      <div class="acc-item" onclick="toggleAcc(this)">
-        <div class="acc-header">GARANTÍA REAL 🛡️ <span>+</span></div>
-        <div class="acc-content">3 meses de garantía de funcionamiento técnica y garantía de señal (IMEI) por siempre.</div>
-      </div>
-      <div class="acc-item" onclick="toggleAcc(this)">
-        <div class="acc-header">MÉTODOS DE PAGO 💳 <span>+</span></div>
-        <div class="acc-content">Efectivo, transferencia o tarjeta de crédito. ¡Recibimos tu equipo en parte de pago! Conversado por WhatsApp.</div>
-      </div>
+  <h2 class="section-title">Samsung & Otros</h2>
+  <div class="grid" id="otros-grid"></div>
+</div>
+
+<div id="p-modal" class="modal" onclick="closeM()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <span class="close" onclick="closeM()">&times;</span>
+    <h2 id="m-title" style="font-family:'Playfair Display'; font-size:32px;"></h2>
+    
+    <span class="selector-label">Selecciona Color</span>
+    <div class="options" id="m-colors"></div>
+
+    <span class="selector-label">Capacidad</span>
+    <div class="options" id="m-storage"></div>
+
+    <div class="modal-imgs">
+      <img id="img-front" src="" alt="Front">
+      <img id="img-back" src="" alt="Back">
     </div>
+
+    <div class="price-tag" id="m-price"></div>
+    <a href="#" id="wa-link" class="btn-wa" target="_blank">CONSULTAR POR WHATSAPP</a>
   </div>
+</div>
 
-  <div id="tienda">
-    <h2 class="cat-title">iPhones</h2>
-    <div class="grid" id="grid-iphones"></div>
+<nav class="nav-bottom">
+  <a href="#inicio" class="nav-item">
+    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    INICIO
+  </a>
+  <a href="https://wa.me/56964271938" class="nav-item wa-color">
+    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.513 0-9.99 4.477-9.99 9.99 0 2.012.597 3.886 1.624 5.454l-1.665 6.056 6.204-1.631c1.517.822 3.256 1.289 5.093 1.289 5.513 0 9.99-4.477 9.99-9.99a9.99 9.99 0 0 0-9.99-9.99z"/></svg>
+    WHATSAPP
+  </a>
+  <a href="https://instagram.com/iphonelite.cl" class="nav-item">
+    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    INSTAGRAM
+  </a>
+</nav>
 
-    <h2 class="cat-title">AirPods & iPads</h2>
-    <div class="grid"><div style="grid-column:1/-1; text-align:center; padding:60px; color:#999;">No tenemos stock disponible en esta sección.</div></div>
+<script>
+  const inventory = [
+    // SERIE 11
+    { cat:'ip', name:'iPhone 11', price:'$169.990', colors:['Rojo','Negro','Blanco','Amarillo','Verde','Morado'], storage:['64GB','128GB','256GB'] },
+    { cat:'ip', name:'iPhone 11 Pro', price:'$249.990', colors:['Verde Noche','Gris Espacial','Plata','Dorado'], storage:['64GB','256GB','512GB'] },
+    { cat:'ip', name:'iPhone 11 Pro Max', price:'$299.990', colors:['Verde Noche','Gris Espacial','Plata','Dorado'], storage:['64GB','256GB','512GB'] },
+    
+    // SERIE 12
+    { cat:'ip', name:'iPhone 12 mini', price:'$219.990', colors:['Negro','Blanco','Rojo','Azul','Verde','Morado'], storage:['64GB','128GB','256GB'] },
+    { cat:'ip', name:'iPhone 12', price:'$239.990', colors:['Azul','Verde','Rojo','Blanco','Negro','Morado'], storage:['64GB','128GB','256GB'] },
+    { cat:'ip', name:'iPhone 12 Pro', price:'$329.990', colors:['Azul Pacífico','Grafito','Dorado','Plata'], storage:['128GB','256GB','512GB'] },
+    { cat:'ip', name:'iPhone 12 Pro Max', price:'$379.990', colors:['Azul Pacífico','Grafito','Dorado','Plata'], storage:['128GB','256GB','512GB'] },
 
-    <h2 class="cat-title">Otros Modelos</h2>
-    <div class="grid" id="grid-otros"></div>
-  </div>
+    // SERIE 13
+    { cat:'ip', name:'iPhone 13 mini', price:'$310.000', colors:['Medianoche','Estelar','Azul','Rosa','Rojo','Verde'], storage:['128GB','256GB','512GB'] },
+    { cat:'ip', name:'iPhone 13', price:'$380.000', colors:['Medianoche','Estelar','Azul','Rosa','Rojo','Verde'], storage:['128GB','256GB','512GB'] },
+    { cat:'ip', name:'iPhone 13 Pro', price:'$449.990', colors:['Sierra Blue','Grafito','Dorado','Plata','Verde Alpino'], storage:['128GB','256GB','512GB','1TB'] },
+    { cat:'ip', name:'iPhone 13 Pro Max', price:'$499.990', colors:['Sierra Blue','Grafito','Dorado','Plata','Verde Alpino'], storage:['128GB','256GB','512GB','1TB'] },
 
-  <section class="reviews-hub" id="reviews">
-    <h2 style="text-align:center; font-family:'Playfair Display'; font-size:36px; margin-bottom:50px;">Clientes Felices</h2>
-    <div class="rev-grid" id="rev-list">
-        <div class="rev-card"><div class="rev-stars">★★★★★</div><p>"Excelente equipo. El iPhone 16 Pro Max llegó impecable a Concepción."</p><div style="margin-top:15px; font-weight:700;">— Pedro H.</div></div>
-        <div class="rev-card"><div class="rev-stars">★★★★☆</div><p>"Todo bien, el equipo está como nuevo. La entrega fue rápida."</p><div style="margin-top:15px; font-weight:700;">— Sofía L.</div></div>
-        <div class="rev-card"><div class="rev-stars">★★★★★</div><p>"Recibieron mi 13 Pro en parte de pago. Negocio transparente."</p><div style="margin-top:15px; font-weight:700;">— Manuel V.</div></div>
-        <div class="rev-card"><div class="rev-stars">★★★★★</div><p>"El S24 Ultra vuela. Confiables 100%."</p><div style="margin-top:15px; font-weight:700;">— Ignacia B.</div></div>
-    </div>
-  </section>
+    // SERIE 14
+    { cat:'ip', name:'iPhone 14', price:'$450.000', colors:['Medianoche','Púrpura','Estelar','Azul','Rojo','Amarillo'], storage:['128GB','256GB','512GB'] },
+    { cat:'ip', name:'iPhone 14 Plus', price:'$510.000', colors:['Medianoche','Púrpura','Estelar','Azul','Rojo','Amarillo'], storage:['128GB','256GB','512GB'] },
+    { cat:'ip', name:'iPhone 14 Pro', price:'$589.990', colors:['Morado Oscuro','Oro','Plata','Negro Espacial'], storage:['128GB','256GB','512GB','1TB'] },
+    { cat:'ip', name:'iPhone 14 Pro Max', price:'$659.990', colors:['Morado Oscuro','Oro','Plata','Negro Espacial'], storage:['128GB','256GB','512GB','1TB'] },
 
-  <div class="rev-form">
-    <h3 style="text-align:center; margin-bottom:25px;">Deja tu valoración</h3>
-    <input type="text" id="rev-name" style="width:100%; padding:15px; border-radius:12px; border:1px solid #ddd; margin-bottom:15px;" placeholder="Tu nombre">
-    <div class="stars-in" id="stars-in">
-        <span onclick="setStars(1)">★</span><span onclick="setStars(2)">★</span><span onclick="setStars(3)">★</span><span onclick="setStars(4)">★</span><span onclick="setStars(5)">★</span>
-    </div>
-    <textarea id="rev-msg" style="width:100%; height:100px; padding:15px; border-radius:12px; border:1px solid #ddd; margin-bottom:15px;" placeholder="Tu comentario..."></textarea>
-    <button class="btn-main btn-black" onclick="postReview()">PUBLICAR VALORACIÓN</button>
-  </div>
+    // SERIE 15
+    { cat:'ip', name:'iPhone 15', price:'$569.990', colors:['Rosa','Amarillo','Verde','Azul','Negro'], storage:['128GB','256GB','512GB'] },
+    { cat:'ip', name:'iPhone 15 Plus', price:'$620.000', colors:['Rosa','Amarillo','Verde','Azul','Negro'], storage:['128GB','256GB','512GB'] },
+    { cat:'ip', name:'iPhone 15 Pro', price:'$669.990', colors:['Titanio Natural','Titanio Azul','Titanio Blanco','Titanio Negro'], storage:['128GB','256GB','512GB','1TB'] },
+    { cat:'ip', name:'iPhone 15 Pro Max', price:'$769.990', colors:['Titanio Natural','Titanio Azul','Titanio Blanco','Titanio Negro'], storage:['256GB','512GB','1TB'] },
 
-  <nav class="bottom-nav">
-    <a href="#inicio" class="b-link">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-      INICIO
-    </a>
-    <a href="https://wa.me/56964271938" target="_blank" class="b-link wa-icon">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="24"><path d="M12.031 2c-5.513 0-9.99 4.477-9.99 9.99 0 2.012.597 3.886 1.624 5.454l-1.665 6.056 6.204-1.631c1.517.822 3.256 1.289 5.093 1.289 5.513 0 9.99-4.477 9.99-9.99a9.99 9.99 0 0 0-9.99-9.99z"/></svg>
-      WHATSAPP
-    </a>
-    <a href="https://instagram.com/iphonelite.cl" target="_blank" class="b-link">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><path d="M17.5 6.5h.01"/></svg>
-      INSTAGRAM
-    </a>
-  </nav>
+    // SERIE 16
+    { cat:'ip', name:'iPhone 16', price:'$669.990', colors:['Negro','Blanco','Rosa','Teal','Ultramarino'], storage:['128GB','256GB','512GB'] },
+    { cat:'ip', name:'iPhone 16 Plus', price:'$740.000', colors:['Negro','Blanco','Rosa','Teal','Ultramarino'], storage:['128GB','256GB','512GB'] },
+    { cat:'ip', name:'iPhone 16 Pro', price:'$820.000', colors:['Titanio Desierto','Titanio Natural','Titanio Blanco','Titanio Negro'], storage:['128GB','256GB','512GB','1TB'] },
+    { cat:'ip', name:'iPhone 16 Pro Max', price:'$879.990', colors:['Titanio Desierto','Titanio Natural','Titanio Blanco','Titanio Negro'], storage:['256GB','512GB','1TB'] },
+    { cat:'ip', name:'iPhone 16e', price:'$599.990', colors:['Negro','Blanco'], storage:['128GB','256GB'] },
 
-  <div id="p-modal" class="modal" onclick="closeM()">
-    <div class="modal-box" onclick="event.stopPropagation()">
-      <span class="m-close" onclick="closeM()">&times;</span>
-      <h2 id="m-title" style="font-family:'Playfair Display';"></h2>
-      <div id="m-price" style="font-size:26px; font-weight:700; color:var(--accent); margin:15px 0;"></div>
-      
-      <span class="selector-label">Color</span>
-      <div class="opt-group" id="m-colors"></div>
+    // SERIE 17 (FUTUROS)
+    { cat:'ip', name:'iPhone 17', price:'$889.990', colors:['Negro','Blanco'], storage:['128GB','256GB'] },
+    { cat:'ip', name:'iPhone 17 Air', price:'$999.990', colors:['Titanio'], storage:['256GB'] },
+    { cat:'ip', name:'iPhone 17 Pro', price:'$1.149.990', colors:['Titanio Oscuro','Naranja'], storage:['256GB','512GB'] },
+    { cat:'ip', name:'iPhone 17 Pro Max', price:'$1.249.990', colors:['Titanio Oscuro','Naranja'], storage:['256GB','512GB','1TB'] },
 
-      <span class="selector-label">Capacidad</span>
-      <div class="opt-group" id="m-storage"></div>
+    // OTROS
+    { cat:'ot', name:'Samsung S26 Ultra', price:'$999.990', colors:['Blue'], storage:['256GB'] },
+    { cat:'ot', name:'Samsung S24 Ultra', price:'$589.990', colors:['Negro'], storage:['256GB','512GB'] }
+  ];
 
-      <div class="modal-imgs">
-        <img id="m-img-front" src="" alt="Frente">
-        <img id="m-img-back" src="" alt="Atrás">
-      </div>
+  let selectedP = null;
 
-      <div class="specs-list">
-        <div class="spec-line"><span>Batería:</span><b>100% 🔋</b></div>
-        <div class="spec-line"><span>Seguridad:</span><b>Face ID ✅</b></div>
-        <div id="m-extra"></div>
-      </div>
-      
-      <button class="btn-main btn-black" onclick="addToCart()">AGREGAR AL CARRITO</button>
-      <button class="btn-main btn-gold" onclick="buyWA()">CONSULTAR STOCK</button>
-    </div>
-  </div>
+  function render() {
+    const ipGrid = document.getElementById('iphone-grid');
+    const otGrid = document.getElementById('otros-grid');
+    inventory.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.onclick = () => openM(p.name);
+      card.innerHTML = `<img src="https://via.placeholder.com/300?text=${p.name.replace(/ /g,'+')}" alt="${p.name}"><h3>${p.name}</h3><div style="color:var(--accent); font-weight:700;">${p.price}</div>`;
+      if(p.cat === 'ip') ipGrid.appendChild(card);
+      else otGrid.appendChild(card);
+    });
+  }
 
-  <script>
-    const inventory = [
-      { id: '1', cat: 'iphone', name: 'iPhone 11', price: '$169.990', raw: 169990, colors: ['Rojo 🟥', 'Negro'], storage: ['64GB', '128GB'] },
-      { id: '2', cat: 'iphone', name: 'iPhone 11 Pro', price: '$249.990', raw: 249990, colors: ['Verde 🎄'], storage: ['64GB'] },
-      { id: '3', cat: 'iphone', name: 'iPhone 12', price: '$239.990', raw: 239990, colors: ['Azul Medianoche 🌑'], storage: ['64GB'] },
-      { id: '4', cat: 'iphone', name: 'iPhone 12 Pro', price: '$329.990', raw: 329990, colors: ['Dorado 🌟', 'Gris 🌚'], storage: ['128GB'] },
-      { id: '5', cat: 'iphone', name: 'iPhone 12 Pro Max', price: '$379.990', raw: 379990, colors: ['Gris 🌚', 'Azul 🥶'], storage: ['128GB'] },
-      { id: '6', cat: 'iphone', name: 'iPhone 14 Pro', price: '$589.990', raw: 589990, colors: ['Blanco ⚪️'], storage: ['128GB'] },
-      { id: '7', cat: 'iphone', name: 'iPhone 14 Pro Max', price: '$659.990', raw: 659990, colors: ['Black ⚫️'], storage: ['256GB'] },
-      { id: '8', cat: 'iphone', name: 'iPhone 15', price: '$569.990', raw: 569990, colors: ['Rosado 🐷'], storage: ['128GB'] },
-      { id: '9', cat: 'iphone', name: 'iPhone 15 Pro Max', price: '$769.990', raw: 769990, colors: ['Azul Titanio 🌑'], storage: ['256GB'] },
-      { id: '10', cat: 'iphone', name: 'iPhone 16', price: '$669.990', raw: 669990, colors: ['Negro ⚫️'], storage: ['128GB'] },
-      { id: '11', cat: 'iphone', name: 'iPhone 16 Pro Max', price: '$879.990', raw: 879990, colors: ['Blanco ⚪️', 'Negro ⚫️'], storage: ['128GB', '256GB'] },
-      { id: '12', cat: 'iphone', name: 'iPhone 17 Pro', price: '$1.249.990', raw: 1249990, colors: ['Blanco ⚪️'], storage: ['256GB'] },
-      { id: '13', cat: 'otros', name: 'Samsung S26 Ultra', price: '$999.990', raw: 999990, colors: ['Blue 🥶'], storage: ['256GB'] },
-      { id: '14', cat: 'otros', name: 'Samsung S24 Ultra', price: '$589.990', raw: 589990, colors: ['Negro ⚫️'], storage: ['256GB', '512GB'] }
-    ];
+  function openM(name) {
+    selectedP = inventory.find(x => x.name === name);
+    document.getElementById('m-title').innerText = selectedP.name;
+    document.getElementById('m-price').innerText = selectedP.price;
 
-    let currentRating = 0;
-    let activeProduct = null;
+    const cBox = document.getElementById('m-colors');
+    cBox.innerHTML = selectedP.colors.map((c, i) => `<div class="opt-btn ${i===0?'active':''}" onclick="setOpt(this,'m-colors')">${c}</div>`).join('');
 
-    function renderGrids() {
-      const ig = document.getElementById('grid-iphones');
-      const og = document.getElementById('grid-otros');
-      
-      inventory.forEach(p => {
-        const html = `<div class="card reveal" onclick="openModal('${p.id}')"><div class="card-img">📱</div><div><b>${p.name}</b></div><div class="card-price">${p.price}</div></div>`;
-        if(p.cat === 'iphone') ig.innerHTML += html;
-        else og.innerHTML += html;
-      });
-      initReveal();
-    }
+    const sBox = document.getElementById('m-storage');
+    sBox.innerHTML = selectedP.storage.map((s, i) => `<div class="opt-btn ${i===0?'active':''}" onclick="setOpt(this,'m-storage')">${s}</div>`).join('');
 
-    function openModal(id) {
-      activeProduct = inventory.find(x => x.id === id);
-      document.getElementById('m-title').innerText = activeProduct.name;
-      document.getElementById('m-price').innerText = activeProduct.price;
-      
-      const cBox = document.getElementById('m-colors');
-      cBox.innerHTML = activeProduct.colors.map((c, i) => `<div class="opt-btn ${i===0?'active':''}" onclick="setOpt(this)">${c}</div>`).join('');
-      
-      const sBox = document.getElementById('m-storage');
-      sBox.innerHTML = activeProduct.storage.map((s, i) => `<div class="opt-btn ${i===0?'active':''}" onclick="setOpt(this)">${s}</div>`).join('');
-      
-      document.getElementById('m-img-front').src = 'https://via.placeholder.com/300?text=Frente';
-      document.getElementById('m-img-back').src = 'https://via.placeholder.com/300?text=Atras';
-      
-      document.getElementById('p-modal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
+    document.getElementById('img-front').src = `https://via.placeholder.com/300?text=${selectedP.name.replace(/ /g,'+')}+Front`;
+    document.getElementById('img-back').src = `https://via.placeholder.com/300?text=${selectedP.name.replace(/ /g,'+')}+Back`;
 
-    function setOpt(el) {
-        el.parentElement.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
-        el.classList.add('active');
-    }
+    updateWA();
+    document.getElementById('p-modal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
 
-    function toggleAcc(el) { el.classList.toggle('active'); }
-    function closeM() { document.getElementById('p-modal').style.display = 'none'; document.body.style.overflow = ''; }
+  function setOpt(el, parentId) {
+    document.querySelectorAll(`#${parentId} .opt-btn`).forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    updateWA();
+  }
 
-    function buyWA() {
-        const c = document.querySelector('#m-colors .active').innerText;
-        const s = document.querySelector('#m-storage .active').innerText;
-        window.open(`https://wa.me/56964271938?text=Hola! Quiero el ${activeProduct.name} ${s} color ${c}`);
-    }
+  function updateWA() {
+    const c = document.querySelector('#m-colors .active').innerText;
+    const s = document.querySelector('#m-storage .active').innerText;
+    const msg = `Hola! Me interesa el ${selectedP.name} de ${s} color ${c} que vi en la web.`;
+    document.getElementById('wa-link').href = `https://wa.me/56964271938?text=${encodeURIComponent(msg)}`;
+  }
 
-    function setStars(n) {
-        currentRating = n;
-        const s = document.getElementById('stars-in').children;
-        for(let i=0; i<5; i++) s[i].className = (i < n) ? 'active' : '';
-    }
+  function closeM() { document.getElementById('p-modal').style.display = 'none'; document.body.style.overflow = 'auto'; }
 
-    function postReview() {
-        const n = document.getElementById('rev-name').value;
-        const m = document.getElementById('rev-msg').value;
-        if(!n || !m || currentRating === 0) return alert("Completa todos los campos");
-        const card = document.createElement('div');
-        card.className = 'rev-card';
-        card.innerHTML = `<div class="rev-stars">${"★".repeat(currentRating)}</div><p>"${m}"</p><div style="font-weight:700;">— ${n}</div>`;
-        document.getElementById('rev-list').prepend(card);
-        alert("¡Gracias!");
-    }
+  window.onload = render;
+</script>
 
-    function initReveal() {
-      const obs = new IntersectionObserver(ents => ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }));
-      document.querySelectorAll('.reveal').forEach(x => obs.observe(x));
-    }
-
-    window.onload = renderGrids;
-  </script>
 </body>
 </html>
