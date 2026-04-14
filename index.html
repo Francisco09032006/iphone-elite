@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>iPhone Elite | Santiago, Chile - Tienda Oficial</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,7 +13,7 @@
         :root {
             --primary: #000000;
             --accent: #D4AF37; 
-            --bg-body: #FDFBF7; /* Crema extraído del logo */
+            --bg-body: #FDFBF7; 
             --white: #FFFFFF;
             --gray-ios: #F5F5F7;
             --border: #EAEAEA;
@@ -20,27 +21,20 @@
             --red-tag: #9D1C45;
         }
 
-        /* ── RESET INTEGRAL ── */
+        /* ── RESET ── */
         * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
         html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--bg-body); 
-            color: var(--primary); 
-            line-height: 1.6;
-            overflow-x: hidden;
-            padding-bottom: 120px; /* Espacio para barra inferior */
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-body); color: var(--primary); line-height: 1.6; overflow-x: hidden; }
 
-        /* ── PANTALLA DE ENTRADA ANIMADA (TU IDEA) ── */
+        /* ── INTRO PANTALLA (CORREGIDA) ── */
         #intro-overlay {
             position: fixed; inset: 0; z-index: 9999;
             background: var(--bg-body);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            cursor: pointer; transition: 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+            cursor: pointer; transition: 1s cubic-bezier(0.7, 0, 0.3, 1);
         }
         .intro-img {
-            width: 80%; max-width: 500px;
+            width: 70%; max-width: 450px;
             animation: heroVibrate 5s ease-in-out infinite;
             filter: drop-shadow(0 40px 80px rgba(0,0,0,0.1));
         }
@@ -50,337 +44,326 @@
         }
         .intro-text {
             margin-top: 30px; font-family: 'Playfair Display';
-            font-size: 32px; font-weight: 800; text-align: center;
-            letter-spacing: -1px;
+            font-size: clamp(24px, 5vw, 36px); font-weight: 800; text-align: center;
         }
-        .tap-hint {
-            margin-top: 15px; font-size: 11px; font-weight: 800;
-            color: var(--accent); letter-spacing: 3px;
-            animation: blinkHint 1.5s infinite;
-        }
-        @keyframes blinkHint { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+        .tap-hint { margin-top: 10px; font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 2px; animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
-        /* ── NAVBAR CORREGIDA (TEXTO EN NEGRO) ── */
+        /* ── NAVBAR (IPHONE ELITE EN NEGRO) ── */
         .top-nav {
-            position: sticky; top: 0; z-index: 3000;
-            height: 85px; padding: 0 5%;
-            background: rgba(253, 251, 247, 0.98);
-            backdrop-filter: blur(25px);
-            border-bottom: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: space-between;
-            visibility: hidden; opacity: 0; transition: 0.8s 0.2s;
+            position: sticky; top: 0; z-index: 3000; height: 85px; padding: 0 5%;
+            background: rgba(253, 251, 247, 0.98); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;
+            visibility: hidden; opacity: 0; transition: 0.8s;
         }
-        .nav-brand {
-            display: flex; align-items: center; gap: 12px;
-            text-decoration: none; cursor: pointer;
-        }
+        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .nav-brand img { height: 45px; filter: grayscale(1); }
-        .nav-brand span { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 24px; font-weight: 800; color: var(--primary);
-            letter-spacing: -0.5px;
-        }
+        .nav-brand span { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: #000000; letter-spacing: -0.5px; }
 
-        .nav-meta {
-            display: flex; align-items: center; gap: 25px;
-        }
-        .nav-icon-btn {
-            background: none; border: none; cursor: pointer;
-            display: flex; align-items: center; gap: 8px;
-            font-weight: 700; font-size: 14px; color: var(--primary);
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .nav-icon-btn:hover { color: var(--accent); }
-        .cart-pill {
-            background: var(--primary); color: var(--white);
-            font-size: 10px; padding: 2px 7px; border-radius: 20px;
-        }
+        .nav-meta { display: flex; align-items: center; gap: 20px; }
+        .nav-icon-btn { background: none; border: none; cursor: pointer; font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 6px; }
+        .cart-pill { background: black; color: white; font-size: 10px; padding: 2px 7px; border-radius: 20px; }
 
-        /* ── ACORDEONES ── */
-        .faq-wrap { max-width: 900px; margin: 0 auto 60px; padding: 0 5%; }
-        .acc-item { background: white; border: 1px solid var(--border); border-radius: 20px; margin-bottom: 10px; overflow: hidden; }
-        .acc-header { padding: 20px 30px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 13px; text-transform: uppercase; }
-        .acc-header span { font-size: 24px; color: #999; transition: 0.3s; }
-        .acc-item.active .acc-header span { transform: rotate(45deg); color: var(--accent); }
-        .acc-content { max-height: 0; padding: 0 30px; overflow: hidden; transition: 0.5s ease-in-out; color: #555; font-size: 14px; line-height: 1.8; }
-        .acc-item.active .acc-content { max-height: 250px; padding-bottom: 25px; }
+        /* ── BUSCADOR ── */
+        .search-container { padding: 20px 5%; background: white; display: none; border-bottom: 1px solid var(--border); }
+        .search-bar { width: 100%; padding: 15px 25px; border-radius: 50px; border: 1.5px solid var(--border); font-family: inherit; font-size: 14px; }
 
-        /* ── CATEGORÍAS Y GRILLA (NUEVO DISEÑO PEQUEÑO Y MINIMALISTA) ── */
+        /* ── PREGUNTAS FRECUENTES (QUIÉNES SOMOS) ── */
+        .faq-section { max-width: 900px; margin: 40px auto 80px; padding: 0 5%; display: none; }
+        .faq-item { background: white; border: 1px solid var(--border); border-radius: 20px; margin-bottom: 10px; overflow: hidden; }
+        .faq-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 800; font-size: 12px; text-transform: uppercase; }
+        .faq-content { max-height: 0; padding: 0 20px; transition: 0.5s; color: #555; font-size: 14px; line-height: 1.8; }
+        .faq-item.active .faq-content { max-height: 400px; padding-bottom: 20px; }
+
+        /* ── GRILLA PRODUCTOS (PEQUEÑA Y ELEGANTE) ── */
         .container { padding: 0 5% 100px; display: none; }
-        .cat-title {
-            padding: 80px 0 15px; font-family: 'Playfair Display';
-            font-size: 34px; border-bottom: 3px solid var(--accent);
-            display: inline-block; margin-bottom: 40px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
+        .cat-title { padding: 40px 0 10px; font-family: 'Playfair Display'; font-size: 30px; border-bottom: 3px solid var(--accent); display: inline-block; margin-bottom: 40px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         @media (min-width: 1024px) { .grid { grid-template-columns: repeat(5, 1fr); gap: 20px; } }
 
-        .product-card {
-            background: var(--white); border: 1px solid var(--border);
-            border-radius: 25px; padding: 12px; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            cursor: pointer; text-align: center; position: relative;
-        }
-        .product-card:hover {
-            transform: translateY(-8px); border-color: var(--accent);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.06);
-        }
-        .img-wrap {
-            height: 170px; background: var(--gray-ios);
-            border-radius: 20px; display: flex; align-items: center;
-            justify-content: center; margin-bottom: 12px; overflow: hidden;
-        }
-        .img-wrap img { width: 85%; height: 85%; object-fit: contain; }
-        
-        .badge {
-            position: absolute; top: 10px; right: -5px;
-            background: var(--red-tag); color: white;
-            padding: 3px 10px; border-radius: 20px;
-            font-size: 9px; font-weight: 800; z-index: 10;
-        }
-        .badge-soldout { background: white; color: #666; border: 1px solid var(--border); }
+        .product-card { background: white; border-radius: 20px; padding: 12px; border: 1px solid var(--border); cursor: pointer; transition: 0.3s; position: relative; }
+        .product-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .img-wrap { background: var(--gray-ios); border-radius: 15px; aspect-ratio: 1/1.2; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+        .img-wrap img { width: 85%; object-fit: contain; }
 
-        .p-info { text-align: center; }
-        .m-name { font-size: 13px; font-weight: 600; margin-bottom: 3px; color: var(--primary); }
-        .m-price {
-            font-family: 'Playfair Display', serif; font-size: 18px;
-            font-weight: 700; color: var(--accent);
-        }
-        .btn-view {
-            background: var(--primary); color: white; width: 100%;
-            padding: 8px; border: none; border-radius: 10px;
-            font-weight: 700; font-size: 11px; margin-top: 12px;
-            cursor: pointer; transition: 0.3s;
-        }
+        .badge { position: absolute; top: 10px; right: -5px; background: var(--red-tag); color: white; padding: 3px 10px; border-radius: 15px; font-size: 9px; font-weight: 800; z-index: 10; }
+        .badge-gray { background: white; color: #666; border: 1px solid var(--border); }
 
-        /* ── PANEL DE CARRITO REAL (SUPER FUNCIONAL) ── */
+        .m-name { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 2px; }
+        .m-price { font-family: 'Playfair Display'; font-size: 16px; font-weight: 700; color: var(--accent); }
+
+        /* ── CARRITO PANEL ── */
         #cart-sidebar {
-            position: fixed; right: -100%; top: 0; width: 100%; max-width: 450px;
-            height: 100%; background: white; z-index: 5000;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-            transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1);
-            display: flex; flex-direction: column; padding: 50px 40px;
+            position: fixed; right: -100%; top: 0; width: 100%; max-width: 400px; height: 100%;
+            background: white; z-index: 5000; box-shadow: -15px 0 40px rgba(0,0,0,0.1);
+            transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); padding: 40px; display: flex; flex-direction: column;
         }
         #cart-sidebar.open { right: 0; }
-        .cart-items-list { flex: 1; overflow-y: auto; margin: 30px 0; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border); }
-        .cart-item-name { font-weight: 700; }
-        .remove-item { color: #ff3b30; cursor: pointer; font-size: 11px; font-weight: 800; }
+        .cart-list { flex: 1; overflow-y: auto; margin: 20px 0; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #eee; }
+        .remove-btn { color: #ff3b30; cursor: pointer; font-size: 11px; font-weight: 800; }
 
-        /* ── MODAL DETALLES ── */
-        .modal {
-            display: none; position: fixed; inset: 0; z-index: 5000;
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(15px);
-            align-items: center; justify-content: center; padding: 20px;
-        }
-        .modal-box {
-            background: var(--white); width: 100%; max-width: 580px;
-            border-radius: 40px; padding: 40px; position: relative;
-            max-height: 90vh; overflow-y: auto;
-        }
-        .close-modal { position: absolute; top: 25px; right: 25px; font-size: 32px; cursor: pointer; color: #ccc; }
-        .storage-btn { padding: 12px 18px; border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; font-size: 13px; font-weight: 600; margin: 0 5px 5px 0; display: inline-block; }
+        /* ── MODAL ── */
+        .modal { display: none; position: fixed; inset: 0; z-index: 4500; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); align-items: center; justify-content: center; padding: 20px; }
+        .modal-box { background: white; width: 100%; max-width: 550px; border-radius: 35px; padding: 35px; position: relative; }
+        .close-m { position: absolute; top: 20px; right: 20px; font-size: 30px; cursor: pointer; color: #ccc; }
+        .storage-btn { padding: 10px 15px; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 12px; font-weight: 700; margin: 0 4px 4px 0; display: inline-block; }
         .storage-btn.active { background: black; color: white; border-color: black; }
 
-        /* ── BOTONES ── */
-        .btn { width: 100%; padding: 20px; border-radius: 18px; border: none; font-weight: 800; font-size: 16px; cursor: pointer; transition: 0.3s; display: block; text-align: center; text-decoration: none; }
-        .btn-black { background: var(--primary); color: var(--white); margin-bottom: 15px; }
-        .btn-wa { background: var(--wa-green); color: var(--white); display: flex; align-items: center; justify-content: center; gap: 10px; }
-
         /* ── VALORACIONES INTELIGENTES ── */
-        .reviews-section { padding: 100px 5%; background: var(--primary); color: white; border-radius: 60px 60px 0 0; }
-        .rev-card { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px; }
+        .reviews-bg { background: var(--primary); color: white; padding: 80px 5%; border-radius: 50px 50px 0 0; display: none; }
+        .rev-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px; }
         
-        /* ── BOTTOM NAV (CARRITO FUNCIONAL) ── */
-        .app-nav {
-            position: fixed; bottom: 0; left: 0; right: 0; height: 95px;
+        /* ── BOTTOM NAV ── */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0; height: 90px;
             background: rgba(255, 255, 255, 0.98); border-top: 1px solid var(--border);
             display: flex; justify-content: space-around; align-items: center; z-index: 4000;
-            padding-bottom: 20px; backdrop-filter: blur(20px);
+            padding-bottom: 20px; backdrop-filter: blur(20px); visibility: hidden;
         }
-        .app-link { text-decoration: none; color: var(--primary); display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 11px; font-weight: 800; }
-        .wa-logo { color: #25D366; }
+        .nav-link { text-decoration: none; color: black; font-size: 11px; font-weight: 800; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .wa-green { color: #25D366; }
 
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <div id="intro-overlay" onclick="launchStore()">
-        <img src="animacion.jpg.png" class="intro-img" alt="Bienvenido">
+    <div id="intro-overlay" onclick="startStore()">
+        <img src="animacion.png" class="intro-img" alt="iPhone Elite">
         <div class="intro-text">Los mejores precios aquí</div>
-        <div class="tap-hint">TOCA PARA ENTRAR</div>
+        <div class="tap-hint">TOCA PARA ENTRAR AL CATÁLOGO</div>
     </div>
 
-    <div id="main-content">
+    <div id="app-wrapper">
         <header class="top-nav" id="main-header">
             <a href="#" class="nav-brand">
-                <img src="logo.png" alt="Logo iPhone Elite">
+                <img src="logo.png" alt="Logo">
                 <span>iPhone Elite</span>
             </a>
             <div class="nav-meta">
-                <span style="font-size:10px; font-weight:800; letter-spacing:1px;">SANTIAGO, CHILE</span>
+                <span style="font-size:10px; font-weight:800;">SANTIAGO, CHILE</span>
                 <div onclick="toggleCart()" style="cursor:pointer; position:relative;">
                     🛒 PEDIDO <span class="cart-pill" id="cart-count">0</span>
                 </div>
             </div>
         </header>
 
-        <div class="faq-wrap reveal" id="trust">
-            <div class="acc-item" onclick="this.classList.toggle('active')">
-                <div class="acc-header">Garantía Real 🛡️ <span>+</span></div>
-                <div class="acc-content">3 meses técnica y Garantía de Señal de por vida contra bloqueos.</div>
-            </div>
-            <div class="acc-item" onclick="this.classList.toggle('active')">
-                <div class="acc-header">Envíos Asegurados 🇨🇱 <span>+</span></div>
-                <div class="acc-content">Envíos a todo Chile vía Starken o BlueExpress. Entrega inmediata en Santiago.</div>
-            </div>
+        <div class="search-container" id="search-box">
+            <input type="text" class="search-bar" id="input-search" placeholder="¿Buscas un modelo? Escribe aquí..." onkeyup="filterProducts()">
         </div>
 
-        <div class="container" id="tienda">
+        <div class="container" id="content-store">
             <h2 class="cat-title">iPhones</h2>
-            <div class="grid" id="grid-iphones"></div>
+            <div class="grid" id="iphone-grid"></div>
+
+            <h2 class="cat-title">AirPods</h2>
+            <div class="grid" id="airpods-grid">
+                <div class="product-card reveal" onclick="window.open('https://wa.me/56964271938')">
+                    <div class="img-wrap"><img src="https://via.placeholder.com/300?text=AirPods+Pro+2" alt="AirPods"></div>
+                    <div class="m-name">AirPods Pro 2 / AirPods 3</div>
+                    <div class="m-price">Consultar Stock</div>
+                </div>
+            </div>
 
             <h2 class="cat-title">Otros Modelos</h2>
-            <div class="grid" id="grid-otros"></div>
-        </div>
+            <div class="grid" id="otros-grid"></div>
 
-        <div id="cart-sidebar">
-            <h2 class="cart-title">Tu Pedido</h2>
-            <div class="cart-items-list" id="cart-list-render">
-                <p style="color:#999; margin-top:20px;">No has añadido equipos todavía.</p>
+            <h2 class="cat-title" style="margin-top:100px;">Preguntas Frecuentes</h2>
+            <div class="faq-section" id="faq-ui" style="display:block; margin: 0 auto 100px;">
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-header">¿Quiénes Somos? 👤 <span>+</span></div>
+                    <div class="faq-content">Somos jóvenes emprendedores que encontraron el problema de la inseguridad a la hora de comprar dispositivos electrónicos y creamos iPhone Elite para ayudar a esas personas a escoger su próximo dispositivo de manera segura. Llevamos más de 4 años dedicados a la venta de dispositivos tecnológicos.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-header">Garantía Elite 🛡️ <span>+</span></div>
+                    <div class="faq-content">3 meses de garantía técnica y Garantía de Señal de por vida contra bloqueos IMEI.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('active')">
+                    <div class="faq-header">Envíos y Entregas 🇨🇱 <span>+</span></div>
+                    <div class="faq-content">Despachos asegurados a regiones vía Starken o BlueExpress. Entrega inmediata en Santiago.</div>
+                </div>
             </div>
-            <div id="cart-total-box" style="padding:20px 0; border-top:2px solid black; font-weight:900; font-size:20px;"></div>
-            <button class="btn btn-black" onclick="toggleCart()">SEGUIR COMPRANDO</button>
-            <a href="#" id="whatsapp-checkout" class="btn btn-wa">FINALIZAR POR WHATSAPP</a>
         </div>
 
-        <nav class="app-nav">
-            <a href="#inicio" class="app-link">INICIO</a>
-            <a href="https://wa.me/56964271938" target="_blank" class="app-link wa-logo">
+        <section class="reviews-bg" id="rev-ui" style="display:block;">
+            <h2 style="text-align:center; font-family:'Playfair Display'; font-size:36px; margin-bottom:40px;">Clientes Elite</h2>
+            <div id="reviews-list">
+                <div class="rev-card reveal"><div style="color:var(--accent)">★★★★★</div><p>"Excelente atención y seguridad en la compra. Mi iPhone 16 Pro Max llegó impecable."</p><b>— Ricardo M.</b></div>
+                <div class="rev-card reveal"><div style="color:var(--accent)">★★★★★</div><p>"4 años de experiencia se notan. Los mejores de Santiago."</p><b>— Sofía L.</b></div>
+                <div class="rev-card reveal"><div style="color:var(--accent)">★★★★★</div><p>"Compré el S24 Ultra y el proceso fue transparente de principio a fin."</p><b>— Javier O.</b></div>
+                <div class="rev-card reveal"><div style="color:var(--accent)">★★★★★</div><p>"Confiables y rápidos. El equipo llegó sellado con boleta."</p><b>— Manuel V.</b></div>
+                <div class="rev-card reveal"><div style="color:var(--accent)">★★★★★</div><p>"Recibieron mi equipo anterior en parte de pago a un precio justo."</p><b>— Constanza F.</b></div>
+            </div>
+        </section>
+
+        <div style="background:white; padding:60px 5%; margin-bottom:120px;">
+            <div style="max-width:550px; margin:0 auto; text-align:center;">
+                <h3 style="font-family:'Playfair Display'; font-size:28px; margin-bottom:20px;">Deja tu valoración</h3>
+                <input type="text" id="rev-user" style="width:100%; padding:15px; border-radius:12px; border:1px solid #ddd; margin-bottom:12px;" placeholder="Tu nombre">
+                <textarea id="rev-text" style="width:100%; height:80px; padding:15px; border-radius:12px; border:1px solid #ddd; margin-bottom:12px;" placeholder="Cuéntanos tu experiencia..."></textarea>
+                <button onclick="publishReview()" style="background:black; color:white; padding:15px 30px; border-radius:12px; border:none; font-weight:800; cursor:pointer;">PUBLICAR</button>
+            </div>
+        </div>
+
+        <nav class="bottom-nav" id="footer-nav">
+            <a href="#inicio" class="nav-link">INICIO</a>
+            <a href="https://wa.me/56964271938" target="_blank" class="nav-link wa-green">
                 <svg viewBox="0 0 24 24" fill="currentColor" width="28"><path d="M12.031 2c-5.513 0-9.99 4.477-9.99 9.99 0 2.012.597 3.886 1.624 5.454l-1.665 6.056 6.204-1.631c1.517.822 3.256 1.289 5.093 1.289 5.513 0 9.99-4.477 9.99-9.99a9.99 9.99 0 0 0-9.99-9.99z"/></svg>
                 WHATSAPP
             </a>
-            <a href="https://instagram.com/iphonelite.cl" target="_blank" class="app-link">INSTAGRAM</a>
+            <a href="https://instagram.com/iphonelite.cl" target="_blank" class="nav-link">INSTAGRAM</a>
         </nav>
+
+        <div id="cart-sidebar">
+            <h2 style="font-family:'Playfair Display'; font-size:32px;">Tu Carrito</h2>
+            <div class="cart-list" id="cart-list-ui">
+                <p style="color:#999; margin-top:20px;">No has añadido productos todavía.</p>
+            </div>
+            <button onclick="toggleCart()" style="background:#eee; padding:15px; border:none; border-radius:12px; font-weight:800; cursor:pointer; margin-bottom:10px;">SEGUIR COMPRANDO</button>
+            <a href="#" id="wa-checkout" target="_blank" style="background:var(--wa-green); color:white; padding:20px; text-decoration:none; border-radius:15px; font-weight:800; text-align:center;">FINALIZAR POR WHATSAPP</a>
+        </div>
     </div>
 
     <div id="modal-p" class="modal" onclick="closeM()">
         <div class="modal-box" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeM()">&times;</span>
-            <h2 id="m-name" style="font-family:'Playfair Display'; font-size:32px;"></h2>
-            <div id="m-price" style="font-size:28px; font-weight:800; color:var(--accent); margin-bottom:20px;"></div>
+            <span class="close-m" onclick="closeM()">&times;</span>
+            <h2 id="modal-name" style="font-family:'Playfair Display'; font-size:30px;"></h2>
+            <div id="modal-price" style="font-size:26px; font-weight:800; color:var(--accent); margin-bottom:20px;"></div>
             
-            <span style="font-size:10px; font-weight:700; color:#999; text-transform:uppercase;">Elige Capacidad</span>
-            <div id="m-storage" style="margin:10px 0 25px;"></div>
+            <p style="font-size:10px; font-weight:800; color:#999; text-transform:uppercase; margin-bottom:8px;">Selecciona Capacidad</p>
+            <div id="modal-storage-opts"></div>
 
-            <img id="img-f" src="" alt="Frente" style="width:100%; height:250px; object-fit:contain; background:var(--gray-ios); border-radius:20px; padding:20px;">
+            <img id="modal-img" src="" style="width:100%; height:250px; object-fit:contain; background:var(--gray-ios); border-radius:20px; padding:20px; margin:20px 0;">
 
-            <button onclick="addToCartReal()" class="btn btn-black" style="margin-top:20px">AÑADIR AL PEDIDO</button>
+            <button onclick="handleAddToCart()" style="background:black; color:white; width:100%; padding:20px; border-radius:15px; font-weight:800; cursor:pointer;">AÑADIR AL PEDIDO</button>
         </div>
     </div>
 
     <script>
-        // BASE DE DATOS MAESTRA
-        const database = [
+        const inventory = [
+            // IPHONES
             { id: 1, cat: 'ip', name: 'iPhone 11', slug: 'iphone-11', price: '$169.990', storage: ['64GB', '128GB'] },
             { id: 2, cat: 'ip', name: 'iPhone 11 Pro', slug: 'iphone-11-pro', price: '$249.990', storage: ['64GB', '256GB'] },
             { id: 3, cat: 'ip', name: 'iPhone 11 Pro Max', slug: 'iphone-11-pm', price: '$289.990', storage: ['64GB', '256GB'] },
             { id: 4, cat: 'ip', name: 'iPhone 12 mini', slug: 'iphone-12-mini', price: '$219.990', storage: ['64GB', '128GB'] },
             { id: 5, cat: 'ip', name: 'iPhone 12', slug: 'iphone-12', price: '$239.990', storage: ['64GB', '128GB'] },
-            { id: 6, cat: 'ip', name: 'iPhone 12 Pro Max', slug: 'iphone-12-pm', price: '$379.990', storage: ['128GB', '256GB'] },
+            { id: 6, cat: 'ip', name: 'iPhone 12 Pro Max', slug: 'iphone-12-pm', price: '$379.990', storage: ['128GB', '256GB'], tag: 'Agotado' },
             { id: 7, cat: 'ip', name: 'iPhone 13 mini', slug: 'iphone-13-mini', price: '$310.000', storage: ['128GB', '256GB'] },
             { id: 8, cat: 'ip', name: 'iPhone 13', slug: 'iphone-13', price: '$380.000', storage: ['128GB', '256GB'] },
             { id: 9, cat: 'ip', name: 'iPhone 13 Pro', slug: 'iphone-13-pro', price: '$449.990', storage: ['128GB', '256GB'] },
             { id: 10, cat: 'ip', name: 'iPhone 13 Pro Max', slug: 'iphone-13-pm', price: '$499.990', storage: ['128GB', '256GB'] },
             { id: 11, cat: 'ip', name: 'iPhone 14', slug: 'iphone-14', price: '$450.000', storage: ['128GB', '256GB'] },
             { id: 12, cat: 'ip', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', price: '$659.990', storage: ['256GB', '512GB'] },
-            { id: 13, cat: 'ip', name: 'iPhone 15', slug: 'iphone-15', price: '$569.990', storage: ['128GB'] },
-            { id: 14, cat: 'ip', name: 'iPhone 15 Pro', slug: 'iphone-15-pro', price: '$669.990', storage: ['128GB'] },
-            { id: 15, cat: 'ip', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm', price: '$769.990', storage: ['256GB'] },
-            { id: 16, cat: 'ip', name: 'iPhone 16 Pro Max', slug: 'iphone-16-pm', price: '$879.990', storage: ['256GB'], tag: 'Oferta' },
-            { id: 17, cat: 'ip', name: 'iPhone 17 Pro Max', slug: 'iphone-17-pm', price: '$1.431.000', storage: ['256GB', '512GB', '1TB'] },
+            { id: 13, cat: 'ip', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm', price: '$769.990', storage: ['256GB'] },
+            { id: 14, cat: 'ip', name: 'iPhone 16 Pro Max', slug: 'iphone-16-pm', price: '$879.990', storage: ['256GB'], tag: 'Oferta' },
+            { id: 15, cat: 'ip', name: 'iPhone 17 Pro Max', slug: 'iphone-17-pm', price: '$1.431.000', storage: ['256GB', '512GB', '1TB'] },
             
-            // OTROS MODELOS
-            { id: 18, cat: 'ot', name: 'Samsung S24 Ultra', slug: 's24-ultra', price: '$589.990', storage: ['256GB', '512GB'] },
-            { id: 19, cat: 'ot', name: 'Samsung S26 Ultra', slug: 's26-ultra', price: '$999.990', storage: ['256GB'] }
+            // OTROS
+            { id: 16, cat: 'ot', name: 'Samsung S24 Ultra', slug: 's24-ultra', price: '$589.990', storage: ['256GB', '512GB'] },
+            { id: 17, cat: 'ot', name: 'Samsung S26 Ultra', slug: 's26-ultra', price: '$999.990', storage: ['256GB'] }
         ];
 
         let cart = [];
-        let activeItem = null;
+        let activeProduct = null;
 
-        function launchStore() {
+        function startStore() {
             document.getElementById('intro-overlay').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('intro-overlay').style.display = 'none';
                 document.getElementById('main-header').style.visibility = 'visible';
                 document.getElementById('main-header').style.opacity = '1';
-                document.getElementById('tienda').style.display = 'block';
-                renderStore();
+                document.getElementById('content-store').style.display = 'block';
+                document.getElementById('search-box').style.display = 'block';
+                document.getElementById('footer-nav').style.visibility = 'visible';
+                render();
             }, 1000);
         }
 
-        function renderStore() {
-            const ig = document.getElementById('grid-iphones');
-            const og = document.getElementById('grid-otros');
+        function render(data = inventory) {
+            const ig = document.getElementById('iphone-grid');
+            const og = document.getElementById('otros-grid');
             ig.innerHTML = ''; og.innerHTML = '';
-            database.forEach(p => {
-                const card = `<div class="product-card reveal" onclick="openProduct(${p.id})">
-                    <div class="img-wrap"><img src="${p.slug}-front.jpg.png" alt="${p.name}"></div>
+            
+            data.forEach(p => {
+                const card = `
+                <div class="product-card reveal" onclick="openProduct(${p.id})">
+                    <div class="img-wrap">
+                        ${p.tag ? `<span class="badge ${p.tag==='Oferta'?'':'badge-gray'}">${p.tag}</span>` : ''}
+                        <img src="${p.slug}-front.jpg.png" alt="${p.name}">
+                    </div>
                     <div class="p-info">
                         <div class="m-name">${p.name}</div>
                         <div class="m-price">${p.price}</div>
                     </div>
                 </div>`;
-                if(p.cat === 'ip') ig.innerHTML += card; else og.innerHTML += card;
+                if(p.cat === 'ip') ig.innerHTML += card; else if(p.cat === 'ot') og.innerHTML += card;
             });
             initReveal();
         }
 
         function openProduct(id) {
-            activeItem = database.find(x => x.id === id);
-            document.getElementById('m-name').innerText = activeItem.name;
-            document.getElementById('m-price').innerText = activeItem.price;
-            document.getElementById('img-f').src = `${activeItem.slug}-front.jpg.png`;
-            document.getElementById('m-storage').innerHTML = activeItem.storage.map((s,i) => `<span class="storage-btn ${i===0?'active':''}" onclick="setV(this)">${s}</span>`).join('');
+            activeProduct = inventory.find(x => x.id === id);
+            document.getElementById('modal-name').innerText = activeProduct.name;
+            document.getElementById('modal-price').innerText = activeProduct.price;
+            document.getElementById('modal-img').src = `${activeProduct.slug}-front.jpg.png`;
+            document.getElementById('modal-storage-opts').innerHTML = activeProduct.storage.map((s,i) => 
+                `<span class="storage-btn ${i===0?'active':''}" onclick="selectStorage(this)">${s}</span>`).join('');
             document.getElementById('modal-p').style.display = 'flex';
         }
 
-        function setV(el) { el.parentElement.querySelectorAll('.storage-btn').forEach(b => b.classList.remove('active')); el.classList.add('active'); }
+        function selectStorage(el) {
+            el.parentElement.querySelectorAll('.storage-btn').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+        }
 
-        function addToCartReal() {
-            const storage = document.querySelector('.storage-btn.active').innerText;
-            cart.push({ ...activeItem, selectedStorage: storage });
-            updateCartUI();
+        function handleAddToCart() {
+            const gb = document.querySelector('.storage-btn.active').innerText;
+            cart.push({ ...activeProduct, gb });
+            updateCart();
             closeM();
             toggleCart();
         }
 
-        function updateCartUI() {
+        function updateCart() {
             document.getElementById('cart-count').innerText = cart.length;
-            const list = document.getElementById('cart-list-render');
+            const list = document.getElementById('cart-list-ui');
             if(cart.length === 0) {
-                list.innerHTML = '<p style="color:#999; margin-top:20px;">No has añadido equipos todavía.</p>';
+                list.innerHTML = '<p style="color:#999; margin-top:20px;">No has añadido productos todavía.</p>';
             } else {
                 list.innerHTML = cart.map((item, index) => `
                 <div class="cart-item">
-                    <div><b>${item.name}</b><br><small>${item.selectedStorage}</small></div>
-                    <div class="remove-item" onclick="removeItem(${index})">QUITAR</div>
+                    <div><b>${item.name}</b><br><small>${item.gb}</small></div>
+                    <div class="remove-btn" onclick="removeItem(${index})">QUITAR</div>
                 </div>`).join('');
             }
-            
-            // Generar link de WhatsApp
-            const msg = encodeURIComponent("Hola iPhone Elite! Quiero comprar:\n" + cart.map(i => `- ${i.name} (${i.selectedStorage})`).join('\n'));
-            document.getElementById('whatsapp-checkout').href = `https://wa.me/56964271938?text=${msg}`;
+            const msg = encodeURIComponent("Hola! Quiero comprar:\n" + cart.map(i => `- ${i.name} (${i.gb})`).join('\n'));
+            document.getElementById('wa-checkout').href = `https://wa.me/56964271938?text=${msg}`;
         }
 
-        function removeItem(i) { cart.splice(i, 1); updateCartUI(); }
+        function removeItem(i) { cart.splice(i, 1); updateCart(); }
         function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('open'); }
+        function filterProducts() {
+            const q = document.getElementById('input-search').value.toLowerCase();
+            render(inventory.filter(x => x.name.toLowerCase().includes(q)));
+        }
         function closeM() { document.getElementById('modal-p').style.display = 'none'; }
+        
+        function publishReview() {
+            const u = document.getElementById('rev-user').value;
+            const t = document.getElementById('rev-text').value.toLowerCase();
+            if(!u || !t) return alert("Completa los datos.");
+            if(["mierda", "estafa", "weon", "puta"].some(w => t.includes(w))) return alert("Comentario no permitido.");
+            const card = document.createElement('div');
+            card.className = 'rev-card reveal active';
+            card.innerHTML = `<div style="color:var(--accent)">★★★★★</div><p>"${t}"</p><b>— ${u}</b>`;
+            document.getElementById('reviews-list').prepend(card);
+            alert("¡Valoración publicada!");
+            document.getElementById('rev-user').value = ''; document.getElementById('rev-text').value = '';
+        }
+
         function initReveal() {
             const obs = new IntersectionObserver(ents => ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); }));
             document.querySelectorAll('.reveal').forEach(x => obs.observe(x));
