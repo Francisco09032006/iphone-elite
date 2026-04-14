@@ -20,7 +20,6 @@
             --red-tag: #9D1C45;
         }
 
-        /* RESET & BASE */
         * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
         html { scroll-behavior: smooth; }
         body { 
@@ -32,7 +31,7 @@
             padding-bottom: 120px;
         }
 
-        /* NAVBAR SUPERIOR CORPORATIVA */
+        /* NAVBAR SUPERIOR */
         .top-nav {
             position: sticky; top: 0; z-index: 3000;
             height: 85px; padding: 0 5%;
@@ -41,85 +40,80 @@
             border-bottom: 1px solid var(--border);
             display: flex; align-items: center; justify-content: space-between;
         }
-        .nav-brand {
-            display: flex; align-items: center; gap: 12px;
-            text-decoration: none; color: black;
-        }
-        .nav-brand img { height: 48px; width: auto; }
-        .nav-brand span { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 800; }
+        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: black; }
+        .nav-brand img { height: 45px; width: auto; }
+        .nav-brand span { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; }
 
-        .nav-meta { display: flex; align-items: center; gap: 30px; }
+        .nav-meta { display: flex; align-items: center; gap: 25px; }
         .location-label { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
-        .nav-icon-btn { background: none; border: none; cursor: pointer; font-weight: 700; font-size: 14px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .nav-icon-btn { background: none; border: none; cursor: pointer; font-weight: 700; font-size: 13px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
         .cart-pill { background: var(--primary); color: white; font-size: 10px; padding: 2px 7px; border-radius: 20px; }
 
-        /* BUSCADOR INTERACTIVO */
-        .search-overlay {
-            display: none; position: fixed; inset: 0; background: white; z-index: 4000; padding: 40px 5%;
-        }
+        /* BUSCADOR */
+        .search-overlay { display: none; position: fixed; inset: 0; background: white; z-index: 4000; padding: 40px 5%; }
         .search-input { width: 100%; padding: 20px; border: none; border-bottom: 3px solid black; font-size: 30px; font-family: 'Playfair Display'; }
 
-        /* HERO SECTION */
-        .hero { padding: 60px 5%; text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .hero-img-box { width: 100%; max-width: 650px; animation: floatHero 6s ease-in-out infinite; }
-        .hero-img-box img { width: 100%; filter: drop-shadow(0 40px 80px rgba(0,0,0,0.1)); }
-        @keyframes floatHero { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
+        /* HERO */
+        .hero { padding: 40px 5%; text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .hero-img-box { width: 100%; max-width: 550px; animation: floatHero 6s ease-in-out infinite; }
+        .hero-img-box img { width: 100%; filter: drop-shadow(0 30px 60px rgba(0,0,0,0.1)); }
+        @keyframes floatHero { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 
-        /* TRUST ACCORDION */
-        .trust-accordion { max-width: 800px; margin: 40px auto 80px; padding: 0 5%; }
+        /* TRUST */
+        .trust-accordion { max-width: 800px; margin: 20px auto 60px; padding: 0 5%; }
         .acc-item { background: white; border: 1px solid var(--border); border-radius: 20px; margin-bottom: 10px; overflow: hidden; }
-        .acc-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 800; font-size: 13px; text-transform: uppercase; }
-        .acc-content { max-height: 0; padding: 0 20px; transition: 0.4s; color: #666; font-size: 14px; }
-        .acc-item.active .acc-content { max-height: 150px; padding-bottom: 20px; }
+        .acc-header { padding: 18px; cursor: pointer; display: flex; justify-content: space-between; font-weight: 800; font-size: 12px; text-transform: uppercase; }
+        .acc-content { max-height: 0; padding: 0 18px; transition: 0.4s; color: #666; font-size: 13px; }
+        .acc-item.active .acc-content { max-height: 150px; padding-bottom: 18px; }
 
-        /* GRID PRODUCTOS */
+        /* GRILLA PRODUCTOS (MODELOS MÁS PEQUEÑOS) */
         .container { padding: 0 5% 100px; }
-        .cat-title { padding: 60px 5% 15px; font-family: 'Playfair Display'; font-size: 34px; border-bottom: 3px solid var(--accent); display: inline-block; margin-bottom: 50px; }
+        .cat-title { padding: 40px 5% 10px; font-family: 'Playfair Display'; font-size: 28px; border-bottom: 3px solid var(--accent); display: inline-block; margin-bottom: 40px; }
         
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px 20px; }
-        @media (min-width: 1024px) { .grid { grid-template-columns: repeat(4, 1fr); gap: 50px 30px; } }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px 15px; }
+        @media (min-width: 1024px) { .grid { grid-template-columns: repeat(5, 1fr); gap: 30px 20px; } }
 
         .product-item { display: flex; flex-direction: column; cursor: pointer; transition: 0.3s; position: relative; }
-        .product-item:hover { transform: translateY(-8px); }
-        .image-wrapper { background: white; border-radius: 20px; aspect-ratio: 1/1.1; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative; }
-        .image-wrapper img { width: 85%; height: 85%; object-fit: contain; }
+        .product-item:hover { transform: translateY(-5px); }
+        .image-wrapper { background: white; border-radius: 15px; aspect-ratio: 1/1.2; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; position: relative; border: 1px solid #f0f0f0; }
+        .image-wrapper img { width: 80%; height: 80%; object-fit: contain; }
 
-        .badge { position: absolute; top: 15px; right: -10px; padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: 700; z-index: 10; }
+        .badge { position: absolute; top: 10px; right: -5px; padding: 3px 10px; border-radius: 15px; font-size: 9px; font-weight: 800; z-index: 10; text-transform: uppercase; }
         .badge-soldout { background: white; color: #666; border: 1px solid var(--border); }
         .badge-offer { background: var(--red-tag); color: white; }
 
-        .info-box { text-align: left; padding-left: 5px; }
-        .model-name { font-size: 14px; font-weight: 500; color: #333; margin-bottom: 4px; }
-        .model-price { font-size: 16px; font-weight: 600; color: #000; }
+        .info-box { text-align: left; padding-left: 2px; }
+        .model-name { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 2px; }
+        .model-price { font-size: 14px; font-weight: 700; color: #000; }
 
         /* MODAL */
-        .modal { display: none; position: fixed; inset: 0; z-index: 5000; background: rgba(0,0,0,0.8); backdrop-filter: blur(15px); align-items: center; justify-content: center; padding: 20px; }
-        .modal-box { background: var(--white); width: 100%; max-width: 580px; border-radius: 40px; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; }
-        .close-modal { position: absolute; top: 25px; right: 25px; font-size: 30px; cursor: pointer; }
-        .variant-btn { padding: 12px 18px; border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; font-size: 13px; font-weight: 600; margin: 0 5px 5px 0; display: inline-block; }
+        .modal { display: none; position: fixed; inset: 0; z-index: 5000; background: rgba(0,0,0,0.85); backdrop-filter: blur(15px); align-items: center; justify-content: center; padding: 20px; }
+        .modal-box { background: var(--white); width: 100%; max-width: 550px; border-radius: 35px; padding: 35px; position: relative; max-height: 90vh; overflow-y: auto; }
+        .close-modal { position: absolute; top: 20px; right: 20px; font-size: 30px; cursor: pointer; color: #bbb; }
+        .variant-btn { padding: 10px 15px; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 12px; font-weight: 700; margin: 0 4px 4px 0; display: inline-block; }
         .variant-btn.active { background: black; color: white; border-color: black; }
 
         /* VALORACIONES INTELIGENTES */
-        .reviews-section { padding: 100px 5%; background: var(--primary); color: white; border-radius: 60px 60px 0 0; }
-        .rev-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
-        .rev-card { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .rev-stars { color: var(--accent); margin-bottom: 10px; font-size: 18px; }
+        .reviews-section { padding: 80px 5%; background: var(--primary); color: white; border-radius: 50px 50px 0 0; }
+        .rev-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 30px; }
+        .rev-card { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        .rev-stars { color: var(--accent); margin-bottom: 8px; font-size: 16px; }
 
-        .rev-form { background: white; color: black; padding: 40px; border-radius: 35px; max-width: 600px; margin: -50px auto 80px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
-        .stars-select { font-size: 24px; color: #ddd; cursor: pointer; display: flex; gap: 5px; margin-bottom: 15px; }
+        .rev-form { background: white; color: black; padding: 35px; border-radius: 30px; max-width: 550px; margin: -40px auto 80px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
+        .stars-select { font-size: 22px; color: #ddd; cursor: pointer; display: flex; gap: 5px; margin-bottom: 12px; }
         .stars-select .active { color: var(--accent); }
 
         /* BOTTOM NAV */
         .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0; height: 90px;
+            position: fixed; bottom: 0; left: 0; right: 0; height: 85px;
             background: rgba(255, 255, 255, 0.98); border-top: 1px solid var(--border);
             display: flex; justify-content: space-around; align-items: center; z-index: 4000;
-            padding-bottom: 20px; backdrop-filter: blur(20px);
+            padding-bottom: 15px; backdrop-filter: blur(20px);
         }
-        .nav-link { text-decoration: none; color: var(--primary); display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 11px; font-weight: 800; flex: 1; }
+        .nav-link { text-decoration: none; color: var(--primary); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10px; font-weight: 800; flex: 1; }
         .wa-logo { color: #25D366; }
 
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
@@ -127,7 +121,7 @@
 
     <div id="search-overlay" class="search-overlay">
         <span class="close-modal" onclick="closeSearch()">&times;</span>
-        <input type="text" class="search-input" id="search-box" placeholder="¿Qué iPhone buscas?" onkeyup="doSearch()">
+        <input type="text" class="search-input" id="search-box" placeholder="Buscar modelo..." onkeyup="doSearch()">
         <div id="search-results" class="grid" style="margin-top:40px;"></div>
     </div>
 
@@ -138,20 +132,16 @@
         </a>
         <div class="nav-meta">
             <span class="location-label">SANTIAGO, CHILE</span>
-            <button class="nav-icon-btn" onclick="openSearch()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                BUSCAR
-            </button>
+            <button class="nav-icon-btn" onclick="openSearch()">BUSCAR</button>
             <div class="nav-icon-btn" onclick="openCart()">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                <span class="cart-pill" id="cart-count">0</span>
+                CARRITO <span class="cart-pill" id="cart-count">0</span>
             </div>
         </div>
     </header>
 
     <section class="hero" id="inicio">
         <div class="hero-img-box"><img src="animación.png" alt="Hero"></div>
-        <h1 style="font-family:'Playfair Display'; font-size:42px; margin-top:20px;">Los mejores precios aquí</h1>
+        <h1 style="font-family:'Playfair Display'; font-size:38px; margin-top:15px;">Los mejores precios aquí</h1>
     </section>
 
     <div class="trust-accordion">
@@ -159,11 +149,11 @@
             <div class="acc-header">ENVÍOS A TODO CHILE 🇨🇱 <span>+</span></div>
             <div class="acc-content">Envíos asegurados por BlueExpress o Starken. Entrega inmediata en Santiago.</div>
         </div>
-        <div class="acc-item" onclick="toggleAcc(this)">
+        <div class="acc-item" onclick="this.classList.toggle('active')">
             <div class="acc-header">GARANTÍA REAL 🛡️ <span>+</span></div>
             <div class="acc-content">3 meses técnica y Garantía de Señal de por vida contra bloqueos IMEI.</div>
         </div>
-        <div class="acc-item" onclick="toggleAcc(this)">
+        <div class="acc-item" onclick="this.classList.toggle('active')">
             <div class="acc-header">MÉTODOS DE PAGO 💳 <span>+</span></div>
             <div class="acc-content">Efectivo, Transferencia y Tarjetas. Recibimos tu iPhone en parte de pago.</div>
         </div>
@@ -173,32 +163,41 @@
         <h2 class="cat-title">iPhones</h2>
         <div class="grid" id="grid-iphones"></div>
 
-        <h2 class="cat-title">Samsung & Otros</h2>
+        <h2 class="cat-title">MacBooks</h2>
+        <div class="grid"><div class="empty-msg" style="grid-column:1/-1; text-align:center; padding:40px; color:#999; font-weight:700;">No tenemos stock disponible en esta sección.</div></div>
+
+        <h2 class="cat-title">iPads</h2>
+        <div class="grid"><div class="empty-msg" style="grid-column:1/-1; text-align:center; padding:40px; color:#999; font-weight:700;">No tenemos stock disponible en esta sección.</div></div>
+
+        <h2 class="cat-title">Otros Modelos</h2>
         <div class="grid" id="grid-otros"></div>
     </div>
 
     <section class="reviews-section" id="reviews">
-        <h2 style="text-align:center; font-family:'Playfair Display'; font-size:38px;">Experiencias Elite</h2>
+        <h2 style="text-align:center; font-family:'Playfair Display'; font-size:34px;">Valoraciones de Clientes</h2>
         <div class="rev-grid" id="rev-list">
-            <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"Excelente equipo y atención. Muy confiables."</p><b>— Ricardo M.</b></div>
-            <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"El iPhone 16 Pro Max llegó impecable. Recomiendo."</p><b>— Sofía L.</b></div>
+            <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"Excelente iPhone 16 Pro Max, atención muy rápida en Santiago."</p><b>— Ricardo M.</b></div>
+            <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"El Samsung S24 Ultra llegó impecable. Confiables al 100%."</p><b>— Sofía L.</b></div>
+            <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"Recibieron mi 13 Pro en parte de pago. Negocio transparente."</p><b>— Javier O.</b></div>
+            <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"La mejor tienda de Chile. Despacho rápido a regiones."</p><b>— Manuel V.</b></div>
+            <div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"Equipo sellado con boleta. Súper profesionales."</p><b>— Constanza F.</b></div>
         </div>
     </section>
 
     <div class="rev-form">
-        <h3 style="text-align:center; margin-bottom:25px;">Deja tu valoración</h3>
-        <input type="text" id="rev-name" class="input-box" placeholder="Tu nombre">
+        <h3 style="text-align:center; margin-bottom:20px;">Deja tu valoración</h3>
+        <input type="text" id="rev-name" style="width:100%; padding:12px; border-radius:10px; border:1px solid #ddd; margin-bottom:12px;" placeholder="Tu nombre">
         <div class="stars-select" id="stars-input">
             <span onclick="setStars(1)">★</span><span onclick="setStars(2)">★</span><span onclick="setStars(3)">★</span><span onclick="setStars(4)">★</span><span onclick="setStars(5)">★</span>
         </div>
-        <textarea id="rev-msg" class="input-box" style="height:100px;" placeholder="Cuéntanos tu experiencia..."></textarea>
-        <button onclick="publishReview()" style="background:black; color:white; width:100%; padding:18px; border-radius:15px; font-weight:700; cursor:pointer;">PUBLICAR</button>
+        <textarea id="rev-msg" style="width:100%; height:80px; padding:12px; border-radius:10px; border:1px solid #ddd; margin-bottom:12px;" placeholder="Cuéntanos tu experiencia..."></textarea>
+        <button onclick="publishReview()" style="background:black; color:white; width:100%; padding:15px; border-radius:12px; font-weight:700; cursor:pointer;">PUBLICAR</button>
     </div>
 
     <nav class="bottom-nav">
         <a href="#inicio" class="nav-link">INICIO</a>
         <a href="https://wa.me/56964271938" target="_blank" class="nav-link wa-logo">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="26"><path d="M12.031 2c-5.513 0-9.99 4.477-9.99 9.99 0 2.012.597 3.886 1.624 5.454l-1.665 6.056 6.204-1.631c1.517.822 3.256 1.289 5.093 1.289 5.513 0 9.99-4.477 9.99-9.99a9.99 9.99 0 0 0-9.99-9.99z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24"><path d="M12.031 2c-5.513 0-9.99 4.477-9.99 9.99 0 2.012.597 3.886 1.624 5.454l-1.665 6.056 6.204-1.631c1.517.822 3.256 1.289 5.093 1.289 5.513 0 9.99-4.477 9.99-9.99a9.99 9.99 0 0 0-9.99-9.99z"/></svg>
             WHATSAPP
         </a>
         <a href="https://instagram.com/iphonelite.cl" target="_blank" class="nav-link">INSTAGRAM</a>
@@ -207,65 +206,68 @@
     <div id="modal-p" class="modal" onclick="closeM()">
         <div class="modal-box" onclick="event.stopPropagation()">
             <span class="close-modal" onclick="closeM()">&times;</span>
-            <h2 id="m-name" style="font-family:'Playfair Display'; margin-bottom:10px;"></h2>
-            <div id="m-price" style="font-size:26px; font-weight:700; color:var(--accent); margin-bottom:20px;"></div>
+            <h2 id="m-name" style="font-family:'Playfair Display'; margin-bottom:8px;"></h2>
+            <div id="m-price" style="font-size:24px; font-weight:700; color:var(--accent); margin-bottom:15px;"></div>
             
-            <span style="font-size:11px; font-weight:700; color:#999; text-transform:uppercase;">Elige Color</span>
-            <div id="m-colors" style="margin:10px 0 20px;"></div>
+            <span style="font-size:10px; font-weight:700; color:#999; text-transform:uppercase;">Color</span>
+            <div id="m-colors" style="margin:8px 0 15px;"></div>
 
-            <span style="font-size:11px; font-weight:700; color:#999; text-transform:uppercase;">Almacenamiento</span>
-            <div id="m-storage" style="margin:10px 0 30px;"></div>
+            <span style="font-size:10px; font-weight:700; color:#999; text-transform:uppercase;">Gigas</span>
+            <div id="m-storage" style="margin:8px 0 25px;"></div>
 
-            <img id="img-f" src="" alt="Frente" style="width:100%; height:280px; object-fit:contain; background:var(--gray-ios); border-radius:20px; padding:20px;">
+            <img id="img-f" src="" alt="Frente" style="width:100%; height:240px; object-fit:contain; background:var(--gray-ios); border-radius:15px; padding:15px;">
 
-            <button onclick="addToCart()" style="background:black; color:white; width:100%; padding:18px; border-radius:15px; font-weight:700; margin-top:20px; cursor:pointer;">AÑADIR AL CARRITO</button>
-            <a href="#" id="wa-final" style="background:var(--wa-green); color:white; text-decoration:none; display:flex; align-items:center; justify-content:center; padding:18px; border-radius:15px; font-weight:700; margin-top:10px;">CONSULTAR POR WHATSAPP</a>
+            <button onclick="addToCart()" style="background:black; color:white; width:100%; padding:15px; border-radius:12px; font-weight:700; margin-top:20px; cursor:pointer;">AÑADIR AL PEDIDO</button>
+            <a href="#" id="wa-final" style="background:var(--wa-green); color:white; text-decoration:none; display:flex; align-items:center; justify-content:center; padding:15px; border-radius:12px; font-weight:700; margin-top:10px;">WHATSAPP</a>
         </div>
     </div>
 
     <script>
-        // LISTADO COMPLETO (Desde el 11 al 17 Pro Max)
         const db = [
-            { id:'11', cat:'ip', name:'iPhone 11', slug:'iphone-11', price:'$169.990', tag:null, colors:['Rojo','Negro','Blanco'], storage:['64GB','128GB'] },
-            { id:'11p', cat:'ip', name:'iPhone 11 Pro', slug:'iphone-11-pro', price:'$249.990', tag:null, colors:['Verde Noche','Gris'], storage:['64GB','256GB'] },
+            // IPHONES
+            { id:'11', cat:'ip', name:'iPhone 11', slug:'iphone-11', price:'$169.990', tag:null, colors:['Rojo','Negro'], storage:['64GB','128GB'] },
+            { id:'11p', cat:'ip', name:'iPhone 11 Pro', slug:'iphone-11-pro', price:'$249.990', tag:null, colors:['Gris','Verde'], storage:['64GB','256GB'] },
             { id:'11pm', cat:'ip', name:'iPhone 11 Pro Max', slug:'iphone-11-pm', price:'$289.990', tag:null, colors:['Gris','Oro'], storage:['64GB','256GB'] },
             { id:'12m', cat:'ip', name:'iPhone 12 mini', slug:'iphone-12-mini', price:'$219.990', tag:null, colors:['Azul','Rojo'], storage:['64GB','128GB'] },
-            { id:'12', cat:'ip', name:'iPhone 12', slug:'iphone-12', price:'$239.990', tag:null, colors:['Negro','Blanco'], storage:['64GB','128GB'] },
+            { id:'12', cat:'ip', name:'iPhone 12', slug:'iphone-12', price:'$239.990', tag:null, colors:['Blanco','Negro'], storage:['64GB','128GB'] },
             { id:'12p', cat:'ip', name:'iPhone 12 Pro', slug:'iphone-12-pro', price:'$329.990', tag:null, colors:['Oro','Grafito'], storage:['128GB','256GB'] },
             { id:'12pm', cat:'ip', name:'iPhone 12 Pro Max', slug:'iphone-12-pm', price:'$379.990', tag:'Agotado', colors:['Azul','Gris'], storage:['128GB','256GB'] },
             { id:'13m', cat:'ip', name:'iPhone 13 mini', slug:'iphone-13-mini', price:'$310.000', tag:null, colors:['Rosa','Azul'], storage:['128GB','256GB'] },
-            { id:'13', cat:'ip', name:'iPhone 13', slug:'iphone-13', price:'$380.000', tag:null, colors:['Azul','Rojo'], storage:['128GB','256GB'] },
+            { id:'13', cat:'ip', name:'iPhone 13', slug:'iphone-13', price:'$380.000', tag:null, colors:['Rojo','Azul'], storage:['128GB','256GB'] },
             { id:'13p', cat:'ip', name:'iPhone 13 Pro', slug:'iphone-13-pro', price:'$449.990', tag:null, colors:['Sierra Blue','Oro'], storage:['128GB','256GB'] },
-            { id:'13pm', cat:'ip', name:'iPhone 13 Pro Max', slug:'iphone-13-pm', price:'$499.990', tag:null, colors:['Sierra Blue','Alpino'], storage:['128GB','256GB'] },
+            { id:'13pm', cat:'ip', name:'iPhone 13 Pro Max', slug:'iphone-13-pm', price:'$499.990', tag:null, colors:['Verde','Sierra Blue'], storage:['128GB','256GB'] },
             { id:'14', cat:'ip', name:'iPhone 14', slug:'iphone-14', price:'$450.000', tag:null, colors:['Púrpura','Azul'], storage:['128GB','256GB'] },
             { id:'14pl', cat:'ip', name:'iPhone 14 Plus', slug:'iphone-14-plus', price:'$510.000', tag:null, colors:['Amarillo','Rojo'], storage:['128GB','256GB'] },
-            { id:'14p', cat:'ip', name:'iPhone 14 Pro', slug:'iphone-14-pro', price:'$589.990', tag:null, colors:['Morado','Oro'], storage:['128GB','256GB'] },
-            { id:'14pm', cat:'ip', name:'iPhone 14 Pro Max', slug:'iphone-14-pm', price:'$659.990', tag:null, colors:['Negro','Plata'], storage:['256GB'] },
-            { id:'15', cat:'ip', name:'iPhone 15', slug:'iphone-15', price:'$569.990', tag:null, colors:['Rosa','Azul'], storage:['128GB','256GB'] },
-            { id:'15pl', cat:'ip', name:'iPhone 15 Plus', slug:'iphone-15-plus', price:'$620.000', tag:null, colors:['Verde','Negro'], storage:['128GB','256GB'] },
-            { id:'15p', cat:'ip', name:'iPhone 15 Pro', slug:'iphone-15-pro', price:'$669.990', tag:null, colors:['Titanio','Blanco'], storage:['128GB','256GB'] },
-            { id:'15pm', cat:'ip', name:'iPhone 15 Pro Max', slug:'iphone-15-pm', price:'$769.990', tag:null, colors:['Azul','Negro'], storage:['256GB'] },
-            { id:'16', cat:'ip', name:'iPhone 16', slug:'iphone-16', price:'$669.990', tag:null, colors:['Teal','Rosa'], storage:['128GB','256GB'] },
-            { id:'16pl', cat:'ip', name:'iPhone 16 Plus', slug:'iphone-16-plus', price:'$740.000', tag:null, colors:['Ultramarino','Blanco'], storage:['128GB','256GB'] },
-            { id:'16p', cat:'ip', name:'iPhone 16 Pro', slug:'iphone-16-pro', price:'$820.000', tag:null, colors:['Titanio','Natural'], storage:['128GB','256GB'] },
+            { id:'14p', cat:'ip', name:'iPhone 14 Pro', slug:'iphone-14-pro', price:'$589.990', colors:['Oro','Plata'], storage:['128GB'] },
+            { id:'14pm', cat:'ip', name:'iPhone 14 Pro Max', slug:'iphone-14-pm', price:'$659.990', colors:['Negro'], storage:['256GB'] },
+            { id:'15', cat:'ip', name:'iPhone 15', slug:'iphone-15', price:'$569.990', tag:null, colors:['Rosa','Azul'], storage:['128GB'] },
+            { id:'15pl', cat:'ip', name:'iPhone 15 Plus', slug:'iphone-15-plus', price:'$620.000', tag:null, colors:['Verde','Negro'], storage:['128GB'] },
+            { id:'15p', cat:'ip', name:'iPhone 15 Pro', slug:'iphone-15-pro', price:'$669.990', colors:['Titanio'], storage:['128GB'] },
+            { id:'15pm', cat:'ip', name:'iPhone 15 Pro Max', slug:'iphone-15-pm', price:'$769.990', colors:['Negro'], storage:['256GB'] },
+            { id:'16', cat:'ip', name:'iPhone 16', slug:'iphone-16', price:'$669.990', colors:['Rosa','Teal'], storage:['128GB'] },
+            { id:'16pl', cat:'ip', name:'iPhone 16 Plus', slug:'iphone-16-plus', price:'$740.000', colors:['Ultramarino'], storage:['128GB'] },
+            { id:'16p', cat:'ip', name:'iPhone 16 Pro', slug:'iphone-16-pro', price:'$820.000', colors:['Natural'], storage:['128GB'] },
             { id:'16pm', cat:'ip', name:'iPhone 16 Pro Max', slug:'iphone-16-pm', price:'$879.990', tag:'Oferta', colors:['Blanco','Negro'], storage:['256GB'] },
-            { id:'16e', cat:'ip', name:'iPhone 16e', slug:'iphone-16e', price:'$599.990', tag:null, colors:['Negro','Blanco'], storage:['128GB'] },
-            { id:'17', cat:'ip', name:'iPhone 17', slug:'iphone-17', price:'$920.000', tag:null, colors:['Negro','Plata'], storage:['128GB'] },
+            { id:'16e', cat:'ip', name:'iPhone 16e', slug:'iphone-16e', price:'$599.990', colors:['Negro'], storage:['128GB'] },
+            { id:'17', cat:'ip', name:'iPhone 17', slug:'iphone-17', price:'$920.000', colors:['Negro'], storage:['128GB'] },
             { id:'17a', cat:'ip', name:'iPhone 17 Air', slug:'iphone-17-air', price:'$940.800', tag:'Agotado', colors:['Titanio'], storage:['256GB'] },
-            { id:'17p', cat:'ip', name:'iPhone 17 Pro', slug:'iphone-17-pro', price:'$1.325.000', tag:null, colors:['Oscuro','Blanco'], storage:['256GB'] },
-            { id:'17pm', cat:'ip', name:'iPhone 17 Pro Max', slug:'iphone-17-pm', price:'$1.431.000', tag:null, colors:['Naranja 🍊','Titanio'], storage:['256GB','512GB'] },
-            { id:'s24u', cat:'ot', name:'Samsung S24 Ultra', slug:'s24-ultra', price:'$589.990', tag:null, colors:['Negro'], storage:['256GB','512GB'] }
+            { id:'17p', cat:'ip', name:'iPhone 17 Pro', slug:'iphone-17-pro', price:'$1.325.000', colors:['Blanco'], storage:['256GB'] },
+            { id:'17pm', cat:'ip', name:'iPhone 17 Pro Max', slug:'iphone-17-pm', price:'$1.431.000', colors:['Naranja 🍊'], storage:['256GB','1TB'] },
+
+            // OTROS MODELOS ACTUALIZADOS
+            { id:'s26u', cat:'ot', name:'Samsung S26 Ultra', slug:'s26-ultra', price:'$999.990', tag:'Semi-nuevo', colors:['Blue 🥶'], storage:['256GB'], specs:'12GB RAM' },
+            { id:'s24u_256', cat:'ot', name:'Samsung S24 Ultra', slug:'s24-ultra', price:'$589.990', tag:'Semi-nuevo', colors:['Negro ⚫️'], storage:['256GB'], specs:'12GB RAM' },
+            { id:'s24u_512', cat:'ot', name:'Samsung S24 Ultra', slug:'s24-ultra', price:'$619.990', tag:'Semi-nuevo', colors:['Negro ⚫️'], storage:['512GB'], specs:'12GB RAM' }
         ];
 
         let cartCount = 0;
         let selectedStars = 0;
-        const badWords = ["weon", "culiao", "mierda", "estafa", "puta"]; // Filtro básico
+        const badWords = ["weon", "culiao", "mierda", "estafa", "puta"];
 
         function render(items = db) {
             const ig = document.getElementById('grid-iphones');
             const og = document.getElementById('grid-otros');
             ig.innerHTML = ''; og.innerHTML = '';
-            
             items.forEach(p => {
                 const card = `
                 <div class="product-item reveal" onclick="openM('${p.id}')">
@@ -275,7 +277,7 @@
                     </div>
                     <div class="info-box">
                         <div class="model-name">${p.name}</div>
-                        <div class="model-price">A partir de ${p.price}</div>
+                        <div class="model-price">${p.price}</div>
                     </div>
                 </div>`;
                 if(p.cat === 'ip') ig.innerHTML += card; else og.innerHTML += card;
@@ -296,8 +298,8 @@
                 </div>`).join('');
         }
 
-        function openCart() { alert(`Tu carrito tiene ${cartCount} productos.`); }
-        function addToCart() { cartCount++; document.getElementById('cart-count').innerText = cartCount; alert("Añadido!"); closeM(); }
+        function openCart() { alert(`Tienes ${cartCount} productos listos para coordinar.`); }
+        function addToCart() { cartCount++; document.getElementById('cart-count').innerText = cartCount; alert("Agregado al pedido."); closeM(); }
 
         function setStars(n) {
             selectedStars = n;
@@ -308,15 +310,8 @@
         function publishReview() {
             const name = document.getElementById('rev-name').value;
             const msg = document.getElementById('rev-msg').value.toLowerCase();
-            
-            // FILTRO INTELIGENTE
-            if(!name || !msg || selectedStars < 4) {
-                return alert("Solo se publican valoraciones de 4 y 5 estrellas.");
-            }
-            if(badWords.some(w => msg.includes(w))) {
-                return alert("Tu comentario contiene palabras no permitidas.");
-            }
-
+            if(!name || !msg || selectedStars < 4) return alert("Solo se publican valoraciones de 4 y 5 estrellas.");
+            if(badWords.some(w => msg.includes(w))) return alert("Comentario no permitido.");
             const card = document.createElement('div');
             card.className = 'rev-card reveal active';
             card.innerHTML = `<div class="rev-stars">${"★".repeat(selectedStars)}</div><p>"${msg}"</p><b>— ${name}</b>`;
@@ -332,7 +327,7 @@
             document.getElementById('img-f').src = `${p.slug}-front.jpg.png`;
             document.getElementById('m-colors').innerHTML = p.colors.map((c,i) => `<span class="variant-btn ${i===0?'active':''}" onclick="setV(this)">${c}</span>`).join('');
             document.getElementById('m-storage').innerHTML = p.storage.map((s,i) => `<span class="variant-btn ${i===0?'active':''}" onclick="setV(this)">${s}</span>`).join('');
-            document.getElementById('wa-final').href = `https://wa.me/56964271938?text=Me interesa el ${p.name}`;
+            document.getElementById('wa-final').href = `https://wa.me/56964271938?text=Hola! Me interesa el ${p.name}`;
             document.getElementById('modal-p').style.display = 'flex';
         }
 
