@@ -1121,18 +1121,17 @@
             letter-spacing: 0.04em;
         }
 
-        /* ─── TRADE-IN BANNER ─── */
+        /* ─── TRADE-IN (FORMULARIO PARTE DE PAGO) ─── */
         .tradein {
             margin: 60px auto;
             max-width: 1100px;
-            background: linear-gradient(115deg, var(--ink) 0%, #2d2d30 100%);
+            background: linear-gradient(135deg, var(--ink) 0%, #25252A 100%);
             border-radius: 24px;
-            padding: 40px 36px;
+            padding: 40px 30px;
             color: var(--bg);
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
-            align-items: center;
+            gap: 30px;
             overflow: hidden;
             position: relative;
         }
@@ -1140,19 +1139,22 @@
         .tradein::before {
             content: '';
             position: absolute;
-            top: -80px;
-            right: -80px;
-            width: 280px;
-            height: 280px;
+            top: -120px;
+            right: -120px;
+            width: 340px;
+            height: 340px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(212, 186, 148, 0.25) 0%, transparent 70%);
-            filter: blur(20px);
+            background: radial-gradient(circle, rgba(212, 186, 148, 0.22) 0%, transparent 70%);
+            filter: blur(30px);
+            pointer-events: none;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 860px) {
             .tradein {
-                grid-template-columns: 1.4fr 1fr;
-                padding: 50px 50px;
+                grid-template-columns: 1fr 1.25fr;
+                padding: 48px;
+                gap: 40px;
+                align-items: start;
             }
         }
 
@@ -1165,75 +1167,277 @@
             display: inline-block;
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.14em;
             color: var(--accent-soft);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             text-transform: uppercase;
         }
 
         .tradein h3 {
             font-family: 'Fraunces', serif;
-            font-size: clamp(24px, 3.5vw, 34px);
+            font-size: clamp(24px, 3.5vw, 32px);
             font-weight: 600;
             line-height: 1.15;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             letter-spacing: -0.02em;
         }
 
-        .tradein p {
+        .tradein-lead {
             color: rgba(250, 247, 242, 0.75);
             font-size: 14px;
             margin-bottom: 20px;
-            max-width: 420px;
+            line-height: 1.55;
         }
 
-        .tradein-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg);
-            color: var(--ink);
-            padding: 13px 22px;
-            border-radius: 100px;
-            text-decoration: none;
+        .tradein-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .tradein-bullets li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
             font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.03em;
-            transition: transform 0.2s;
+            color: rgba(250, 247, 242, 0.85);
         }
 
-        .tradein-cta:hover {
+        .tradein-bullets svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent-soft);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Formulario */
+        .tradein-form {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .tf-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        @media (min-width: 640px) {
+            .tf-row.two {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .tf-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .tf-field label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: rgba(250, 247, 242, 0.7);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tf-field label .num {
+            color: var(--accent-soft);
+            font-family: 'Fraunces', serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .tf-field input,
+        .tf-field select,
+        .tf-field textarea {
+            width: 100%;
+            padding: 11px 13px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 13px;
+            color: var(--bg);
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .tf-field input::placeholder,
+        .tf-field textarea::placeholder {
+            color: rgba(250, 247, 242, 0.35);
+        }
+
+        .tf-field input:focus,
+        .tf-field select:focus,
+        .tf-field textarea:focus {
+            outline: none;
+            border-color: var(--accent-soft);
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .tf-field select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23D4BA94' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        .tf-field select option {
+            background: var(--ink);
+            color: var(--bg);
+        }
+
+        .tf-field textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+
+        .tf-radio-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tf-radio {
+            flex: 1;
+            min-width: 80px;
+            position: relative;
+        }
+
+        .tf-radio input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .tf-radio span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9px;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(250, 247, 242, 0.8);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .tf-radio input:checked + span {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .tf-radio span:hover {
+            border-color: var(--accent-soft);
+        }
+
+        .tf-photo-drop {
+            border: 1.5px dashed rgba(255, 255, 255, 0.18);
+            border-radius: 10px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .tf-photo-drop:hover {
+            border-color: var(--accent-soft);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .tf-photo-drop svg {
+            width: 22px;
+            height: 22px;
+            color: var(--accent-soft);
+            flex-shrink: 0;
+        }
+
+        .tf-photo-drop b {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--bg);
+        }
+
+        .tf-photo-drop small {
+            font-size: 10px;
+            color: rgba(250, 247, 242, 0.55);
+        }
+
+        #tf-photo-input {
+            display: none;
+        }
+
+        #tf-photo-previews {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        #tf-photo-previews .photo-preview {
+            width: 54px;
+            height: 54px;
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .tf-submit {
+            margin-top: 6px;
+            width: 100%;
+            padding: 15px;
+            background: var(--wa);
+            color: white;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: 0.25s;
+            box-shadow: 0 14px 30px rgba(37, 211, 102, 0.28);
+        }
+
+        .tf-submit:hover {
             transform: translateY(-2px);
         }
 
-        .tradein-steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            position: relative;
-            z-index: 1;
+        .tf-submit svg {
+            width: 18px;
+            height: 18px;
         }
 
-        .tradein-step {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 14px 10px;
+        .tf-note {
+            font-size: 11px;
+            color: rgba(250, 247, 242, 0.55);
             text-align: center;
-        }
-
-        .tradein-step b {
-            display: block;
-            font-family: 'Fraunces', serif;
-            font-size: 20px;
-            color: var(--accent-soft);
-            margin-bottom: 4px;
-        }
-
-        .tradein-step span {
-            font-size: 10px;
-            color: rgba(250, 247, 242, 0.7);
-            letter-spacing: 0.04em;
+            line-height: 1.5;
         }
 
         /* ─── BRANDS STRIP ─── */
@@ -2983,29 +3187,157 @@
             </div>
             <div class="grid reveal" id="grid-reac"></div>
 
-            <section class="tradein reveal">
+            <section class="tradein reveal" id="tradein">
                 <div class="tradein-text">
                     <span class="tradein-eyebrow">Parte de pago</span>
                     <h3>Renueva tu equipo.<br>Nosotros valoramos el tuyo.</h3>
-                    <p>Recibimos tu iPhone o Samsung actual y lo descontamos de tu próxima compra. Cotización
-                        transparente en menos de 24 horas.</p>
-                    <a href="https://wa.me/56964271938?text=Hola,%20quiero%20cotizar%20mi%20equipo%20en%20parte%20de%20pago"
-                        target="_blank" class="tradein-cta">Cotizar mi equipo →</a>
+                    <p class="tradein-lead">Completa el formulario con los datos de tu equipo y recibe tu cotización
+                        por WhatsApp. Cuanto más detalle envíes, más exacta y rápida es nuestra oferta.</p>
+                    <ul class="tradein-bullets">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M20 6 9 17l-5-5"></path>
+                            </svg>
+                            Cotización en menos de 24 horas
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M20 6 9 17l-5-5"></path>
+                            </svg>
+                            Oferta transparente sin compromiso
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M20 6 9 17l-5-5"></path>
+                            </svg>
+                            Descuento directo al comprar tu próximo equipo
+                        </li>
+                    </ul>
                 </div>
-                <div class="tradein-steps">
-                    <div class="tradein-step">
-                        <b>01</b>
-                        <span>ENVÍANOS<br>FOTOS</span>
+
+                <form class="tradein-form" onsubmit="enviarCotizacion(event)">
+                    <div class="tf-field">
+                        <label for="tf-modelo"><span class="num">1</span> Marca y modelo</label>
+                        <input type="text" id="tf-modelo" placeholder="Ej. iPhone 13 Pro, Samsung S23 Ultra" required>
                     </div>
-                    <div class="tradein-step">
-                        <b>02</b>
-                        <span>RECIBE TU<br>OFERTA</span>
+
+                    <div class="tf-row two">
+                        <div class="tf-field">
+                            <label for="tf-gb"><span class="num">2</span> Capacidad</label>
+                            <select id="tf-gb" required>
+                                <option value="">Selecciona</option>
+                                <option>64 GB</option>
+                                <option>128 GB</option>
+                                <option>256 GB</option>
+                                <option>512 GB</option>
+                                <option>1 TB</option>
+                            </select>
+                        </div>
+                        <div class="tf-field">
+                            <label for="tf-color"><span class="num">3</span> Color</label>
+                            <input type="text" id="tf-color" placeholder="Ej. Negro, Titanio natural" required>
+                        </div>
                     </div>
-                    <div class="tradein-step">
-                        <b>03</b>
-                        <span>CAMBIA TU<br>EQUIPO</span>
+
+                    <div class="tf-field">
+                        <label><span class="num">4</span> Condición del equipo</label>
+                        <div class="tf-radio-group">
+                            <label class="tf-radio">
+                                <input type="radio" name="tf-cond" value="Nuevo">
+                                <span>Nuevo</span>
+                            </label>
+                            <label class="tf-radio">
+                                <input type="radio" name="tf-cond" value="Semi-nuevo">
+                                <span>Semi-nuevo</span>
+                            </label>
+                            <label class="tf-radio">
+                                <input type="radio" name="tf-cond" value="Usado">
+                                <span>Usado</span>
+                            </label>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="tf-field">
+                        <label for="tf-fisico"><span class="num">5</span> Estado físico</label>
+                        <textarea id="tf-fisico"
+                            placeholder="Describe detalles: rayas, golpes, pantalla, carcasa, cámara…"></textarea>
+                    </div>
+
+                    <div class="tf-row two">
+                        <div class="tf-field">
+                            <label for="tf-bateria"><span class="num">6</span> Estado de batería</label>
+                            <input type="text" id="tf-bateria" placeholder="Ej. 89% salud">
+                        </div>
+                        <div class="tf-field">
+                            <label for="tf-imei"><span class="num">10</span> IMEI (marca *#06#)</label>
+                            <input type="text" id="tf-imei" placeholder="15 dígitos">
+                        </div>
+                    </div>
+
+                    <div class="tf-field">
+                        <label for="tf-func"><span class="num">7</span> Funcionamiento general</label>
+                        <textarea id="tf-func"
+                            placeholder="¿Todo funciona bien? Si hay fallas, descríbelas aquí."></textarea>
+                    </div>
+
+                    <div class="tf-row two">
+                        <div class="tf-field">
+                            <label><span class="num">8</span> Incluye caja</label>
+                            <div class="tf-radio-group">
+                                <label class="tf-radio">
+                                    <input type="radio" name="tf-caja" value="Sí">
+                                    <span>Sí</span>
+                                </label>
+                                <label class="tf-radio">
+                                    <input type="radio" name="tf-caja" value="No">
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="tf-field">
+                            <label><span class="num">9</span> Factura o boleta</label>
+                            <div class="tf-radio-group">
+                                <label class="tf-radio">
+                                    <input type="radio" name="tf-boleta" value="Sí">
+                                    <span>Sí</span>
+                                </label>
+                                <label class="tf-radio">
+                                    <input type="radio" name="tf-boleta" value="No">
+                                    <span>No</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tf-field">
+                        <label><span class="num">11</span> Fotos del equipo (opcional)</label>
+                        <label class="tf-photo-drop" for="tf-photo-input">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                                <circle cx="9" cy="10" r="2"></circle>
+                                <path d="m21 15-5-5L5 21"></path>
+                            </svg>
+                            <div>
+                                <b>Sube fotos: frente, atrás, costados</b>
+                                <small>No son obligatorias si el equipo no tiene detalles estéticos</small>
+                            </div>
+                        </label>
+                        <input type="file" id="tf-photo-input" accept="image/*" multiple
+                            onchange="handleTradeinPhotos(event)">
+                        <div id="tf-photo-previews"></div>
+                    </div>
+
+                    <button type="submit" class="tf-submit">
+                        <svg viewBox="0 0 32 32">
+                            <path fill="#fff"
+                                d="M16.003 29.138h-.005a13.15 13.15 0 0 1-6.698-1.834l-.48-.285-4.974 1.305 1.327-4.85-.313-.498a13.13 13.13 0 0 1-2.013-7.01c.003-7.263 5.916-13.175 13.189-13.175 3.52 0 6.83 1.374 9.316 3.865a13.07 13.07 0 0 1 3.858 9.326c-.004 7.263-5.917 13.156-13.207 13.156z">
+                            </path>
+                        </svg>
+                        Enviar cotización por WhatsApp
+                    </button>
+                    <p class="tf-note">Se abrirá WhatsApp con toda tu información lista para enviar.<br>Las fotos se
+                        adjuntan dentro del chat.</p>
+                </form>
             </section>
 
             <div class="section-head reveal">
@@ -3074,82 +3406,6 @@
                     target="_blank" class="empty-cta">Consultar disponibilidad →</a>
             </div>
 
-            <section class="why-wa reveal">
-                <div class="why-wa-head">
-                    <span class="why-wa-eyebrow">
-                        <svg viewBox="0 0 32 32">
-                            <path fill="currentColor"
-                                d="M16.003 29.138h-.005a13.15 13.15 0 0 1-6.698-1.834l-.48-.285-4.974 1.305 1.327-4.85-.313-.498a13.13 13.13 0 0 1-2.013-7.01c.003-7.263 5.916-13.175 13.189-13.175 3.52 0 6.83 1.374 9.316 3.865a13.07 13.07 0 0 1 3.858 9.326c-.004 7.263-5.917 13.156-13.207 13.156z">
-                            </path>
-                        </svg>
-                        Atención por WhatsApp
-                    </span>
-                    <h2>Acá no hablas con un bot,<br>hablas con <em>nosotros.</em></h2>
-                    <p class="why-wa-lead">Cada cliente es único. Por eso todas las compras se concretan por WhatsApp,
-                        donde resolvemos dudas reales, mostramos videos del equipo y acompañamos la entrega paso a paso.
-                    </p>
-                </div>
-
-                <div class="why-grid">
-                    <div class="why-item">
-                        <div class="why-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"></path>
-                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                                <circle cx="9" cy="10" r="1" fill="currentColor"></circle>
-                                <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
-                            </svg>
-                        </div>
-                        <h4>Atención cálida y humana</h4>
-                        <p>Te respondemos personalmente. Nada de formularios ni esperas, solo una conversación real.
-                        </p>
-                    </div>
-                    <div class="why-item">
-                        <div class="why-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <rect x="2" y="6" width="14" height="12" rx="2"></rect>
-                                <path d="m22 8-6 4 6 4V8z"></path>
-                            </svg>
-                        </div>
-                        <h4>Videos en vivo del equipo</h4>
-                        <p>Te mostramos el iPhone antes de comprar: batería, caja, colores. Sin sorpresas.</p>
-                    </div>
-                    <div class="why-item">
-                        <div class="why-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
-                                <path d="m9 12 2 2 4-4"></path>
-                            </svg>
-                        </div>
-                        <h4>Asesoría sin presión</h4>
-                        <p>Te recomendamos el modelo ideal según tu uso y presupuesto. Sin venderte de más.</p>
-                    </div>
-                    <div class="why-item">
-                        <div class="why-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 6v6l4 2"></path>
-                            </svg>
-                        </div>
-                        <h4>Respuesta en minutos</h4>
-                        <p>Lunes a domingo, de 10:00 a 22:00 hrs. Respuesta promedio de 3 minutos.</p>
-                    </div>
-                </div>
-
-                <div class="why-cta-wrap">
-                    <a href="https://wa.me/56964271938?text=Hola,%20quiero%20asesoría%20personalizada"
-                        target="_blank" class="why-cta">
-                        <svg viewBox="0 0 32 32" width="20" height="20">
-                            <path fill="#fff"
-                                d="M16.003 29.138h-.005a13.15 13.15 0 0 1-6.698-1.834l-.48-.285-4.974 1.305 1.327-4.85-.313-.498a13.13 13.13 0 0 1-2.013-7.01c.003-7.263 5.916-13.175 13.189-13.175 3.52 0 6.83 1.374 9.316 3.865a13.07 13.07 0 0 1 3.858 9.326c-.004 7.263-5.917 13.156-13.207 13.156zm7.24-9.86c-.396-.2-2.348-1.158-2.711-1.29-.364-.132-.628-.198-.892.198-.265.396-1.024 1.29-1.255 1.555-.23.264-.462.297-.858.099-.397-.198-1.675-.617-3.19-1.97-1.18-1.052-1.976-2.354-2.207-2.75-.232-.397-.025-.61.174-.808.179-.178.397-.462.595-.694.198-.232.265-.397.397-.661.132-.265.066-.497-.033-.694-.099-.198-.892-2.15-1.223-2.943-.322-.773-.65-.668-.892-.68-.23-.012-.495-.014-.76-.014s-.694.099-1.058.497c-.363.397-1.388 1.357-1.388 3.309s1.421 3.838 1.62 4.102c.198.265 2.797 4.273 6.777 5.99 2.2.95 3.12 1.058 4.164.902.636-.095 1.951-.797 2.225-1.565.274-.769.274-1.427.192-1.565-.082-.148-.297-.214-.694-.412z">
-                            </path>
-                        </svg>
-                        Hablar con un asesor
-                    </a>
-                    <p class="why-note">Atendemos por el +56 9 6427 1938 · Respondemos en minutos</p>
-                </div>
-            </section>
-
             <div class="section-head reveal">
                 <h2 class="section-title">Preguntas frecuentes</h2>
             </div>
@@ -3174,6 +3430,13 @@
                     <div class="acc-h">Métodos de pago <span>+</span></div>
                     <div class="acc-c">Aceptamos efectivo, transferencia bancaria y tarjetas de crédito. Además
                         recibimos tu equipo actual como parte de pago para que renovarte sea más fácil.</div>
+                </div>
+                <div class="acc" onclick="this.classList.toggle('active')">
+                    <div class="acc-h">¿Por qué trabajamos por WhatsApp? <span>+</span></div>
+                    <div class="acc-c">Porque cada cliente es único. Por WhatsApp te damos atención cálida y
+                        personalizada, resolvemos tus dudas al instante, te mostramos videos reales del equipo antes de
+                        comprar, te asesoramos según tu presupuesto sin presionarte, y te acompañamos desde la compra
+                        hasta la entrega. Atendemos lunes a domingo de 10:00 a 22:00 hrs con respuesta en minutos.</div>
                 </div>
             </div>
 
@@ -4053,6 +4316,85 @@
             t.classList.add('show');
             clearTimeout(toastTimer);
             toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+        }
+
+        // ─── Cotización parte de pago ───
+        let tradeinPhotos = [];
+
+        function handleTradeinPhotos(e) {
+            const files = Array.from(e.target.files);
+            for (const f of files) {
+                if (tradeinPhotos.length >= 8) {
+                    showToast('Máximo 8 fotos');
+                    break;
+                }
+                if (!f.type.startsWith('image/')) continue;
+                const reader = new FileReader();
+                reader.onload = ev => {
+                    tradeinPhotos.push({ name: f.name, data: ev.target.result });
+                    renderTradeinPreviews();
+                };
+                reader.readAsDataURL(f);
+            }
+            e.target.value = '';
+        }
+
+        function renderTradeinPreviews() {
+            const el = document.getElementById('tf-photo-previews');
+            el.innerHTML = tradeinPhotos.map((p, i) => `
+                <div class="photo-preview">
+                    <img src="${p.data}" alt="${p.name}">
+                    <button type="button" onclick="removeTradeinPhoto(${i})" aria-label="Quitar">×</button>
+                </div>`).join('');
+        }
+
+        function removeTradeinPhoto(i) {
+            tradeinPhotos.splice(i, 1);
+            renderTradeinPreviews();
+        }
+
+        function enviarCotizacion(e) {
+            e.preventDefault();
+            const get = id => document.getElementById(id).value.trim();
+            const getRadio = n => (document.querySelector(`input[name="${n}"]:checked`) || {}).value || '—';
+
+            const modelo = get('tf-modelo');
+            const gb = get('tf-gb');
+            const color = get('tf-color');
+            const cond = getRadio('tf-cond');
+            const fisico = get('tf-fisico') || 'Sin detalles informados';
+            const bateria = get('tf-bateria') || '—';
+            const func = get('tf-func') || 'Todo funciona correctamente';
+            const caja = getRadio('tf-caja');
+            const boleta = getRadio('tf-boleta');
+            const imei = get('tf-imei') || '—';
+
+            if (!modelo || !gb || !color) {
+                showToast('Completa modelo, capacidad y color');
+                return;
+            }
+
+            const fotosTxt = tradeinPhotos.length
+                ? `${tradeinPhotos.length} foto${tradeinPhotos.length > 1 ? 's' : ''} adjunta${tradeinPhotos.length > 1 ? 's' : ''} en el chat`
+                : 'Sin fotos (equipo sin detalles estéticos)';
+
+            const msg =
+                `Hola iPhone Elite, quiero cotizar mi equipo en parte de pago:\n\n` +
+                `1️⃣ Marca y modelo: ${modelo}\n` +
+                `2️⃣ Capacidad: ${gb}\n` +
+                `3️⃣ Color: ${color}\n` +
+                `4️⃣ Condición: ${cond}\n` +
+                `5️⃣ Estado físico: ${fisico}\n` +
+                `6️⃣ Estado de batería: ${bateria}\n` +
+                `7️⃣ Funcionamiento: ${func}\n` +
+                `8️⃣ Incluye caja: ${caja}\n` +
+                `9️⃣ Factura/Boleta: ${boleta}\n` +
+                `🔟 IMEI: ${imei}\n` +
+                `1️⃣1️⃣ Fotos: ${fotosTxt}\n\n` +
+                `Quedo atento a la oferta. ¡Gracias!`;
+
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+            showToast('Abriendo WhatsApp con tu cotización…');
         }
 
         // ─── Reseña con fotos ───
