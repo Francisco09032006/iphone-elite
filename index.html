@@ -206,19 +206,36 @@
             position: sticky;
             top: 0;
             z-index: 3500;
-            background: linear-gradient(90deg, var(--urgent-dark) 0%, var(--urgent) 50%, var(--urgent-dark) 100%);
+            background: linear-gradient(90deg, #7F1D1D 0%, #B91C1C 35%, #DC2626 50%, #B91C1C 65%, #7F1D1D 100%);
             color: white;
-            padding: 9px 16px;
-            text-align: center;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.03em;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 18px;
             flex-wrap: wrap;
+            box-shadow: 0 3px 14px rgba(220, 38, 38, 0.28), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
             animation: slideDown 0.6s ease-out;
+            overflow: hidden;
+        }
+
+        #countdown-bar::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(100deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.12) 50%, transparent 60%, transparent 100%);
+            animation: cdShimmer 3.5s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes cdShimmer {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(100%);
+            }
         }
 
         @keyframes slideDown {
@@ -231,9 +248,18 @@
             }
         }
 
+        .cd-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
         .cd-icon {
-            font-size: 14px;
+            font-size: 16px;
             animation: bolt 1.4s ease-in-out infinite;
+            filter: drop-shadow(0 0 6px rgba(255, 220, 100, 0.6));
         }
 
         @keyframes bolt {
@@ -241,69 +267,163 @@
             0%,
             100% {
                 transform: scale(1) rotate(0);
-                opacity: 1;
             }
 
             50% {
-                transform: scale(1.2) rotate(-8deg);
-                opacity: 0.85;
+                transform: scale(1.18) rotate(-8deg);
             }
         }
 
-        .cd-timer {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: rgba(0, 0, 0, 0.22);
-            padding: 4px 10px;
-            border-radius: 6px;
+        .cd-copy {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .cd-title {
             font-family: 'Fraunces', serif;
+            font-size: 13px;
             font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.04em;
+        }
+
+        .cd-sub {
+            font-size: 9px;
+            opacity: 0.78;
+            letter-spacing: 0.14em;
+            font-weight: 600;
+            margin-top: 2px;
+            text-transform: uppercase;
+        }
+
+        .cd-timer-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cd-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.32);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 9px;
+            padding: 5px 10px 4px;
+            min-width: 46px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .cd-num {
+            font-family: 'Fraunces', serif;
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1;
             font-variant-numeric: tabular-nums;
+            letter-spacing: -0.01em;
+            display: inline-block;
         }
 
-        .cd-timer.pulse {
-            animation: cdPulse 1s ease-in-out infinite;
+        .cd-num.flip {
+            animation: flipDigit 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        @keyframes cdPulse {
+        @keyframes flipDigit {
+            0% {
+                transform: rotateX(0);
+            }
+
+            50% {
+                transform: rotateX(90deg);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: rotateX(0);
+            }
+        }
+
+        .cd-lbl {
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            opacity: 0.7;
+            margin-top: 3px;
+        }
+
+        .cd-sep {
+            font-family: 'Fraunces', serif;
+            font-size: 18px;
+            font-weight: 700;
+            opacity: 0.5;
+            margin: 0 -2px;
+            animation: sepBlink 1s ease-in-out infinite;
+        }
+
+        @keyframes sepBlink {
 
             0%,
             100% {
-                background: rgba(0, 0, 0, 0.22);
+                opacity: 0.5;
             }
 
             50% {
-                background: rgba(255, 255, 255, 0.25);
+                opacity: 1;
+            }
+        }
+
+        .cd-unit.pulse {
+            animation: unitPulse 1s ease-in-out infinite;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes unitPulse {
+
+            0%,
+            100% {
+                background: rgba(0, 0, 0, 0.32);
+            }
+
+            50% {
+                background: rgba(255, 255, 255, 0.2);
             }
         }
 
         @media (max-width: 520px) {
             #countdown-bar {
-                font-size: 11px;
                 padding: 8px 12px;
-                gap: 8px;
+                gap: 10px;
             }
 
-            .cd-timer {
-                font-size: 12px;
-                padding: 3px 8px;
+            .cd-title {
+                font-size: 11px;
             }
 
-            .cd-text-full {
+            .cd-sub {
                 display: none;
             }
-        }
 
-        .cd-text-short {
-            display: none;
-        }
+            .cd-icon {
+                font-size: 14px;
+            }
 
-        @media (max-width: 520px) {
-            .cd-text-short {
-                display: inline;
+            .cd-unit {
+                padding: 3px 8px 3px;
+                min-width: 38px;
+            }
+
+            .cd-num {
+                font-size: 15px;
+            }
+
+            .cd-lbl {
+                font-size: 7px;
+            }
+
+            .cd-sep {
+                font-size: 14px;
             }
         }
 
@@ -742,6 +862,159 @@
             font-size: 11px;
             color: var(--ink-soft);
             line-height: 1.4;
+        }
+
+        /* ─── MÁS VENDIDOS DEL MES ─── */
+        .bestsellers-section {
+            padding: 10px 5% 0;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .bestsellers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        @media (min-width: 768px) {
+            .bestsellers {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .best-card {
+            position: relative;
+            background: var(--bg-card);
+            border: 1px solid var(--line-soft);
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .best-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-soft);
+            box-shadow: var(--shadow-md);
+        }
+
+        .best-card.rank-1 {
+            background: linear-gradient(155deg, #FFFBEF 0%, var(--bg-card) 55%);
+            border-color: #E8CF8A;
+        }
+
+        .best-card.rank-1:hover {
+            box-shadow: 0 20px 40px rgba(184, 147, 94, 0.18);
+        }
+
+        .best-rank {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 3;
+            font-family: 'Fraunces', serif;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 5px 10px 4px;
+            background: var(--ink);
+            color: var(--bg);
+            border-radius: 100px;
+            letter-spacing: 0.04em;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .best-card.rank-1 .best-rank {
+            background: linear-gradient(135deg, #B08041 0%, #DBB56A 55%, #E8CF8A 100%);
+            color: white;
+            box-shadow: 0 4px 10px rgba(176, 128, 65, 0.3);
+        }
+
+        .best-rank::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: currentColor;
+            opacity: 0.7;
+        }
+
+        .best-img-box {
+            background: var(--bg-soft);
+            aspect-ratio: 1/1;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .best-card.rank-1 .best-img-box {
+            background: linear-gradient(145deg, #FCF5E3 0%, #F4EFE6 100%);
+        }
+
+        .best-img-box img {
+            width: 68%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 15px 25px rgba(28, 28, 30, 0.1));
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .best-card:hover .best-img-box img {
+            transform: scale(1.08) rotate(-2deg);
+        }
+
+        .best-body {
+            padding: 14px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .best-name {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .best-sold {
+            font-size: 11px;
+            color: var(--success);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 2px;
+        }
+
+        .best-sold::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 6px rgba(46, 125, 91, 0.5);
+        }
+
+        .best-price {
+            font-family: 'Fraunces', serif;
+            font-size: 16px;
+            font-weight: 700;
+            margin-top: 6px;
+        }
+
+        .best-price-from {
+            font-size: 10px;
+            color: var(--ink-mute);
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            margin-right: 3px;
         }
 
         /* ─── OFERTAS DESTACADAS (CAROUSEL HORIZONTAL) ─── */
@@ -2156,10 +2429,24 @@
     <div id="main-ui" style="display:none">
 
         <div id="countdown-bar">
-            <span class="cd-icon">⚡</span>
-            <span class="cd-text-full">OFERTAS EXCLUSIVAS TERMINAN EN</span>
-            <span class="cd-text-short">OFERTA TERMINA EN</span>
-            <span class="cd-timer" id="cd-timer">10:00</span>
+            <div class="cd-left">
+                <span class="cd-icon">⚡</span>
+                <div class="cd-copy">
+                    <span class="cd-title">Oferta exclusiva online</span>
+                    <span class="cd-sub">Termina pronto</span>
+                </div>
+            </div>
+            <div class="cd-timer-group">
+                <div class="cd-unit">
+                    <span class="cd-num" id="cd-min">10</span>
+                    <span class="cd-lbl">MIN</span>
+                </div>
+                <span class="cd-sep">:</span>
+                <div class="cd-unit">
+                    <span class="cd-num" id="cd-sec">00</span>
+                    <span class="cd-lbl">SEG</span>
+                </div>
+            </div>
         </div>
 
         <header id="h">
@@ -2247,6 +2534,14 @@
                     <b>Sin bloqueo IMEI</b>
                     <span>Equipos liberados y con boleta</span>
                 </div>
+            </section>
+
+            <div class="section-head reveal">
+                <h2 class="section-title">Más vendidos este mes</h2>
+                <span class="section-count">Top 4 · Noviembre</span>
+            </div>
+            <section class="bestsellers-section reveal">
+                <div class="bestsellers" id="bestsellers"></div>
             </section>
 
             <div class="section-head reveal">
@@ -2672,6 +2967,7 @@
                 document.getElementById('c').style.display = 'block';
                 renderFilters();
                 renderStock();
+                renderBestsellers();
                 renderOffers();
                 initReveal();
                 startCountdown();
@@ -2681,16 +2977,33 @@
 
         // ─── COUNTDOWN 10 MIN ───
         function startCountdown() {
-            const el = document.getElementById('cd-timer');
+            const minEl = document.getElementById('cd-min');
+            const secEl = document.getElementById('cd-sec');
+            const minUnit = minEl.parentElement;
+            const secUnit = secEl.parentElement;
             let total = 10 * 60;
+            let prevMin = '', prevSec = '';
+
+            const flip = (el, val) => {
+                el.textContent = val;
+                el.classList.remove('flip');
+                void el.offsetWidth;
+                el.classList.add('flip');
+            };
+
             const tick = () => {
-                const m = Math.floor(total / 60);
-                const s = total % 60;
-                el.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-                if (total <= 60) el.classList.add('pulse');
+                const m = String(Math.floor(total / 60)).padStart(2, '0');
+                const s = String(total % 60).padStart(2, '0');
+                if (m !== prevMin) { flip(minEl, m); prevMin = m; }
+                if (s !== prevSec) { flip(secEl, s); prevSec = s; }
+                if (total <= 60) {
+                    minUnit.classList.add('pulse');
+                    secUnit.classList.add('pulse');
+                }
                 if (total <= 0) {
                     total = 10 * 60;
-                    el.classList.remove('pulse');
+                    minUnit.classList.remove('pulse');
+                    secUnit.classList.remove('pulse');
                 } else {
                     total--;
                 }
@@ -2757,6 +3070,37 @@
         function startSocialProof() {
             setTimeout(showSocialProof, 4500);
             setInterval(showSocialProof, 14000);
+        }
+
+        // ─── MÁS VENDIDOS DEL MES ───
+        const BESTSELLERS = [
+            { model: 'iPhone 17 Pro', sold: 48 },
+            { model: 'iPhone 16 Pro Max', sold: 42 },
+            { model: 'iPhone 15 Pro Max', sold: 37 },
+            { model: 'iPhone 14 Pro Max', sold: 29 }
+        ];
+
+        function renderBestsellers() {
+            const el = document.getElementById('bestsellers');
+            el.innerHTML = BESTSELLERS.map((b, i) => {
+                const variants = stock.filter(p => p.name === b.model);
+                if (!variants.length) return '';
+                const minPrice = Math.min(...variants.map(v => v.price));
+                const slug = variants[0].slug;
+                const rank = i + 1;
+                return `
+                    <article class="best-card rank-${rank}" data-model="${b.model}" onclick="openDetail(this.dataset.model)">
+                        <span class="best-rank">Nº ${rank}</span>
+                        <div class="best-img-box">
+                            <img src="${slug}-front.jpg.png" alt="${b.model}" loading="lazy" onerror="this.style.opacity=0.2">
+                        </div>
+                        <div class="best-body">
+                            <div class="best-name">${b.model}</div>
+                            <div class="best-sold">${b.sold} vendidos este mes</div>
+                            <div class="best-price"><span class="best-price-from">Desde</span>${formatCLP(minPrice)}</div>
+                        </div>
+                    </article>`;
+            }).join('');
         }
 
         function renderOffers() {
