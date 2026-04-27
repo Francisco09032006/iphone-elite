@@ -120,38 +120,21 @@
             z-index: 2;
         }
 
-        .intro-img {
+        .intro-video {
             width: 100%;
-            animation: heroDance 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-            filter: drop-shadow(0 40px 60px rgba(28, 28, 30, 0.18));
-            transform-origin: center center;
-            will-change: transform;
+            display: block;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            object-fit: contain;
+            pointer-events: none;
         }
 
-        @keyframes heroDance {
-            0% {
-                transform: translate3d(0, 0, 0) rotate(-2deg) scale(1);
-            }
-
-            20% {
-                transform: translate3d(25px, -40px, 0) rotate(3deg) scale(1.02);
-            }
-
-            40% {
-                transform: translate3d(-20px, -60px, 0) rotate(-4deg) scale(1.04);
-            }
-
-            60% {
-                transform: translate3d(30px, -45px, 0) rotate(5deg) scale(1.02);
-            }
-
-            80% {
-                transform: translate3d(-15px, -25px, 0) rotate(-2deg) scale(1);
-            }
-
-            100% {
-                transform: translate3d(0, 0, 0) rotate(-2deg) scale(1);
-            }
+        .intro-video::-webkit-media-controls,
+        .intro-video::-webkit-media-controls-enclosure,
+        .intro-video::-webkit-media-controls-panel {
+            display: none !important;
+            -webkit-appearance: none;
         }
 
         .intro-text {
@@ -198,232 +181,6 @@
 
             50% {
                 opacity: 0.4;
-            }
-        }
-
-        /* ─── COUNTDOWN BAR (URGENCIA) ─── */
-        #countdown-bar {
-            position: sticky;
-            top: 0;
-            z-index: 3500;
-            background: linear-gradient(90deg, #7F1D1D 0%, #B91C1C 35%, #DC2626 50%, #B91C1C 65%, #7F1D1D 100%);
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            flex-wrap: wrap;
-            box-shadow: 0 3px 14px rgba(220, 38, 38, 0.28), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-            animation: slideDown 0.6s ease-out;
-            overflow: hidden;
-        }
-
-        #countdown-bar::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(100deg, transparent 0%, transparent 40%, rgba(255, 255, 255, 0.12) 50%, transparent 60%, transparent 100%);
-            animation: cdShimmer 3.5s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes cdShimmer {
-            from {
-                transform: translateX(-100%);
-            }
-
-            to {
-                transform: translateX(100%);
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        .cd-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cd-icon {
-            font-size: 16px;
-            animation: bolt 1.4s ease-in-out infinite;
-            filter: drop-shadow(0 0 6px rgba(255, 220, 100, 0.6));
-        }
-
-        @keyframes bolt {
-
-            0%,
-            100% {
-                transform: scale(1) rotate(0);
-            }
-
-            50% {
-                transform: scale(1.18) rotate(-8deg);
-            }
-        }
-
-        .cd-copy {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
-
-        .cd-title {
-            font-family: 'Fraunces', serif;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-        }
-
-        .cd-sub {
-            font-size: 9px;
-            opacity: 0.78;
-            letter-spacing: 0.14em;
-            font-weight: 600;
-            margin-top: 2px;
-            text-transform: uppercase;
-        }
-
-        .cd-timer-group {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cd-unit {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.32);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 9px;
-            padding: 5px 10px 4px;
-            min-width: 46px;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-        }
-
-        .cd-num {
-            font-family: 'Fraunces', serif;
-            font-size: 19px;
-            font-weight: 700;
-            line-height: 1;
-            font-variant-numeric: tabular-nums;
-            letter-spacing: -0.01em;
-            display: inline-block;
-        }
-
-        .cd-num.flip {
-            animation: flipDigit 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes flipDigit {
-            0% {
-                transform: rotateX(0);
-            }
-
-            50% {
-                transform: rotateX(90deg);
-                opacity: 0.3;
-            }
-
-            100% {
-                transform: rotateX(0);
-            }
-        }
-
-        .cd-lbl {
-            font-size: 8px;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            opacity: 0.7;
-            margin-top: 3px;
-        }
-
-        .cd-sep {
-            font-family: 'Fraunces', serif;
-            font-size: 18px;
-            font-weight: 700;
-            opacity: 0.5;
-            margin: 0 -2px;
-            animation: sepBlink 1s ease-in-out infinite;
-        }
-
-        @keyframes sepBlink {
-
-            0%,
-            100% {
-                opacity: 0.5;
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-
-        .cd-unit.pulse {
-            animation: unitPulse 1s ease-in-out infinite;
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        @keyframes unitPulse {
-
-            0%,
-            100% {
-                background: rgba(0, 0, 0, 0.32);
-            }
-
-            50% {
-                background: rgba(255, 255, 255, 0.2);
-            }
-        }
-
-        @media (max-width: 520px) {
-            #countdown-bar {
-                padding: 8px 12px;
-                gap: 10px;
-            }
-
-            .cd-title {
-                font-size: 11px;
-            }
-
-            .cd-sub {
-                display: none;
-            }
-
-            .cd-icon {
-                font-size: 14px;
-            }
-
-            .cd-unit {
-                padding: 3px 8px 3px;
-                min-width: 38px;
-            }
-
-            .cd-num {
-                font-size: 15px;
-            }
-
-            .cd-lbl {
-                font-size: 7px;
-            }
-
-            .cd-sep {
-                font-size: 14px;
             }
         }
 
@@ -526,7 +283,7 @@
         /* ─── HEADER ─── */
         header {
             position: sticky;
-            top: 36px;
+            top: 0;
             z-index: 3000;
             height: 72px;
             padding: 0 clamp(20px, 5%, 60px);
@@ -787,13 +544,24 @@
             z-index: 1;
             display: inline-block;
             width: 100%;
-            max-width: 360px;
+            max-width: 420px;
         }
 
-        .hero-img-wrap img {
+        .hero-video {
             width: 100%;
-            animation: heroDance 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-            filter: drop-shadow(0 30px 50px rgba(28, 28, 30, 0.15));
+            display: block;
+            background: transparent;
+            border: 0;
+            outline: 0;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        .hero-video::-webkit-media-controls,
+        .hero-video::-webkit-media-controls-enclosure,
+        .hero-video::-webkit-media-controls-panel {
+            display: none !important;
+            -webkit-appearance: none;
         }
 
         .hero-tagline {
@@ -1546,14 +1314,29 @@
         .section-title {
             font-family: 'Fraunces', serif;
             font-size: clamp(22px, 3.5vw, 30px);
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: -0.02em;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 60%;
+            border-radius: 4px;
+            background: linear-gradient(180deg, var(--accent-soft) 0%, var(--accent) 100%);
         }
 
         .section-count {
             font-size: 12px;
             color: var(--ink-soft);
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: 0.02em;
         }
 
         /* ─── FILTROS ─── */
@@ -1636,26 +1419,27 @@
             top: 10px;
             left: 10px;
             z-index: 2;
-            font-size: 9px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            padding: 4px 8px;
-            border-radius: 6px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            box-shadow: 0 6px 16px rgba(28, 28, 30, 0.16);
         }
 
         .tag-offer {
-            background: var(--offer);
+            background: linear-gradient(135deg, #E85D4E 0%, #B84A3D 100%);
             color: white;
         }
 
         .tag-new {
-            background: var(--success);
+            background: linear-gradient(135deg, #3FA67E 0%, #2E7D5B 100%);
             color: white;
         }
 
         .tag-sealed {
-            background: var(--ink);
+            background: linear-gradient(135deg, #2A2A2C 0%, #0F0F11 100%);
             color: var(--bg);
         }
 
@@ -1705,13 +1489,15 @@
             display: flex;
             align-items: baseline;
             gap: 8px;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         .p-price {
-            font-size: 14px;
+            font-family: 'Fraunces', serif;
+            font-size: 17px;
             font-weight: 700;
             color: var(--ink);
+            letter-spacing: -0.02em;
         }
 
         .p-price-old {
@@ -2005,20 +1791,22 @@
 
         .detail-cta {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             background: var(--ink);
             color: var(--bg);
-            border-radius: 12px;
-            font-weight: 700;
+            border-radius: 14px;
+            font-weight: 800;
             font-size: 13px;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            transition: 0.2s;
+            transition: 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 22px rgba(28, 28, 30, 0.18);
         }
 
         .detail-cta:hover {
             background: var(--accent);
             transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(139, 111, 71, 0.32);
         }
 
         .detail-cta-wa {
@@ -2027,18 +1815,21 @@
             justify-content: center;
             gap: 8px;
             width: 100%;
-            padding: 14px;
-            background: var(--wa);
+            padding: 15px;
+            background: linear-gradient(135deg, #2EE066 0%, #1FAE52 100%);
             color: white;
-            border-radius: 12px;
-            font-weight: 700;
+            border-radius: 14px;
+            font-weight: 800;
             font-size: 13px;
+            letter-spacing: 0.04em;
             text-decoration: none;
-            transition: 0.2s;
+            transition: 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.32);
         }
 
         .detail-cta-wa:hover {
             transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45);
         }
 
         .detail-benefits {
@@ -2601,6 +2392,81 @@
             letter-spacing: 0.02em;
         }
 
+        .rev-badge-new {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 100px;
+            letter-spacing: 0.05em;
+            margin-left: 8px;
+            text-transform: uppercase;
+            vertical-align: middle;
+        }
+
+        .rev-time {
+            font-size: 11px;
+            color: var(--ink-mute);
+            margin-top: 4px;
+        }
+
+        .rev-photos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .rev-photo {
+            width: 58px;
+            height: 58px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            background: var(--bg-soft);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .rev-photo:hover {
+            transform: scale(1.08);
+        }
+
+        .rev-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Lightbox para ver fotos de reseñas */
+        #photo-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 8000;
+            background: rgba(28, 28, 30, 0.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.25s;
+            cursor: zoom-out;
+        }
+
+        #photo-lightbox.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        #photo-lightbox img {
+            max-width: 92%;
+            max-height: 92vh;
+            border-radius: 12px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
         /* ─── FORMULARIO VALORACIÓN ─── */
         .val-form {
             margin-top: 28px;
@@ -2994,7 +2860,7 @@
 
     <div id="intro" onclick="start()">
         <div class="intro-stage">
-            <img src="animación.png" class="intro-img" alt="iPhone">
+            <video class="intro-video" src="animación.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
         </div>
         <div class="intro-text">Los mejores precios,<br><em style="font-style:italic; color:var(--accent);">garantía
                 real.</em></div>
@@ -3002,27 +2868,6 @@
     </div>
 
     <div id="main-ui" style="display:none">
-
-        <div id="countdown-bar">
-            <div class="cd-left">
-                <span class="cd-icon">⚡</span>
-                <div class="cd-copy">
-                    <span class="cd-title">Oferta exclusiva online</span>
-                    <span class="cd-sub">Termina pronto</span>
-                </div>
-            </div>
-            <div class="cd-timer-group">
-                <div class="cd-unit">
-                    <span class="cd-num" id="cd-min">10</span>
-                    <span class="cd-lbl">MIN</span>
-                </div>
-                <span class="cd-sep">:</span>
-                <div class="cd-unit">
-                    <span class="cd-num" id="cd-sec">00</span>
-                    <span class="cd-lbl">SEG</span>
-                </div>
-            </div>
-        </div>
 
         <header id="h">
             <a href="#" class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
@@ -3067,7 +2912,7 @@
 
             <section class="hero-web">
                 <div class="hero-img-wrap">
-                    <img src="animación.png" alt="iPhone destacado">
+                    <video class="hero-video" src="animación.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
                 </div>
                 <h1 class="hero-tagline">Tecnología premium,<br><em>confianza garantizada.</em></h1>
                 <p class="hero-sub">4 años entregando iPhones y dispositivos originales en Santiago. Con boleta,
@@ -3445,39 +3290,7 @@
                 <span class="section-count">5.0 · 200+ reseñas</span>
             </div>
             <div class="reviews-wrap">
-                <div class="rev-grid">
-                    <div class="rev-card">
-                        <div class="rev-stars">★★★★★</div>
-                        <p class="rev-text">"Excelente atención y seguridad. El equipo llegó como nuevo y todo súper
-                            rápido."</p>
-                        <div class="rev-author">— Ricardo M. · Santiago</div>
-                    </div>
-                    <div class="rev-card">
-                        <div class="rev-stars">★★★★★</div>
-                        <p class="rev-text">"El iPhone llegó perfecto, con todo lo prometido. Recomendados 100%."</p>
-                        <div class="rev-author">— Sofía L. · Providencia</div>
-                    </div>
-                    <div class="rev-card">
-                        <div class="rev-stars">★★★★★</div>
-                        <p class="rev-text">"Muy confiables en Santiago, resolvieron cada duda antes de comprar."</p>
-                        <div class="rev-author">— Javier O. · Las Condes</div>
-                    </div>
-                    <div class="rev-card">
-                        <div class="rev-stars">★★★★★</div>
-                        <p class="rev-text">"4 años de experiencia se notan. Atención seria y postventa impecable."</p>
-                        <div class="rev-author">— Manuel V. · Ñuñoa</div>
-                    </div>
-                    <div class="rev-card">
-                        <div class="rev-stars">★★★★★</div>
-                        <p class="rev-text">"Negocio súper serio, llegó con boleta y garantía. Volveré a comprar."</p>
-                        <div class="rev-author">— Constanza F. · Maipú</div>
-                    </div>
-                    <div class="rev-card">
-                        <div class="rev-stars">★★★★★</div>
-                        <p class="rev-text">"Recibieron mi equipo en parte de pago sin problema. Muy transparentes."</p>
-                        <div class="rev-author">— Diego A. · La Florida</div>
-                    </div>
-                </div>
+                <div class="rev-grid" id="rev-grid"></div>
 
                 <div class="val-form">
                     <h3>Deja tu valoración</h3>
@@ -3672,7 +3485,66 @@
         </div>
 
         <div id="toast"></div>
+
+        <div id="photo-lightbox" onclick="closeLightbox()">
+            <img id="lightbox-img" src="" alt="">
+        </div>
     </div>
+
+    <script>
+        // Promise que resuelve cuando Firebase está listo
+        window.fbReady = new Promise(resolve => { window.__fbResolve = resolve; });
+    </script>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+        import {
+            getFirestore, collection, addDoc, getDocs,
+            query, orderBy, limit, serverTimestamp
+        } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDBKRpPen7ICnwFyA3tT9kdNj3q5AjJ2UA",
+            authDomain: "iphone-elite.firebaseapp.com",
+            projectId: "iphone-elite",
+            storageBucket: "iphone-elite.firebasestorage.app",
+            messagingSenderId: "536673802576",
+            appId: "1:536673802576:web:cfd87b55d96d37386ff455",
+            measurementId: "G-DJ2VG0258Y"
+        };
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+
+            window.__fbResolve({
+                ok: true,
+                async add(data) {
+                    const ref = collection(db, 'reviews');
+                    return await addDoc(ref, { ...data, createdAt: serverTimestamp() });
+                },
+                async list() {
+                    const q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'), limit(200));
+                    const snap = await getDocs(q);
+                    return snap.docs.map(d => {
+                        const data = d.data();
+                        return {
+                            id: d.id,
+                            name: data.name,
+                            stars: data.stars,
+                            text: data.text,
+                            photos: data.photos || [],
+                            location: data.location || '',
+                            createdAt: data.createdAt && data.createdAt.toMillis ? data.createdAt.toMillis() : Date.now()
+                        };
+                    });
+                }
+            });
+        } catch (e) {
+            console.error('Firebase init failed:', e);
+            window.__fbResolve({ ok: false, error: e });
+        }
+    </script>
 
     <script>
         // Stock completo — todos los modelos con imagen en GitHub (iPhone 11 → 17 Pro Max)
@@ -3750,47 +3622,10 @@
                 renderStock();
                 renderBestsellers();
                 renderOffers();
+                renderReviews();
                 initReveal();
-                startCountdown();
                 startSocialProof();
             }, 900);
-        }
-
-        // ─── COUNTDOWN 10 MIN ───
-        function startCountdown() {
-            const minEl = document.getElementById('cd-min');
-            const secEl = document.getElementById('cd-sec');
-            const minUnit = minEl.parentElement;
-            const secUnit = secEl.parentElement;
-            let total = 10 * 60;
-            let prevMin = '', prevSec = '';
-
-            const flip = (el, val) => {
-                el.textContent = val;
-                el.classList.remove('flip');
-                void el.offsetWidth;
-                el.classList.add('flip');
-            };
-
-            const tick = () => {
-                const m = String(Math.floor(total / 60)).padStart(2, '0');
-                const s = String(total % 60).padStart(2, '0');
-                if (m !== prevMin) { flip(minEl, m); prevMin = m; }
-                if (s !== prevSec) { flip(secEl, s); prevSec = s; }
-                if (total <= 60) {
-                    minUnit.classList.add('pulse');
-                    secUnit.classList.add('pulse');
-                }
-                if (total <= 0) {
-                    total = 10 * 60;
-                    minUnit.classList.remove('pulse');
-                    secUnit.classList.remove('pulse');
-                } else {
-                    total--;
-                }
-            };
-            tick();
-            setInterval(tick, 1000);
         }
 
         // ─── SOCIAL PROOF (compras recientes) ───
@@ -3838,7 +3673,7 @@
             const mins = Math.floor(Math.random() * 28) + 2;
             const timeTxt = mins < 60 ? `hace ${mins} min` : `hace 1 h`;
 
-            document.getElementById('sp-img').src = `${model.slug}-front.jpg.png`;
+            document.getElementById('sp-img').src = imgForSlug(model.slug);
             document.getElementById('sp-img').onerror = function () { this.style.opacity = 0.3; };
             document.getElementById('sp-text').innerHTML = `<b>${name}</b> compró un <b>${model.name}</b>`;
             document.getElementById('sp-meta').textContent = `${city} · ${timeTxt}`;
@@ -3873,7 +3708,7 @@
                     <article class="best-card rank-${rank}" data-model="${b.model}" onclick="openDetail(this.dataset.model)">
                         <span class="best-rank">Nº ${rank}</span>
                         <div class="best-img-box">
-                            <img src="${slug}-front.jpg.png" alt="${b.model}" loading="lazy" onerror="this.style.opacity=0.2">
+                            <img src="${imgFor(variants[0])}" alt="${b.model}" loading="lazy" onerror="this.style.opacity=0.2">
                         </div>
                         <div class="best-body">
                             <div class="best-name">${b.model}</div>
@@ -3919,32 +3754,351 @@
             document.querySelectorAll('.reveal').forEach(el => io.observe(el));
         }
 
+        // Mapa real de imágenes por color (archivos subidos al repo)
+        // Clave: slug del modelo. Valor: { color en minúsculas: nombre de archivo }
+        const IMG_MAP = {
+            'iphone-11-pro': {
+                'verde': 'Delantera Verde Medianoche iPhone 11 Pro.webp',
+                'verde medianoche': 'Delantera Verde Medianoche iPhone 11 Pro.webp',
+                'gris espacial': 'Delantera Gris Espacial iPhone 11 Pro.webp',
+                'space gray': 'Delantera Gris Espacial iPhone 11 Pro.webp',
+                'plata': 'Delantera Plata iPhone 11 Pro.webp',
+                'oro': 'Delantera Oro iPhone 11 Pro.jpg',
+                'dorado': 'Delantera Oro iPhone 11 Pro.jpg'
+            },
+            'iphone-11-pm': {
+                'space gray': 'Delantera Gris Espacial iPhone 11 Pro Max.webp',
+                'gris espacial': 'Delantera Gris Espacial iPhone 11 Pro Max.webp',
+                'verde': 'Delantera Verde Medianoche iPhone 11 Pro Max.webp',
+                'verde medianoche': 'Delantera Verde Medianoche iPhone 11 Pro Max.webp',
+                'plata': 'Delantera Plata iPhone 11 Pro Max.webp',
+                'oro': 'Delantera Oro iPhone 11 Pro Max.jpg',
+                'dorado': 'Delantera Oro iPhone 11 Pro Max.jpg'
+            },
+            'iphone-12-mini': {
+                'azul': 'Delantera Azul iPhone 12 mini.jpg',
+                'azul medianoche': 'Delantera Azul iPhone 12 mini.jpg',
+                'blanco': 'Delantera Blanco iPhone 12 mini.jpg',
+                'negro': 'Delantera Negra iPhone 12 mini.jpg',
+                'negra': 'Delantera Negra iPhone 12 mini.jpg',
+                'púrpura': 'Delantera Púrpura iPhone 12 mini.jpg',
+                'purpura': 'Delantera Púrpura iPhone 12 mini.jpg',
+                'morado': 'Delantera Púrpura iPhone 12 mini.jpg',
+                'rojo': 'Delantera Roja iPhone 12 mini.jpg',
+                'roja': 'Delantera Roja iPhone 12 mini.jpg',
+                'verde': 'Delantera Verde iPhone 12 mini.jpg'
+            },
+            'iphone-12': {
+                'azul': 'Delantera Azul iPhone 12.jpg',
+                'azul medianoche': 'Delantera Azul iPhone 12.jpg',
+                'blanco': 'Delantera Blanco iPhone 12.jpg',
+                'negro': 'Delantera Negro iPhone 12.jpg',
+                'negra': 'Delantera Negro iPhone 12.jpg',
+                'púrpura': 'Delantera Púrpura iPhone 12.jpg',
+                'purpura': 'Delantera Púrpura iPhone 12.jpg',
+                'morado': 'Delantera Púrpura iPhone 12.jpg',
+                'rojo': 'Delantera Rojo iPhone 12.jpg',
+                'roja': 'Delantera Rojo iPhone 12.jpg',
+                'verde': 'Delantera Verde iPhone 12.jpg'
+            },
+            'iphone-12-pro': {
+                'azul': 'Delantera Azul Pacifico iPhone 12 Pro.jpg',
+                'azul pacifico': 'Delantera Azul Pacifico iPhone 12 Pro.jpg',
+                'grafito': 'Delantera Grafito iPhone 12 Pro.jpg',
+                'gris': 'Delantera Grafito iPhone 12 Pro.jpg',
+                'oro': 'Delantera Oro iPhone 12 Pro.jpg',
+                'dorado': 'Delantera Oro iPhone 12 Pro.jpg',
+                'plata': 'Delantera Plata iPhone 12 Pro.webp'
+            },
+            'iphone-12-pm': {
+                'azul': 'Delantera Azul Pacifico iPhone 12 Pro Max.jpg',
+                'azul pacifico': 'Delantera Azul Pacifico iPhone 12 Pro Max.jpg',
+                'grafito': 'Delantera Grafito iPhone 12 Pro Max.jpg',
+                'gris': 'Delantera Grafito iPhone 12 Pro Max.jpg',
+                'oro': 'Delantera Oro iPhone 12 Pro Max.jpg',
+                'dorado': 'Delantera Oro iPhone 12 Pro Max.jpg',
+                'plata': 'Delantera Plata iPhone 12 Pro Max.webp'
+            },
+            'iphone-13-mini': {
+                'azul': 'Delantera Azul iPhone 13 mini.jpg',
+                'blanco': 'Delantera Blanco Estrella iPhone 13 mini.jpg',
+                'blanco estrella': 'Delantera Blanco Estrella iPhone 13 mini.jpg',
+                'blanco estelar': 'Delantera Blanco Estrella iPhone 13 mini.jpg',
+                'medianoche': 'Delantera Medianoche iPhone 13 mini.webp',
+                'negro': 'Delantera Medianoche iPhone 13 mini.webp',
+                'rosa': 'Delantera Rosa iPhone 13 mini.jpg',
+                'rosado': 'Delantera Rosa iPhone 13 mini.jpg',
+                'verde': 'Delantera Verde iPhone 13 mini.jpg',
+                'rojo': 'Delantera Roja iPhone 13 mini.jpg',
+                'roja': 'Delantera Roja iPhone 13 mini.jpg'
+            },
+            'iphone-13': {
+                'azul': 'Delantera Azul iPhone 13.jpg',
+                'blanco': 'Delantera Blanco Estrella iPhone 13.jpg',
+                'blanco estrella': 'Delantera Blanco Estrella iPhone 13.jpg',
+                'blanco estelar': 'Delantera Blanco Estrella iPhone 13.jpg',
+                'medianoche': 'Delantera Medianoche iPhone 13.webp',
+                'negro': 'Delantera Medianoche iPhone 13.webp',
+                'rosa': 'Delantera Rosa iPhone 13.jpg',
+                'rosado': 'Delantera Rosa iPhone 13.jpg',
+                'verde': 'Delantera Verde iPhone 13.jpg',
+                'rojo': 'Delantera Rojo iPhone 13.jpg'
+            },
+            'iphone-13-pro': {
+                'azul': 'Delantera Azul Sierra iPhone 13 Pro.jpg',
+                'azul sierra': 'Delantera Azul Sierra iPhone 13 Pro.jpg',
+                'grafito': 'Delantera Grafito iPhone 13 Pro.jpg',
+                'gris': 'Delantera Grafito iPhone 13 Pro.jpg',
+                'oro': 'Delantera Oro iPhone 13 Pro.jpg',
+                'dorado': 'Delantera Oro iPhone 13 Pro.jpg',
+                'plata': 'Delantera Plata iPhone 13 Pro.webp',
+                'verde': 'Delantera Verde Alpino iPhone 13 Pro.jpg',
+                'verde alpino': 'Delantera Verde Alpino iPhone 13 Pro.jpg'
+            },
+            'iphone-13-pm': {
+                'azul': 'Delantera Azul Sierra iPhone 13 Pro Max.jpg',
+                'azul sierra': 'Delantera Azul Sierra iPhone 13 Pro Max.jpg',
+                'grafito': 'Delantera Grafito iPhone 13 Pro Max.jpg',
+                'gris': 'Delantera Grafito iPhone 13 Pro Max.jpg',
+                'oro': 'Delantera Oro iPhone 13 Pro Max.jpg',
+                'dorado': 'Delantera Oro iPhone 13 Pro Max.jpg',
+                'plata': 'Delantera Plata iPhone 13 Pro Max.webp',
+                'verde': 'Delantera Verde Alpino iPhone 13 Pro Max.jpg',
+                'verde alpino': 'Delantera Verde Alpino iPhone 13 Pro Max.jpg'
+            },
+            'iphone-14': {
+                'amarillo': 'Delantera Amarillo iPhone 14.jpg',
+                'amarilla': 'Delantera Amarillo iPhone 14.jpg',
+                'azul': 'Delantera Azul iPhone 14.jpg',
+                'blanco': 'Delantera Blanco Estrella iPhone 14.jpg',
+                'blanco estrella': 'Delantera Blanco Estrella iPhone 14.jpg',
+                'blanco estelar': 'Delantera Blanco Estrella iPhone 14.jpg',
+                'medianoche': 'Delantera Medianoche iPhone 14.webp',
+                'negro': 'Delantera Medianoche iPhone 14.webp',
+                'púrpura': 'Delantera Púrpura iPhone 14.jpg',
+                'purpura': 'Delantera Púrpura iPhone 14.jpg',
+                'morado': 'Delantera Púrpura iPhone 14.jpg',
+                'rojo': 'Delantera Rojo iPhone 14.jpg'
+            },
+            'iphone-14-plus': {
+                'amarillo': 'Delantera Amarilla iPhone 14 Plus.jpg',
+                'amarilla': 'Delantera Amarilla iPhone 14 Plus.jpg',
+                'azul': 'Delantera Azul iPhone 14 Plus.jpg',
+                'blanco': 'Delantera Blanco Estrella iPhone 14 Plus.jpg',
+                'blanco estrella': 'Delantera Blanco Estrella iPhone 14 Plus.jpg',
+                'blanco estelar': 'Delantera Blanco Estrella iPhone 14 Plus.jpg',
+                'medianoche': 'Delantera Medianoche iPhone 14 Plus.webp',
+                'negro': 'Delantera Medianoche iPhone 14 Plus.webp',
+                'púrpura': 'Delantera Púrpura iPhone 14 Plus.jpg',
+                'purpura': 'Delantera Púrpura iPhone 14 Plus.jpg',
+                'morado': 'Delantera Púrpura iPhone 14 Plus.jpg',
+                'rojo': 'Delantera Roja iPhone 14 Plus.jpg',
+                'roja': 'Delantera Roja iPhone 14 Plus.jpg'
+            },
+            'iphone-14-pro': {
+                'morado': 'Delantera Morado Oscuro iPhone 14 Pro.jpg',
+                'morado oscuro': 'Delantera Morado Oscuro iPhone 14 Pro.jpg',
+                'púrpura': 'Delantera Morado Oscuro iPhone 14 Pro.jpg',
+                'purpura': 'Delantera Morado Oscuro iPhone 14 Pro.jpg',
+                'negro': 'Delantera Negra Espacial iPhone 14 Pro.webp',
+                'negra': 'Delantera Negra Espacial iPhone 14 Pro.webp',
+                'negra espacial': 'Delantera Negra Espacial iPhone 14 Pro.webp',
+                'oro': 'Delantera Oro iPhone 14 Pro.jpg',
+                'dorado': 'Delantera Oro iPhone 14 Pro.jpg',
+                'plata': 'Delantera Plata iPhone 14 Pro.webp',
+                'blanco': 'Delantera Plata iPhone 14 Pro.webp'
+            },
+            'iphone-14-pm': {
+                'morado': 'Delantera Morado Oscuro iPhone 14 Pro Max.jpg',
+                'morado oscuro': 'Delantera Morado Oscuro iPhone 14 Pro Max.jpg',
+                'púrpura': 'Delantera Morado Oscuro iPhone 14 Pro Max.jpg',
+                'purpura': 'Delantera Morado Oscuro iPhone 14 Pro Max.jpg',
+                'negro': 'Delantera Negra Espacial iPhone 14 Pro Max.webp',
+                'negra': 'Delantera Negra Espacial iPhone 14 Pro Max.webp',
+                'negra espacial': 'Delantera Negra Espacial iPhone 14 Pro Max.webp',
+                'oro': 'Delantera Oro iPhone 14 Pro Max.jpg',
+                'dorado': 'Delantera Oro iPhone 14 Pro Max.jpg',
+                'plata': 'Delantera Plata iPhone 14 Pro Max.webp',
+                'blanco': 'Delantera Plata iPhone 14 Pro Max.webp'
+            },
+            'iphone-15': {
+                'amarillo': 'Delantera Amarillo iPhone 15.jpg',
+                'amarilla': 'Delantera Amarillo iPhone 15.jpg',
+                'azul': 'Delantera Azul iPhone 15.jpg',
+                'negro': 'Delantera Negro iPhone 15.jpg',
+                'negra': 'Delantera Negro iPhone 15.jpg',
+                'rosa': 'Delantera Rosa iPhone 15.jpg',
+                'rosado': 'Delantera Rosa iPhone 15.jpg',
+                'verde': 'Delantera Verde iPhone 15.jpg'
+            },
+            'iphone-15-plus': {
+                'amarillo': 'Delantera Amarilla iPhone 15 Plus.jpg',
+                'amarilla': 'Delantera Amarilla iPhone 15 Plus.jpg',
+                'azul': 'Delantera Azul iPhone 15 Plus.jpg',
+                'negro': 'Delantera Negra iPhone 15 Plus.jpg',
+                'negra': 'Delantera Negra iPhone 15 Plus.jpg',
+                'rosa': 'Delantera Rosa iPhone 15 Plus.jpg',
+                'rosado': 'Delantera Rosa iPhone 15 Plus.jpg',
+                'verde': 'Delantera Verde iPhone 15 Plus.jpg'
+            },
+            'iphone-15-pro': {
+                'titanio azul': 'Delantera Titanio Azul iPhone 15 Pro.jpg',
+                'azul titanio': 'Delantera Titanio Azul iPhone 15 Pro.jpg',
+                'azul': 'Delantera Titanio Azul iPhone 15 Pro.jpg',
+                'titanio blanco': 'Delantera Titanio Blanco iPhone 15 Pro.jpg',
+                'blanco': 'Delantera Titanio Blanco iPhone 15 Pro.jpg',
+                'titanio natural': 'Delantera Titanio Natural iPhone 15 Pro.jpg',
+                'natural': 'Delantera Titanio Natural iPhone 15 Pro.jpg',
+                'titanio negro': 'Delantera Titanio Negro iPhone 15 Pro.jpg',
+                'negro': 'Delantera Titanio Negro iPhone 15 Pro.jpg'
+            },
+            'iphone-15-pm': {
+                'titanio azul': 'Delantera Titanio Azul iPhone 15 Pro Max.jpg',
+                'azul titanio': 'Delantera Titanio Azul iPhone 15 Pro Max.jpg',
+                'azul': 'Delantera Titanio Azul iPhone 15 Pro Max.jpg',
+                'titanio blanco': 'Delantera Titanio Blanco iPhone 15 Pro Max.jpg',
+                'blanco': 'Delantera Titanio Blanco iPhone 15 Pro Max.jpg',
+                'titanio natural': 'Delantera Titanio Natural iPhone 15 Pro Max.jpg',
+                'natural': 'Delantera Titanio Natural iPhone 15 Pro Max.jpg',
+                'titanio negro': 'Delantera Titanio Negro iPhone 15 Pro Max.jpg',
+                'negro': 'Delantera Titanio Negro iPhone 15 Pro Max.jpg'
+            },
+            'iphone-16': {
+                'blanco': 'Delantera Blanco iPhone 16.jpg',
+                'negro': 'Delantera Negro iPhone 16.jpg',
+                'negra': 'Delantera Negro iPhone 16.jpg',
+                'rosa': 'Delantera Rosa iPhone 16.jpg',
+                'rosado': 'Delantera Rosa iPhone 16.jpg',
+                'ultramar': 'Delantera Ultramar iPhone 16.jpg',
+                'verde': 'Delantera Verde Azulado iPhone 16.jpg',
+                'verde azulado': 'Delantera Verde Azulado iPhone 16.jpg'
+            },
+            'iphone-16-plus': {
+                'blanco': 'Delantera Blanco iPhone 16 Plus.jpg',
+                'negro': 'Delantera Negra iPhone 16 Plus.jpg',
+                'negra': 'Delantera Negra iPhone 16 Plus.jpg',
+                'rosa': 'Delantera Rosa iPhone 16 Plus.jpg',
+                'rosado': 'Delantera Rosa iPhone 16 Plus.jpg',
+                'ultramar': 'Delantera Ultramar iPhone 16 Plus.jpg',
+                'verde': 'Delantera Verde Azulado iPhone 16 Plus.jpg',
+                'verde azulado': 'Delantera Verde Azulado iPhone 16 Plus.jpg'
+            },
+            'iphone-16-pro': {
+                'titanio blanco': 'Delantera Titanio Blanco iPhone 16 Pro.jpg',
+                'blanco': 'Delantera Titanio Blanco iPhone 16 Pro.jpg',
+                'titanio del desierto': 'Delantera Titanio del Desierto iPhone 16 Pro.jpg',
+                'titanio desierto': 'Delantera Titanio del Desierto iPhone 16 Pro.jpg',
+                'desierto': 'Delantera Titanio del Desierto iPhone 16 Pro.jpg',
+                'titanio natural': 'Delantera Titanio Natural iPhone 16 Pro.jpg',
+                'natural': 'Delantera Titanio Natural iPhone 16 Pro.jpg',
+                'titanio negro': 'Delantera Titanio Negro iPhone 16 Pro.webp',
+                'negro': 'Delantera Titanio Negro iPhone 16 Pro.webp'
+            },
+            'iphone-16-pm': {
+                'titanio blanco': 'Delantera Titanio Blanco iPhone 16 Pro Max.jpg',
+                'blanco': 'Delantera Titanio Blanco iPhone 16 Pro Max.jpg',
+                'titanio del desierto': 'Delantera Titanio del Desierto iPhone 16 Pro Max.jpg',
+                'titanio desierto': 'Delantera Titanio del Desierto iPhone 16 Pro Max.jpg',
+                'desierto': 'Delantera Titanio del Desierto iPhone 16 Pro Max.jpg',
+                'titanio natural': 'Delantera Titanio Natural iPhone 16 Pro Max.jpg',
+                'natural': 'Delantera Titanio Natural iPhone 16 Pro Max.jpg',
+                'titanio negro': 'Delantera Titanio Negro iPhone 16 Pro Max.webp',
+                'negro': 'Delantera Titanio Negro iPhone 16 Pro Max.webp'
+            },
+            'iphone-17': {
+                'blanco': 'Delantera Blanco iPhone 17.webp',
+                'lavanda': 'Delantera Lavanda iPhone 17.jpg',
+                'negro': 'Delantera Negro iPhone 17.jpg',
+                'niebla': 'Delantera Niebla iPhone 17.jpg',
+                'salvia': 'Delantera Salvia iPhone 17.jpg',
+                'verde': 'Delantera Salvia iPhone 17.jpg'
+            },
+            'iphone-17-pro': {
+                'azul': 'Delantera Azul Cosmico iPhone 17 Pro.jpg',
+                'azul cosmico': 'Delantera Azul Cosmico iPhone 17 Pro.jpg',
+                'azul cósmico': 'Delantera Azul Cosmico iPhone 17 Pro.jpg',
+                'naranja': 'Delantera Naranja Cosmico iPhone 17 Pro.jpg',
+                'naranja cosmico': 'Delantera Naranja Cosmico iPhone 17 Pro.jpg',
+                'plata': 'Delantera Plata iPhone 17 Pro.png',
+                'blanco': 'Delantera Plata iPhone 17 Pro.png'
+            },
+            'iphone-17-pm': {
+                'azul': 'Delantera Azul Cosmico iPhone 17 Pro Max.jpg',
+                'azul cosmico': 'Delantera Azul Cosmico iPhone 17 Pro Max.jpg',
+                'azul cósmico': 'Delantera Azul Cosmico iPhone 17 Pro Max.jpg',
+                'naranja': 'Delantera Naranja Cosmico iPhone 17 Pro Max.jpg',
+                'naranja cosmico': 'Delantera Naranja Cosmico iPhone 17 Pro Max.jpg',
+                'plata': 'Delantera Plata iPhone 17 Pro Max.png',
+                'titanio negro': 'Delantera Plata iPhone 17 Pro Max.png',
+                'negro': 'Delantera Plata iPhone 17 Pro Max.png'
+            }
+        };
+
         function imgFor(p) {
+            const m = IMG_MAP[p.slug];
+            if (m) {
+                const key = (p.color || '').toLowerCase().trim();
+                if (m[key]) return encodeURI(m[key]);
+            }
             return `${p.slug}-front.jpg.png`;
+        }
+
+        function imgForSlug(slug) {
+            const m = IMG_MAP[slug];
+            if (m) {
+                const first = Object.values(m)[0];
+                if (first) return encodeURI(first);
+            }
+            return `${slug}-front.jpg.png`;
         }
 
         // Mapa de color → hex (para swatches visuales)
         const COLOR_HEX = {
             'Rojo': '#B0263B',
             'Verde': '#2F5D4A',
+            'Verde Alpino': '#54614F',
+            'Verde Azulado': '#5C7E6A',
+            'Verde Medianoche': '#23463A',
             'Azul medianoche': '#1F2B3D',
             'Azul': '#1D3F7A',
+            'Azul Pacifico': '#3F5A7A',
+            'Azul Sierra': '#3E5774',
+            'Azul Cosmico': '#3F4D7E',
             'Azul titanio': '#2E4C66',
+            'Titanio Azul': '#2E4C66',
             'Dorado': '#D4B275',
+            'Oro': '#D4B275',
             'Gris': '#4A4A4A',
             'Space Gray': '#3A3D42',
+            'Gris Espacial': '#3A3D42',
             'Grafito': '#353334',
             'Plata': '#E0DFDA',
             'Blanco': '#F4F2EC',
             'Blanco estelar': '#F1EDE2',
+            'Blanco Estrella': '#F1EDE2',
             'Negro': '#1A1A1A',
+            'Negra Espacial': '#1F1F22',
             'Medianoche': '#1C1F2A',
             'Rosado': '#F5C7C0',
+            'Rosa': '#F5C7C0',
             'Titanio natural': '#C4B8A3',
+            'Titanio Natural': '#C4B8A3',
             'Titanio desierto': '#B89A73',
+            'Titanio del Desierto': '#B89A73',
             'Titanio negro': '#2B2A28',
+            'Titanio Negro': '#2B2A28',
+            'Titanio Blanco': '#E8E5DD',
             'Ultramar': '#37507C',
-            'Blue': '#3A4E78'
+            'Blue': '#3A4E78',
+            'Amarillo': '#FFE57F',
+            'Púrpura': '#925FB7',
+            'Morado': '#574F58',
+            'Morado Oscuro': '#574F58',
+            'Lavanda': '#C9C0DA',
+            'Niebla': '#9AA0A6',
+            'Salvia': '#A4BBA1',
+            'Naranja': '#D87F4E',
+            'Naranja Cosmico': '#D87F4E'
         };
 
         const colorDot = c => `<span class="color-dot" style="background:${COLOR_HEX[c] || '#888'}"></span>`;
@@ -4000,7 +4154,7 @@
                 <article class="card" data-model="${g.name}" onclick="openDetail(this.dataset.model)">
                     ${tagHTML}
                     ${condHTML}
-                    <div class="img-box"><img src="${g.slug}-front.jpg.png" alt="${g.name}" loading="lazy" onerror="this.style.opacity=0.2"></div>
+                    <div class="img-box"><img src="${imgFor(g.variants[0])}" alt="${g.name}" loading="lazy" onerror="this.style.opacity=0.2"></div>
                     <div class="card-body">
                         <div class="p-name">${g.name}</div>
                         <div class="p-meta">${meta}</div>
@@ -4397,6 +4551,123 @@
             showToast('Abriendo WhatsApp con tu cotización…');
         }
 
+        // ─── Reseñas globales (Firestore) ───
+        const DEFAULT_REVIEWS = [
+            { id: 'seed1', seed: true, name: 'Ricardo M.', location: 'Santiago', stars: 5, text: 'Excelente atención y seguridad. El equipo llegó como nuevo y todo súper rápido.', photos: [] },
+            { id: 'seed2', seed: true, name: 'Sofía L.', location: 'Providencia', stars: 5, text: 'El iPhone llegó perfecto, con todo lo prometido. Recomendados 100%.', photos: [] },
+            { id: 'seed3', seed: true, name: 'Javier O.', location: 'Las Condes', stars: 5, text: 'Muy confiables en Santiago, resolvieron cada duda antes de comprar.', photos: [] },
+            { id: 'seed4', seed: true, name: 'Manuel V.', location: 'Ñuñoa', stars: 5, text: '4 años de experiencia se notan. Atención seria y postventa impecable.', photos: [] },
+            { id: 'seed5', seed: true, name: 'Constanza F.', location: 'Maipú', stars: 5, text: 'Negocio súper serio, llegó con boleta y garantía. Volveré a comprar.', photos: [] },
+            { id: 'seed6', seed: true, name: 'Diego A.', location: 'La Florida', stars: 5, text: 'Recibieron mi equipo en parte de pago sin problema. Muy transparentes.', photos: [] }
+        ];
+
+        async function fetchCloudReviews() {
+            try {
+                const fb = await window.fbReady;
+                if (!fb || !fb.ok) return [];
+                return await fb.list();
+            } catch (e) {
+                console.warn('No se pudieron cargar reseñas', e);
+                return [];
+            }
+        }
+
+        async function saveCloudReview(review) {
+            const fb = await window.fbReady;
+            if (!fb || !fb.ok) throw new Error('Firebase no disponible');
+            await fb.add(review);
+        }
+
+        // Reducir fotos a un tamaño aceptable para Firestore (limite 1MB por doc)
+        function compressImage(dataUrl, maxSide = 1000, quality = 0.7) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = () => {
+                    let { width, height } = img;
+                    if (width > height && width > maxSide) {
+                        height = Math.round(height * (maxSide / width));
+                        width = maxSide;
+                    } else if (height >= width && height > maxSide) {
+                        width = Math.round(width * (maxSide / height));
+                        height = maxSide;
+                    }
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+                    resolve(canvas.toDataURL('image/jpeg', quality));
+                };
+                img.onerror = reject;
+                img.src = dataUrl;
+            });
+        }
+
+        function timeAgo(ts) {
+            if (!ts) return '';
+            const diff = Date.now() - ts;
+            const min = Math.floor(diff / 60000);
+            if (min < 1) return 'recién';
+            if (min < 60) return `hace ${min} min`;
+            const h = Math.floor(min / 60);
+            if (h < 24) return `hace ${h} h`;
+            const d = Math.floor(h / 24);
+            if (d < 7) return `hace ${d} día${d > 1 ? 's' : ''}`;
+            return new Date(ts).toLocaleDateString('es-CL');
+        }
+
+        async function renderReviews() {
+            const grid = document.getElementById('rev-grid');
+            if (!grid) return;
+
+            if (!grid.dataset.loaded) {
+                grid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:36px 20px; color:var(--ink-soft); font-size:13px;">Cargando reseñas…</div>`;
+            }
+
+            const cloud = await fetchCloudReviews();
+            const cloudNormalized = cloud.map(r => ({ ...r, ts: r.createdAt }));
+            const seedNormalized = DEFAULT_REVIEWS.map(r => ({ ...r, ts: 0 }));
+            const all = [...cloudNormalized, ...seedNormalized];
+
+            grid.dataset.loaded = '1';
+            grid.innerHTML = all.map(r => {
+                const stars = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+                const isRecent = !r.seed && r.ts && (Date.now() - r.ts < 7 * 86400000);
+                const badge = isRecent ? '<span class="rev-badge-new">Nuevo</span>' : '';
+                const photosHTML = r.photos && r.photos.length
+                    ? `<div class="rev-photos">${r.photos.map((p, i) => `<div class="rev-photo" data-src="${p}" onclick="openLightbox(this.dataset.src)"><img src="${p}" alt="Foto reseña"></div>`).join('')}</div>`
+                    : '';
+                const loc = r.location ? ` · ${r.location}` : '';
+                const timeHTML = !r.seed && r.ts ? `<div class="rev-time">${timeAgo(r.ts)}</div>` : '';
+                return `
+                    <div class="rev-card">
+                        <div class="rev-stars">${stars}</div>
+                        <p class="rev-text">"${r.text}"</p>
+                        ${photosHTML}
+                        <div class="rev-author">— ${r.name}${loc}${badge}</div>
+                        ${timeHTML}
+                    </div>`;
+            }).join('');
+
+            // Actualiza contador arriba
+            const headCount = document.querySelector('.reviews-wrap')
+                ? document.querySelector('.reviews-wrap').previousElementSibling.querySelector('.section-count')
+                : null;
+            if (headCount) {
+                headCount.textContent = `5.0 · ${all.length}+ reseñas`;
+            }
+        }
+
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('photo-lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('photo-lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
         // ─── Reseña con fotos ───
         let reviewPhotos = [];
         const MAX_PHOTOS = 4;
@@ -4438,25 +4709,60 @@
             renderPhotoPreviews();
         }
 
-        function publicarReview() {
+        async function publicarReview() {
+            const btn = document.querySelector('.val-submit');
             const n = document.getElementById('v-name').value.trim();
+            const stars = parseInt(document.getElementById('v-stars').value, 10) || 5;
             const m = document.getElementById('v-msg').value.trim();
             if (!n || !m) return showToast('Completa tu nombre y reseña');
-            const photoTxt = reviewPhotos.length ? ` con ${reviewPhotos.length} foto${reviewPhotos.length > 1 ? 's' : ''}` : '';
-            showToast(`¡Gracias ${n.split(' ')[0]}! Reseña enviada${photoTxt}.`);
-            document.getElementById('v-name').value = '';
-            document.getElementById('v-msg').value = '';
-            reviewPhotos = [];
-            renderPhotoPreviews();
+            if (n.length > 80) return showToast('Nombre muy largo (máx 80 caracteres)');
+            if (m.length > 600) return showToast('Reseña muy larga (máx 600 caracteres)');
+
+            btn.disabled = true;
+            const originalText = btn.textContent;
+            btn.textContent = 'Publicando…';
+            showToast('Publicando tu reseña…');
+
+            // Comprimir fotos antes de subir
+            const photos = [];
+            for (const p of reviewPhotos) {
+                try {
+                    const compressed = await compressImage(p.data, 1000, 0.7);
+                    photos.push(compressed);
+                } catch (e) { console.warn('No se pudo comprimir foto', e); }
+            }
+
+            try {
+                await saveCloudReview({ name: n, stars, text: m, photos });
+                await renderReviews();
+
+                const photoTxt = photos.length ? ` con ${photos.length} foto${photos.length > 1 ? 's' : ''}` : '';
+                showToast(`¡Gracias ${n.split(' ')[0]}! Reseña publicada${photoTxt}.`);
+
+                document.getElementById('v-name').value = '';
+                document.getElementById('v-msg').value = '';
+                reviewPhotos = [];
+                renderPhotoPreviews();
+
+                document.getElementById('rev-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } catch (e) {
+                console.error(e);
+                showToast('No se pudo publicar. Revisa tu conexión e intenta de nuevo.');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            }
         }
 
-        // ESC cierra buscador y detalle
+        // ESC cierra buscador, detalle y lightbox
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') {
+                const lb = document.getElementById('photo-lightbox');
+                if (lb && lb.classList.contains('open')) return closeLightbox();
                 const o = document.getElementById('search-overlay');
-                if (o.classList.contains('open')) toggleSearch();
+                if (o.classList.contains('open')) return toggleSearch();
                 const d = document.getElementById('detail-modal');
-                if (d.classList.contains('open')) closeDetail();
+                if (d.classList.contains('open')) return closeDetail();
             }
         });
     </script>
