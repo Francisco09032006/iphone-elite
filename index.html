@@ -2967,13 +2967,15 @@
             display: block; font-size: 11px; color: #3FA67E; font-weight: 600; margin-top: 2px;
         }
 
-        /* Sombra suave a todas las fotos de producto para que las blancas no se camuflen */
+        /* Sombra para que las fotos blancas no se camuflen sobre fondo blanco */
         .best-img-box img,
         .offer-card .offer-img img,
         .img-box img,
         #d-img,
         .cart-item-img img {
-            filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.18));
+            filter:
+                drop-shadow(0 0 1px rgba(0, 0, 0, 0.45))
+                drop-shadow(0 6px 18px rgba(0, 0, 0, 0.22));
         }
 
         /* ===== Menú lateral ===== */
