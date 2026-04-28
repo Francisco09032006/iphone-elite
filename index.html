@@ -114,8 +114,8 @@
 
         .intro-stage {
             position: relative;
-            width: 85%;
-            max-width: 480px;
+            width: 95%;
+            max-width: 720px;
             perspective: 1200px;
             z-index: 2;
         }
@@ -126,7 +126,22 @@
             background: transparent;
             border: 0;
             outline: 0;
-            object-fit: contain;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        /* Overlay para tapar marca de agua del video — esquina inferior derecha */
+        .intro-stage::after,
+        .hero-img-wrap::after {
+            content: "";
+            position: absolute;
+            bottom: 6%;
+            right: 4%;
+            width: 28%;
+            height: 10%;
+            background: var(--bg);
+            border-radius: 4px;
+            z-index: 3;
             pointer-events: none;
         }
 
@@ -3301,10 +3316,15 @@
                             <input type="text" id="v-name" placeholder="Tu nombre">
                         </div>
                         <div class="val-field">
+                            <label for="v-city">Ciudad</label>
+                            <input type="text" id="v-city" placeholder="Ej. Santiago, Concepción">
+                        </div>
+                        <div class="val-field">
                             <label for="v-stars">Calificación</label>
                             <select id="v-stars">
                                 <option value="5">5 Estrellas ★★★★★</option>
                                 <option value="4">4 Estrellas ★★★★</option>
+                                <option value="3">3 Estrellas ★★★</option>
                             </select>
                         </div>
                     </div>
@@ -4626,7 +4646,7 @@
             const cloud = await fetchCloudReviews();
             const cloudNormalized = cloud.map(r => ({ ...r, ts: r.createdAt }));
             const seedNormalized = DEFAULT_REVIEWS.map(r => ({ ...r, ts: 0 }));
-            const all = [...cloudNormalized, ...seedNormalized];
+            const all = [...cloudNormalized, ...seedNormalized].filter(r => (r.stars || 0) >= 3);
 
             grid.dataset.loaded = '1';
             grid.innerHTML = all.map(r => {
@@ -4712,10 +4732,12 @@
         async function publicarReview() {
             const btn = document.querySelector('.val-submit');
             const n = document.getElementById('v-name').value.trim();
+            const city = document.getElementById('v-city').value.trim();
             const stars = parseInt(document.getElementById('v-stars').value, 10) || 5;
             const m = document.getElementById('v-msg').value.trim();
             if (!n || !m) return showToast('Completa tu nombre y reseña');
             if (n.length > 80) return showToast('Nombre muy largo (máx 80 caracteres)');
+            if (city.length > 60) return showToast('Ciudad muy larga (máx 60 caracteres)');
             if (m.length > 600) return showToast('Reseña muy larga (máx 600 caracteres)');
 
             btn.disabled = true;
@@ -4733,13 +4755,14 @@
             }
 
             try {
-                await saveCloudReview({ name: n, stars, text: m, photos });
+                await saveCloudReview({ name: n, location: city, stars, text: m, photos });
                 await renderReviews();
 
                 const photoTxt = photos.length ? ` con ${photos.length} foto${photos.length > 1 ? 's' : ''}` : '';
                 showToast(`¡Gracias ${n.split(' ')[0]}! Reseña publicada${photoTxt}.`);
 
                 document.getElementById('v-name').value = '';
+                document.getElementById('v-city').value = '';
                 document.getElementById('v-msg').value = '';
                 reviewPhotos = [];
                 renderPhotoPreviews();
