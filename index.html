@@ -2968,11 +2968,15 @@
         }
 
 
-        /* Viñeteado interno sutil para destacar fotos blancas sin cambiar el color base */
+        /* Cards y contenedores de imagen con MISMO color que body para que fotos blancas se distingan */
+        .card,
+        .best-card,
+        .offer-card,
+        .acc-card,
         .best-img-box,
         .offer-card .offer-img,
         .img-box {
-            box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.06);
+            background: var(--bg) !important;
         }
 
         /* ===== Menú lateral ===== */
