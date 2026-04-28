@@ -130,6 +130,30 @@
             pointer-events: none;
         }
 
+        .intro-img {
+            width: 100%;
+            display: block;
+            pointer-events: none;
+            animation: floatY 3.5s ease-in-out infinite, fadeInScale 1s ease-out both;
+            filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.18));
+        }
+
+        .hero-img {
+            width: 100%;
+            display: block;
+            animation: floatY 3.5s ease-in-out infinite;
+            filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.15));
+        }
+
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.92) translateY(0); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
         .intro-video::-webkit-media-controls,
         .intro-video::-webkit-media-controls-enclosure,
         .intro-video::-webkit-media-controls-panel {
@@ -2904,6 +2928,40 @@
         .cart-upsell-btn::before {
             content: "+"; margin-right: 8px; color: #3FA67E; font-weight: 700; font-size: 16px;
         }
+        .cart-upsell-pack {
+            background: linear-gradient(135deg, #FFFBEF 0%, #F4EFE6 100%);
+            border-color: #D4B275; margin-top: 10px;
+        }
+        .cart-upsell-pack:hover { background: linear-gradient(135deg, #FCF5E3 0%, #F0E8D1 100%); }
+        .cart-upsell-pack span:first-child small { display: block; font-size: 11px; margin-top: 2px; }
+        .cart-pack-msg {
+            margin: 12px 0 0; padding: 10px 14px; background: #E8F5EE; border-radius: 8px;
+            color: #1F7A4D; font-size: 13px; font-weight: 600; text-align: center;
+        }
+
+        /* Upsell en modal del producto */
+        .detail-upsell { margin: 16px 0; padding: 14px; background: #F4EFE6; border-radius: 12px; }
+        .d-upsell-title {
+            font-size: 12px; font-weight: 600; color: var(--ink-soft);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+        }
+        .d-upsell-list { display: flex; flex-direction: column; gap: 6px; }
+        .d-upsell-btn {
+            display: flex; justify-content: space-between; align-items: center;
+            background: white; border: 1px solid #E0DACF; border-radius: 8px;
+            padding: 10px 12px; cursor: pointer; font-size: 13px;
+            transition: all .15s;
+        }
+        .d-upsell-btn:hover { border-color: var(--ink); background: #FAF7F2; }
+        .d-upsell-btn span:first-child { color: var(--ink); font-weight: 500; text-align: left; }
+        .d-upsell-btn span:last-child { color: var(--ink); font-weight: 700; }
+        .d-upsell-pack {
+            background: linear-gradient(135deg, #FFFBEF 0%, #F4EFE6 100%);
+            border-color: #D4B275;
+        }
+        .d-upsell-pack span:first-child small {
+            display: block; font-size: 11px; color: #3FA67E; font-weight: 600; margin-top: 2px;
+        }
 
         /* ===== Menú lateral ===== */
         #side-menu-overlay {
@@ -2955,7 +3013,7 @@
 
     <div id="intro" onclick="start()">
         <div class="intro-stage">
-            <video class="intro-video" src="animación.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
+            <img class="intro-img" src="portada.png" alt="iPhone Elite">
         </div>
         <div class="intro-text">Los mejores precios,<br><em style="font-style:italic; color:var(--accent);">garantía
                 real.</em></div>
@@ -3041,7 +3099,7 @@
 
             <section class="hero-web">
                 <div class="hero-img-wrap">
-                    <video class="hero-video" src="animación.mp4" autoplay muted loop playsinline preload="auto" disablepictureinpicture></video>
+                    <img class="hero-img" src="portada.png" alt="iPhone Elite">
                 </div>
                 <h1 class="hero-tagline">Tecnología premium,<br><em>confianza garantizada.</em></h1>
                 <p class="hero-sub">4 años entregando iPhones y dispositivos originales en Santiago. Con boleta,
@@ -3553,6 +3611,7 @@
                             </label>
                             <div class="variant-chips" id="d-storages"></div>
                         </div>
+                        <div class="detail-upsell" id="d-upsell"></div>
                         <div class="detail-actions">
                             <button class="detail-cta" onclick="addSelectedToCart()">Agregar al carrito</button>
                             <a class="detail-cta-wa" id="d-wa" target="_blank">
@@ -4475,8 +4534,30 @@
             }).join('');
 
             // WhatsApp link
-            const waTxt = encodeURIComponent(`Hola, me interesa el ${sel.name} — ${sel.storage} · ${sel.color} — ${formatCLP(sel.price)}`);
+            const waTxt = encodeURIComponent(`Hola iPhone Elite 👋 Me interesa el ${sel.name} ${sel.storage} · ${sel.color} por ${formatCLP(sel.price)}. ¿Sigue disponible? 📦`);
             document.getElementById('d-wa').href = `https://wa.me/${WA_NUMBER}?text=${waTxt}`;
+
+            // Upsell de accesorios en el modal (solo si no es accesorio)
+            const upsellEl = document.getElementById('d-upsell');
+            if (sel.isAccessory) {
+                upsellEl.innerHTML = '';
+            } else {
+                const accs = stock.filter(p => p.isAccessory);
+                upsellEl.innerHTML = `
+                    <div class="d-upsell-title">Sumá accesorios al pedido</div>
+                    <div class="d-upsell-list">
+                        ${accs.map(a => `
+                            <button class="d-upsell-btn" onclick="addToCart(${a.id}); showToast('${a.name} agregado al carrito')">
+                                <span>+ ${a.name}</span>
+                                <span>${formatCLP(a.price)}</span>
+                            </button>
+                        `).join('')}
+                        <button class="d-upsell-btn d-upsell-pack" onclick="addPack(); showToast('🎉 Pack 3 accesorios · ahorras $5.970')">
+                            <span>📦 Pack 3 accesorios <small>-$5.970 OFF</small></span>
+                            <span>${formatCLP(14990 + 9990 + 12990 - 5970)}</span>
+                        </button>
+                    </div>`;
+            }
         }
 
         function selectColor(c) {
@@ -4569,7 +4650,13 @@
         function renderCart() {
             const body = document.getElementById('cart-body');
             const badge = document.getElementById('cart-badge');
-            const total = cart.reduce((s, p) => s + p.price, 0);
+            let total = cart.reduce((s, p) => s + p.price, 0);
+
+            // Pack: si tiene los 3 accesorios → descuento de $5.970
+            const ACC_IDS = [100, 101, 102];
+            const tienePack = ACC_IDS.every(id => cart.some(p => p.id === id));
+            const PACK_DESCUENTO = 5970;
+            if (tienePack) total -= PACK_DESCUENTO;
 
             badge.textContent = cart.length;
             badge.classList.toggle('show', cart.length > 0);
@@ -4601,31 +4688,51 @@
                     </div>
                 </div>`).join('');
 
-            // Upsells: solo mostrar accesorios que NO estén ya en el carrito
+            // Upsells: mostrar accesorios que NO estén ya en el carrito
             const cartIds = new Set(cart.map(p => p.id));
-            const hayDispositivo = cart.some(p => !p.isAccessory);
             const accesoriosDisp = stock.filter(p => p.isAccessory && !cartIds.has(p.id));
             let upsellHTML = '';
-            if (hayDispositivo && accesoriosDisp.length > 0) {
+            if (accesoriosDisp.length > 0) {
+                const titulo = cart.some(p => !p.isAccessory) ? 'Completá tu compra' : 'Sumá accesorios';
+                const packBtn = accesoriosDisp.length === 3 ? `
+                    <button class="cart-upsell-btn cart-upsell-pack" onclick="addPack()">
+                        <span>📦 Pack 3 accesorios <small style="color:#3FA67E;font-weight:600">-$5.970 OFF</small></span>
+                        <span>${formatCLP(14990 + 9990 + 12990 - 5970)}</span>
+                    </button>` : '';
                 upsellHTML = `
                     <div class="cart-upsell">
-                        <div class="cart-upsell-title">Completá tu compra</div>
+                        <div class="cart-upsell-title">${titulo}</div>
                         ${accesoriosDisp.map(acc => `
                             <button class="cart-upsell-btn" onclick="addToCart(${acc.id})">
                                 <span>${acc.name}</span><span>${formatCLP(acc.price)}</span>
                             </button>
                         `).join('')}
+                        ${packBtn}
                     </div>`;
             }
 
-            body.innerHTML = itemsHTML + upsellHTML;
+            // Mensaje cuando ya tiene el pack completo
+            let packMsg = '';
+            if (tienePack) {
+                packMsg = `<div class="cart-pack-msg">🎉 Pack completo aplicado · ahorras $5.970</div>`;
+            }
 
-            const txt = encodeURIComponent(
-                'Hola iPhone Elite, quiero cotizar:\n\n' +
-                cart.map(p => `• ${p.name} — ${p.storage} · ${p.color} — ${formatCLP(p.price)}`).join('\n') +
-                `\n\nTotal estimado: ${formatCLP(total)}`
-            );
-            cta.href = `https://wa.me/${WA_NUMBER}?text=${txt}`;
+            body.innerHTML = itemsHTML + packMsg + upsellHTML;
+
+            // Mensaje WhatsApp formato cliente
+            let waMsg;
+            if (cart.length === 1) {
+                const p = cart[0];
+                const desc = p.isAccessory ? p.name : `${p.name} ${p.storage} · ${p.color}`;
+                waMsg = `Hola iPhone Elite 👋 Me interesa comprar el ${desc} publicado en su web por ${formatCLP(p.price)}. ¿Sigue disponible? Quiero coordinar compra hoy mismo 📦`;
+            } else {
+                const lista = cart.map(p => {
+                    const desc = p.isAccessory ? p.name : `${p.name} ${p.storage} · ${p.color}`;
+                    return `• ${desc} — ${formatCLP(p.price)}`;
+                }).join('\n');
+                waMsg = `Hola iPhone Elite 👋 Me interesa comprar:\n${lista}\n\nTotal: ${formatCLP(total)}\n\n¿Siguen disponibles? Quiero coordinar compra hoy mismo 📦`;
+            }
+            cta.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMsg)}`;
             cta.classList.remove('disabled');
         }
 
@@ -4660,6 +4767,16 @@
                 btn.classList.add('added');
                 setTimeout(() => { btn.textContent = 'Agregar'; btn.classList.remove('added'); }, 1800);
             }
+        }
+        function addPack() {
+            [100, 101, 102].forEach(id => {
+                if (!cart.some(p => p.id === id)) {
+                    const acc = stock.find(p => p.id === id);
+                    if (acc) cart.push(acc);
+                }
+            });
+            renderCart();
+            showToast('🎉 Pack completo agregado · ahorras $5.970');
         }
 
         // ─── Toast ───
