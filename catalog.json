@@ -1,0 +1,413 @@
+{
+  "actualizado": "2026-04-29T00:57:00.162Z",
+  "total_productos": 35,
+  "productos": [
+    {
+      "id": 1,
+      "marca": "iphone",
+      "nombre": "iPhone 11",
+      "color": "Rojo",
+      "almacenamiento": "64 GB",
+      "precio": 169990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 2,
+      "marca": "iphone-pro",
+      "nombre": "iPhone 11 Pro",
+      "color": "Verde",
+      "almacenamiento": "64 GB",
+      "precio": 249990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 3,
+      "marca": "iphone-pm",
+      "nombre": "iPhone 11 Pro Max",
+      "color": "Space Gray",
+      "almacenamiento": "256 GB",
+      "precio": 289990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 4,
+      "marca": "iphone",
+      "nombre": "iPhone 12 mini",
+      "color": "Blanco",
+      "almacenamiento": "64 GB",
+      "precio": 219990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 5,
+      "marca": "iphone",
+      "nombre": "iPhone 12",
+      "color": "Azul medianoche",
+      "almacenamiento": "64 GB",
+      "precio": 239990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 6,
+      "marca": "iphone-pro",
+      "nombre": "iPhone 12 Pro",
+      "color": "Dorado",
+      "almacenamiento": "128 GB",
+      "precio": 329990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 7,
+      "marca": "iphone-pro",
+      "nombre": "iPhone 12 Pro",
+      "color": "Gris",
+      "almacenamiento": "128 GB",
+      "precio": 329990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 8,
+      "marca": "iphone-pm",
+      "nombre": "iPhone 12 Pro Max",
+      "color": "Gris",
+      "almacenamiento": "128 GB",
+      "precio": 379990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": "OFERTA"
+    },
+    {
+      "id": 9,
+      "marca": "iphone-pm",
+      "nombre": "iPhone 12 Pro Max",
+      "color": "Azul",
+      "almacenamiento": "128 GB",
+      "precio": 379990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 10,
+      "marca": "iphone",
+      "nombre": "iPhone 13 mini",
+      "color": "Medianoche",
+      "almacenamiento": "128 GB",
+      "precio": 309990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 11,
+      "marca": "iphone",
+      "nombre": "iPhone 13",
+      "color": "Blanco estelar",
+      "almacenamiento": "128 GB",
+      "precio": 379990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 12,
+      "marca": "iphone-pro",
+      "nombre": "iPhone 13 Pro",
+      "color": "Grafito",
+      "almacenamiento": "128 GB",
+      "precio": 449990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 13,
+      "marca": "iphone-pm",
+      "nombre": "iPhone 13 Pro Max",
+      "color": "Plata",
+      "almacenamiento": "256 GB",
+      "precio": 499990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 14,
+      "marca": "iphone",
+      "nombre": "iPhone 14",
+      "color": "Negro",
+      "almacenamiento": "128 GB",
+      "precio": 449990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 15,
+      "marca": "iphone",
+      "nombre": "iPhone 14 Plus",
+      "color": "Azul",
+      "almacenamiento": "128 GB",
+      "precio": 509990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 16,
+      "marca": "iphone-pro",
+      "nombre": "iPhone 14 Pro",
+      "color": "Blanco",
+      "almacenamiento": "128 GB",
+      "precio": 589990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 17,
+      "marca": "iphone-pm",
+      "nombre": "iPhone 14 Pro Max",
+      "color": "Negro",
+      "almacenamiento": "256 GB",
+      "precio": 659990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 18,
+      "marca": "iphone-pm",
+      "nombre": "iPhone 14 Pro Max · E-Sim",
+      "color": "Negro",
+      "almacenamiento": "256 GB",
+      "precio": 679990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 19,
+      "marca": "iphone",
+      "nombre": "iPhone 15",
+      "color": "Rosado",
+      "almacenamiento": "128 GB",
+      "precio": 569990,
+      "precio_anterior": null,
+      "condicion": "sellado",
+      "destacado": "SELLADO"
+    },
+    {
+      "id": 20,
+      "marca": "iphone",
+      "nombre": "iPhone 15 Plus",
+      "color": "Verde",
+      "almacenamiento": "128 GB",
+      "precio": 619990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 21,
+      "marca": "iphone-pro",
+      "nombre": "iPhone 15 Pro",
+      "color": "Titanio natural",
+      "almacenamiento": "128 GB",
+      "precio": 669990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 22,
+      "marca": "iphone-pm",
+      "nombre": "iPhone 15 Pro Max",
+      "color": "Azul titanio",
+      "almacenamiento": "256 GB",
+      "precio": 769990,
+      "precio_anterior": 789990,
+      "condicion": "seminuevo",
+      "destacado": "OFERTA"
+    },
+    {
+      "id": 23,
+      "marca": "iphone",
+      "nombre": "iPhone 16",
+      "color": "Negro",
+      "almacenamiento": "128 GB",
+      "precio": 669990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 24,
+      "marca": "iphone",
+      "nombre": "iPhone 16 Plus",
+      "color": "Ultramar",
+      "almacenamiento": "128 GB",
+      "precio": 739990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 25,
+      "marca": "iphone",
+      "nombre": "iPhone 16e",
+      "color": "Negro",
+      "almacenamiento": "128 GB",
+      "precio": 599990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 26,
+      "marca": "iphone-pro",
+      "nombre": "iPhone 16 Pro",
+      "color": "Titanio desierto",
+      "almacenamiento": "128 GB",
+      "precio": 819990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 27,
+      "marca": "iphone-pm",
+      "nombre": "iPhone 16 Pro Max",
+      "color": "Blanco",
+      "almacenamiento": "128 GB",
+      "precio": 879990,
+      "precio_anterior": 939990,
+      "condicion": "reacondicionado",
+      "destacado": "OFERTA"
+    },
+    {
+      "id": 28,
+      "marca": "iphone-pm",
+      "nombre": "iPhone 16 Pro Max",
+      "color": "Negro",
+      "almacenamiento": "256 GB",
+      "precio": 949990,
+      "precio_anterior": 999990,
+      "condicion": "seminuevo",
+      "destacado": "OFERTA"
+    },
+    {
+      "id": 29,
+      "marca": "iphone",
+      "nombre": "iPhone 17",
+      "color": "Negro",
+      "almacenamiento": "256 GB",
+      "precio": 889990,
+      "precio_anterior": 909990,
+      "condicion": "sellado",
+      "destacado": "NUEVO"
+    },
+    {
+      "id": 30,
+      "marca": "iphone",
+      "nombre": "iPhone 17 Air",
+      "color": "Plata",
+      "almacenamiento": "256 GB",
+      "precio": 939990,
+      "precio_anterior": null,
+      "condicion": "sellado",
+      "destacado": "NUEVO"
+    },
+    {
+      "id": 31,
+      "marca": "iphone-pro",
+      "nombre": "iPhone 17 Pro",
+      "color": "Blanco",
+      "almacenamiento": "256 GB",
+      "precio": 1249990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 32,
+      "marca": "iphone-pm",
+      "nombre": "iPhone 17 Pro Max",
+      "color": "Titanio negro",
+      "almacenamiento": "256 GB",
+      "precio": 1429990,
+      "precio_anterior": null,
+      "condicion": "sellado",
+      "destacado": "NUEVO"
+    },
+    {
+      "id": 33,
+      "marca": "samsung",
+      "nombre": "Samsung S26 Ultra",
+      "color": "Blue",
+      "almacenamiento": "256 GB",
+      "precio": 999990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 34,
+      "marca": "samsung",
+      "nombre": "Samsung S24 Ultra",
+      "color": "Negro",
+      "almacenamiento": "256 GB",
+      "precio": 589990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    },
+    {
+      "id": 35,
+      "marca": "samsung",
+      "nombre": "Samsung S24 Ultra",
+      "color": "Negro",
+      "almacenamiento": "512 GB",
+      "precio": 619990,
+      "precio_anterior": null,
+      "condicion": "seminuevo",
+      "destacado": null
+    }
+  ],
+  "accesorios": [
+    {
+      "id": 100,
+      "nombre": "Cargador USB-C 20W",
+      "precio": 14990
+    },
+    {
+      "id": 101,
+      "nombre": "Lámina Vidrio Templado",
+      "precio": 9990
+    },
+    {
+      "id": 102,
+      "nombre": "Carcasa Silicona",
+      "precio": 12990
+    }
+  ],
+  "pack_accesorios": {
+    "nombre": "Pack 3 accesorios (Cargador + Lámina + Carcasa)",
+    "precio": 32000,
+    "descuento": 5970
+  }
+}
