@@ -4262,7 +4262,14 @@
             }
         };
 
+        const ACC_IMG = {
+            'cargador-20w': 'accesorio-cargador-usbc.png',
+            'cargador-lightning': 'accesorio-cargador-lightning.png',
+            'lamina-templado': 'accesorio-lamina.png',
+            'carcasa-silicona': 'accesorio-carcasa.png'
+        };
         function imgFor(p) {
+            if (p.isAccessory && ACC_IMG[p.slug]) return encodeURI(ACC_IMG[p.slug]);
             const m = IMG_MAP[p.slug];
             if (m) {
                 const key = (p.color || '').toLowerCase().trim();
