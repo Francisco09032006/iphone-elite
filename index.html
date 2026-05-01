@@ -2899,6 +2899,10 @@
         .acc-icon {
             width: 100%; aspect-ratio: 1; background: #F4EFE6; border-radius: 12px;
             display: flex; align-items: center; justify-content: center; font-size: 60px;
+            overflow: hidden;
+        }
+        .acc-icon img {
+            width: 80%; height: 80%; object-fit: contain;
         }
         .acc-name { font-weight: 600; font-size: 15px; color: var(--ink); }
         .acc-desc { font-size: 12px; color: var(--ink-soft); line-height: 1.4; min-height: 32px; }
@@ -3820,8 +3824,9 @@
 
             // Accesorios
             { id: 100, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador USB-C 20W', slug: 'cargador-20w', color: 'Blanco', storage: '20W', price: 14990, isAccessory: true },
+            { id: 103, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador Lightning 20W', slug: 'cargador-lightning', color: 'Blanco', storage: '20W', price: 14990, isAccessory: true },
             { id: 101, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Lámina Vidrio Templado', slug: 'lamina-templado', color: 'Transparente', storage: 'Universal', price: 9990, isAccessory: true },
-            { id: 102, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Carcasa Silicona', slug: 'carcasa-silicona', color: 'Negro', storage: 'Universal', price: 12990, isAccessory: true }
+            { id: 102, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Carcasa Silicona', slug: 'carcasa-silicona', color: 'Transparente', storage: 'Universal', price: 12990, isAccessory: true }
         ];
 
         const formatCLP = n => '$' + n.toLocaleString('es-CL');
@@ -4710,7 +4715,8 @@
             let upsellHTML = '';
             if (accesoriosDisp.length > 0) {
                 const titulo = cart.some(p => !p.isAccessory) ? 'Completá tu compra' : 'Sumá accesorios';
-                const packBtn = accesoriosDisp.length === 3 ? `
+                const puedePack = ACC_IDS.every(id => !cartIds.has(id));
+                const packBtn = puedePack ? `
                     <button class="cart-upsell-btn cart-upsell-pack" onclick="addPack()">
                         <span>📦 Pack 3 accesorios <small style="color:#3FA67E;font-weight:600">-$5.970 OFF</small></span>
                         <span>${formatCLP(14990 + 9990 + 12990 - 5970)}</span>
@@ -4754,19 +4760,20 @@
 
         // ===== Render Accesorios =====
         const ACC_META = {
-            'cargador-20w': { icon: '🔌', desc: 'Cargador rápido USB-C 20W original. Compatible con todos los iPhones desde iPhone 8.' },
-            'lamina-templado': { icon: '🛡️', desc: 'Lámina de vidrio templado 9H universal. Protección completa para tu pantalla.' },
-            'carcasa-silicona': { icon: '📱', desc: 'Carcasa de silicona suave al tacto, ajuste perfecto y protección anti-impacto.' }
+            'cargador-20w': { img: 'accesorio-cargador-usbc.png', desc: 'Cargador rápido USB-C 20W con cable USB-C a USB-C. Para iPhone 15, 16 y 17.' },
+            'cargador-lightning': { img: 'accesorio-cargador-lightning.png', desc: 'Cargador rápido USB-C 20W con cable Lightning. Para iPhone 8 al 14.' },
+            'lamina-templado': { img: 'accesorio-lamina.png', desc: 'Lámina de vidrio templado 9H. Protección completa para tu pantalla.' },
+            'carcasa-silicona': { img: 'accesorio-carcasa.png', desc: 'Carcasa transparente de silicona, ajuste perfecto y protección anti-impacto.' }
         };
         function renderAccessories() {
             const grid = document.getElementById('accesorios-grid');
             if (!grid) return;
             const accs = stock.filter(p => p.isAccessory);
             grid.innerHTML = accs.map(a => {
-                const meta = ACC_META[a.slug] || { icon: '🔌', desc: '' };
+                const meta = ACC_META[a.slug] || { img: '', desc: '' };
                 return `
                     <div class="acc-card">
-                        <div class="acc-icon">${meta.icon}</div>
+                        <div class="acc-icon"><img src="${meta.img}" alt="${a.name}" loading="lazy"></div>
                         <div class="acc-name">${a.name}</div>
                         <div class="acc-desc">${meta.desc}</div>
                         <div class="acc-row">

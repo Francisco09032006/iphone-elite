@@ -395,13 +395,18 @@
       "precio": 14990
     },
     {
+      "id": 103,
+      "nombre": "Cargador Lightning 20W",
+      "precio": 14990
+    },
+    {
       "id": 101,
       "nombre": "Lámina Vidrio Templado",
       "precio": 9990
     },
     {
       "id": 102,
-      "nombre": "Carcasa Silicona",
+      "nombre": "Carcasa Silicona Transparente",
       "precio": 12990
     }
   ],
