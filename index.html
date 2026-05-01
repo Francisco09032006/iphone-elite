@@ -4580,8 +4580,12 @@
                                 <span>${formatCLP(a.price)}</span>
                             </button>
                         `).join('')}
-                        <button class="d-upsell-btn d-upsell-pack" onclick="addPack(); showToast('🎉 Pack 3 accesorios · ahorras $5.970')">
-                            <span>📦 Pack 3 accesorios <small>-$5.970 OFF</small></span>
+                        <button class="d-upsell-btn d-upsell-pack" onclick="addPack(100); showToast('🎉 Pack USB-C · ahorras $5.970')">
+                            <span>📦 Pack USB-C + lámina + carcasa <small>-$5.970 OFF</small></span>
+                            <span>${formatCLP(14990 + 9990 + 12990 - 5970)}</span>
+                        </button>
+                        <button class="d-upsell-btn d-upsell-pack" onclick="addPack(103); showToast('🎉 Pack Lightning · ahorras $5.970')">
+                            <span>📦 Pack Lightning + lámina + carcasa <small>-$5.970 OFF</small></span>
                             <span>${formatCLP(14990 + 9990 + 12990 - 5970)}</span>
                         </button>
                     </div>`;
@@ -4680,9 +4684,12 @@
             const badge = document.getElementById('cart-badge');
             let total = cart.reduce((s, p) => s + p.price, 0);
 
-            // Pack: si tiene los 3 accesorios → descuento de $5.970
-            const ACC_IDS = [100, 101, 102];
-            const tienePack = ACC_IDS.every(id => cart.some(p => p.id === id));
+            // Pack: cualquier cargador + lámina + carcasa → descuento de $5.970
+            const cartIdsAll = new Set(cart.map(p => p.id));
+            const tieneCargador = cartIdsAll.has(100) || cartIdsAll.has(103);
+            const tieneLamina = cartIdsAll.has(101);
+            const tieneCarcasa = cartIdsAll.has(102);
+            const tienePack = tieneCargador && tieneLamina && tieneCarcasa;
             const PACK_DESCUENTO = 5970;
             if (tienePack) total -= PACK_DESCUENTO;
 
@@ -4717,17 +4724,30 @@
                 </div>`).join('');
 
             // Upsells: mostrar accesorios que NO estén ya en el carrito
-            const cartIds = new Set(cart.map(p => p.id));
+            const cartIds = cartIdsAll;
             const accesoriosDisp = stock.filter(p => p.isAccessory && !cartIds.has(p.id));
             let upsellHTML = '';
             if (accesoriosDisp.length > 0) {
                 const titulo = cart.some(p => !p.isAccessory) ? 'Completá tu compra' : 'Sumá accesorios';
-                const puedePack = ACC_IDS.every(id => !cartIds.has(id));
-                const packBtn = puedePack ? `
-                    <button class="cart-upsell-btn cart-upsell-pack" onclick="addPack()">
-                        <span>📦 Pack 3 accesorios <small style="color:#3FA67E;font-weight:600">-$5.970 OFF</small></span>
-                        <span>${formatCLP(14990 + 9990 + 12990 - 5970)}</span>
-                    </button>` : '';
+                // Mostrar packs si todavía no se completa
+                let packBtns = '';
+                if (!tienePack) {
+                    const packPrice = formatCLP(14990 + 9990 + 12990 - 5970);
+                    if (!cartIds.has(100)) {
+                        packBtns += `
+                            <button class="cart-upsell-btn cart-upsell-pack" onclick="addPack(100)">
+                                <span>📦 Pack USB-C + lámina + carcasa <small style="color:#3FA67E;font-weight:600">-$5.970 OFF</small></span>
+                                <span>${packPrice}</span>
+                            </button>`;
+                    }
+                    if (!cartIds.has(103)) {
+                        packBtns += `
+                            <button class="cart-upsell-btn cart-upsell-pack" onclick="addPack(103)">
+                                <span>📦 Pack Lightning + lámina + carcasa <small style="color:#3FA67E;font-weight:600">-$5.970 OFF</small></span>
+                                <span>${packPrice}</span>
+                            </button>`;
+                    }
+                }
                 upsellHTML = `
                     <div class="cart-upsell">
                         <div class="cart-upsell-title">${titulo}</div>
@@ -4736,7 +4756,7 @@
                                 <span>${acc.name}</span><span>${formatCLP(acc.price)}</span>
                             </button>
                         `).join('')}
-                        ${packBtn}
+                        ${packBtns}
                     </div>`;
             }
 
@@ -4798,8 +4818,8 @@
                 setTimeout(() => { btn.textContent = 'Agregar'; btn.classList.remove('added'); }, 1800);
             }
         }
-        function addPack() {
-            [100, 101, 102].forEach(id => {
+        function addPack(chargerId = 100) {
+            [chargerId, 101, 102].forEach(id => {
                 if (!cart.some(p => p.id === id)) {
                     const acc = stock.find(p => p.id === id);
                     if (acc) cart.push(acc);
