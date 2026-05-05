@@ -2448,14 +2448,20 @@
         }
 
         .rev-photo {
-            width: 58px;
-            height: 58px;
-            border-radius: 8px;
+            width: 110px;
+            height: 110px;
+            border-radius: 10px;
             overflow: hidden;
             border: 1px solid var(--line);
             background: var(--bg-soft);
             cursor: pointer;
             transition: transform 0.2s;
+        }
+        @media (max-width: 600px) {
+            .rev-photo {
+                width: 95px;
+                height: 95px;
+            }
         }
 
         .rev-photo:hover {
