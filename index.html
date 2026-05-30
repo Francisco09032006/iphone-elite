@@ -3033,6 +3033,49 @@
         .side-menu-nav a:hover {
             background: var(--bg); padding-left: 28px;
         }
+
+        /* ════════════════════════════════════════════════════════════
+           TEMA NOIR · re-skin a NEGRO (sobrescribe el tema claro)
+           ════════════════════════════════════════════════════════════ */
+        :root {
+            --bg: #000000;
+            --bg-soft: #0E0E0E;
+            --bg-card: #111113;
+            --ink: #FFFFFF;
+            --ink-soft: #B7B7BC;
+            --ink-mute: #76767C;
+            --accent: #C9A86A;
+            --accent-soft: #E4CE97;
+            --line: rgba(255, 255, 255, 0.10);
+            --line-soft: rgba(255, 255, 255, 0.06);
+            --offer: #E66A5C;
+            --success: #34C77B;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.55);
+            --shadow-lg: 0 28px 70px rgba(0, 0, 0, 0.65);
+        }
+        /* Header en vidrio oscuro */
+        header { background: rgba(8, 8, 8, 0.72) !important; border-bottom-color: var(--line) !important; }
+        /* Las fotos de producto van sobre baldosa CLARA: se ven nítidas sean PNG o JPG */
+        .img-box, .best-img-box, .best-card.rank-1 .best-img-box,
+        .offer-card .offer-img, .search-item-img, .sp-img,
+        .detail-image, .acc-icon {
+            background: linear-gradient(160deg, #f6f6f7 0%, #e8e8ea 100%) !important;
+            border-color: rgba(0, 0, 0, 0.06) !important;
+        }
+        /* Tarjeta nº1 con realce dorado sutil sobre negro */
+        .best-card.rank-1 {
+            background: linear-gradient(155deg, rgba(201, 168, 106, 0.10) 0%, var(--bg-card) 55%) !important;
+            border-color: rgba(201, 168, 106, 0.38) !important;
+        }
+        /* Tarjetas de accesorios oscuras (la baldosa de la foto sigue clara) */
+        .acc-card { background: var(--bg-card) !important; border: 1px solid var(--line) !important; box-shadow: var(--shadow-sm) !important; }
+        /* Bloque "parte de pago": isla negra con texto claro */
+        .tradein { background: linear-gradient(135deg, #0B0B0C 0%, #161618 100%) !important; color: #fff !important; }
+        /* Etiqueta SELLADO legible sobre fondo oscuro */
+        .tag-sealed { color: #fff !important; }
+        /* Packs de accesorios */
+        .cart-upsell-pack { background: linear-gradient(135deg, rgba(201, 168, 106, 0.14), rgba(201, 168, 106, 0.05)) !important; }
     </style>
 </head>
 
@@ -3040,7 +3083,7 @@
 
     <div id="intro" onclick="start()">
         <div class="intro-stage">
-            <img class="intro-img" src="portada.png" alt="iPhone Elite">
+            <img class="intro-img" src="portada iPhoneElite.png" alt="iPhone Elite">
         </div>
         <div class="intro-text">Los mejores precios,<br><em style="font-style:italic; color:var(--accent);">garantía
                 real.</em></div>
@@ -3126,7 +3169,7 @@
 
             <section class="hero-web">
                 <div class="hero-img-wrap">
-                    <img class="hero-img" src="portada.png" alt="iPhone Elite">
+                    <img class="hero-img" src="portada iPhoneElite.png" alt="iPhone Elite">
                 </div>
                 <h1 class="hero-tagline">Tecnología premium,<br><em>confianza garantizada.</em></h1>
                 <p class="hero-sub">4 años entregando iPhones y dispositivos originales en Santiago. Con boleta,
