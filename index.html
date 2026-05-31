@@ -3076,6 +3076,9 @@
         .tag-sealed { color: #fff !important; }
         /* Packs de accesorios */
         .cart-upsell-pack { background: linear-gradient(135deg, rgba(201, 168, 106, 0.14), rgba(201, 168, 106, 0.05)) !important; }
+        /* Logo de la marca */
+        .brand img { height: 46px; width: auto; border-radius: 8px; display: block; }
+        .brand span { font-size: 20px; }
     </style>
 </head>
 
@@ -3094,8 +3097,8 @@
 
         <header id="h">
             <a href="#" class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-                <img src="logo.png" alt="iPhone Elite">
-                <span>iPhone Elite</span>
+                <img src="logotipo iphonelite.jpeg" alt="iPhone Elite" onerror="this.style.display='none';var t=document.getElementById('brand-text');if(t)t.style.display='inline';">
+                <span id="brand-text" style="display:none">iPhone Elite</span>
             </a>
             <div class="nav-right">
                 <button class="icon-btn" onclick="toggleSearch()" aria-label="Buscar">
@@ -4437,10 +4440,46 @@
             'Niebla': '#9AA0A6',
             'Salvia': '#A4BBA1',
             'Naranja': '#D87F4E',
-            'Naranja Cosmico': '#D87F4E'
+            'Naranja Cosmico': '#D87F4E',
+            'Verde Noche': '#22463A',
+            'Blanco Estelar': '#F1EDE2',
+            'Midnight': '#1C1F2A',
+            'Black': '#1A1A1A',
+            'Purple': '#925FB7'
         };
 
-        const colorDot = c => `<span class="color-dot" style="background:${COLOR_HEX[c] || '#888'}"></span>`;
+        const colorDot = c => {
+            const hex = COLOR_HEX[c] || COLOR_HEX[c.replace(/a$/, 'o')] || '#888';
+            return `<span class="color-dot" style="background:${hex}"></span>`;
+        };
+
+        // ── Genera TODAS las variantes de color disponibles según las fotos del IMG_MAP ──
+        // (deduplica por archivo para no repetir sinónimos: 'verde'/'verde noche' = misma foto)
+        (function expandColors() {
+            const pretty = f => {
+                const m = String(f).match(/^Delantera\s+(.+?)\s+(?:iPhone|iPad|MacBook|Samsung)\b/i);
+                return m ? m[1].trim() : null;
+            };
+            const base = {};
+            stock.forEach(p => { if (!p.isAccessory && !base[p.slug]) base[p.slug] = p; });
+            Object.keys(IMG_MAP).forEach(slug => {
+                const b = base[slug];
+                if (!b) return; // slug sin producto en stock → se ignora
+                const seen = new Set();
+                stock.filter(p => p.slug === slug).forEach(p => {
+                    const f = IMG_MAP[slug][(p.color || '').toLowerCase().trim()];
+                    if (f) seen.add(f);
+                });
+                let nid = 9000 + Object.keys(IMG_MAP).indexOf(slug) * 60;
+                Object.values(IMG_MAP[slug]).forEach(file => {
+                    if (seen.has(file)) return;
+                    seen.add(file);
+                    const col = pretty(file);
+                    if (!col) return;
+                    stock.push({ id: ++nid, cat: b.cat, brand: b.brand, condition: b.condition, name: b.name, slug: b.slug, color: col, storage: b.storage, price: b.price });
+                });
+            });
+        })();
 
         const tagClassFor = t => t === 'OFERTA' ? 'tag-offer' : t === 'NUEVO' ? 'tag-new' : t === 'SELLADO' ? 'tag-sealed' : '';
 
