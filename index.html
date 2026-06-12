@@ -3079,6 +3079,48 @@
         /* Logo de la marca */
         .brand img { height: 46px; width: auto; border-radius: 8px; display: block; }
         .brand span { font-size: 20px; }
+
+        /* ─── Bot-nav OSCURA (antes era crema con texto blanco invisible) ─── */
+        .bot-nav {
+            background: rgba(8, 8, 8, 0.92) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            border-top: 1px solid var(--line) !important;
+        }
+        .bot-link { color: var(--ink-soft) !important; }
+        .bot-link:hover { color: var(--accent) !important; }
+        .bot-link svg { stroke: currentColor !important; }
+
+        /* ─── Upsell del CARRITO oscuro (era cream con texto blanco) ─── */
+        .cart-upsell { background: transparent !important; }
+        .cart-upsell-title { color: var(--ink-soft) !important; }
+        .cart-upsell-btn {
+            background: rgba(255, 255, 255, 0.04) !important;
+            border: 1px solid var(--line) !important;
+        }
+        .cart-upsell-btn:hover {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: var(--accent-soft) !important;
+        }
+        .cart-upsell-btn span:first-child,
+        .cart-upsell-btn span:last-child { color: var(--ink) !important; }
+
+        /* ─── Upsell del DETALLE DE PRODUCTO oscuro ─── */
+        .detail-upsell {
+            background: var(--bg-card) !important;
+            border: 1px solid var(--line) !important;
+        }
+        .d-upsell-title { color: var(--ink-soft) !important; }
+        .d-upsell-btn {
+            background: rgba(255, 255, 255, 0.04) !important;
+            border: 1px solid var(--line) !important;
+        }
+        .d-upsell-btn:hover {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: var(--accent-soft) !important;
+        }
+        .d-upsell-btn span:first-child,
+        .d-upsell-btn span:last-child { color: var(--ink) !important; }
     </style>
 </head>
 
