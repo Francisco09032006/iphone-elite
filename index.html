@@ -3669,7 +3669,7 @@
                 </svg>
                 INICIO
             </a>
-            <a href="https://wa.me/56985884670?text=Hola%20iPhone%20Elite%20%F0%9F%91%8B%20Me%20interesa%20comprar%20el%20%7Bproducto%7D%20publicado%20en%20su%20web%20por%20%7Bprecio%7D.%20%C2%BFSigue%20disponible%3F%20Quiero%20coordinar%20compra%20hoy%20mismo%20%F0%9F%93%A6" target="_blank" class="bot-link">
+            <a href="https://wa.me/56985884670?text=Hola%20iPhone%20Elite%20%F0%9F%91%8B%20Vengo%20de%20su%20p%C3%A1gina%20web.%20%C2%BFMe%20pueden%20ayudar%20con%20una%20consulta%3F" target="_blank" class="bot-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                 </svg>
@@ -3685,7 +3685,7 @@
             </a>
         </nav>
 
-        <a href="https://wa.me/56985884670?text=Hola%20iPhone%20Elite%20%F0%9F%91%8B%20Me%20interesa%20comprar%20el%20%7Bproducto%7D%20publicado%20en%20su%20web%20por%20%7Bprecio%7D.%20%C2%BFSigue%20disponible%3F%20Quiero%20coordinar%20compra%20hoy%20mismo%20%F0%9F%93%A6"
+        <a href="https://wa.me/56985884670?text=Hola%20iPhone%20Elite%20%F0%9F%91%8B%20Vengo%20de%20su%20p%C3%A1gina%20web.%20%C2%BFMe%20pueden%20ayudar%20con%20una%20consulta%3F"
             target="_blank" class="fab-wa" aria-label="Contactar por WhatsApp">
             <svg viewBox="0 0 32 32" width="28" height="28">
                 <path fill="#fff"
@@ -3869,85 +3869,58 @@
         // Stock completo — todos los modelos con imagen en GitHub (iPhone 11 → 17 Pro Max)
         // condition: 'sellado' (nuevo de caja) | 'seminuevo' (usado impecable) | 'reacondicionado' (por piezas originales)
         const stock = [
-            // iPhone 11 series — precios actualizados según stories
-            { id: 1, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 11', slug: 'iphone-11', color: 'Rojo', storage: '64 GB', price: 169990 },
-            { id: 2, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 11 Pro', slug: 'iphone-11-pro', color: 'Verde Noche', storage: '64 GB', price: 249990 },
-            { id: 3, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 11 Pro Max', slug: 'iphone-11-pm', color: 'Space Gray', storage: '256 GB', price: 289990 },
+            // ─── Samsung ───
+            { id: 1,  cat: 'ot', brand: 'samsung',    condition: 'seminuevo', name: 'Samsung S23 Ultra', slug: 's23-ultra', color: 'Blanco',  storage: '512 GB', price: 479990 },
+            { id: 2,  cat: 'ot', brand: 'samsung',    condition: 'seminuevo', name: 'Samsung S25 Ultra', slug: 's25-ultra', color: 'Negro',   storage: '256 GB', price: 749990 },
+            { id: 3,  cat: 'ot', brand: 'samsung',    condition: 'seminuevo', name: 'Samsung S25 Ultra', slug: 's25-ultra', color: 'Dorado',  storage: '256 GB', price: 749990 },
 
-            // iPhone 12 series
-            { id: 4, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 12 mini', slug: 'iphone-12-mini', color: 'Blanco', storage: '64 GB', price: 219990 },
-            { id: 5, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 12', slug: 'iphone-12', color: 'Azul medianoche', storage: '64 GB', price: 239990 },
-            { id: 6, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 12 Pro', slug: 'iphone-12-pro', color: 'Dorado', storage: '128 GB', price: 329990 },
-            { id: 7, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 12 Pro', slug: 'iphone-12-pro', color: 'Gris', storage: '128 GB', price: 329990 },
-            { id: 8, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 12 Pro Max', slug: 'iphone-12-pm', color: 'Gris', storage: '128 GB', price: 399990 },
-            { id: 9, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 12 Pro Max', slug: 'iphone-12-pm', color: 'Azul', storage: '128 GB', price: 399990 },
+            // ─── iPhone 12 ───
+            { id: 4,  cat: 'ip', brand: 'iphone',     condition: 'seminuevo', name: 'iPhone 12',         slug: 'iphone-12',     color: 'Azul medianoche', storage: '64 GB',  price: 239990 },
+            { id: 5,  cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 12 Pro',     slug: 'iphone-12-pro', color: 'Gris',            storage: '128 GB', price: 329990 },
+            { id: 6,  cat: 'ip', brand: 'iphone-pm',  condition: 'seminuevo', name: 'iPhone 12 Pro Max', slug: 'iphone-12-pm',  color: 'Gris',            storage: '128 GB', price: 399990, tag: 'OFERTA' },
 
-            // iPhone 13 series — todos los colores que tiene Martín
-            { id: 10, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 13 mini', slug: 'iphone-13-mini', color: 'Medianoche', storage: '128 GB', price: 309990 },
-            { id: 11, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 13', slug: 'iphone-13', color: 'Medianoche', storage: '128 GB', price: 369990 },
-            { id: 36, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 13', slug: 'iphone-13', color: 'Blanco estelar', storage: '128 GB', price: 369990 },
-            { id: 37, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 13', slug: 'iphone-13', color: 'Rosa', storage: '128 GB', price: 369990 },
-            { id: 12, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 13 Pro', slug: 'iphone-13-pro', color: 'Grafito', storage: '256 GB', price: 479990 },
-            { id: 38, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 13 Pro', slug: 'iphone-13-pro', color: 'Azul Sierra', storage: '256 GB', price: 479990 },
-            { id: 13, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 13 Pro Max', slug: 'iphone-13-pm', color: 'Plata', storage: '128 GB', price: 549990 },
-            { id: 39, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 13 Pro Max', slug: 'iphone-13-pm', color: 'Grafito', storage: '128 GB', price: 549990 },
+            // ─── iPhone 13 ───
+            { id: 7,  cat: 'ip', brand: 'iphone',     condition: 'seminuevo', name: 'iPhone 13',         slug: 'iphone-13',     color: 'Azul medianoche', storage: '128 GB', price: 369990 },
+            { id: 8,  cat: 'ip', brand: 'iphone',     condition: 'seminuevo', name: 'iPhone 13',         slug: 'iphone-13',     color: 'Verde',           storage: '128 GB', price: 369990 },
+            { id: 9,  cat: 'ip', brand: 'iphone',     condition: 'seminuevo', name: 'iPhone 13',         slug: 'iphone-13',     color: 'Blanco',          storage: '128 GB', price: 369990 },
+            { id: 10, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 13 Pro',     slug: 'iphone-13-pro', color: 'Gris',            storage: '256 GB', price: 479990 },
+            { id: 11, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 13 Pro',     slug: 'iphone-13-pro', color: 'Celeste',         storage: '256 GB', price: 479990 },
+            { id: 12, cat: 'ip', brand: 'iphone-pm',  condition: 'seminuevo', name: 'iPhone 13 Pro Max', slug: 'iphone-13-pm',  color: 'Dorado',          storage: '128 GB', price: 549990 },
 
-            // iPhone 14 series
-            { id: 14, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 14', slug: 'iphone-14', color: 'Rojo', storage: '128 GB', price: 429990 },
-            { id: 40, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 14', slug: 'iphone-14', color: 'Medianoche', storage: '128 GB', price: 429990 },
-            { id: 15, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 14 Plus', slug: 'iphone-14-plus', color: 'Azul', storage: '128 GB', price: 509990 },
-            { id: 16, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro', slug: 'iphone-14-pro', color: 'Blanco', storage: '128 GB', price: 569990 },
-            { id: 41, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro', slug: 'iphone-14-pro', color: 'Blanco', storage: '256 GB', price: 589990 },
-            { id: 42, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro · E-Sim', slug: 'iphone-14-pro', color: 'Negro', storage: '128 GB', price: 569990 },
-            { id: 43, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro', slug: 'iphone-14-pro', color: 'Morado', storage: '128 GB', price: 569990 },
-            { id: 17, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', color: 'Negro', storage: '128 GB', price: 649990 },
-            { id: 18, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', color: 'Dorado', storage: '256 GB', price: 679990, tag: 'DESTACADO' },
+            // ─── iPhone 14 ───
+            { id: 13, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro',         slug: 'iphone-14-pro', color: 'Blanco',  storage: '128 GB', price: 549990 },
+            { id: 14, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro · E-Sim', slug: 'iphone-14-pro', color: 'Blanco',  storage: '256 GB', price: 549990 },
+            { id: 15, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro · E-Sim', slug: 'iphone-14-pro', color: 'Negro',   storage: '128 GB', price: 549990 },
+            { id: 16, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro',         slug: 'iphone-14-pro', color: 'Morado',  storage: '128 GB', price: 539990 },
+            { id: 17, cat: 'ip', brand: 'iphone-pm',  condition: 'seminuevo', name: 'iPhone 14 Pro Max',     slug: 'iphone-14-pm',  color: 'Negro',   storage: '256 GB', price: 609990 },
+            { id: 18, cat: 'ip', brand: 'iphone-pm',  condition: 'seminuevo', name: 'iPhone 14 Pro Max',     slug: 'iphone-14-pm',  color: 'Dorado',  storage: '256 GB', price: 659990 },
+            { id: 19, cat: 'ip', brand: 'iphone-pm',  condition: 'seminuevo', name: 'iPhone 14 Pro Max',     slug: 'iphone-14-pm',  color: 'Negro',   storage: '128 GB', price: 639990 },
 
-            // iPhone 15 series
-            { id: 19, cat: 'ip', brand: 'iphone', condition: 'sellado', name: 'iPhone 15', slug: 'iphone-15', color: 'Rosado', storage: '128 GB', price: 569990, tag: 'SELLADO' },
-            { id: 20, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 15 Plus', slug: 'iphone-15-plus', color: 'Verde', storage: '128 GB', price: 619990 },
-            { id: 21, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 15 Pro', slug: 'iphone-15-pro', color: 'Titanio natural', storage: '128 GB', price: 669990 },
-            { id: 22, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm', color: 'Negro', storage: '256 GB', price: 789990 },
-            { id: 44, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm', color: 'Titanio natural', storage: '256 GB', price: 789990 },
-            { id: 45, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm', color: 'Azul titanio', storage: '256 GB', price: 789990 },
+            // ─── iPhone 15 ───
+            { id: 20, cat: 'ip', brand: 'iphone',     condition: 'seminuevo', name: 'iPhone 15',         slug: 'iphone-15',     color: 'Negro',         storage: '128 GB', price: 549990 },
+            { id: 21, cat: 'ip', brand: 'iphone',     condition: 'seminuevo', name: 'iPhone 15',         slug: 'iphone-15',     color: 'Pink',          storage: '128 GB', price: 549990 },
+            { id: 22, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 15 Pro',     slug: 'iphone-15-pro', color: 'Titanio natural', storage: '128 GB', price: 629990 },
+            { id: 23, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 15 Pro',     slug: 'iphone-15-pro', color: 'Azul titanio',  storage: '128 GB', price: 669990 },
+            { id: 24, cat: 'ip', brand: 'iphone-pm',  condition: 'seminuevo', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm',  color: 'Negro',         storage: '256 GB', price: 789990 },
+            { id: 25, cat: 'ip', brand: 'iphone-pm',  condition: 'seminuevo', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm',  color: 'Azul titanio',  storage: '256 GB', price: 789990 },
 
-            // iPhone 16 series
-            { id: 23, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 16', slug: 'iphone-16', color: 'Negro', storage: '256 GB', price: 639990 },
-            { id: 46, cat: 'ip', brand: 'iphone', condition: 'sellado', name: 'iPhone 16', slug: 'iphone-16', color: 'Negro', storage: '128 GB', price: 659990, tag: 'NUEVO' },
-            { id: 24, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 16 Plus', slug: 'iphone-16-plus', color: 'Ultramar', storage: '128 GB', price: 739990 },
-            { id: 25, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 16e', slug: 'iphone-16e', color: 'Negro', storage: '128 GB', price: 599990 },
-            { id: 26, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 16 Pro', slug: 'iphone-16-pro', color: 'Dorado', storage: '512 GB', price: 789990 },
-            { id: 27, cat: 'ip', brand: 'iphone-pm', condition: 'reacondicionado', name: 'iPhone 16 Pro Max', slug: 'iphone-16-pm', color: 'Blanco', storage: '128 GB', price: 849990, oldPrice: 939990, tag: 'OFERTA' },
-            { id: 47, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 16 Pro Max', slug: 'iphone-16-pm', color: 'Titanio natural', storage: '256 GB', price: 879990, oldPrice: 949990, tag: 'OFERTA' },
-            { id: 28, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 16 Pro Max', slug: 'iphone-16-pm', color: 'Negro', storage: '256 GB', price: 949990 },
+            // ─── iPhone 16 ───
+            { id: 26, cat: 'ip', brand: 'iphone',     condition: 'seminuevo',      name: 'iPhone 16',         slug: 'iphone-16',     color: 'Negro',           storage: '256 GB', price: 639990 },
+            { id: 27, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo',      name: 'iPhone 16 Pro',     slug: 'iphone-16-pro', color: 'Titanio natural', storage: '256 GB', price: 739990, tag: 'OFERTA' },
+            { id: 28, cat: 'ip', brand: 'iphone-pm',  condition: 'reacondicionado', name: 'iPhone 16 Pro Max', slug: 'iphone-16-pm',  color: 'Blanco',          storage: '128 GB', price: 849990, tag: 'OFERTA' },
+            { id: 29, cat: 'ip', brand: 'iphone-pm',  condition: 'seminuevo',      name: 'iPhone 16 Pro Max', slug: 'iphone-16-pm',  color: 'Titanio natural', storage: '256 GB', price: 879990, tag: 'OFERTA' },
 
-            // iPhone 17 series
-            { id: 29, cat: 'ip', brand: 'iphone', condition: 'sellado', name: 'iPhone 17', slug: 'iphone-17', color: 'Negro', storage: '256 GB', price: 889990, oldPrice: 909990, tag: 'NUEVO' },
-            { id: 30, cat: 'ip', brand: 'iphone', condition: 'sellado', name: 'iPhone 17 Air', slug: 'iphone-17-air', color: 'Plata', storage: '256 GB', price: 939990, tag: 'NUEVO' },
-            { id: 31, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 17 Pro', slug: 'iphone-17-pro', color: 'Blanco', storage: '256 GB', price: 1249990 },
-            { id: 32, cat: 'ip', brand: 'iphone-pm', condition: 'sellado', name: 'iPhone 17 Pro Max', slug: 'iphone-17-pm', color: 'Blanco', storage: '256 GB', price: 1349990, tag: 'NUEVO' },
+            // ─── iPhone 17 ───
+            { id: 30, cat: 'ip', brand: 'iphone',     condition: 'sellado', name: 'iPhone 17 Open Box', slug: 'iphone-17',     color: 'Lila',  storage: '256 GB', price: 839990, tag: 'NUEVO' },
+            { id: 31, cat: 'ip', brand: 'iphone',     condition: 'sellado', name: 'iPhone 17 Open Box', slug: 'iphone-17',     color: 'Verde', storage: '256 GB', price: 839990, tag: 'NUEVO' },
+            { id: 32, cat: 'ip', brand: 'iphone',     condition: 'sellado', name: 'iPhone 17 Open Box', slug: 'iphone-17',     color: 'Negro', storage: '256 GB', price: 839990, tag: 'NUEVO' },
+            { id: 33, cat: 'ip', brand: 'iphone-pro', condition: 'sellado', name: 'iPhone 17 Pro',      slug: 'iphone-17-pro', color: 'Azul',  storage: '256 GB', price: 1219990, tag: 'OFERTA' },
 
-            // Otras marcas (Samsung)
-            { id: 48, cat: 'ot', brand: 'samsung', condition: 'seminuevo', name: 'Samsung S23 Ultra', slug: 's23-ultra', color: 'Blanco', storage: '512 GB', price: 479990 },
-            { id: 33, cat: 'ot', brand: 'samsung', condition: 'seminuevo', name: 'Samsung S26 Ultra', slug: 's26-ultra', color: 'Blue', storage: '256 GB', price: 999990 },
-            { id: 34, cat: 'ot', brand: 'samsung', condition: 'seminuevo', name: 'Samsung S24 Ultra', slug: 's24-ultra', color: 'Negro', storage: '256 GB', price: 589990 },
-            { id: 35, cat: 'ot', brand: 'samsung', condition: 'seminuevo', name: 'Samsung S24 Ultra', slug: 's24-ultra', color: 'Negro', storage: '512 GB', price: 619990 },
-
-            // iPads
-            { id: 49, cat: 'ip', brand: 'ipad', condition: 'sellado', name: 'iPad Air 11" M3', slug: 'ipad-air-11-m3', color: 'Purple', storage: '128 GB', price: 569990, tag: 'NUEVO' },
-            { id: 50, cat: 'ip', brand: 'ipad', condition: 'sellado', name: 'iPad Air 11" M3 + Apple Pencil', slug: 'ipad-air-11-m3', color: 'Purple', storage: '128 GB', price: 659990, tag: 'NUEVO' },
-            { id: 51, cat: 'ip', brand: 'ipad', condition: 'sellado', name: 'iPad Air 11" M3', slug: 'ipad-air-11-m3-blanco', color: 'Blanco Estelar', storage: '128 GB', price: 569990, tag: 'NUEVO' },
-            { id: 52, cat: 'ip', brand: 'ipad', condition: 'sellado', name: 'iPad Air 11" M3 + Pencil Pro', slug: 'ipad-air-11-m3-blanco', color: 'Blanco Estelar', storage: '128 GB', price: 659990, tag: 'NUEVO' },
-
-            // MacBooks
-            { id: 53, cat: 'ip', brand: 'macbook', condition: 'seminuevo', name: 'MacBook Air 13" M3', slug: 'macbook-air-13-m3', color: 'Midnight', storage: '512 GB · 16GB RAM', price: 889990 },
-            { id: 54, cat: 'ip', brand: 'macbook', condition: 'sellado', name: 'MacBook Pro 14" M3 Pro', slug: 'macbook-pro-14-m3-pro', color: 'Black', storage: '1 TB · 36GB RAM', price: 1999990, tag: 'NUEVO' },
-
-            // Accesorios
-            { id: 100, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador USB-C 20W', slug: 'cargador-20w', color: 'Blanco', storage: '20W', price: 14990, isAccessory: true },
-            { id: 103, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador Lightning 20W', slug: 'cargador-lightning', color: 'Blanco', storage: '20W', price: 14990, isAccessory: true },
-            { id: 101, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Lámina Vidrio Templado', slug: 'lamina-templado', color: 'Transparente', storage: 'Universal', price: 9990, isAccessory: true },
-            { id: 102, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Carcasa Silicona', slug: 'carcasa-silicona', color: 'Transparente', storage: 'Universal', price: 12990, isAccessory: true }
+            // ─── Accesorios ───
+            { id: 100, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador USB-C 20W',      slug: 'cargador-20w',       color: 'Blanco',       storage: '20W',       price: 14990, isAccessory: true },
+            { id: 103, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador Lightning 20W',  slug: 'cargador-lightning', color: 'Blanco',       storage: '20W',       price: 14990, isAccessory: true },
+            { id: 101, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Lámina Vidrio Templado',  slug: 'lamina-templado',    color: 'Transparente', storage: 'Universal', price: 9990,  isAccessory: true },
+            { id: 102, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Carcasa Silicona',        slug: 'carcasa-silicona',   color: 'Transparente', storage: 'Universal', price: 12990, isAccessory: true }
         ];
 
         const formatCLP = n => '$' + n.toLocaleString('es-CL');
@@ -4058,7 +4031,7 @@
                 const slug = variants[0].slug;
                 const rank = i + 1;
                 return `
-                    <article class="best-card rank-${rank}" data-model="${b.model}" onclick="openDetail(this.dataset.model)">
+                    <article class="best-card rank-${rank}" data-model="${b.model.replace(/"/g, '&quot;')}" onclick="openDetail(this.dataset.model)">
                         <span class="best-rank">Nº ${rank}</span>
                         <div class="best-img-box">
                             <img src="${imgFor(variants[0])}" alt="${b.model}" loading="lazy" onerror="this.style.opacity=0.2">
@@ -4082,7 +4055,7 @@
             row.innerHTML = offers.map(p => {
                 const save = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
                 return `
-                    <article class="offer-card" data-model="${p.name}" onclick="openDetail(this.dataset.model)">
+                    <article class="offer-card" data-model="${p.name.replace(/"/g, '&quot;')}" onclick="openDetail(this.dataset.model)">
                         <span class="offer-save">-${save}%</span>
                         <div class="offer-img"><img src="${imgFor(p)}" alt="${p.name}" loading="lazy" onerror="this.style.opacity=0.2"></div>
                         <div class="offer-name">${p.name}</div>
@@ -4573,11 +4546,12 @@
             const priceLabel = multi
                 ? `<span class="p-from">Desde</span><span class="p-price">${formatCLP(g.minPrice)}</span>`
                 : `<span class="p-price">${formatCLP(g.minPrice)}</span>`;
+            const safeName = g.name.replace(/"/g, '&quot;');
             return `
-                <article class="card" data-model="${g.name}" onclick="openDetail(this.dataset.model)">
+                <article class="card" data-model="${safeName}" onclick="openDetail(this.dataset.model)">
                     ${tagHTML}
                     ${condHTML}
-                    <div class="img-box"><img src="${imgFor(g.variants[0])}" alt="${g.name}" loading="lazy" onerror="this.style.opacity=0.2"></div>
+                    <div class="img-box"><img src="${imgFor(g.variants[0])}" alt="${safeName}" loading="lazy" onerror="this.style.opacity=0.2"></div>
                     <div class="card-body">
                         <div class="p-name">${g.name}</div>
                         <div class="p-meta">${meta}</div>
@@ -4590,10 +4564,11 @@
         function cardHTML(p) {
             const tag = p.tag ? `<span class="card-tag ${tagClassFor(p.tag)}">${p.tag}</span>` : '';
             const oldP = p.oldPrice ? `<span class="p-price-old">${formatCLP(p.oldPrice)}</span>` : '';
+            const safeName = p.name.replace(/"/g, '&quot;');
             return `
-                <article class="card" onclick="openDetail('${p.name.replace(/'/g, "\\'")}')">
+                <article class="card" data-model="${safeName}" onclick="openDetail(this.dataset.model)">
                     ${tag}
-                    <div class="img-box"><img src="${imgFor(p)}" alt="${p.name}" loading="lazy" onerror="this.style.opacity=0.2"></div>
+                    <div class="img-box"><img src="${imgFor(p)}" alt="${safeName}" loading="lazy" onerror="this.style.opacity=0.2"></div>
                     <div class="card-body">
                         <div class="p-name">${p.name}</div>
                         <div class="p-meta">${p.storage} · ${p.color}</div>
