@@ -3900,6 +3900,14 @@
             // ─── iPhone 17 ───
             { id: 33, cat: 'ip', brand: 'iphone-pro', condition: 'sellado', name: 'iPhone 17 Pro', slug: 'iphone-17-pro', color: 'Azul', storage: '256 GB', price: 1219990, tag: 'OFERTA' },
 
+            // ─── Re-agregados (con foto de espalda confirmada) ───
+            { id: 4,  cat: 'ip', brand: 'iphone',     condition: 'seminuevo', name: 'iPhone 12',         slug: 'iphone-12',     color: 'Azul medianoche', storage: '64 GB',  price: 239990 },
+            { id: 23, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 15 Pro',     slug: 'iphone-15-pro', color: 'Azul titanio',    storage: '128 GB', price: 669990 },
+            { id: 25, cat: 'ip', brand: 'iphone-pm',  condition: 'seminuevo', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm',  color: 'Azul titanio',    storage: '256 GB', price: 789990 },
+            { id: 30, cat: 'ip', brand: 'iphone',     condition: 'sellado',   name: 'iPhone 17 Open Box', slug: 'iphone-17',     color: 'Lila',  storage: '256 GB', price: 839990, tag: 'NUEVO' },
+            { id: 31, cat: 'ip', brand: 'iphone',     condition: 'sellado',   name: 'iPhone 17 Open Box', slug: 'iphone-17',     color: 'Verde', storage: '256 GB', price: 839990, tag: 'NUEVO' },
+            { id: 32, cat: 'ip', brand: 'iphone',     condition: 'sellado',   name: 'iPhone 17 Open Box', slug: 'iphone-17',     color: 'Negro', storage: '256 GB', price: 839990, tag: 'NUEVO' },
+
             // ─── Accesorios ───
             { id: 100, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador USB-C 20W',      slug: 'cargador-20w',       color: 'Blanco',       storage: '20W',       price: 9990, isAccessory: true },
             { id: 103, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador Lightning 20W',  slug: 'cargador-lightning', color: 'Blanco',       storage: '20W',       price: 9990, isAccessory: true },
@@ -4400,15 +4408,31 @@
                 'negro': 'Trasera Negro iPhone 15.jpg',
                 'pink':  'Trasera Rosa iPhone 15.jpg'
             },
-            'iphone-15-pro':  { 'titanio natural': 'Trasera Titanio Azul iPhone 15 Pro.jpg' },
-            'iphone-15-pm':   { 'negro': 'Trasera Titanio Negro iPhone 15 Pro Max.jpg' },
             'iphone-16':      { 'negro': 'Trasera Negro iPhone 16.jpg' },
             'iphone-16-pro':  { 'titanio natural': 'Trasera Titanio Blanco iPhone 16 Pro.jpg' },
             'iphone-16-pm':   {
                 'blanco':           'Trasera Titanio Blanco iPhone 16 Pro Max (2).jpg',
                 'titanio natural':  'Trasera Titanio Blanco iPhone 16 Pro Max (2).jpg'
             },
-            'iphone-17-pro':  { 'azul': 'Trasera Azul Cosmico iPhone 17 Pro.webp' }
+            'iphone-17-pro':  { 'azul': 'Trasera Azul Cosmico iPhone 17 Pro.webp' },
+            'iphone-12':      {
+                'azul':            'Trasera Azul iPhone 12.png',
+                'azul medianoche': 'Trasera Azul iPhone 12.png',
+                'medianoche':      'Trasera Azul iPhone 12.png'
+            },
+            'iphone-15-pro':  {
+                'titanio natural': 'Trasera Titanio Azul iPhone 15 Pro.jpg',
+                'azul titanio':    'Trasera Titanio Azul iPhone 15 Pro.jpg'
+            },
+            'iphone-15-pm':   {
+                'negro':        'Trasera Titanio Negro iPhone 15 Pro Max.jpg',
+                'azul titanio': 'Trasera Titanio Azul iPhone 15 Pro Max.jpg'
+            },
+            'iphone-17':      {
+                'lila':  'Trasera Lavanda iPhone 17.jpg',
+                'verde': 'Trasera Salvia iPhone 17.jpg',
+                'negro': 'Trasera Negro iPhone 17.jpg'
+            }
         };
         function imgFor(p) {
             if (p.isAccessory && ACC_IMG[p.slug]) return encodeURI(ACC_IMG[p.slug]);
