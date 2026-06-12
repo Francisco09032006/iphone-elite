@@ -3901,10 +3901,10 @@
             { id: 33, cat: 'ip', brand: 'iphone-pro', condition: 'sellado', name: 'iPhone 17 Pro', slug: 'iphone-17-pro', color: 'Azul', storage: '256 GB', price: 1219990, tag: 'OFERTA' },
 
             // ─── Accesorios ───
-            { id: 100, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador USB-C 20W',      slug: 'cargador-20w',       color: 'Blanco',       storage: '20W',       price: 14990, isAccessory: true },
-            { id: 103, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador Lightning 20W',  slug: 'cargador-lightning', color: 'Blanco',       storage: '20W',       price: 14990, isAccessory: true },
-            { id: 101, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Lámina Vidrio Templado',  slug: 'lamina-templado',    color: 'Transparente', storage: 'Universal', price: 9990,  isAccessory: true },
-            { id: 102, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Carcasa Silicona',        slug: 'carcasa-silicona',   color: 'Transparente', storage: 'Universal', price: 12990, isAccessory: true }
+            { id: 100, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador USB-C 20W',      slug: 'cargador-20w',       color: 'Blanco',       storage: '20W',       price: 9990, isAccessory: true },
+            { id: 103, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador Lightning 20W',  slug: 'cargador-lightning', color: 'Blanco',       storage: '20W',       price: 9990, isAccessory: true },
+            { id: 101, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Lámina Vidrio Templado',  slug: 'lamina-templado',    color: 'Transparente', storage: 'Universal', price: 6990,  isAccessory: true },
+            { id: 102, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Carcasa Silicona',        slug: 'carcasa-silicona',   color: 'Transparente', storage: 'Universal', price: 8990, isAccessory: true }
         ];
 
         const formatCLP = n => '$' + n.toLocaleString('es-CL');
@@ -4762,11 +4762,11 @@
                         `).join('')}
                         <button class="d-upsell-btn d-upsell-pack" onclick="addPack(100); showToast('🎉 Pack USB-C · ahorras $5.970')">
                             <span>📦 Pack USB-C + lámina + carcasa <small>-$5.970 OFF</small></span>
-                            <span>${formatCLP(14990 + 9990 + 12990 - 5970)}</span>
+                            <span>${formatCLP(9990 + 6990 + 8990 - 5970)}</span>
                         </button>
                         <button class="d-upsell-btn d-upsell-pack" onclick="addPack(103); showToast('🎉 Pack Lightning · ahorras $5.970')">
                             <span>📦 Pack Lightning + lámina + carcasa <small>-$5.970 OFF</small></span>
-                            <span>${formatCLP(14990 + 9990 + 12990 - 5970)}</span>
+                            <span>${formatCLP(9990 + 6990 + 8990 - 5970)}</span>
                         </button>
                     </div>`;
             }
@@ -4912,7 +4912,7 @@
                 // Mostrar packs si todavía no se completa
                 let packBtns = '';
                 if (!tienePack) {
-                    const packPrice = formatCLP(14990 + 9990 + 12990 - 5970);
+                    const packPrice = formatCLP(9990 + 6990 + 8990 - 5970);
                     if (!cartIds.has(100)) {
                         packBtns += `
                             <button class="cart-upsell-btn cart-upsell-pack" onclick="addPack(100)">
