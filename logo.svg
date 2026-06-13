@@ -1,58 +1,64 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
   <defs>
-    <radialGradient id="bgGrad" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#1f1810"/>
-      <stop offset="60%" stop-color="#0a0703"/>
+    <radialGradient id="bgGrad" cx="45%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#2a2118"/>
+      <stop offset="55%" stop-color="#0d0905"/>
       <stop offset="100%" stop-color="#000"/>
     </radialGradient>
     <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FFE293"/>
-      <stop offset="35%" stop-color="#F4C95D"/>
-      <stop offset="50%" stop-color="#FFE293"/>
-      <stop offset="65%" stop-color="#D4A934"/>
-      <stop offset="100%" stop-color="#8B6A1E"/>
+      <stop offset="25%" stop-color="#F4C95D"/>
+      <stop offset="45%" stop-color="#FFE9A8"/>
+      <stop offset="55%" stop-color="#F4C95D"/>
+      <stop offset="75%" stop-color="#C9A03E"/>
+      <stop offset="100%" stop-color="#7A5A1A"/>
     </linearGradient>
     <linearGradient id="silverShine" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="40%" stop-color="#E8E8EA"/>
-      <stop offset="60%" stop-color="#B0B0B5"/>
-      <stop offset="100%" stop-color="#6C6C70"/>
+      <stop offset="35%" stop-color="#F0F0F2"/>
+      <stop offset="55%" stop-color="#C8C8CC"/>
+      <stop offset="80%" stop-color="#8A8A90"/>
+      <stop offset="100%" stop-color="#5C5C62"/>
     </linearGradient>
     <linearGradient id="ringGlow" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FFE293" stop-opacity="0.95"/>
-      <stop offset="50%" stop-color="#F4C95D" stop-opacity="0.55"/>
-      <stop offset="100%" stop-color="#8B6A1E" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#F4C95D" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#7A5A1A" stop-opacity="0.25"/>
     </linearGradient>
     <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <filter id="strongShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
   </defs>
 
-  <!-- Black background filling the square -->
+  <!-- Black square background -->
   <rect width="600" height="600" fill="#000"/>
 
-  <!-- Circle filling almost all the space -->
-  <circle cx="300" cy="300" r="280" fill="url(#bgGrad)" stroke="url(#ringGlow)" stroke-width="3"/>
+  <!-- Circle filling most of the square -->
+  <circle cx="300" cy="300" r="285" fill="url(#bgGrad)" stroke="url(#ringGlow)" stroke-width="3"/>
   <!-- Highlight crescent top-right -->
-  <path d="M 300 30 A 270 270 0 0 1 570 300" fill="none" stroke="#FFE293" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
+  <path d="M 300 18 A 282 282 0 0 1 582 300" fill="none" stroke="#FFE9A8" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
 
-  <!-- Apple icon above iE, centered -->
-  <g transform="translate(283, 130) scale(0.65)" fill="url(#silverShine)" filter="url(#softGlow)">
+  <!-- Apple icon at the top of the circle -->
+  <g transform="translate(265, 75) scale(0.85)" fill="url(#silverShine)" filter="url(#softGlow)">
     <path d="M28.5 16.3c0-3.2 2.6-4.7 2.7-4.8-1.5-2.2-3.8-2.5-4.6-2.5-2-0.2-3.8 1.1-4.9 1.1-1 0-2.6-1.1-4.3-1-2.2 0-4.2 1.3-5.4 3.3-2.3 4-0.6 9.9 1.7 13.1 1.1 1.6 2.4 3.4 4.1 3.3 1.7-0.1 2.2-1.1 4.2-1.1 1.9 0 2.4 1.1 4.2 1 1.7 0 2.8-1.6 3.9-3.2 1.2-1.8 1.7-3.6 1.7-3.7-0.1 0-3.3-1.3-3.3-5zm-3.4-9.4c0.9-1.1 1.5-2.7 1.4-4.2-1.3 0.1-3 0.9-3.9 2-0.9 1-1.6 2.5-1.4 4.1 1.5 0.1 3-0.7 3.9-1.9z"/>
   </g>
 
-  <!-- iE monogram centered in the circle -->
-  <g transform="translate(300, 360)" filter="url(#softGlow)">
-    <!-- Sparkle on the i -->
-    <circle cx="-70" cy="-65" r="8" fill="#FFFFFF" opacity="0.95"/>
-    <circle cx="-70" cy="-65" r="4" fill="#FFE293"/>
-    <!-- lowercase i (silver) -->
-    <text x="-70" y="60" font-family="Georgia, serif" font-style="italic" font-size="210" font-weight="500" text-anchor="middle" fill="url(#silverShine)">i</text>
-    <!-- uppercase E (gold) -->
-    <text x="65" y="60" font-family="Georgia, serif" font-style="italic" font-size="250" font-weight="600" text-anchor="middle" fill="url(#goldShine)">E</text>
+  <!-- Sparkle dot on the i -->
+  <g filter="url(#softGlow)">
+    <circle cx="195" cy="185" r="13" fill="#FFFFFF" opacity="0.95"/>
+    <circle cx="195" cy="185" r="7" fill="#FFE9A8"/>
+  </g>
+
+  <!-- Big iE letters (silver i + gold E), nearly filling the circle -->
+  <g filter="url(#strongShadow)">
+    <text x="195" y="455" font-family="Georgia, 'Playfair Display', serif" font-style="italic" font-size="370" font-weight="500" text-anchor="middle" fill="url(#silverShine)">i</text>
+    <text x="395" y="465" font-family="Georgia, 'Playfair Display', serif" font-style="italic" font-size="430" font-weight="600" text-anchor="middle" fill="url(#goldShine)">E</text>
   </g>
 </svg>
