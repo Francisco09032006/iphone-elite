@@ -32,39 +32,27 @@
     </filter>
   </defs>
 
+  <!-- Black background filling the square -->
   <rect width="600" height="600" fill="#000"/>
 
-  <!-- Outer ring -->
-  <circle cx="300" cy="270" r="215" fill="url(#bgGrad)" stroke="url(#ringGlow)" stroke-width="2.5"/>
+  <!-- Circle filling almost all the space -->
+  <circle cx="300" cy="300" r="280" fill="url(#bgGrad)" stroke="url(#ringGlow)" stroke-width="3"/>
   <!-- Highlight crescent top-right -->
-  <path d="M 300 55 A 215 215 0 0 1 515 270" fill="none" stroke="#FFE293" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+  <path d="M 300 30 A 270 270 0 0 1 570 300" fill="none" stroke="#FFE293" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
 
-  <!-- Apple icon above iE -->
-  <g transform="translate(283, 110) scale(0.6)" fill="url(#silverShine)" filter="url(#softGlow)">
+  <!-- Apple icon above iE, centered -->
+  <g transform="translate(283, 130) scale(0.65)" fill="url(#silverShine)" filter="url(#softGlow)">
     <path d="M28.5 16.3c0-3.2 2.6-4.7 2.7-4.8-1.5-2.2-3.8-2.5-4.6-2.5-2-0.2-3.8 1.1-4.9 1.1-1 0-2.6-1.1-4.3-1-2.2 0-4.2 1.3-5.4 3.3-2.3 4-0.6 9.9 1.7 13.1 1.1 1.6 2.4 3.4 4.1 3.3 1.7-0.1 2.2-1.1 4.2-1.1 1.9 0 2.4 1.1 4.2 1 1.7 0 2.8-1.6 3.9-3.2 1.2-1.8 1.7-3.6 1.7-3.7-0.1 0-3.3-1.3-3.3-5zm-3.4-9.4c0.9-1.1 1.5-2.7 1.4-4.2-1.3 0.1-3 0.9-3.9 2-0.9 1-1.6 2.5-1.4 4.1 1.5 0.1 3-0.7 3.9-1.9z"/>
   </g>
 
-  <!-- iE monogram -->
-  <g transform="translate(300, 300)" filter="url(#softGlow)">
-    <!-- Sparkle dot on i -->
-    <circle cx="-58" cy="-50" r="6" fill="#FFFFFF" opacity="0.95"/>
-    <circle cx="-58" cy="-50" r="3" fill="#FFE293"/>
+  <!-- iE monogram centered in the circle -->
+  <g transform="translate(300, 360)" filter="url(#softGlow)">
+    <!-- Sparkle on the i -->
+    <circle cx="-70" cy="-65" r="8" fill="#FFFFFF" opacity="0.95"/>
+    <circle cx="-70" cy="-65" r="4" fill="#FFE293"/>
     <!-- lowercase i (silver) -->
-    <text x="-58" y="50" font-family="Georgia, serif" font-style="italic" font-size="170" font-weight="500" text-anchor="middle" fill="url(#silverShine)">i</text>
+    <text x="-70" y="60" font-family="Georgia, serif" font-style="italic" font-size="210" font-weight="500" text-anchor="middle" fill="url(#silverShine)">i</text>
     <!-- uppercase E (gold) -->
-    <text x="50" y="50" font-family="Georgia, serif" font-style="italic" font-size="200" font-weight="600" text-anchor="middle" fill="url(#goldShine)">E</text>
-  </g>
-
-  <!-- iPhone Elite text -->
-  <g transform="translate(300, 520)">
-    <text font-family="Helvetica, Arial, sans-serif" font-size="44" font-weight="300" text-anchor="middle" fill="url(#silverShine)" letter-spacing="-1">iPhone <tspan font-weight="600" fill="url(#goldShine)">Elite</tspan><tspan font-size="22" font-weight="400" fill="url(#goldShine)" baseline-shift="super">.cl</tspan></text>
-  </g>
-
-  <!-- Divider -->
-  <line x1="120" y1="555" x2="480" y2="555" stroke="url(#ringGlow)" stroke-width="0.9" opacity="0.5"/>
-
-  <!-- Tagline -->
-  <g transform="translate(300, 580)">
-    <text font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="middle" fill="#D4B872" letter-spacing="4">ORIGINAL  |  GARANTÍA  |  CONFIANZA</text>
+    <text x="65" y="60" font-family="Georgia, serif" font-style="italic" font-size="250" font-weight="600" text-anchor="middle" fill="url(#goldShine)">E</text>
   </g>
 </svg>
