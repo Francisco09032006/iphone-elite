@@ -3176,6 +3176,32 @@
             background: rgba(244, 201, 93, 0.08) !important;
             color: var(--accent-soft) !important;
         }
+
+        /* ─── GALLERY (estilo Apple) ─── */
+        .detail-image { position: relative; display: flex; gap: 14px; padding: 20px; }
+        .gallery-thumbs { display: flex; flex-direction: column; gap: 8px; max-height: 480px; overflow-y: auto; flex-shrink: 0; }
+        .gallery-thumb { width: 64px; height: 64px; padding: 4px; border-radius: 10px; background: rgba(255,255,255,0.04); border: 1.5px solid var(--line); cursor: pointer; transition: 0.2s; display: grid; place-items: center; }
+        .gallery-thumb:hover { border-color: var(--accent-soft); }
+        .gallery-thumb.active { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(244,201,93,0.18); background: rgba(244,201,93,0.06); }
+        .gallery-thumb img { width: 100%; height: 100%; object-fit: contain; }
+        .gallery-main { position: relative; flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; min-height: 460px; background: linear-gradient(160deg, #f6f6f7 0%, #e8e8ea 100%); border-radius: 14px; }
+        /* Tamaño FIJO uniforme — todas las imágenes de producto se renderean igual sin importar el aspect ratio del archivo */
+        .gallery-main img { width: 280px !important; height: 380px !important; object-fit: contain !important; transition: opacity 0.2s; }
+        @media (max-width: 720px) { .gallery-main img { width: 220px !important; height: 300px !important; } }
+        /* Cards en grid: tamaño fijo también */
+        .img-box img { width: 140px !important; height: 200px !important; object-fit: contain !important; max-width: none !important; max-height: none !important; }
+        .best-img-box img { width: 160px !important; height: 220px !important; object-fit: contain !important; max-width: none !important; max-height: none !important; }
+        .offer-card .offer-img img { width: 140px !important; height: 200px !important; object-fit: contain !important; }
+        .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,0.55); color: #fff; border: 0; font-size: 26px; line-height: 1; cursor: pointer; display: grid; place-items: center; transition: 0.15s; opacity: 0; }
+        .gallery-main:hover .gallery-nav { opacity: 1; }
+        .gallery-prev { left: 8px; padding-bottom: 4px; }
+        .gallery-next { right: 8px; padding-bottom: 4px; }
+        .gallery-nav:hover { background: var(--accent); color: #0a0703; }
+        @media (max-width: 720px) {
+            .detail-image { flex-direction: column-reverse; }
+            .gallery-thumbs { flex-direction: row; max-height: none; overflow-x: auto; overflow-y: hidden; }
+            .gallery-main { min-height: 280px; padding: 14px; }
+        }
     </style>
 </head>
 
@@ -3750,7 +3776,12 @@
                 <div class="detail-grid">
                     <div class="detail-image">
                         <div class="detail-tag-wrap" id="d-tag-wrap"></div>
-                        <img id="d-img" src="" alt="">
+                        <div class="gallery-thumbs" id="d-thumbs"></div>
+                        <div class="gallery-main">
+                            <button class="gallery-nav gallery-prev" onclick="galleryPrev()" aria-label="Anterior">‹</button>
+                            <img id="d-img" src="" alt="">
+                            <button class="gallery-nav gallery-next" onclick="galleryNext()" aria-label="Siguiente">›</button>
+                        </div>
                     </div>
                     <div class="detail-info">
                         <h2 class="detail-name" id="d-name"></h2>
@@ -4723,6 +4754,70 @@
             document.getElementById('count-sellado').textContent = `${conditions.sellado.length} disponible${conditions.sellado.length !== 1 ? 's' : ''}`;
             document.getElementById('count-seminuevo').textContent = `${conditions.seminuevo.length} disponible${conditions.seminuevo.length !== 1 ? 's' : ''}`;
             document.getElementById('count-reac').textContent = `${conditions.reacondicionado.length} disponible${conditions.reacondicionado.length !== 1 ? 's' : ''}`;
+        }
+
+
+        // ─── GALLERY MAP (auto-generated from repo image filenames) ───
+        const GALLERY_MAP = {"iphone-14-plus":{"amarilla":["Delantera Amarilla iPhone 14 Plus.png"],"amarillo":["Trasera Amarillo iPhone 14 Plus.jpg","Delantera Amarillo iPhone 14 Plus.jpg"],"azul":["Trasera Azul iPhone 14 Plus.jpg","Delantera Azul iPhone 14 Plus.png"],"blanco estrella":["Trasera Blanco Estrella iPhone 14 Plus.jpg","Delantera Blanco Estrella iPhone 14 Plus.png"],"medianoche":["Trasera Medianoche iPhone 14 Plus.png","Delantera Medianoche iPhone 14 Plus.png"],"purpura":["Delantera Purpura iPhone 14 Plus.jpg"],"púrpura":["Delantera Púrpura iPhone 14 Plus.png"],"roja":["Delantera Roja iPhone 14 Plus.png"],"rojo":["Trasera Rojo iPhone 14 Plus.jpg","Delantera Rojo iPhone 14 Plus.jpg"]},"iphone-15-plus":{"amarilla":["Delantera Amarilla iPhone 15 Plus.png"],"amarillo":["Trasera Amarillo iPhone 15 Plus.jpg","Delantera Amarillo iPhone 15 Plus.jpg"],"azul":["Trasera Azul iPhone 15 Plus.jpg","Delantera Azul iPhone 15 Plus.png"],"negra":["Delantera Negra iPhone 15 Plus.png"],"negro":["Trasera Negro iPhone 15 Plus.jpg","Delantera Negro iPhone 15 Plus.jpg"],"rosa":["Trasera Rosa iPhone 15 Plus.jpg","Delantera Rosa iPhone 15 Plus.png"],"verde":["Trasera Verde iPhone 15 Plus.jpg","Delantera Verde iPhone 15 Plus.png"]},"iphone-14":{"amarillo":["Trasera Amarillo iPhone 14.jpg","Delantera Amarillo iPhone 14.png"],"azul":["Trasera Azul iPhone 14.jpg","Delantera Azul iPhone 14.png"],"blanco estrella":["Trasera Blanco Estrella iPhone 14.jpg","Delantera Blanco Estrella iPhone 14.png"],"medianoche":["Trasera Medianoche iPhone 14.png","Delantera Medianoche iPhone 14.png"],"purpura":["Delantera Purpura iPhone 14.jpg"],"púrpura":["Delantera Púrpura iPhone 14.png"],"rojo":["Trasera Rojo iPhone 14.jpg","Delantera Rojo iPhone 14.png"]},"iphone-15":{"amarillo":["Trasera Amarillo iPhone 15.jpg","Delantera Amarillo iPhone 15.png"],"azul":["Trasera Azul iPhone 15.jpg","Delantera Azul iPhone 15.png"],"negro":["Trasera Negro iPhone 15.jpg","Delantera Negro iPhone 15.png"],"rosa":["Trasera Rosa iPhone 15.jpg","Delantera Rosa iPhone 15.png"],"verde":["Trasera Verde iPhone 15.jpg","Delantera Verde iPhone 15.png"]},"iphone-17-pm":{"azul cosmico":["Trasera Azul Cosmico iPhone 17 Pro Max.webp","Delantera Azul Cosmico iPhone 17 Pro Max.png"],"naranja cosmico":["Trasera Naranja Cosmico iPhone 17 Pro Max.jpg","Delantera Naranja Cosmico iPhone 17 Pro Max.png"],"plata":["Trasera Plata iPhone 17 Pro Max.jpg","Delantera Plata iPhone 17 Pro Max.png"]},"iphone-17-pro":{"azul cosmico":["Trasera Azul Cosmico iPhone 17 Pro.webp","Delantera Azul Cosmico iPhone 17 Pro.png"],"naranja cosmico":["Trasera Naranja Cosmico iPhone 17 Pro.jpg","Delantera Naranja Cosmico iPhone 17 Pro.png"],"plata":["Trasera Plata iPhone 17 Pro.jpg","Delantera Plata iPhone 17 Pro.png"]},"iphone-12-mini":{"azul":["Trasera Azul iPhone 12 mini.png","Delantera Azul iPhone 12 mini.png"],"blanco":["Trasera Blanco iPhone 12 mini.png","Delantera Blanco iPhone 12 mini.png"],"negra":["Delantera Negra iPhone 12 mini.png"],"negro":["Trasera Negro iPhone 12 mini.jpg","Delantera Negro iPhone 12 mini.jpg"],"purpura":["Trasera Purpura iPhone 12 mini.webp","Delantera Purpura iPhone 12 mini.jpg"],"púrpura":["Delantera Púrpura iPhone 12 mini.png"],"roja":["Delantera Roja iPhone 12 mini.png"],"rojo":["Trasera Rojo iPhone 12 mini.jpg","Delantera Rojo iPhone 12 mini.jpg"],"verde":["Trasera Verde iPhone 12 mini.png","Delantera Verde iPhone 12 mini.png"]},"iphone-12":{"azul":["Trasera Azul iPhone 12.png","Delantera Azul iPhone 12.png"],"blanco":["Trasera Blanco iPhone 12.png","Delantera Blanco iPhone 12.png"],"negro":["Trasera Negro iPhone 12.jpg","Delantera Negro iPhone 12.png"],"purpura":["Trasera Purpura iPhone 12.webp","Delantera Purpura iPhone 12.jpg"],"púrpura":["Delantera Púrpura iPhone 12.png"],"rojo":["Trasera Rojo iPhone 12.jpg","Delantera Rojo iPhone 12.png"],"verde":["Trasera Verde iPhone 12.png","Delantera Verde iPhone 12.png"]},"iphone-13-mini":{"azul":["Trasera Azul iPhone 13 mini.png","Delantera Azul iPhone 13 mini.png"],"blanco estrella":["Trasera Blanco Estrella iPhone 13 mini.jpg","Delantera Blanco Estrella iPhone 13 mini.png"],"medianoche":["Trasera Medianoche iPhone 13 mini.jpg","Delantera Medianoche iPhone 13 mini.png"],"roja":["Delantera Roja iPhone 13 mini.png"],"rojo":["Trasera Rojo iPhone 13 mini.webp","Delantera Rojo iPhone 13 mini.jpg"],"rosa":["Trasera Rosa iPhone 13 mini.png","Delantera Rosa iPhone 13 mini.png"],"verde":["Delantera Verde iPhone 13 mini.png"]},"iphone-13":{"azul":["Trasera Azul iPhone 13.png","Delantera Azul iPhone 13.png"],"blanco estrella":["Trasera Blanco Estrella iPhone 13.jpg","Delantera Blanco Estrella iPhone 13.png"],"medianoche":["Trasera Medianoche iPhone 13.jpg","Delantera Medianoche iPhone 13.png"],"rojo":["Trasera Rojo iPhone 13.webp","Delantera Rojo iPhone 13.png"],"rosa":["Trasera Rosa iPhone 13.png","Delantera Rosa iPhone 13.png"],"verde":["Delantera Verde iPhone 13.png"]},"iphone-12-pm":{"azul pacifico":["Trasera Azul Pacifico iPhone 12 Pro Max.jpg","Delantera Azul Pacifico iPhone 12 Pro Max.png"],"grafito":["Trasera Grafito iPhone 12 Pro Max.jpg","Delantera Grafito iPhone 12 Pro Max.png"],"oro":["Trasera Oro iPhone 12 Pro Max.jpeg","Delantera Oro iPhone 12 Pro Max.png"],"plata":["Delantera Plata iPhone 12 Pro Max.png"]},"iphone-12-pro":{"azul pacifico":["Trasera Azul Pacifico iPhone 12 Pro.jpg","Delantera Azul Pacifico iPhone 12 Pro.png"],"grafito":["Trasera Grafito iPhone 12 Pro.jpg","Delantera Grafito iPhone 12 Pro.png"],"oro":["Trasera Oro iPhone 12 Pro.jpeg","Delantera Oro iPhone 12 Pro.png"],"plata":["Delantera Plata iPhone 12 Pro.png"]},"iphone-13-pm":{"azul sierra":["Trasera Azul Sierra iPhone 13 Pro Max.jpg","Delantera Azul Sierra iPhone 13 Pro Max.png"],"grafito":["Trasera Grafito iPhone 13 Pro Max.png","Delantera Grafito iPhone 13 Pro Max.png"],"oro":["Trasera Oro iPhone 13 Pro Max.jpg","Delantera Oro iPhone 13 Pro Max.png"],"plata":["Trasera Plata iPhone 13 Pro Max.jpg","Delantera Plata iPhone 13 Pro Max.png"],"verde alpino":["Trasera Verde Alpino iPhone 13 Pro Max.png","Delantera Verde Alpino iPhone 13 Pro Max.png"]},"iphone-13-pro":{"azul sierra":["Trasera Azul Sierra iPhone 13 Pro.jpg","Delantera Azul Sierra iPhone 13 Pro.png"],"grafito":["Trasera Grafito iPhone 13 Pro.png","Delantera Grafito iPhone 13 Pro.png"],"oro":["Trasera Oro iPhone 13 Pro.jpg","Delantera Oro iPhone 13 Pro.png"],"plata":["Trasera Plata iPhone 13 Pro.jpg","Delantera Plata iPhone 13 Pro.png"],"verde alpino":["Trasera Verde Alpino iPhone 13 Pro.png","Delantera Verde Alpino iPhone 13 Pro.png"]},"iphone-16":{"blanco":["Trasera Blanco iPhone 16 (2).jpg","Delantera Blanco iPhone 16 (2).png"],"negro":["Trasera Negro iPhone 16.jpg","Delantera Negro iPhone 16.png"],"rosa":["Trasera Rosa iPhone 16.jpg","Delantera Rosa iPhone 16.png"],"ultramar":["Trasera Ultramar iPhone 16.jpg","Delantera Ultramar iPhone 16.png"],"verde azulado":["Trasera Verde Azulado iPhone 16.jpg","Delantera Verde Azulado iPhone 16.png"],"azul":["Trasera azul iphone 16.jpg"]},"iphone-16-plus":{"blanco":["Trasera Blanco iPhone 16 Plus.jpg","Delantera Blanco iPhone 16 Plus.png"],"negra":["Delantera Negra iPhone 16 Plus.png"],"negro":["Trasera Negro iPhone 16 Plus.jpg","Delantera Negro iPhone 16 Plus.jpg"],"rosa":["Trasera Rosa iPhone 16 Plus.jpg","Delantera Rosa iPhone 16 Plus.png"],"ultramar":["Trasera Ultramar iPhone 16 Plus.jpg","Delantera Ultramar iPhone 16 Plus.png"],"verde azulado":["Trasera Verde Azulado iPhone 16 Plus.jpg","Delantera Verde Azulado iPhone 16 Plus.png"]},"iphone-17":{"blanco":["Trasera Blanco iPhone 17.jpg","Delantera Blanco iPhone 17.png"],"lavanda":["Trasera Lavanda iPhone 17 (2).jpg","Delantera Lavanda iPhone 17 (2).png"],"negro":["Trasera Negro iPhone 17 (2).jpg","Delantera Negro iPhone 17.png"],"niebla":["Trasera Niebla iPhone 17.jpg","Delantera Niebla iPhone 17.png"],"salvia":["Trasera Salvia iPhone 17.jpg","Delantera Salvia iPhone 17.png"],"azul cosmico":["Trasera Azul Cosmico iPhone 17.jpg"],"naranja cosmico":["Trasera Naranja Cosmico  iPhone 17.webp"]},"iphone-11-pm":{"gris espacial":["Trasera Gris Espacial iPhone 11 Pro Max.webp","Delantera Gris Espacial iPhone 11 Pro Max.png"],"oro":["Trasera Oro iPhone 11 Pro Max.webp","Delantera Oro iPhone 11 Pro Max.png"],"plata":["Trasera Plata iPhone 11 Pro Max.jpg","Delantera Plata iPhone 11 Pro Max.png"],"verde medianoche":["Trasera Verde Medianoche iPhone 11 Pro Max.webp","Delantera Verde Medianoche iPhone 11 Pro Max.png"]},"iphone-11-pro":{"gris espacial":["Trasera Gris Espacial iPhone 11 Pro.webp","Delantera Gris Espacial iPhone 11 Pro.png"],"oro":["Trasera Oro iPhone 11 Pro.webp","Delantera Oro iPhone 11 Pro.png"],"plata":["Trasera Plata iPhone 11 Pro.jpg","Delantera Plata iPhone 11 Pro.png"],"verde medianoche":["Trasera Verde Medianoche iPhone 11 Pro.webp","Delantera Verde Medianoche iPhone 11 Pro.png"],"verde noche":["Delantera Verde Noche iPhone 11 Pro.png"]},"iphone-14-pm":{"morado oscuro":["Trasera Morado Oscuro iPhone 14 Pro Max.jpeg","Delantera Morado Oscuro iPhone 14 Pro Max.png"],"negra espacial":["Delantera Negra Espacial iPhone 14 Pro Max.png"],"negro espacial":["Delantera Negro Espacial iPhone 14 Pro Max.webp"],"oro":["Delantera Oro iPhone 14 Pro Max.png"],"plata":["Delantera Plata iPhone 14 Pro Max.png"]},"iphone-14-pro":{"morado oscuro":["Trasera Morado Oscuro iPhone 14 Pro.jpg","Delantera Morado Oscuro iPhone 14 Pro.png"],"negra espacial":["Delantera Negra Espacial iPhone 14 Pro.png"],"negro espacial":["Delantera Negro Espacial iPhone 14 Pro.webp"],"oro":["Trasera Oro iPhone 14 Pro.jpg","Delantera Oro iPhone 14 Pro.png"],"plata":["Trasera Plata iPhone 14 Pro (2).jpg","Delantera Plata iPhone 14 Pro (2).png"]},"iphone-15-pm":{"titanio azul":["Trasera Titanio Azul iPhone 15 Pro Max.jpg","Delantera Titanio Azul iPhone 15 Pro Max.png"],"titanio blanco":["Trasera Titanio Blanco iPhone 15 Pro Max.png","Delantera Titanio Blanco iPhone 15 Pro Max.png"],"titanio natural":["Trasera Titanio Natural iPhone 15 Pro Max.png","Delantera Titanio Natural iPhone 15 Pro Max.png"],"titanio negro":["Trasera Titanio Negro iPhone 15 Pro Max.png","Delantera Titanio Negro iPhone 15 Pro Max.png"]},"iphone-15-pro":{"titanio azul":["Trasera Titanio Azul iPhone 15 Pro.jpg","Delantera Titanio Azul iPhone 15 Pro.png"],"titanio blanco":["Trasera Titanio Blanco iPhone 15 Pro.jpg","Delantera Titanio Blanco iPhone 15 Pro.png"],"titanio natural":["Trasera Titanio Natural iPhone 15 Pro.jpg","Delantera Titanio Natural iPhone 15 Pro.png"],"titanio negro":["Trasera Titanio Negro iPhone 15 Pro.jpg","Delantera Titanio Negro iPhone 15 Pro.png"]},"iphone-16-pm":{"titanio blanco":["Trasera Titanio Blanco iPhone 16 Pro Max (2).jpg","Delantera Titanio Blanco iPhone 16 Pro Max (2).png"],"titanio del desierto":["Trasera Titanio del Desierto iPhone 16 Pro Max.png","Delantera Titanio del Desierto iPhone 16 Pro Max.png"],"titanio natural":["Trasera Titanio Natural iPhone 16 Pro Max.jpg","Delantera Titanio Natural iPhone 16 Pro Max.png"],"titanio negro":["Trasera Titanio Negro iPhone 16 Pro Max.png","Delantera Titanio Negro iPhone 16 Pro Max.png"]},"iphone-16-pro":{"titanio blanco":["Trasera Titanio Blanco iPhone 16 Pro.jpg","Delantera Titanio Blanco iPhone 16 Pro.png"],"titanio del desierto":["Trasera Titanio del Desierto iPhone 16 Pro.jpg","Delantera Titanio del Desierto iPhone 16 Pro.png"],"titanio natural":["Trasera Titanio Natural iPhone 16 Pro.png","Delantera Titanio Natural iPhone 16 Pro.png"],"titanio negro":["Trasera Titanio Negro iPhone 16 Pro.jpg","Delantera Titanio Negro iPhone 16 Pro.png"]}};
+        let galleryState = { images: [], current: 0 };
+
+        function renderGallery(slug, color) {
+            const colorKey = (color || '').toLowerCase().trim();
+            let images = (GALLERY_MAP[slug] && GALLERY_MAP[slug][colorKey]) || [];
+            if (!images.length) {
+                // Try color fallback (e.g., "azul medianoche" → "medianoche")
+                const altKeys = Object.keys(GALLERY_MAP[slug] || {});
+                for (const k of altKeys) {
+                    if (colorKey.includes(k) || k.includes(colorKey)) {
+                        images = GALLERY_MAP[slug][k];
+                        break;
+                    }
+                }
+            }
+            // Last resort: use whatever the old imgFor returned, single image
+            if (!images.length) {
+                const sel = stock.find(p => p.slug === slug && p.color && p.color.toLowerCase() === colorKey);
+                if (sel) {
+                    const single = imgFor(sel);
+                    if (single) images = [single];
+                }
+            }
+            galleryState.images = images;
+            galleryState.current = 0;
+            renderGalleryDOM();
+        }
+        function renderGalleryDOM() {
+            const main = document.getElementById('d-img');
+            const thumbs = document.getElementById('d-thumbs');
+            const { images, current } = galleryState;
+            if (!images.length) {
+                main.style.display = 'none';
+                thumbs.innerHTML = '';
+                return;
+            }
+            main.style.display = '';
+            main.src = encodeURI(images[current]);
+            main.onerror = function () { this.style.opacity = 0.25; };
+            thumbs.innerHTML = images.map((img, i) =>
+                `<button class="gallery-thumb ${i === current ? 'active' : ''}" onclick="galleryGoto(${i})">
+                    <img src="${encodeURI(img)}" alt="" loading="lazy">
+                </button>`
+            ).join('');
+            const prev = document.querySelector('.gallery-prev');
+            const next = document.querySelector('.gallery-next');
+            if (prev) prev.style.display = images.length > 1 ? '' : 'none';
+            if (next) next.style.display = images.length > 1 ? '' : 'none';
+        }
+        function galleryGoto(i) { galleryState.current = i; renderGalleryDOM(); }
+        function galleryPrev() {
+            const len = galleryState.images.length; if (!len) return;
+            galleryState.current = (galleryState.current - 1 + len) % len;
+            renderGalleryDOM();
+        }
+        function galleryNext() {
+            const len = galleryState.images.length; if (!len) return;
+            galleryState.current = (galleryState.current + 1) % len;
+            renderGalleryDOM();
         }
 
         // ─── DETAIL MODAL ───
