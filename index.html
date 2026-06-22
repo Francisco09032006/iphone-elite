@@ -3187,27 +3187,21 @@
         .gallery-main { position: relative; flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; min-height: 460px; background: linear-gradient(160deg, #f6f6f7 0%, #e8e8ea 100%); border-radius: 14px; }
         /* Galería detalle */
         .gallery-main img { max-width: 78% !important; max-height: 86% !important; width: auto !important; height: auto !important; object-fit: contain !important; transition: opacity 0.2s; }
-        /* Cards uniformes — usa max-width/max-height en el container para que el aspect ratio se mantenga */
+        /* Cards uniformes — todas las imágenes son 600x800 (3:4) con padding blanco interno */
         .img-box, .offer-card .offer-img, .best-img-box {
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            padding: 18px !important;
-            min-height: 220px !important;
+            padding: 0 !important;
+            aspect-ratio: 3 / 4 !important;
+            background: #ffffff !important;
+            overflow: hidden !important;
         }
-        .img-box img, .offer-card .offer-img img {
-            max-width: 70% !important;
-            max-height: 75% !important;
-            width: auto !important;
-            height: auto !important;
+        .img-box img, .offer-card .offer-img img, .best-img-box img {
+            width: 100% !important;
+            height: 100% !important;
             object-fit: contain !important;
-        }
-        .best-img-box img {
-            max-width: 72% !important;
-            max-height: 78% !important;
-            width: auto !important;
-            height: auto !important;
-            object-fit: contain !important;
+            display: block !important;
         }
         .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(0,0,0,0.55); color: #fff; border: 0; font-size: 26px; line-height: 1; cursor: pointer; display: grid; place-items: center; transition: 0.15s; opacity: 0; }
         .gallery-main:hover .gallery-nav { opacity: 1; }
@@ -4170,282 +4164,282 @@
         // Clave: slug del modelo. Valor: { color en minúsculas: nombre de archivo }
         const IMG_MAP = {
             'iphone-11-pro': {
-                'verde noche': 'Delantera Verde Noche iPhone 11 Pro.png',
-                'verde': 'Delantera Verde Noche iPhone 11 Pro.png',
-                'verde medianoche': 'Delantera Verde Medianoche iPhone 11 Pro.png',
-                'gris espacial': 'Delantera Gris Espacial iPhone 11 Pro.png',
-                'space gray': 'Delantera Gris Espacial iPhone 11 Pro.png',
-                'plata': 'Delantera Plata iPhone 11 Pro.png',
-                'oro': 'Delantera Oro iPhone 11 Pro.png',
-                'dorado': 'Delantera Oro iPhone 11 Pro.png'
+                'verde noche': 'Delantera Verde Noche iPhone 11 Pro.jpg',
+                'verde': 'Delantera Verde Noche iPhone 11 Pro.jpg',
+                'verde medianoche': 'Delantera Verde Medianoche iPhone 11 Pro.jpg',
+                'gris espacial': 'Delantera Gris Espacial iPhone 11 Pro.jpg',
+                'space gray': 'Delantera Gris Espacial iPhone 11 Pro.jpg',
+                'plata': 'Delantera Plata iPhone 11 Pro.jpg',
+                'oro': 'Delantera Oro iPhone 11 Pro.jpg',
+                'dorado': 'Delantera Oro iPhone 11 Pro.jpg'
             },
             'iphone-11-pm': {
-                'space gray': 'Delantera Gris Espacial iPhone 11 Pro Max.png',
-                'gris espacial': 'Delantera Gris Espacial iPhone 11 Pro Max.png',
-                'verde': 'Delantera Verde Medianoche iPhone 11 Pro Max.png',
-                'verde medianoche': 'Delantera Verde Medianoche iPhone 11 Pro Max.png',
-                'plata': 'Delantera Plata iPhone 11 Pro Max.png',
-                'oro': 'Delantera Oro iPhone 11 Pro Max.png',
-                'dorado': 'Delantera Oro iPhone 11 Pro Max.png'
+                'space gray': 'Delantera Gris Espacial iPhone 11 Pro Max.jpg',
+                'gris espacial': 'Delantera Gris Espacial iPhone 11 Pro Max.jpg',
+                'verde': 'Delantera Verde Medianoche iPhone 11 Pro Max.jpg',
+                'verde medianoche': 'Delantera Verde Medianoche iPhone 11 Pro Max.jpg',
+                'plata': 'Delantera Plata iPhone 11 Pro Max.jpg',
+                'oro': 'Delantera Oro iPhone 11 Pro Max.jpg',
+                'dorado': 'Delantera Oro iPhone 11 Pro Max.jpg'
             },
             'iphone-12-mini': {
-                'azul': 'Delantera Azul iPhone 12 mini.png',
-                'azul medianoche': 'Delantera Azul iPhone 12 mini.png',
-                'blanco': 'Delantera Blanco iPhone 12 mini.png',
-                'negro': 'Delantera Negra iPhone 12 mini.png',
-                'negra': 'Delantera Negra iPhone 12 mini.png',
-                'púrpura': 'Delantera Púrpura iPhone 12 mini.png',
-                'purpura': 'Delantera Púrpura iPhone 12 mini.png',
-                'morado': 'Delantera Púrpura iPhone 12 mini.png',
-                'rojo': 'Delantera Roja iPhone 12 mini.png',
-                'roja': 'Delantera Roja iPhone 12 mini.png',
-                'verde': 'Delantera Verde iPhone 12 mini.png'
+                'azul': 'Delantera Azul iPhone 12 mini.jpg',
+                'azul medianoche': 'Delantera Azul iPhone 12 mini.jpg',
+                'blanco': 'Delantera Blanco iPhone 12 mini.jpg',
+                'negro': 'Delantera Negra iPhone 12 mini.jpg',
+                'negra': 'Delantera Negra iPhone 12 mini.jpg',
+                'púrpura': 'Delantera Púrpura iPhone 12 mini.jpg',
+                'purpura': 'Delantera Púrpura iPhone 12 mini.jpg',
+                'morado': 'Delantera Púrpura iPhone 12 mini.jpg',
+                'rojo': 'Delantera Roja iPhone 12 mini.jpg',
+                'roja': 'Delantera Roja iPhone 12 mini.jpg',
+                'verde': 'Delantera Verde iPhone 12 mini.jpg'
             },
             'iphone-12': {
-                'azul': 'Delantera Azul iPhone 12.png',
-                'azul medianoche': 'Delantera Azul iPhone 12.png',
-                'blanco': 'Delantera Blanco iPhone 12.png',
-                'negro': 'Delantera Negro iPhone 12.png',
-                'negra': 'Delantera Negro iPhone 12.png',
-                'púrpura': 'Delantera Púrpura iPhone 12.png',
-                'purpura': 'Delantera Púrpura iPhone 12.png',
-                'morado': 'Delantera Púrpura iPhone 12.png',
-                'rojo': 'Delantera Rojo iPhone 12.png',
-                'roja': 'Delantera Rojo iPhone 12.png',
-                'verde': 'Delantera Verde iPhone 12.png'
+                'azul': 'Delantera Azul iPhone 12.jpg',
+                'azul medianoche': 'Delantera Azul iPhone 12.jpg',
+                'blanco': 'Delantera Blanco iPhone 12.jpg',
+                'negro': 'Delantera Negro iPhone 12.jpg',
+                'negra': 'Delantera Negro iPhone 12.jpg',
+                'púrpura': 'Delantera Púrpura iPhone 12.jpg',
+                'purpura': 'Delantera Púrpura iPhone 12.jpg',
+                'morado': 'Delantera Púrpura iPhone 12.jpg',
+                'rojo': 'Delantera Rojo iPhone 12.jpg',
+                'roja': 'Delantera Rojo iPhone 12.jpg',
+                'verde': 'Delantera Verde iPhone 12.jpg'
             },
             'iphone-12-pro': {
-                'azul': 'Delantera Azul Pacifico iPhone 12 Pro.png',
-                'azul pacifico': 'Delantera Azul Pacifico iPhone 12 Pro.png',
-                'grafito': 'Delantera Grafito iPhone 12 Pro.png',
-                'gris': 'Delantera Grafito iPhone 12 Pro.png',
-                'oro': 'Delantera Oro iPhone 12 Pro.png',
-                'dorado': 'Delantera Oro iPhone 12 Pro.png',
-                'plata': 'Delantera Plata iPhone 12 Pro.png'
+                'azul': 'Delantera Azul Pacifico iPhone 12 Pro.jpg',
+                'azul pacifico': 'Delantera Azul Pacifico iPhone 12 Pro.jpg',
+                'grafito': 'Delantera Grafito iPhone 12 Pro.jpg',
+                'gris': 'Delantera Grafito iPhone 12 Pro.jpg',
+                'oro': 'Delantera Oro iPhone 12 Pro.jpg',
+                'dorado': 'Delantera Oro iPhone 12 Pro.jpg',
+                'plata': 'Delantera Plata iPhone 12 Pro.jpg'
             },
             'iphone-12-pm': {
-                'azul': 'Delantera Azul Pacifico iPhone 12 Pro Max.png',
-                'azul pacifico': 'Delantera Azul Pacifico iPhone 12 Pro Max.png',
-                'grafito': 'Delantera Grafito iPhone 12 Pro Max.png',
-                'gris': 'Delantera Grafito iPhone 12 Pro Max.png',
-                'oro': 'Delantera Oro iPhone 12 Pro Max.png',
-                'dorado': 'Delantera Oro iPhone 12 Pro Max.png',
-                'plata': 'Delantera Plata iPhone 12 Pro Max.png'
+                'azul': 'Delantera Azul Pacifico iPhone 12 Pro Max.jpg',
+                'azul pacifico': 'Delantera Azul Pacifico iPhone 12 Pro Max.jpg',
+                'grafito': 'Delantera Grafito iPhone 12 Pro Max.jpg',
+                'gris': 'Delantera Grafito iPhone 12 Pro Max.jpg',
+                'oro': 'Delantera Oro iPhone 12 Pro Max.jpg',
+                'dorado': 'Delantera Oro iPhone 12 Pro Max.jpg',
+                'plata': 'Delantera Plata iPhone 12 Pro Max.jpg'
             },
             'iphone-13-mini': {
-                'azul': 'Delantera Azul iPhone 13 mini.png',
-                'blanco': 'Delantera Blanco Estrella iPhone 13 mini.png',
-                'blanco estrella': 'Delantera Blanco Estrella iPhone 13 mini.png',
-                'blanco estelar': 'Delantera Blanco Estrella iPhone 13 mini.png',
-                'medianoche': 'Delantera Medianoche iPhone 13 mini.png',
-                'negro': 'Delantera Medianoche iPhone 13 mini.png',
-                'rosa': 'Delantera Rosa iPhone 13 mini.png',
-                'rosado': 'Delantera Rosa iPhone 13 mini.png',
-                'verde': 'Delantera Verde iPhone 13 mini.png',
-                'rojo': 'Delantera Roja iPhone 13 mini.png',
-                'roja': 'Delantera Roja iPhone 13 mini.png'
+                'azul': 'Delantera Azul iPhone 13 mini.jpg',
+                'blanco': 'Delantera Blanco Estrella iPhone 13 mini.jpg',
+                'blanco estrella': 'Delantera Blanco Estrella iPhone 13 mini.jpg',
+                'blanco estelar': 'Delantera Blanco Estrella iPhone 13 mini.jpg',
+                'medianoche': 'Delantera Medianoche iPhone 13 mini.jpg',
+                'negro': 'Delantera Medianoche iPhone 13 mini.jpg',
+                'rosa': 'Delantera Rosa iPhone 13 mini.jpg',
+                'rosado': 'Delantera Rosa iPhone 13 mini.jpg',
+                'verde': 'Delantera Verde iPhone 13 mini.jpg',
+                'rojo': 'Delantera Roja iPhone 13 mini.jpg',
+                'roja': 'Delantera Roja iPhone 13 mini.jpg'
             },
             'iphone-13': {
-                'azul': 'Delantera Azul iPhone 13.png',
-                'blanco': 'Delantera Blanco Estrella iPhone 13.png',
-                'blanco estrella': 'Delantera Blanco Estrella iPhone 13.png',
-                'blanco estelar': 'Delantera Blanco Estrella iPhone 13.png',
-                'medianoche': 'Delantera Medianoche iPhone 13.png',
-                'negro': 'Delantera Medianoche iPhone 13.png',
-                'rosa': 'Delantera Rosa iPhone 13.png',
-                'rosado': 'Delantera Rosa iPhone 13.png',
-                'verde': 'Delantera Verde iPhone 13.png',
-                'rojo': 'Delantera Rojo iPhone 13.png'
+                'azul': 'Delantera Azul iPhone 13.jpg',
+                'blanco': 'Delantera Blanco Estrella iPhone 13.jpg',
+                'blanco estrella': 'Delantera Blanco Estrella iPhone 13.jpg',
+                'blanco estelar': 'Delantera Blanco Estrella iPhone 13.jpg',
+                'medianoche': 'Delantera Medianoche iPhone 13.jpg',
+                'negro': 'Delantera Medianoche iPhone 13.jpg',
+                'rosa': 'Delantera Rosa iPhone 13.jpg',
+                'rosado': 'Delantera Rosa iPhone 13.jpg',
+                'verde': 'Delantera Verde iPhone 13.jpg',
+                'rojo': 'Delantera Rojo iPhone 13.jpg'
             },
             'iphone-13-pro': {
-                'azul': 'Delantera Azul Sierra iPhone 13 Pro.png',
-                'azul sierra': 'Delantera Azul Sierra iPhone 13 Pro.png',
-                'grafito': 'Delantera Grafito iPhone 13 Pro.png',
-                'gris': 'Delantera Grafito iPhone 13 Pro.png',
-                'oro': 'Delantera Oro iPhone 13 Pro.png',
-                'dorado': 'Delantera Oro iPhone 13 Pro.png',
-                'plata': 'Delantera Plata iPhone 13 Pro.png',
-                'verde': 'Delantera Verde Alpino iPhone 13 Pro.png',
-                'verde alpino': 'Delantera Verde Alpino iPhone 13 Pro.png'
+                'azul': 'Delantera Azul Sierra iPhone 13 Pro.jpg',
+                'azul sierra': 'Delantera Azul Sierra iPhone 13 Pro.jpg',
+                'grafito': 'Delantera Grafito iPhone 13 Pro.jpg',
+                'gris': 'Delantera Grafito iPhone 13 Pro.jpg',
+                'oro': 'Delantera Oro iPhone 13 Pro.jpg',
+                'dorado': 'Delantera Oro iPhone 13 Pro.jpg',
+                'plata': 'Delantera Plata iPhone 13 Pro.jpg',
+                'verde': 'Delantera Verde Alpino iPhone 13 Pro.jpg',
+                'verde alpino': 'Delantera Verde Alpino iPhone 13 Pro.jpg'
             },
             'iphone-13-pm': {
-                'azul': 'Delantera Azul Sierra iPhone 13 Pro Max.png',
-                'azul sierra': 'Delantera Azul Sierra iPhone 13 Pro Max.png',
-                'grafito': 'Delantera Grafito iPhone 13 Pro Max.png',
-                'gris': 'Delantera Grafito iPhone 13 Pro Max.png',
-                'oro': 'Delantera Oro iPhone 13 Pro Max.png',
-                'dorado': 'Delantera Oro iPhone 13 Pro Max.png',
-                'plata': 'Delantera Plata iPhone 13 Pro Max.png',
-                'verde': 'Delantera Verde Alpino iPhone 13 Pro Max.png',
-                'verde alpino': 'Delantera Verde Alpino iPhone 13 Pro Max.png'
+                'azul': 'Delantera Azul Sierra iPhone 13 Pro Max.jpg',
+                'azul sierra': 'Delantera Azul Sierra iPhone 13 Pro Max.jpg',
+                'grafito': 'Delantera Grafito iPhone 13 Pro Max.jpg',
+                'gris': 'Delantera Grafito iPhone 13 Pro Max.jpg',
+                'oro': 'Delantera Oro iPhone 13 Pro Max.jpg',
+                'dorado': 'Delantera Oro iPhone 13 Pro Max.jpg',
+                'plata': 'Delantera Plata iPhone 13 Pro Max.jpg',
+                'verde': 'Delantera Verde Alpino iPhone 13 Pro Max.jpg',
+                'verde alpino': 'Delantera Verde Alpino iPhone 13 Pro Max.jpg'
             },
             'iphone-14': {
-                'amarillo': 'Delantera Amarillo iPhone 14.png',
-                'amarilla': 'Delantera Amarillo iPhone 14.png',
-                'azul': 'Delantera Azul iPhone 14.png',
-                'blanco': 'Delantera Blanco Estrella iPhone 14.png',
-                'blanco estrella': 'Delantera Blanco Estrella iPhone 14.png',
-                'blanco estelar': 'Delantera Blanco Estrella iPhone 14.png',
-                'medianoche': 'Delantera Medianoche iPhone 14.png',
-                'negro': 'Delantera Medianoche iPhone 14.png',
-                'púrpura': 'Delantera Púrpura iPhone 14.png',
-                'purpura': 'Delantera Púrpura iPhone 14.png',
-                'morado': 'Delantera Púrpura iPhone 14.png',
-                'rojo': 'Delantera Rojo iPhone 14.png'
+                'amarillo': 'Delantera Amarillo iPhone 14.jpg',
+                'amarilla': 'Delantera Amarillo iPhone 14.jpg',
+                'azul': 'Delantera Azul iPhone 14.jpg',
+                'blanco': 'Delantera Blanco Estrella iPhone 14.jpg',
+                'blanco estrella': 'Delantera Blanco Estrella iPhone 14.jpg',
+                'blanco estelar': 'Delantera Blanco Estrella iPhone 14.jpg',
+                'medianoche': 'Delantera Medianoche iPhone 14.jpg',
+                'negro': 'Delantera Medianoche iPhone 14.jpg',
+                'púrpura': 'Delantera Púrpura iPhone 14.jpg',
+                'purpura': 'Delantera Púrpura iPhone 14.jpg',
+                'morado': 'Delantera Púrpura iPhone 14.jpg',
+                'rojo': 'Delantera Rojo iPhone 14.jpg'
             },
             'iphone-14-plus': {
-                'amarillo': 'Delantera Amarilla iPhone 14 Plus.png',
-                'amarilla': 'Delantera Amarilla iPhone 14 Plus.png',
-                'azul': 'Delantera Azul iPhone 14 Plus.png',
-                'blanco': 'Delantera Blanco Estrella iPhone 14 Plus.png',
-                'blanco estrella': 'Delantera Blanco Estrella iPhone 14 Plus.png',
-                'blanco estelar': 'Delantera Blanco Estrella iPhone 14 Plus.png',
-                'medianoche': 'Delantera Medianoche iPhone 14 Plus.png',
-                'negro': 'Delantera Medianoche iPhone 14 Plus.png',
-                'púrpura': 'Delantera Púrpura iPhone 14 Plus.png',
-                'purpura': 'Delantera Púrpura iPhone 14 Plus.png',
-                'morado': 'Delantera Púrpura iPhone 14 Plus.png',
-                'rojo': 'Delantera Roja iPhone 14 Plus.png',
-                'roja': 'Delantera Roja iPhone 14 Plus.png'
+                'amarillo': 'Delantera Amarilla iPhone 14 Plus.jpg',
+                'amarilla': 'Delantera Amarilla iPhone 14 Plus.jpg',
+                'azul': 'Delantera Azul iPhone 14 Plus.jpg',
+                'blanco': 'Delantera Blanco Estrella iPhone 14 Plus.jpg',
+                'blanco estrella': 'Delantera Blanco Estrella iPhone 14 Plus.jpg',
+                'blanco estelar': 'Delantera Blanco Estrella iPhone 14 Plus.jpg',
+                'medianoche': 'Delantera Medianoche iPhone 14 Plus.jpg',
+                'negro': 'Delantera Medianoche iPhone 14 Plus.jpg',
+                'púrpura': 'Delantera Púrpura iPhone 14 Plus.jpg',
+                'purpura': 'Delantera Púrpura iPhone 14 Plus.jpg',
+                'morado': 'Delantera Púrpura iPhone 14 Plus.jpg',
+                'rojo': 'Delantera Roja iPhone 14 Plus.jpg',
+                'roja': 'Delantera Roja iPhone 14 Plus.jpg'
             },
             'iphone-14-pro': {
-                'morado': 'Delantera Morado Oscuro iPhone 14 Pro.png',
-                'morado oscuro': 'Delantera Morado Oscuro iPhone 14 Pro.png',
-                'púrpura': 'Delantera Morado Oscuro iPhone 14 Pro.png',
-                'purpura': 'Delantera Morado Oscuro iPhone 14 Pro.png',
-                'negro': 'Delantera Negra Espacial iPhone 14 Pro.png',
-                'negra': 'Delantera Negra Espacial iPhone 14 Pro.png',
-                'negra espacial': 'Delantera Negra Espacial iPhone 14 Pro.png',
-                'oro': 'Delantera Oro iPhone 14 Pro.png',
-                'dorado': 'Delantera Oro iPhone 14 Pro.png',
-                'plata': 'Delantera Plata iPhone 14 Pro.png',
-                'blanco': 'Delantera Plata iPhone 14 Pro.png'
+                'morado': 'Delantera Morado Oscuro iPhone 14 Pro.jpg',
+                'morado oscuro': 'Delantera Morado Oscuro iPhone 14 Pro.jpg',
+                'púrpura': 'Delantera Morado Oscuro iPhone 14 Pro.jpg',
+                'purpura': 'Delantera Morado Oscuro iPhone 14 Pro.jpg',
+                'negro': 'Delantera Negra Espacial iPhone 14 Pro.jpg',
+                'negra': 'Delantera Negra Espacial iPhone 14 Pro.jpg',
+                'negra espacial': 'Delantera Negra Espacial iPhone 14 Pro.jpg',
+                'oro': 'Delantera Oro iPhone 14 Pro.jpg',
+                'dorado': 'Delantera Oro iPhone 14 Pro.jpg',
+                'plata': 'Delantera Plata iPhone 14 Pro.jpg',
+                'blanco': 'Delantera Plata iPhone 14 Pro.jpg'
             },
             'iphone-14-pm': {
-                'morado': 'Delantera Morado Oscuro iPhone 14 Pro Max.png',
-                'morado oscuro': 'Delantera Morado Oscuro iPhone 14 Pro Max.png',
-                'púrpura': 'Delantera Morado Oscuro iPhone 14 Pro Max.png',
-                'purpura': 'Delantera Morado Oscuro iPhone 14 Pro Max.png',
-                'negro': 'Delantera Negra Espacial iPhone 14 Pro Max.png',
-                'negra': 'Delantera Negra Espacial iPhone 14 Pro Max.png',
-                'negra espacial': 'Delantera Negra Espacial iPhone 14 Pro Max.png',
-                'oro': 'Delantera Oro iPhone 14 Pro Max.png',
-                'dorado': 'Delantera Oro iPhone 14 Pro Max.png',
-                'plata': 'Delantera Plata iPhone 14 Pro Max.png',
-                'blanco': 'Delantera Plata iPhone 14 Pro Max.png'
+                'morado': 'Delantera Morado Oscuro iPhone 14 Pro Max.jpg',
+                'morado oscuro': 'Delantera Morado Oscuro iPhone 14 Pro Max.jpg',
+                'púrpura': 'Delantera Morado Oscuro iPhone 14 Pro Max.jpg',
+                'purpura': 'Delantera Morado Oscuro iPhone 14 Pro Max.jpg',
+                'negro': 'Delantera Negra Espacial iPhone 14 Pro Max.jpg',
+                'negra': 'Delantera Negra Espacial iPhone 14 Pro Max.jpg',
+                'negra espacial': 'Delantera Negra Espacial iPhone 14 Pro Max.jpg',
+                'oro': 'Delantera Oro iPhone 14 Pro Max.jpg',
+                'dorado': 'Delantera Oro iPhone 14 Pro Max.jpg',
+                'plata': 'Delantera Plata iPhone 14 Pro Max.jpg',
+                'blanco': 'Delantera Plata iPhone 14 Pro Max.jpg'
             },
             'iphone-15': {
-                'amarillo': 'Delantera Amarillo iPhone 15.png',
-                'amarilla': 'Delantera Amarillo iPhone 15.png',
-                'azul': 'Delantera Azul iPhone 15.png',
-                'negro': 'Delantera Negro iPhone 15.png',
-                'negra': 'Delantera Negro iPhone 15.png',
-                'rosa': 'Delantera Rosa iPhone 15.png',
-                'rosado': 'Delantera Rosa iPhone 15.png',
-                'verde': 'Delantera Verde iPhone 15.png'
+                'amarillo': 'Delantera Amarillo iPhone 15.jpg',
+                'amarilla': 'Delantera Amarillo iPhone 15.jpg',
+                'azul': 'Delantera Azul iPhone 15.jpg',
+                'negro': 'Delantera Negro iPhone 15.jpg',
+                'negra': 'Delantera Negro iPhone 15.jpg',
+                'rosa': 'Delantera Rosa iPhone 15.jpg',
+                'rosado': 'Delantera Rosa iPhone 15.jpg',
+                'verde': 'Delantera Verde iPhone 15.jpg'
             },
             'iphone-15-plus': {
-                'amarillo': 'Delantera Amarilla iPhone 15 Plus.png',
-                'amarilla': 'Delantera Amarilla iPhone 15 Plus.png',
-                'azul': 'Delantera Azul iPhone 15 Plus.png',
-                'negro': 'Delantera Negra iPhone 15 Plus.png',
-                'negra': 'Delantera Negra iPhone 15 Plus.png',
-                'rosa': 'Delantera Rosa iPhone 15 Plus.png',
-                'rosado': 'Delantera Rosa iPhone 15 Plus.png',
-                'verde': 'Delantera Verde iPhone 15 Plus.png'
+                'amarillo': 'Delantera Amarilla iPhone 15 Plus.jpg',
+                'amarilla': 'Delantera Amarilla iPhone 15 Plus.jpg',
+                'azul': 'Delantera Azul iPhone 15 Plus.jpg',
+                'negro': 'Delantera Negra iPhone 15 Plus.jpg',
+                'negra': 'Delantera Negra iPhone 15 Plus.jpg',
+                'rosa': 'Delantera Rosa iPhone 15 Plus.jpg',
+                'rosado': 'Delantera Rosa iPhone 15 Plus.jpg',
+                'verde': 'Delantera Verde iPhone 15 Plus.jpg'
             },
             'iphone-15-pro': {
-                'titanio azul': 'Delantera Titanio Azul iPhone 15 Pro.png',
-                'azul titanio': 'Delantera Titanio Azul iPhone 15 Pro.png',
-                'azul': 'Delantera Titanio Azul iPhone 15 Pro.png',
-                'titanio blanco': 'Delantera Titanio Blanco iPhone 15 Pro.png',
-                'blanco': 'Delantera Titanio Blanco iPhone 15 Pro.png',
-                'titanio natural': 'Delantera Titanio Natural iPhone 15 Pro.png',
-                'natural': 'Delantera Titanio Natural iPhone 15 Pro.png',
-                'titanio negro': 'Delantera Titanio Negro iPhone 15 Pro.png',
-                'negro': 'Delantera Titanio Negro iPhone 15 Pro.png'
+                'titanio azul': 'Delantera Titanio Azul iPhone 15 Pro.jpg',
+                'azul titanio': 'Delantera Titanio Azul iPhone 15 Pro.jpg',
+                'azul': 'Delantera Titanio Azul iPhone 15 Pro.jpg',
+                'titanio blanco': 'Delantera Titanio Blanco iPhone 15 Pro.jpg',
+                'blanco': 'Delantera Titanio Blanco iPhone 15 Pro.jpg',
+                'titanio natural': 'Delantera Titanio Natural iPhone 15 Pro.jpg',
+                'natural': 'Delantera Titanio Natural iPhone 15 Pro.jpg',
+                'titanio negro': 'Delantera Titanio Negro iPhone 15 Pro.jpg',
+                'negro': 'Delantera Titanio Negro iPhone 15 Pro.jpg'
             },
             'iphone-15-pm': {
-                'titanio azul': 'Delantera Titanio Azul iPhone 15 Pro Max.png',
-                'azul titanio': 'Delantera Titanio Azul iPhone 15 Pro Max.png',
-                'azul': 'Delantera Titanio Azul iPhone 15 Pro Max.png',
-                'titanio blanco': 'Delantera Titanio Blanco iPhone 15 Pro Max.png',
-                'blanco': 'Delantera Titanio Blanco iPhone 15 Pro Max.png',
-                'titanio natural': 'Delantera Titanio Natural iPhone 15 Pro Max.png',
-                'natural': 'Delantera Titanio Natural iPhone 15 Pro Max.png',
-                'titanio negro': 'Delantera Titanio Negro iPhone 15 Pro Max.png',
-                'negro': 'Delantera Titanio Negro iPhone 15 Pro Max.png'
+                'titanio azul': 'Delantera Titanio Azul iPhone 15 Pro Max.jpg',
+                'azul titanio': 'Delantera Titanio Azul iPhone 15 Pro Max.jpg',
+                'azul': 'Delantera Titanio Azul iPhone 15 Pro Max.jpg',
+                'titanio blanco': 'Delantera Titanio Blanco iPhone 15 Pro Max.jpg',
+                'blanco': 'Delantera Titanio Blanco iPhone 15 Pro Max.jpg',
+                'titanio natural': 'Delantera Titanio Natural iPhone 15 Pro Max.jpg',
+                'natural': 'Delantera Titanio Natural iPhone 15 Pro Max.jpg',
+                'titanio negro': 'Delantera Titanio Negro iPhone 15 Pro Max.jpg',
+                'negro': 'Delantera Titanio Negro iPhone 15 Pro Max.jpg'
             },
             'iphone-16': {
-                'blanco': 'Delantera Blanco iPhone 16.png',
-                'negro': 'Delantera Negro iPhone 16.png',
-                'negra': 'Delantera Negro iPhone 16.png',
-                'rosa': 'Delantera Rosa iPhone 16.png',
-                'rosado': 'Delantera Rosa iPhone 16.png',
-                'ultramar': 'Delantera Ultramar iPhone 16.png',
-                'verde': 'Delantera Verde Azulado iPhone 16.png',
-                'verde azulado': 'Delantera Verde Azulado iPhone 16.png'
+                'blanco': 'Delantera Blanco iPhone 16.jpg',
+                'negro': 'Delantera Negro iPhone 16.jpg',
+                'negra': 'Delantera Negro iPhone 16.jpg',
+                'rosa': 'Delantera Rosa iPhone 16.jpg',
+                'rosado': 'Delantera Rosa iPhone 16.jpg',
+                'ultramar': 'Delantera Ultramar iPhone 16.jpg',
+                'verde': 'Delantera Verde Azulado iPhone 16.jpg',
+                'verde azulado': 'Delantera Verde Azulado iPhone 16.jpg'
             },
             'iphone-16-plus': {
-                'blanco': 'Delantera Blanco iPhone 16 Plus.png',
-                'negro': 'Delantera Negra iPhone 16 Plus.png',
-                'negra': 'Delantera Negra iPhone 16 Plus.png',
-                'rosa': 'Delantera Rosa iPhone 16 Plus.png',
-                'rosado': 'Delantera Rosa iPhone 16 Plus.png',
-                'ultramar': 'Delantera Ultramar iPhone 16 Plus.png',
-                'verde': 'Delantera Verde Azulado iPhone 16 Plus.png',
-                'verde azulado': 'Delantera Verde Azulado iPhone 16 Plus.png'
+                'blanco': 'Delantera Blanco iPhone 16 Plus.jpg',
+                'negro': 'Delantera Negra iPhone 16 Plus.jpg',
+                'negra': 'Delantera Negra iPhone 16 Plus.jpg',
+                'rosa': 'Delantera Rosa iPhone 16 Plus.jpg',
+                'rosado': 'Delantera Rosa iPhone 16 Plus.jpg',
+                'ultramar': 'Delantera Ultramar iPhone 16 Plus.jpg',
+                'verde': 'Delantera Verde Azulado iPhone 16 Plus.jpg',
+                'verde azulado': 'Delantera Verde Azulado iPhone 16 Plus.jpg'
             },
             'iphone-16-pro': {
-                'dorado': 'Delantera Titanio Desierto iPhone 16 Pro Dorado.png',
-                'titanio blanco': 'Delantera Titanio Blanco iPhone 16 Pro.png',
-                'blanco': 'Delantera Titanio Blanco iPhone 16 Pro.png',
-                'titanio del desierto': 'Delantera Titanio del Desierto iPhone 16 Pro.png',
-                'titanio desierto': 'Delantera Titanio del Desierto iPhone 16 Pro.png',
-                'desierto': 'Delantera Titanio del Desierto iPhone 16 Pro.png',
-                'titanio natural': 'Delantera Titanio Natural iPhone 16 Pro.png',
-                'natural': 'Delantera Titanio Natural iPhone 16 Pro.png',
-                'titanio negro': 'Delantera Titanio Negro iPhone 16 Pro.png',
-                'negro': 'Delantera Titanio Negro iPhone 16 Pro.png'
+                'dorado': 'Delantera Titanio Desierto iPhone 16 Pro Dorado.jpg',
+                'titanio blanco': 'Delantera Titanio Blanco iPhone 16 Pro.jpg',
+                'blanco': 'Delantera Titanio Blanco iPhone 16 Pro.jpg',
+                'titanio del desierto': 'Delantera Titanio del Desierto iPhone 16 Pro.jpg',
+                'titanio desierto': 'Delantera Titanio del Desierto iPhone 16 Pro.jpg',
+                'desierto': 'Delantera Titanio del Desierto iPhone 16 Pro.jpg',
+                'titanio natural': 'Delantera Titanio Natural iPhone 16 Pro.jpg',
+                'natural': 'Delantera Titanio Natural iPhone 16 Pro.jpg',
+                'titanio negro': 'Delantera Titanio Negro iPhone 16 Pro.jpg',
+                'negro': 'Delantera Titanio Negro iPhone 16 Pro.jpg'
             },
             'iphone-16-pm': {
-                'titanio blanco': 'Delantera Titanio Blanco iPhone 16 Pro Max.png',
-                'blanco': 'Delantera Titanio Blanco iPhone 16 Pro Max.png',
-                'titanio del desierto': 'Delantera Titanio del Desierto iPhone 16 Pro Max.png',
-                'titanio desierto': 'Delantera Titanio del Desierto iPhone 16 Pro Max.png',
-                'desierto': 'Delantera Titanio del Desierto iPhone 16 Pro Max.png',
-                'titanio natural': 'Delantera Titanio Natural iPhone 16 Pro Max.png',
-                'natural': 'Delantera Titanio Natural iPhone 16 Pro Max.png',
-                'titanio negro': 'Delantera Titanio Negro iPhone 16 Pro Max.png',
-                'negro': 'Delantera Titanio Negro iPhone 16 Pro Max.png'
+                'titanio blanco': 'Delantera Titanio Blanco iPhone 16 Pro Max.jpg',
+                'blanco': 'Delantera Titanio Blanco iPhone 16 Pro Max.jpg',
+                'titanio del desierto': 'Delantera Titanio del Desierto iPhone 16 Pro Max.jpg',
+                'titanio desierto': 'Delantera Titanio del Desierto iPhone 16 Pro Max.jpg',
+                'desierto': 'Delantera Titanio del Desierto iPhone 16 Pro Max.jpg',
+                'titanio natural': 'Delantera Titanio Natural iPhone 16 Pro Max.jpg',
+                'natural': 'Delantera Titanio Natural iPhone 16 Pro Max.jpg',
+                'titanio negro': 'Delantera Titanio Negro iPhone 16 Pro Max.jpg',
+                'negro': 'Delantera Titanio Negro iPhone 16 Pro Max.jpg'
             },
             'iphone-17': {
-                'blanco': 'Delantera Blanco iPhone 17.png',
-                'lavanda': 'Delantera Lavanda iPhone 17.png',
-                'negro': 'Delantera Negro iPhone 17.png',
-                'niebla': 'Delantera Niebla iPhone 17.png',
-                'salvia': 'Delantera Salvia iPhone 17.png',
-                'verde': 'Delantera Salvia iPhone 17.png'
+                'blanco': 'Delantera Blanco iPhone 17.jpg',
+                'lavanda': 'Delantera Lavanda iPhone 17.jpg',
+                'negro': 'Delantera Negro iPhone 17.jpg',
+                'niebla': 'Delantera Niebla iPhone 17.jpg',
+                'salvia': 'Delantera Salvia iPhone 17.jpg',
+                'verde': 'Delantera Salvia iPhone 17.jpg'
             },
             'iphone-17-pro': {
-                'azul': 'Delantera Azul Cosmico iPhone 17 Pro.png',
-                'azul cosmico': 'Delantera Azul Cosmico iPhone 17 Pro.png',
-                'azul cósmico': 'Delantera Azul Cosmico iPhone 17 Pro.png',
-                'naranja': 'Delantera Naranja Cosmico iPhone 17 Pro.png',
-                'naranja cosmico': 'Delantera Naranja Cosmico iPhone 17 Pro.png',
-                'plata': 'Delantera Plata iPhone 17 Pro.png',
-                'blanco': 'Delantera Plata iPhone 17 Pro.png'
+                'azul': 'Delantera Azul Cosmico iPhone 17 Pro.jpg',
+                'azul cosmico': 'Delantera Azul Cosmico iPhone 17 Pro.jpg',
+                'azul cósmico': 'Delantera Azul Cosmico iPhone 17 Pro.jpg',
+                'naranja': 'Delantera Naranja Cosmico iPhone 17 Pro.jpg',
+                'naranja cosmico': 'Delantera Naranja Cosmico iPhone 17 Pro.jpg',
+                'plata': 'Delantera Plata iPhone 17 Pro.jpg',
+                'blanco': 'Delantera Plata iPhone 17 Pro.jpg'
             },
             'iphone-17-pm': {
-                'azul': 'Delantera Azul Cosmico iPhone 17 Pro Max.png',
-                'azul cosmico': 'Delantera Azul Cosmico iPhone 17 Pro Max.png',
-                'azul cósmico': 'Delantera Azul Cosmico iPhone 17 Pro Max.png',
-                'naranja': 'Delantera Naranja Cosmico iPhone 17 Pro Max.png',
-                'naranja cosmico': 'Delantera Naranja Cosmico iPhone 17 Pro Max.png',
-                'plata': 'Delantera Plata iPhone 17 Pro Max.png',
-                'titanio negro': 'Delantera Plata iPhone 17 Pro Max.png',
-                'blanco': 'Delantera Plata iPhone 17 Pro Max.png',
-                'negro': 'Delantera Plata iPhone 17 Pro Max.png'
+                'azul': 'Delantera Azul Cosmico iPhone 17 Pro Max.jpg',
+                'azul cosmico': 'Delantera Azul Cosmico iPhone 17 Pro Max.jpg',
+                'azul cósmico': 'Delantera Azul Cosmico iPhone 17 Pro Max.jpg',
+                'naranja': 'Delantera Naranja Cosmico iPhone 17 Pro Max.jpg',
+                'naranja cosmico': 'Delantera Naranja Cosmico iPhone 17 Pro Max.jpg',
+                'plata': 'Delantera Plata iPhone 17 Pro Max.jpg',
+                'titanio negro': 'Delantera Plata iPhone 17 Pro Max.jpg',
+                'blanco': 'Delantera Plata iPhone 17 Pro Max.jpg',
+                'negro': 'Delantera Plata iPhone 17 Pro Max.jpg'
             },
             // Samsung
             's23-ultra': {
@@ -4490,7 +4484,7 @@
                 'blanco':          'Trasera Blanco Estrella iPhone 13.jpg'
             },
             'iphone-13-pro':  {
-                'gris':    'Trasera Grafito iPhone 13 Pro.png',
+                'gris':    'Trasera Grafito iPhone 13 Pro.jpg',
                 'celeste': 'Trasera Azul Sierra iPhone 13 Pro.jpg'
             },
             'iphone-13-pm':   { 'dorado': 'Trasera Oro iPhone 13 Pro Max.jpg' },
@@ -4510,9 +4504,9 @@
             },
             'iphone-17-pro':  { 'azul': 'Trasera Azul Cosmico iPhone 17 Pro.webp' },
             'iphone-12':      {
-                'azul':            'Trasera Azul iPhone 12.png',
-                'azul medianoche': 'Trasera Azul iPhone 12.png',
-                'medianoche':      'Trasera Azul iPhone 12.png'
+                'azul':            'Trasera Azul iPhone 12.jpg',
+                'azul medianoche': 'Trasera Azul iPhone 12.jpg',
+                'medianoche':      'Trasera Azul iPhone 12.jpg'
             },
             'iphone-15-pro':  {
                 'titanio natural': 'Trasera Titanio Azul iPhone 15 Pro.jpg',
@@ -4775,7 +4769,7 @@
 
 
         // ─── GALLERY MAP (auto-generated from repo image filenames) ───
-        const GALLERY_MAP = {"iphone-14-plus":{"amarilla":["Delantera Amarilla iPhone 14 Plus.png"],"amarillo":["Trasera Amarillo iPhone 14 Plus.jpg","Delantera Amarillo iPhone 14 Plus.jpg"],"azul":["Trasera Azul iPhone 14 Plus.jpg","Delantera Azul iPhone 14 Plus.png"],"blanco estrella":["Trasera Blanco Estrella iPhone 14 Plus.jpg","Delantera Blanco Estrella iPhone 14 Plus.png"],"medianoche":["Trasera Medianoche iPhone 14 Plus.png","Delantera Medianoche iPhone 14 Plus.png"],"purpura":["Delantera Purpura iPhone 14 Plus.jpg"],"púrpura":["Delantera Púrpura iPhone 14 Plus.png"],"roja":["Delantera Roja iPhone 14 Plus.png"],"rojo":["Trasera Rojo iPhone 14 Plus.jpg","Delantera Rojo iPhone 14 Plus.jpg"]},"iphone-15-plus":{"amarilla":["Delantera Amarilla iPhone 15 Plus.png"],"amarillo":["Trasera Amarillo iPhone 15 Plus.jpg","Delantera Amarillo iPhone 15 Plus.jpg"],"azul":["Trasera Azul iPhone 15 Plus.jpg","Delantera Azul iPhone 15 Plus.png"],"negra":["Delantera Negra iPhone 15 Plus.png"],"negro":["Trasera Negro iPhone 15 Plus.jpg","Delantera Negro iPhone 15 Plus.jpg"],"rosa":["Trasera Rosa iPhone 15 Plus.jpg","Delantera Rosa iPhone 15 Plus.png"],"verde":["Trasera Verde iPhone 15 Plus.jpg","Delantera Verde iPhone 15 Plus.png"]},"iphone-14":{"amarillo":["Trasera Amarillo iPhone 14.jpg","Delantera Amarillo iPhone 14.png"],"azul":["Trasera Azul iPhone 14.jpg","Delantera Azul iPhone 14.png"],"blanco estrella":["Trasera Blanco Estrella iPhone 14.jpg","Delantera Blanco Estrella iPhone 14.png"],"medianoche":["Trasera Medianoche iPhone 14.png","Delantera Medianoche iPhone 14.png"],"purpura":["Delantera Purpura iPhone 14.jpg"],"púrpura":["Delantera Púrpura iPhone 14.png"],"rojo":["Trasera Rojo iPhone 14.jpg","Delantera Rojo iPhone 14.png"]},"iphone-15":{"amarillo":["Trasera Amarillo iPhone 15.jpg","Delantera Amarillo iPhone 15.png"],"azul":["Trasera Azul iPhone 15.jpg","Delantera Azul iPhone 15.png"],"negro":["Trasera Negro iPhone 15.jpg","Delantera Negro iPhone 15.png"],"rosa":["Trasera Rosa iPhone 15.jpg","Delantera Rosa iPhone 15.png"],"verde":["Trasera Verde iPhone 15.jpg","Delantera Verde iPhone 15.png"]},"iphone-17-pm":{"azul cosmico":["Trasera Azul Cosmico iPhone 17 Pro Max.webp","Delantera Azul Cosmico iPhone 17 Pro Max.png"],"naranja cosmico":["Trasera Naranja Cosmico iPhone 17 Pro Max.jpg","Delantera Naranja Cosmico iPhone 17 Pro Max.png"],"plata":["Trasera Plata iPhone 17 Pro Max.jpg","Delantera Plata iPhone 17 Pro Max.png"]},"iphone-17-pro":{"azul cosmico":["Trasera Azul Cosmico iPhone 17 Pro.webp","Delantera Azul Cosmico iPhone 17 Pro.png"],"naranja cosmico":["Trasera Naranja Cosmico iPhone 17 Pro.jpg","Delantera Naranja Cosmico iPhone 17 Pro.png"],"plata":["Trasera Plata iPhone 17 Pro.jpg","Delantera Plata iPhone 17 Pro.png"]},"iphone-12-mini":{"azul":["Trasera Azul iPhone 12 mini.png","Delantera Azul iPhone 12 mini.png"],"blanco":["Trasera Blanco iPhone 12 mini.png","Delantera Blanco iPhone 12 mini.png"],"negra":["Delantera Negra iPhone 12 mini.png"],"negro":["Trasera Negro iPhone 12 mini.jpg","Delantera Negro iPhone 12 mini.jpg"],"purpura":["Trasera Purpura iPhone 12 mini.webp","Delantera Purpura iPhone 12 mini.jpg"],"púrpura":["Delantera Púrpura iPhone 12 mini.png"],"roja":["Delantera Roja iPhone 12 mini.png"],"rojo":["Trasera Rojo iPhone 12 mini.jpg","Delantera Rojo iPhone 12 mini.jpg"],"verde":["Trasera Verde iPhone 12 mini.png","Delantera Verde iPhone 12 mini.png"]},"iphone-12":{"azul":["Trasera Azul iPhone 12.png","Delantera Azul iPhone 12.png"],"blanco":["Trasera Blanco iPhone 12.png","Delantera Blanco iPhone 12.png"],"negro":["Trasera Negro iPhone 12.jpg","Delantera Negro iPhone 12.png"],"purpura":["Trasera Purpura iPhone 12.webp","Delantera Purpura iPhone 12.jpg"],"púrpura":["Delantera Púrpura iPhone 12.png"],"rojo":["Trasera Rojo iPhone 12.jpg","Delantera Rojo iPhone 12.png"],"verde":["Trasera Verde iPhone 12.png","Delantera Verde iPhone 12.png"]},"iphone-13-mini":{"azul":["Trasera Azul iPhone 13 mini.png","Delantera Azul iPhone 13 mini.png"],"blanco estrella":["Trasera Blanco Estrella iPhone 13 mini.jpg","Delantera Blanco Estrella iPhone 13 mini.png"],"medianoche":["Trasera Medianoche iPhone 13 mini.jpg","Delantera Medianoche iPhone 13 mini.png"],"roja":["Delantera Roja iPhone 13 mini.png"],"rojo":["Trasera Rojo iPhone 13 mini.webp","Delantera Rojo iPhone 13 mini.jpg"],"rosa":["Trasera Rosa iPhone 13 mini.png","Delantera Rosa iPhone 13 mini.png"],"verde":["Delantera Verde iPhone 13 mini.png"]},"iphone-13":{"azul":["Trasera Azul iPhone 13.png","Delantera Azul iPhone 13.png"],"blanco estrella":["Trasera Blanco Estrella iPhone 13.jpg","Delantera Blanco Estrella iPhone 13.png"],"medianoche":["Trasera Medianoche iPhone 13.jpg","Delantera Medianoche iPhone 13.png"],"rojo":["Trasera Rojo iPhone 13.webp","Delantera Rojo iPhone 13.png"],"rosa":["Trasera Rosa iPhone 13.png","Delantera Rosa iPhone 13.png"],"verde":["Delantera Verde iPhone 13.png"]},"iphone-12-pm":{"azul pacifico":["Trasera Azul Pacifico iPhone 12 Pro Max.jpg","Delantera Azul Pacifico iPhone 12 Pro Max.png"],"grafito":["Trasera Grafito iPhone 12 Pro Max.jpg","Delantera Grafito iPhone 12 Pro Max.png"],"oro":["Trasera Oro iPhone 12 Pro Max.jpeg","Delantera Oro iPhone 12 Pro Max.png"],"plata":["Delantera Plata iPhone 12 Pro Max.png"]},"iphone-12-pro":{"azul pacifico":["Trasera Azul Pacifico iPhone 12 Pro.jpg","Delantera Azul Pacifico iPhone 12 Pro.png"],"grafito":["Trasera Grafito iPhone 12 Pro.jpg","Delantera Grafito iPhone 12 Pro.png"],"oro":["Trasera Oro iPhone 12 Pro.jpeg","Delantera Oro iPhone 12 Pro.png"],"plata":["Delantera Plata iPhone 12 Pro.png"]},"iphone-13-pm":{"azul sierra":["Trasera Azul Sierra iPhone 13 Pro Max.jpg","Delantera Azul Sierra iPhone 13 Pro Max.png"],"grafito":["Trasera Grafito iPhone 13 Pro Max.png","Delantera Grafito iPhone 13 Pro Max.png"],"oro":["Trasera Oro iPhone 13 Pro Max.jpg","Delantera Oro iPhone 13 Pro Max.png"],"plata":["Trasera Plata iPhone 13 Pro Max.jpg","Delantera Plata iPhone 13 Pro Max.png"],"verde alpino":["Trasera Verde Alpino iPhone 13 Pro Max.png","Delantera Verde Alpino iPhone 13 Pro Max.png"]},"iphone-13-pro":{"azul sierra":["Trasera Azul Sierra iPhone 13 Pro.jpg","Delantera Azul Sierra iPhone 13 Pro.png"],"grafito":["Trasera Grafito iPhone 13 Pro.png","Delantera Grafito iPhone 13 Pro.png"],"oro":["Trasera Oro iPhone 13 Pro.jpg","Delantera Oro iPhone 13 Pro.png"],"plata":["Trasera Plata iPhone 13 Pro.jpg","Delantera Plata iPhone 13 Pro.png"],"verde alpino":["Trasera Verde Alpino iPhone 13 Pro.png","Delantera Verde Alpino iPhone 13 Pro.png"]},"iphone-16":{"blanco":["Trasera Blanco iPhone 16 (2).jpg","Delantera Blanco iPhone 16 (2).png"],"negro":["Trasera Negro iPhone 16.jpg","Delantera Negro iPhone 16.png"],"rosa":["Trasera Rosa iPhone 16.jpg","Delantera Rosa iPhone 16.png"],"ultramar":["Trasera Ultramar iPhone 16.jpg","Delantera Ultramar iPhone 16.png"],"verde azulado":["Trasera Verde Azulado iPhone 16.jpg","Delantera Verde Azulado iPhone 16.png"],"azul":["Trasera azul iphone 16.jpg"]},"iphone-16-plus":{"blanco":["Trasera Blanco iPhone 16 Plus.jpg","Delantera Blanco iPhone 16 Plus.png"],"negra":["Delantera Negra iPhone 16 Plus.png"],"negro":["Trasera Negro iPhone 16 Plus.jpg","Delantera Negro iPhone 16 Plus.jpg"],"rosa":["Trasera Rosa iPhone 16 Plus.jpg","Delantera Rosa iPhone 16 Plus.png"],"ultramar":["Trasera Ultramar iPhone 16 Plus.jpg","Delantera Ultramar iPhone 16 Plus.png"],"verde azulado":["Trasera Verde Azulado iPhone 16 Plus.jpg","Delantera Verde Azulado iPhone 16 Plus.png"]},"iphone-17":{"blanco":["Trasera Blanco iPhone 17.jpg","Delantera Blanco iPhone 17.png"],"lavanda":["Trasera Lavanda iPhone 17 (2).jpg","Delantera Lavanda iPhone 17 (2).png"],"negro":["Trasera Negro iPhone 17 (2).jpg","Delantera Negro iPhone 17.png"],"niebla":["Trasera Niebla iPhone 17.jpg","Delantera Niebla iPhone 17.png"],"salvia":["Trasera Salvia iPhone 17.jpg","Delantera Salvia iPhone 17.png"],"azul cosmico":["Trasera Azul Cosmico iPhone 17.jpg"],"naranja cosmico":["Trasera Naranja Cosmico  iPhone 17.webp"]},"iphone-11-pm":{"gris espacial":["Trasera Gris Espacial iPhone 11 Pro Max.webp","Delantera Gris Espacial iPhone 11 Pro Max.png"],"oro":["Trasera Oro iPhone 11 Pro Max.webp","Delantera Oro iPhone 11 Pro Max.png"],"plata":["Trasera Plata iPhone 11 Pro Max.jpg","Delantera Plata iPhone 11 Pro Max.png"],"verde medianoche":["Trasera Verde Medianoche iPhone 11 Pro Max.webp","Delantera Verde Medianoche iPhone 11 Pro Max.png"]},"iphone-11-pro":{"gris espacial":["Trasera Gris Espacial iPhone 11 Pro.webp","Delantera Gris Espacial iPhone 11 Pro.png"],"oro":["Trasera Oro iPhone 11 Pro.webp","Delantera Oro iPhone 11 Pro.png"],"plata":["Trasera Plata iPhone 11 Pro.jpg","Delantera Plata iPhone 11 Pro.png"],"verde medianoche":["Trasera Verde Medianoche iPhone 11 Pro.webp","Delantera Verde Medianoche iPhone 11 Pro.png"],"verde noche":["Delantera Verde Noche iPhone 11 Pro.png"]},"iphone-14-pm":{"morado oscuro":["Trasera Morado Oscuro iPhone 14 Pro Max.jpeg","Delantera Morado Oscuro iPhone 14 Pro Max.png"],"negra espacial":["Delantera Negra Espacial iPhone 14 Pro Max.png"],"negro espacial":["Delantera Negro Espacial iPhone 14 Pro Max.webp"],"oro":["Delantera Oro iPhone 14 Pro Max.png"],"plata":["Delantera Plata iPhone 14 Pro Max.png"]},"iphone-14-pro":{"morado oscuro":["Trasera Morado Oscuro iPhone 14 Pro.jpg","Delantera Morado Oscuro iPhone 14 Pro.png"],"negra espacial":["Delantera Negra Espacial iPhone 14 Pro.png"],"negro espacial":["Delantera Negro Espacial iPhone 14 Pro.webp"],"oro":["Trasera Oro iPhone 14 Pro.jpg","Delantera Oro iPhone 14 Pro.png"],"plata":["Trasera Plata iPhone 14 Pro (2).jpg","Delantera Plata iPhone 14 Pro (2).png"]},"iphone-15-pm":{"titanio azul":["Trasera Titanio Azul iPhone 15 Pro Max.jpg","Delantera Titanio Azul iPhone 15 Pro Max.png"],"titanio blanco":["Trasera Titanio Blanco iPhone 15 Pro Max.png","Delantera Titanio Blanco iPhone 15 Pro Max.png"],"titanio natural":["Trasera Titanio Natural iPhone 15 Pro Max.png","Delantera Titanio Natural iPhone 15 Pro Max.png"],"titanio negro":["Trasera Titanio Negro iPhone 15 Pro Max.png","Delantera Titanio Negro iPhone 15 Pro Max.png"]},"iphone-15-pro":{"titanio azul":["Trasera Titanio Azul iPhone 15 Pro.jpg","Delantera Titanio Azul iPhone 15 Pro.png"],"titanio blanco":["Trasera Titanio Blanco iPhone 15 Pro.jpg","Delantera Titanio Blanco iPhone 15 Pro.png"],"titanio natural":["Trasera Titanio Natural iPhone 15 Pro.jpg","Delantera Titanio Natural iPhone 15 Pro.png"],"titanio negro":["Trasera Titanio Negro iPhone 15 Pro.jpg","Delantera Titanio Negro iPhone 15 Pro.png"]},"iphone-16-pm":{"titanio blanco":["Trasera Titanio Blanco iPhone 16 Pro Max (2).jpg","Delantera Titanio Blanco iPhone 16 Pro Max (2).png"],"titanio del desierto":["Trasera Titanio del Desierto iPhone 16 Pro Max.png","Delantera Titanio del Desierto iPhone 16 Pro Max.png"],"titanio natural":["Trasera Titanio Natural iPhone 16 Pro Max.jpg","Delantera Titanio Natural iPhone 16 Pro Max.png"],"titanio negro":["Trasera Titanio Negro iPhone 16 Pro Max.png","Delantera Titanio Negro iPhone 16 Pro Max.png"]},"iphone-16-pro":{"titanio blanco":["Trasera Titanio Blanco iPhone 16 Pro.jpg","Delantera Titanio Blanco iPhone 16 Pro.png"],"titanio del desierto":["Trasera Titanio del Desierto iPhone 16 Pro.jpg","Delantera Titanio del Desierto iPhone 16 Pro.png"],"titanio natural":["Trasera Titanio Natural iPhone 16 Pro.png","Delantera Titanio Natural iPhone 16 Pro.png"],"titanio negro":["Trasera Titanio Negro iPhone 16 Pro.jpg","Delantera Titanio Negro iPhone 16 Pro.png"]}};
+        const GALLERY_MAP = {"iphone-14-plus":{"amarilla":["Delantera Amarilla iPhone 14 Plus.jpg"],"amarillo":["Trasera Amarillo iPhone 14 Plus.jpg","Delantera Amarillo iPhone 14 Plus.jpg"],"azul":["Trasera Azul iPhone 14 Plus.jpg","Delantera Azul iPhone 14 Plus.jpg"],"blanco estrella":["Trasera Blanco Estrella iPhone 14 Plus.jpg","Delantera Blanco Estrella iPhone 14 Plus.jpg"],"medianoche":["Trasera Medianoche iPhone 14 Plus.jpg","Delantera Medianoche iPhone 14 Plus.jpg"],"purpura":["Delantera Purpura iPhone 14 Plus.jpg"],"púrpura":["Delantera Púrpura iPhone 14 Plus.jpg"],"roja":["Delantera Roja iPhone 14 Plus.jpg"],"rojo":["Trasera Rojo iPhone 14 Plus.jpg","Delantera Rojo iPhone 14 Plus.jpg"]},"iphone-15-plus":{"amarilla":["Delantera Amarilla iPhone 15 Plus.jpg"],"amarillo":["Trasera Amarillo iPhone 15 Plus.jpg","Delantera Amarillo iPhone 15 Plus.jpg"],"azul":["Trasera Azul iPhone 15 Plus.jpg","Delantera Azul iPhone 15 Plus.jpg"],"negra":["Delantera Negra iPhone 15 Plus.jpg"],"negro":["Trasera Negro iPhone 15 Plus.jpg","Delantera Negro iPhone 15 Plus.jpg"],"rosa":["Trasera Rosa iPhone 15 Plus.jpg","Delantera Rosa iPhone 15 Plus.jpg"],"verde":["Trasera Verde iPhone 15 Plus.jpg","Delantera Verde iPhone 15 Plus.jpg"]},"iphone-14":{"amarillo":["Trasera Amarillo iPhone 14.jpg","Delantera Amarillo iPhone 14.jpg"],"azul":["Trasera Azul iPhone 14.jpg","Delantera Azul iPhone 14.jpg"],"blanco estrella":["Trasera Blanco Estrella iPhone 14.jpg","Delantera Blanco Estrella iPhone 14.jpg"],"medianoche":["Trasera Medianoche iPhone 14.jpg","Delantera Medianoche iPhone 14.jpg"],"purpura":["Delantera Purpura iPhone 14.jpg"],"púrpura":["Delantera Púrpura iPhone 14.jpg"],"rojo":["Trasera Rojo iPhone 14.jpg","Delantera Rojo iPhone 14.jpg"]},"iphone-15":{"amarillo":["Trasera Amarillo iPhone 15.jpg","Delantera Amarillo iPhone 15.jpg"],"azul":["Trasera Azul iPhone 15.jpg","Delantera Azul iPhone 15.jpg"],"negro":["Trasera Negro iPhone 15.jpg","Delantera Negro iPhone 15.jpg"],"rosa":["Trasera Rosa iPhone 15.jpg","Delantera Rosa iPhone 15.jpg"],"verde":["Trasera Verde iPhone 15.jpg","Delantera Verde iPhone 15.jpg"]},"iphone-17-pm":{"azul cosmico":["Trasera Azul Cosmico iPhone 17 Pro Max.webp","Delantera Azul Cosmico iPhone 17 Pro Max.jpg"],"naranja cosmico":["Trasera Naranja Cosmico iPhone 17 Pro Max.jpg","Delantera Naranja Cosmico iPhone 17 Pro Max.jpg"],"plata":["Trasera Plata iPhone 17 Pro Max.jpg","Delantera Plata iPhone 17 Pro Max.jpg"]},"iphone-17-pro":{"azul cosmico":["Trasera Azul Cosmico iPhone 17 Pro.webp","Delantera Azul Cosmico iPhone 17 Pro.jpg"],"naranja cosmico":["Trasera Naranja Cosmico iPhone 17 Pro.jpg","Delantera Naranja Cosmico iPhone 17 Pro.jpg"],"plata":["Trasera Plata iPhone 17 Pro.jpg","Delantera Plata iPhone 17 Pro.jpg"]},"iphone-12-mini":{"azul":["Trasera Azul iPhone 12 mini.jpg","Delantera Azul iPhone 12 mini.jpg"],"blanco":["Trasera Blanco iPhone 12 mini.jpg","Delantera Blanco iPhone 12 mini.jpg"],"negra":["Delantera Negra iPhone 12 mini.jpg"],"negro":["Trasera Negro iPhone 12 mini.jpg","Delantera Negro iPhone 12 mini.jpg"],"purpura":["Trasera Purpura iPhone 12 mini.webp","Delantera Purpura iPhone 12 mini.jpg"],"púrpura":["Delantera Púrpura iPhone 12 mini.jpg"],"roja":["Delantera Roja iPhone 12 mini.jpg"],"rojo":["Trasera Rojo iPhone 12 mini.jpg","Delantera Rojo iPhone 12 mini.jpg"],"verde":["Trasera Verde iPhone 12 mini.jpg","Delantera Verde iPhone 12 mini.jpg"]},"iphone-12":{"azul":["Trasera Azul iPhone 12.jpg","Delantera Azul iPhone 12.jpg"],"blanco":["Trasera Blanco iPhone 12.jpg","Delantera Blanco iPhone 12.jpg"],"negro":["Trasera Negro iPhone 12.jpg","Delantera Negro iPhone 12.jpg"],"purpura":["Trasera Purpura iPhone 12.webp","Delantera Purpura iPhone 12.jpg"],"púrpura":["Delantera Púrpura iPhone 12.jpg"],"rojo":["Trasera Rojo iPhone 12.jpg","Delantera Rojo iPhone 12.jpg"],"verde":["Trasera Verde iPhone 12.jpg","Delantera Verde iPhone 12.jpg"]},"iphone-13-mini":{"azul":["Trasera Azul iPhone 13 mini.jpg","Delantera Azul iPhone 13 mini.jpg"],"blanco estrella":["Trasera Blanco Estrella iPhone 13 mini.jpg","Delantera Blanco Estrella iPhone 13 mini.jpg"],"medianoche":["Trasera Medianoche iPhone 13 mini.jpg","Delantera Medianoche iPhone 13 mini.jpg"],"roja":["Delantera Roja iPhone 13 mini.jpg"],"rojo":["Trasera Rojo iPhone 13 mini.webp","Delantera Rojo iPhone 13 mini.jpg"],"rosa":["Trasera Rosa iPhone 13 mini.jpg","Delantera Rosa iPhone 13 mini.jpg"],"verde":["Delantera Verde iPhone 13 mini.jpg"]},"iphone-13":{"azul":["Trasera Azul iPhone 13.jpg","Delantera Azul iPhone 13.jpg"],"blanco estrella":["Trasera Blanco Estrella iPhone 13.jpg","Delantera Blanco Estrella iPhone 13.jpg"],"medianoche":["Trasera Medianoche iPhone 13.jpg","Delantera Medianoche iPhone 13.jpg"],"rojo":["Trasera Rojo iPhone 13.webp","Delantera Rojo iPhone 13.jpg"],"rosa":["Trasera Rosa iPhone 13.jpg","Delantera Rosa iPhone 13.jpg"],"verde":["Delantera Verde iPhone 13.jpg"]},"iphone-12-pm":{"azul pacifico":["Trasera Azul Pacifico iPhone 12 Pro Max.jpg","Delantera Azul Pacifico iPhone 12 Pro Max.jpg"],"grafito":["Trasera Grafito iPhone 12 Pro Max.jpg","Delantera Grafito iPhone 12 Pro Max.jpg"],"oro":["Trasera Oro iPhone 12 Pro Max.jpeg","Delantera Oro iPhone 12 Pro Max.jpg"],"plata":["Delantera Plata iPhone 12 Pro Max.jpg"]},"iphone-12-pro":{"azul pacifico":["Trasera Azul Pacifico iPhone 12 Pro.jpg","Delantera Azul Pacifico iPhone 12 Pro.jpg"],"grafito":["Trasera Grafito iPhone 12 Pro.jpg","Delantera Grafito iPhone 12 Pro.jpg"],"oro":["Trasera Oro iPhone 12 Pro.jpeg","Delantera Oro iPhone 12 Pro.jpg"],"plata":["Delantera Plata iPhone 12 Pro.jpg"]},"iphone-13-pm":{"azul sierra":["Trasera Azul Sierra iPhone 13 Pro Max.jpg","Delantera Azul Sierra iPhone 13 Pro Max.jpg"],"grafito":["Trasera Grafito iPhone 13 Pro Max.jpg","Delantera Grafito iPhone 13 Pro Max.jpg"],"oro":["Trasera Oro iPhone 13 Pro Max.jpg","Delantera Oro iPhone 13 Pro Max.jpg"],"plata":["Trasera Plata iPhone 13 Pro Max.jpg","Delantera Plata iPhone 13 Pro Max.jpg"],"verde alpino":["Trasera Verde Alpino iPhone 13 Pro Max.jpg","Delantera Verde Alpino iPhone 13 Pro Max.jpg"]},"iphone-13-pro":{"azul sierra":["Trasera Azul Sierra iPhone 13 Pro.jpg","Delantera Azul Sierra iPhone 13 Pro.jpg"],"grafito":["Trasera Grafito iPhone 13 Pro.jpg","Delantera Grafito iPhone 13 Pro.jpg"],"oro":["Trasera Oro iPhone 13 Pro.jpg","Delantera Oro iPhone 13 Pro.jpg"],"plata":["Trasera Plata iPhone 13 Pro.jpg","Delantera Plata iPhone 13 Pro.jpg"],"verde alpino":["Trasera Verde Alpino iPhone 13 Pro.jpg","Delantera Verde Alpino iPhone 13 Pro.jpg"]},"iphone-16":{"blanco":["Trasera Blanco iPhone 16 (2).jpg","Delantera Blanco iPhone 16 (2).jpg"],"negro":["Trasera Negro iPhone 16.jpg","Delantera Negro iPhone 16.jpg"],"rosa":["Trasera Rosa iPhone 16.jpg","Delantera Rosa iPhone 16.jpg"],"ultramar":["Trasera Ultramar iPhone 16.jpg","Delantera Ultramar iPhone 16.jpg"],"verde azulado":["Trasera Verde Azulado iPhone 16.jpg","Delantera Verde Azulado iPhone 16.jpg"],"azul":["Trasera azul iphone 16.jpg"]},"iphone-16-plus":{"blanco":["Trasera Blanco iPhone 16 Plus.jpg","Delantera Blanco iPhone 16 Plus.jpg"],"negra":["Delantera Negra iPhone 16 Plus.jpg"],"negro":["Trasera Negro iPhone 16 Plus.jpg","Delantera Negro iPhone 16 Plus.jpg"],"rosa":["Trasera Rosa iPhone 16 Plus.jpg","Delantera Rosa iPhone 16 Plus.jpg"],"ultramar":["Trasera Ultramar iPhone 16 Plus.jpg","Delantera Ultramar iPhone 16 Plus.jpg"],"verde azulado":["Trasera Verde Azulado iPhone 16 Plus.jpg","Delantera Verde Azulado iPhone 16 Plus.jpg"]},"iphone-17":{"blanco":["Trasera Blanco iPhone 17.jpg","Delantera Blanco iPhone 17.jpg"],"lavanda":["Trasera Lavanda iPhone 17 (2).jpg","Delantera Lavanda iPhone 17 (2).jpg"],"negro":["Trasera Negro iPhone 17 (2).jpg","Delantera Negro iPhone 17.jpg"],"niebla":["Trasera Niebla iPhone 17.jpg","Delantera Niebla iPhone 17.jpg"],"salvia":["Trasera Salvia iPhone 17.jpg","Delantera Salvia iPhone 17.jpg"],"azul cosmico":["Trasera Azul Cosmico iPhone 17.jpg"],"naranja cosmico":["Trasera Naranja Cosmico  iPhone 17.webp"]},"iphone-11-pm":{"gris espacial":["Trasera Gris Espacial iPhone 11 Pro Max.webp","Delantera Gris Espacial iPhone 11 Pro Max.jpg"],"oro":["Trasera Oro iPhone 11 Pro Max.webp","Delantera Oro iPhone 11 Pro Max.jpg"],"plata":["Trasera Plata iPhone 11 Pro Max.jpg","Delantera Plata iPhone 11 Pro Max.jpg"],"verde medianoche":["Trasera Verde Medianoche iPhone 11 Pro Max.webp","Delantera Verde Medianoche iPhone 11 Pro Max.jpg"]},"iphone-11-pro":{"gris espacial":["Trasera Gris Espacial iPhone 11 Pro.webp","Delantera Gris Espacial iPhone 11 Pro.jpg"],"oro":["Trasera Oro iPhone 11 Pro.webp","Delantera Oro iPhone 11 Pro.jpg"],"plata":["Trasera Plata iPhone 11 Pro.jpg","Delantera Plata iPhone 11 Pro.jpg"],"verde medianoche":["Trasera Verde Medianoche iPhone 11 Pro.webp","Delantera Verde Medianoche iPhone 11 Pro.jpg"],"verde noche":["Delantera Verde Noche iPhone 11 Pro.jpg"]},"iphone-14-pm":{"morado oscuro":["Trasera Morado Oscuro iPhone 14 Pro Max.jpeg","Delantera Morado Oscuro iPhone 14 Pro Max.jpg"],"negra espacial":["Delantera Negra Espacial iPhone 14 Pro Max.jpg"],"negro espacial":["Delantera Negro Espacial iPhone 14 Pro Max.webp"],"oro":["Delantera Oro iPhone 14 Pro Max.jpg"],"plata":["Delantera Plata iPhone 14 Pro Max.jpg"]},"iphone-14-pro":{"morado oscuro":["Trasera Morado Oscuro iPhone 14 Pro.jpg","Delantera Morado Oscuro iPhone 14 Pro.jpg"],"negra espacial":["Delantera Negra Espacial iPhone 14 Pro.jpg"],"negro espacial":["Delantera Negro Espacial iPhone 14 Pro.webp"],"oro":["Trasera Oro iPhone 14 Pro.jpg","Delantera Oro iPhone 14 Pro.jpg"],"plata":["Trasera Plata iPhone 14 Pro (2).jpg","Delantera Plata iPhone 14 Pro (2).jpg"]},"iphone-15-pm":{"titanio azul":["Trasera Titanio Azul iPhone 15 Pro Max.jpg","Delantera Titanio Azul iPhone 15 Pro Max.jpg"],"titanio blanco":["Trasera Titanio Blanco iPhone 15 Pro Max.jpg","Delantera Titanio Blanco iPhone 15 Pro Max.jpg"],"titanio natural":["Trasera Titanio Natural iPhone 15 Pro Max.jpg","Delantera Titanio Natural iPhone 15 Pro Max.jpg"],"titanio negro":["Trasera Titanio Negro iPhone 15 Pro Max.jpg","Delantera Titanio Negro iPhone 15 Pro Max.jpg"]},"iphone-15-pro":{"titanio azul":["Trasera Titanio Azul iPhone 15 Pro.jpg","Delantera Titanio Azul iPhone 15 Pro.jpg"],"titanio blanco":["Trasera Titanio Blanco iPhone 15 Pro.jpg","Delantera Titanio Blanco iPhone 15 Pro.jpg"],"titanio natural":["Trasera Titanio Natural iPhone 15 Pro.jpg","Delantera Titanio Natural iPhone 15 Pro.jpg"],"titanio negro":["Trasera Titanio Negro iPhone 15 Pro.jpg","Delantera Titanio Negro iPhone 15 Pro.jpg"]},"iphone-16-pm":{"titanio blanco":["Trasera Titanio Blanco iPhone 16 Pro Max (2).jpg","Delantera Titanio Blanco iPhone 16 Pro Max (2).jpg"],"titanio del desierto":["Trasera Titanio del Desierto iPhone 16 Pro Max.jpg","Delantera Titanio del Desierto iPhone 16 Pro Max.jpg"],"titanio natural":["Trasera Titanio Natural iPhone 16 Pro Max.jpg","Delantera Titanio Natural iPhone 16 Pro Max.jpg"],"titanio negro":["Trasera Titanio Negro iPhone 16 Pro Max.jpg","Delantera Titanio Negro iPhone 16 Pro Max.jpg"]},"iphone-16-pro":{"titanio blanco":["Trasera Titanio Blanco iPhone 16 Pro.jpg","Delantera Titanio Blanco iPhone 16 Pro.jpg"],"titanio del desierto":["Trasera Titanio del Desierto iPhone 16 Pro.jpg","Delantera Titanio del Desierto iPhone 16 Pro.jpg"],"titanio natural":["Trasera Titanio Natural iPhone 16 Pro.jpg","Delantera Titanio Natural iPhone 16 Pro.jpg"],"titanio negro":["Trasera Titanio Negro iPhone 16 Pro.jpg","Delantera Titanio Negro iPhone 16 Pro.jpg"]}};
         let galleryState = { images: [], current: 0 };
 
         function renderGallery(slug, color) {
