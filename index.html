@@ -3317,10 +3317,404 @@
             .em-box { padding: 28px 22px 22px; }
             .em-title { font-size: 22px; }
         }
+
+        /* ═══════════════════════════════════════════════════════════
+           🌟 PREMIUM POLISH PACK — Loader, marquee, cursor, tilt, etc.
+           ═══════════════════════════════════════════════════════════ */
+
+        /* ─── Marquee dorado superior ─── */
+        .top-marquee {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: linear-gradient(90deg, #1a1407 0%, #2a1f0d 50%, #1a1407 100%);
+            border-bottom: 1px solid rgba(244,201,93,0.25);
+            overflow: hidden; height: 32px; z-index: 1001;
+            display: flex; align-items: center;
+            backdrop-filter: blur(8px);
+        }
+        .top-marquee::before, .top-marquee::after {
+            content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2;
+            pointer-events: none;
+        }
+        .top-marquee::before { left: 0; background: linear-gradient(90deg, #1a1407, transparent); }
+        .top-marquee::after  { right: 0; background: linear-gradient(-90deg, #1a1407, transparent); }
+        .marquee-track {
+            display: flex; gap: 50px; white-space: nowrap;
+            animation: marqueeMove 38s linear infinite;
+            font-size: 12px; font-weight: 600; letter-spacing: 1.2px; color: #FFE293;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        .marquee-track span { display: inline-flex; align-items: center; gap: 12px; }
+        .marquee-track .sep { color: #F4C95D; font-size: 10px; opacity: 0.55; }
+        @keyframes marqueeMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        /* Empujar header para no taparlo */
+        header#h { top: 32px !important; }
+
+        /* ─── Glassmorphism en header ─── */
+        header#h {
+            background: rgba(10, 7, 3, 0.65) !important;
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border-bottom: 1px solid rgba(244,201,93,0.12) !important;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        header#h.scrolled {
+            background: rgba(10, 7, 3, 0.85) !important;
+            border-bottom-color: rgba(244,201,93,0.22) !important;
+        }
+
+        /* ─── Cursor personalizado (solo desktop) ─── */
+        @media (hover: hover) and (pointer: fine) {
+            * { cursor: none !important; }
+            .em-field input, input, textarea { cursor: text !important; }
+            #cust-cursor {
+                position: fixed; top: 0; left: 0; width: 14px; height: 14px;
+                border-radius: 50%; background: #F4C95D;
+                pointer-events: none; z-index: 99999;
+                transform: translate(-50%, -50%);
+                transition: width 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+                            height 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
+                            background 0.18s, border 0.18s, opacity 0.2s;
+                mix-blend-mode: difference;
+                box-shadow: 0 0 12px rgba(244,201,93,0.5);
+            }
+            #cust-cursor.hover {
+                width: 44px; height: 44px;
+                background: transparent;
+                border: 1.5px solid #F4C95D;
+                mix-blend-mode: normal;
+            }
+            #cust-cursor.click { transform: translate(-50%, -50%) scale(0.7); }
+            #cust-cursor.text {
+                width: 3px; height: 22px; border-radius: 2px;
+                background: #F4C95D;
+            }
+        }
+        @media (hover: none), (pointer: coarse) {
+            #cust-cursor { display: none; }
+        }
+
+        /* ─── Loader inicial premium (mejora el #intro existente) ─── */
+        #intro {
+            background: radial-gradient(ellipse at center, #1a1407 0%, #0a0703 70%) !important;
+            position: relative;
+            overflow: hidden;
+        }
+        #intro::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(244,201,93,0.08) 0%, transparent 60%);
+            animation: introPulse 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes introPulse {
+            0%, 100% { opacity: 0.4; transform: scale(0.95); }
+            50%      { opacity: 0.8; transform: scale(1.05); }
+        }
+        /* Particulas doradas flotantes en intro */
+        #intro::after {
+            content: ''; position: absolute; inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(244,201,93,0.6) 0.5px, transparent 1.5px),
+                radial-gradient(circle at 60% 70%, rgba(255,226,147,0.5) 0.5px, transparent 1.5px),
+                radial-gradient(circle at 85% 20%, rgba(244,201,93,0.4) 0.5px, transparent 1.5px),
+                radial-gradient(circle at 30% 80%, rgba(255,226,147,0.5) 0.5px, transparent 1.5px),
+                radial-gradient(circle at 75% 45%, rgba(244,201,93,0.6) 0.5px, transparent 1.5px);
+            background-size: 200px 200px, 250px 250px, 180px 180px, 220px 220px, 190px 190px;
+            animation: starsDrift 14s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes starsDrift {
+            0%   { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+            100% { background-position: 200px 200px, -250px 250px, 180px -180px, -220px 220px, 190px -190px; }
+        }
+        /* Sub-text con typing-dot animation */
+        .intro-sub {
+            position: relative;
+        }
+        .intro-sub::after {
+            content: ''; display: inline-block; width: 6px; height: 6px;
+            border-radius: 50%; background: #F4C95D; margin-left: 8px;
+            animation: introBlink 1.2s ease-in-out infinite;
+        }
+        @keyframes introBlink {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50%      { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* ─── 3D Tilt en cards ─── */
+        .card, .best-card, .offer-card {
+            transform-style: preserve-3d;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.45s;
+            will-change: transform;
+            position: relative;
+        }
+        .card::before, .best-card::before, .offer-card::before {
+            content: ''; position: absolute; inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+                rgba(244,201,93,0.16) 0%, transparent 45%);
+            opacity: 0; transition: opacity 0.4s;
+            pointer-events: none; z-index: 1;
+        }
+        .card.tilting::before, .best-card.tilting::before, .offer-card.tilting::before {
+            opacity: 1;
+        }
+        .card.tilting, .best-card.tilting, .offer-card.tilting {
+            box-shadow: 0 22px 50px rgba(0,0,0,0.45),
+                        0 0 0 1px rgba(244,201,93,0.25),
+                        0 0 28px rgba(244,201,93,0.18);
+            border-color: rgba(244,201,93,0.3);
+            z-index: 10;
+        }
+        /* Las imágenes flotan ligeramente al hover (parallax interno) */
+        .card.tilting .img-box img,
+        .best-card.tilting .best-img-box img,
+        .offer-card.tilting .offer-img img {
+            transform: translateZ(20px) scale(1.04);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card .img-box, .best-card .best-img-box, .offer-card .offer-img {
+            transform-style: preserve-3d;
+            overflow: hidden;
+        }
+
+        /* ─── Botones magnéticos + ripple ─── */
+        .btn, button.add-to-cart, .hero-cta, .cta-primary, .em-submit {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s;
+            will-change: transform;
+        }
+        .ripple {
+            position: absolute; border-radius: 50%;
+            background: rgba(255,226,147,0.55);
+            transform: scale(0); opacity: 1;
+            animation: rippleAnim 0.65s ease-out forwards;
+            pointer-events: none;
+        }
+        @keyframes rippleAnim {
+            to { transform: scale(8); opacity: 0; }
+        }
+
+        /* ─── Scroll reveal animations ─── */
+        .reveal-up, .reveal-fade, .reveal-scale, .reveal-stagger > * {
+            opacity: 0;
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-up   { transform: translateY(40px); }
+        .reveal-scale { transform: scale(0.92); }
+        .reveal-stagger > * { transform: translateY(28px); }
+        .reveal-up.in, .reveal-fade.in, .reveal-scale.in,
+        .reveal-stagger.in > * {
+            opacity: 1; transform: none;
+        }
+        .reveal-stagger.in > *:nth-child(1) { transition-delay: 0.05s; }
+        .reveal-stagger.in > *:nth-child(2) { transition-delay: 0.12s; }
+        .reveal-stagger.in > *:nth-child(3) { transition-delay: 0.19s; }
+        .reveal-stagger.in > *:nth-child(4) { transition-delay: 0.26s; }
+        .reveal-stagger.in > *:nth-child(5) { transition-delay: 0.33s; }
+        .reveal-stagger.in > *:nth-child(6) { transition-delay: 0.4s; }
+        .reveal-stagger.in > *:nth-child(7) { transition-delay: 0.47s; }
+        .reveal-stagger.in > *:nth-child(8) { transition-delay: 0.54s; }
+
+        /* ─── Sección "Por qué iPhone Elite" ─── */
+        .why-section {
+            position: relative;
+            padding: 80px 24px;
+            margin: 80px 0 60px;
+            background: linear-gradient(180deg, transparent 0%, rgba(244,201,93,0.04) 50%, transparent 100%);
+            border-top: 1px solid rgba(244,201,93,0.08);
+            border-bottom: 1px solid rgba(244,201,93,0.08);
+            overflow: hidden;
+        }
+        .why-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(244,201,93,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .why-title {
+            text-align: center; font-size: clamp(28px, 5vw, 42px);
+            font-weight: 800; margin: 0 0 12px;
+            background: linear-gradient(135deg, #FFE293 0%, #F4C95D 100%);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .why-sub {
+            text-align: center; color: #c4b89b; font-size: 16px;
+            max-width: 580px; margin: 0 auto 56px;
+            line-height: 1.6;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px; max-width: 1100px; margin: 0 auto;
+        }
+        .why-card {
+            text-align: center; padding: 32px 22px;
+            background: linear-gradient(160deg, rgba(255,255,255,0.02) 0%, rgba(244,201,93,0.04) 100%);
+            border: 1px solid rgba(244,201,93,0.12);
+            border-radius: 18px;
+            transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+            position: relative; overflow: hidden;
+        }
+        .why-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(244,201,93,0.08), transparent);
+            transition: left 0.7s ease;
+        }
+        .why-card:hover::before { left: 100%; }
+        .why-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(244,201,93,0.35);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.4), 0 0 24px rgba(244,201,93,0.1);
+        }
+        .why-icon {
+            width: 64px; height: 64px; margin: 0 auto 18px;
+            display: grid; place-items: center;
+            background: radial-gradient(circle, rgba(244,201,93,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .why-icon svg {
+            width: 38px; height: 38px;
+            stroke: #F4C95D; stroke-width: 1.5; fill: none;
+            stroke-linecap: round; stroke-linejoin: round;
+            stroke-dasharray: 200;
+            stroke-dashoffset: 200;
+            transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .why-section.in .why-icon svg { stroke-dashoffset: 0; }
+        .why-h { color: #FFE293; font-weight: 700; font-size: 17px; margin: 0 0 8px; }
+        .why-p { color: #b8ac90; font-size: 13.5px; line-height: 1.55; margin: 0; }
+
+        /* ─── Counters de stats ─── */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 22px; max-width: 900px; margin: 64px auto 40px;
+            padding: 40px 22px;
+            background: linear-gradient(160deg, rgba(244,201,93,0.04) 0%, rgba(244,201,93,0.01) 100%);
+            border: 1px solid rgba(244,201,93,0.14);
+            border-radius: 22px;
+        }
+        .stat-item { text-align: center; }
+        .stat-num {
+            font-size: clamp(34px, 5vw, 48px); font-weight: 900;
+            background: linear-gradient(135deg, #FFE293 0%, #F4C95D 100%);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            line-height: 1; display: block; margin-bottom: 8px;
+            font-variant-numeric: tabular-nums;
+        }
+        .stat-label { color: #897d63; font-size: 12.5px; font-weight: 600;
+            letter-spacing: 1.2px; text-transform: uppercase; }
+
+        /* ─── Galería fullscreen al click ─── */
+        #img-zoom {
+            position: fixed; inset: 0; z-index: 99997;
+            background: rgba(8,6,2,0.96); backdrop-filter: blur(20px);
+            display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        #img-zoom.show { display: flex; opacity: 1; }
+        #img-zoom .zoom-content {
+            max-width: 92vw; max-height: 88vh; position: relative;
+            transform: scale(0.92); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #img-zoom.show .zoom-content { transform: scale(1); }
+        #img-zoom img {
+            max-width: 100%; max-height: 88vh; object-fit: contain;
+            border-radius: 16px; background: #fff;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(244,201,93,0.2);
+        }
+        #img-zoom .zoom-close {
+            position: absolute; top: -14px; right: -14px;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: #F4C95D; color: #1a1407; border: 0;
+            font-size: 22px; font-weight: bold; cursor: pointer;
+            display: grid; place-items: center;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.4);
+            transition: transform 0.2s;
+        }
+        #img-zoom .zoom-close:hover { transform: scale(1.1) rotate(90deg); }
+
+        /* ─── Badges premium con animaciones ─── */
+        .badge-oferta, [class*="tag"][style*="background"][style*="E66A5C"],
+        .card-tag, .tag-oferta {
+            animation: badgePulse 2.4s ease-in-out infinite;
+        }
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(230,106,92,0.45); }
+            50%      { box-shadow: 0 0 0 7px rgba(230,106,92,0); }
+        }
+        .badge-nuevo, .tag-nuevo {
+            position: relative; overflow: hidden;
+        }
+        .badge-nuevo::after, .tag-nuevo::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            animation: badgeShimmer 2.8s ease-in-out infinite;
+        }
+        @keyframes badgeShimmer {
+            0%   { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        /* ─── Mejora visual del scroll suave ─── */
+        html { scroll-behavior: smooth; }
+
+        /* ─── Selector dorado al seleccionar texto ─── */
+        ::selection { background: rgba(244,201,93,0.4); color: #fff; }
+        ::-moz-selection { background: rgba(244,201,93,0.4); color: #fff; }
+
+        /* ─── Mobile adaptations ─── */
+        @media (max-width: 720px) {
+            .top-marquee { height: 28px; }
+            .marquee-track { font-size: 11px; gap: 36px; animation-duration: 30s; }
+            header#h { top: 28px !important; }
+            .why-section { padding: 56px 18px; margin: 56px 0 40px; }
+            .why-grid { gap: 18px; }
+            .why-card { padding: 24px 16px; }
+            .stats-section { padding: 28px 16px; gap: 16px; }
+            .card, .best-card, .offer-card { transform: none !important; } /* no tilt en touch */
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- Marquee dorado premium -->
+    <div class="top-marquee" id="top-marquee" style="display:none">
+        <div class="marquee-track" id="marquee-track">
+            <span>✦ ENVÍO GRATIS A SANTIAGO</span><span class="sep">●</span>
+            <span>GARANTÍA REAL 3 MESES</span><span class="sep">●</span>
+            <span>FINANCIAMIENTO SIN RECARGO</span><span class="sep">●</span>
+            <span>STOCK NUEVO CADA SEMANA</span><span class="sep">●</span>
+            <span>BOLETA Y FACTURA</span><span class="sep">●</span>
+            <span>WHATSAPP +56 9 4898 1222</span><span class="sep">●</span>
+            <!-- duplicado para loop infinito -->
+            <span>✦ ENVÍO GRATIS A SANTIAGO</span><span class="sep">●</span>
+            <span>GARANTÍA REAL 3 MESES</span><span class="sep">●</span>
+            <span>FINANCIAMIENTO SIN RECARGO</span><span class="sep">●</span>
+            <span>STOCK NUEVO CADA SEMANA</span><span class="sep">●</span>
+            <span>BOLETA Y FACTURA</span><span class="sep">●</span>
+            <span>WHATSAPP +56 9 4898 1222</span><span class="sep">●</span>
+        </div>
+    </div>
+
+    <!-- Cursor personalizado dorado -->
+    <div id="cust-cursor"></div>
+
+    <!-- Modal de zoom de imagen -->
+    <div id="img-zoom" onclick="if(event.target===this)closeZoom()">
+        <div class="zoom-content">
+            <button class="zoom-close" onclick="closeZoom()" aria-label="Cerrar">×</button>
+            <img id="zoom-img" src="" alt="">
+        </div>
+    </div>
 
     <div id="intro" onclick="start()">
         <div class="intro-stage">
@@ -3450,6 +3844,76 @@
                     </svg>
                     <b>Sin bloqueo IMEI</b>
                     <span>Equipos liberados y con boleta</span>
+                </div>
+            </section>
+
+            <!-- ━━━ Sección "Por qué iPhone Elite" ━━━ -->
+            <section class="why-section reveal-up">
+                <h2 class="why-title">La diferencia iPhone Elite</h2>
+                <p class="why-sub">Cuatro años perfeccionando un proceso obsesivo con la calidad. Cada iPhone pasa por nuestras manos antes de llegar a las tuyas.</p>
+                <div class="why-grid reveal-stagger">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <h3 class="why-h">Verificación IMEI</h3>
+                        <p class="why-p">Validamos el número de serie con Apple antes de venderlo. Cero equipos bloqueados.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                        </div>
+                        <h3 class="why-h">3 meses de garantía</h3>
+                        <p class="why-p">Cobertura técnica completa y atención post-venta de por vida. Sin letra chica.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24"><path d="M3 7h13l5 5v5h-3"/><path d="M16 17H8"/><circle cx="6" cy="17" r="2"/><circle cx="18" cy="17" r="2"/></svg>
+                        </div>
+                        <h3 class="why-h">Envío 24-48h</h3>
+                        <p class="why-p">Despachamos a todo Chile. En Santiago la entrega es el mismo día con coordinación previa.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20.5 6 9 17.5 3.5 12"/></svg>
+                        </div>
+                        <h3 class="why-h">Reacondicionados premium</h3>
+                        <p class="why-p">Limpieza interna profunda, batería sobre 85% certificada y pantalla sin marcas.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M22 10H2"/></svg>
+                        </div>
+                        <h3 class="why-h">Cuotas sin recargo</h3>
+                        <p class="why-p">Hasta 12 cuotas sin interés con tarjetas de crédito chilenas. Webpay, Khipu y transferencia.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        </div>
+                        <h3 class="why-h">Atención humana 24/7</h3>
+                        <p class="why-p">WhatsApp e Instagram respondidos por personas reales. Asesoramos hasta que estés 100% seguro.</p>
+                    </div>
+                </div>
+
+                <!-- Stats counter -->
+                <div class="stats-section reveal-up">
+                    <div class="stat-item">
+                        <span class="stat-num" data-count="500" data-suffix="+">0</span>
+                        <span class="stat-label">iPhones vendidos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num" data-count="4" data-suffix=" años">0</span>
+                        <span class="stat-label">de trayectoria</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num" data-count="98" data-suffix="%">0</span>
+                        <span class="stat-label">satisfacción cliente</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num" data-count="24" data-suffix="h">0</span>
+                        <span class="stat-label">tiempo de entrega</span>
+                    </div>
                 </div>
             </section>
 
@@ -5873,6 +6337,207 @@
                 showEmailPopup();
             }
         });
+
+        /* ═══════════════════════════════════════════════════════════
+           🌟 PREMIUM POLISH PACK — JS
+           ═══════════════════════════════════════════════════════════ */
+
+        // Mostrar marquee solo cuando se entró al main-ui (después de #intro)
+        (function showMarqueeWhenReady() {
+            const t = setInterval(() => {
+                const ui = document.getElementById('main-ui');
+                if (ui && ui.style.display !== 'none') {
+                    const m = document.getElementById('top-marquee');
+                    if (m) m.style.display = 'flex';
+                    document.body.style.paddingTop = '0';
+                    clearInterval(t);
+                }
+            }, 200);
+        })();
+
+        /* ── Cursor personalizado dorado ── */
+        (function premiumCursor() {
+            const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+            if (!isFinePointer) return;
+            const c = document.getElementById('cust-cursor');
+            let mx = 0, my = 0, cx = 0, cy = 0;
+            document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+            function loop() {
+                cx += (mx - cx) * 0.28;
+                cy += (my - cy) * 0.28;
+                c.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+                requestAnimationFrame(loop);
+            }
+            loop();
+            // hover state
+            const HOVER_SEL = 'a, button, .card, .best-card, .offer-card, .why-card, .gallery-thumb, .img-box, [onclick], [role="button"]';
+            const TEXT_SEL = 'input, textarea, .search-input';
+            document.body.addEventListener('mouseover', e => {
+                if (e.target.closest(TEXT_SEL)) c.classList.add('text');
+                else if (e.target.closest(HOVER_SEL)) c.classList.add('hover');
+            });
+            document.body.addEventListener('mouseout', () => {
+                c.classList.remove('hover');
+                c.classList.remove('text');
+            });
+            document.addEventListener('mousedown', () => c.classList.add('click'));
+            document.addEventListener('mouseup',   () => c.classList.remove('click'));
+        })();
+
+        /* ── Header glassmorphism al hacer scroll ── */
+        (function headerScrollFx() {
+            const h = document.getElementById('h');
+            if (!h) return;
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 24) h.classList.add('scrolled');
+                else h.classList.remove('scrolled');
+            }, { passive: true });
+        })();
+
+        /* ── 3D tilt en cards ── */
+        (function cardTilt() {
+            const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+            if (!isFinePointer) return;
+            const TILT_SEL = '.card, .best-card, .offer-card';
+            document.body.addEventListener('mousemove', e => {
+                const card = e.target.closest(TILT_SEL);
+                if (!card) return;
+                const r = card.getBoundingClientRect();
+                const px = (e.clientX - r.left) / r.width;   // 0-1
+                const py = (e.clientY - r.top) / r.height;   // 0-1
+                const rx = (py - 0.5) * -8;                  // ±4°
+                const ry = (px - 0.5) * 10;                  // ±5°
+                card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
+                card.style.setProperty('--mx', (px * 100) + '%');
+                card.style.setProperty('--my', (py * 100) + '%');
+                card.classList.add('tilting');
+            });
+            document.body.addEventListener('mouseout', e => {
+                const card = e.target.closest(TILT_SEL);
+                if (card && !card.contains(e.relatedTarget)) {
+                    card.style.transform = '';
+                    card.classList.remove('tilting');
+                }
+            });
+        })();
+
+        /* ── Botones magnéticos ── */
+        (function magneticButtons() {
+            const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+            if (!isFinePointer) return;
+            const MAG_SEL = '.btn, .hero-cta, .cta-primary, .em-submit, button.add-to-cart';
+            document.querySelectorAll(MAG_SEL).forEach(btn => {
+                let raf = null;
+                btn.addEventListener('mousemove', e => {
+                    const r = btn.getBoundingClientRect();
+                    const x = e.clientX - r.left - r.width / 2;
+                    const y = e.clientY - r.top - r.height / 2;
+                    if (raf) cancelAnimationFrame(raf);
+                    raf = requestAnimationFrame(() => {
+                        btn.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px)`;
+                    });
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = '';
+                });
+            });
+        })();
+
+        /* ── Ripple en clicks de botones/CTAs ── */
+        document.body.addEventListener('click', e => {
+            const btn = e.target.closest('.btn, .hero-cta, .cta-primary, .em-submit, button.add-to-cart, .why-card');
+            if (!btn) return;
+            const r = btn.getBoundingClientRect();
+            const x = e.clientX - r.left;
+            const y = e.clientY - r.top;
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = (x - 6) + 'px';
+            ripple.style.top  = (y - 6) + 'px';
+            ripple.style.width = '12px'; ripple.style.height = '12px';
+            const prevPos = getComputedStyle(btn).position;
+            if (prevPos === 'static') btn.style.position = 'relative';
+            btn.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 700);
+        });
+
+        /* ── Scroll reveal (IntersectionObserver) ── */
+        (function scrollReveal() {
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('in');
+                        // counters
+                        const nums = e.target.querySelectorAll('.stat-num[data-count]');
+                        nums.forEach(n => {
+                            if (n.dataset.done) return;
+                            n.dataset.done = '1';
+                            const target = parseInt(n.dataset.count, 10) || 0;
+                            const suffix = n.dataset.suffix || '';
+                            const dur = 1800;
+                            const t0 = performance.now();
+                            (function tick(now) {
+                                const t = Math.min(1, (now - t0) / dur);
+                                const v = Math.floor(target * (1 - Math.pow(1 - t, 3))); // easeOutCubic
+                                n.textContent = v + suffix;
+                                if (t < 1) requestAnimationFrame(tick);
+                                else n.textContent = target + suffix;
+                            })(performance.now());
+                        });
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+            document.querySelectorAll('.reveal-up, .reveal-fade, .reveal-scale, .reveal-stagger, .why-section, .stats-section').forEach(el => io.observe(el));
+        })();
+
+        /* ── Galería fullscreen al click en imagen ── */
+        function openZoom(src) {
+            const z = document.getElementById('img-zoom');
+            const img = document.getElementById('zoom-img');
+            if (!z || !img) return;
+            img.src = src;
+            z.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeZoom() {
+            const z = document.getElementById('img-zoom');
+            if (!z) return;
+            z.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeZoom();
+        });
+        // Hook al click en imagen grande de detalle de producto
+        document.body.addEventListener('click', e => {
+            const img = e.target.closest('.gallery-main img, .detail-image img');
+            if (!img) return;
+            e.stopPropagation();
+            openZoom(img.src);
+        });
+
+        /* ── Auto-detectar badges OFERTA/NUEVO y agregar clases ── */
+        (function decorateBadges() {
+            setTimeout(() => {
+                document.querySelectorAll('.card-tag, .best-tag, [class*="tag"]').forEach(el => {
+                    const t = (el.textContent || '').trim().toUpperCase();
+                    if (t.includes('OFERTA')) el.classList.add('badge-oferta');
+                    else if (t.includes('NUEVO')) el.classList.add('badge-nuevo');
+                });
+            }, 800);
+            // Re-aplicar después de renders dinámicos
+            const obs = new MutationObserver(() => {
+                document.querySelectorAll('.card-tag, .best-tag, [class*="tag"]').forEach(el => {
+                    if (el.classList.contains('badge-oferta') || el.classList.contains('badge-nuevo')) return;
+                    const t = (el.textContent || '').trim().toUpperCase();
+                    if (t.includes('OFERTA')) el.classList.add('badge-oferta');
+                    else if (t.includes('NUEVO')) el.classList.add('badge-nuevo');
+                });
+            });
+            obs.observe(document.body, { childList: true, subtree: true });
+        })();
     </script>
 
 </body>
