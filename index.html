@@ -3213,6 +3213,110 @@
             .gallery-thumbs { flex-direction: row; max-height: none; overflow-x: auto; overflow-y: hidden; }
             .gallery-main { min-height: 280px; padding: 14px; }
         }
+
+        /* ─── EMAIL MARKETING — Popup + Modal ─── */
+        .em-overlay {
+            position: fixed; inset: 0; background: rgba(8,6,2,0.78); backdrop-filter: blur(6px);
+            z-index: 99998; display: none; align-items: center; justify-content: center; padding: 16px;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .em-overlay.show { display: flex; opacity: 1; }
+        .em-box {
+            background: linear-gradient(160deg, #1a1407 0%, #0f0c05 100%);
+            border: 1.5px solid rgba(244,201,93,0.35);
+            border-radius: 22px;
+            max-width: 460px; width: 100%;
+            padding: 36px 32px 28px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(244,201,93,0.18), 0 0 0 1px rgba(255,255,255,0.04) inset;
+            transform: scale(0.92) translateY(20px);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #e8e0cf;
+        }
+        .em-overlay.show .em-box { transform: scale(1) translateY(0); }
+        .em-close {
+            position: absolute; top: 14px; right: 14px;
+            width: 30px; height: 30px; border-radius: 50%;
+            background: rgba(255,255,255,0.06); border: 0; color: #aaa;
+            font-size: 18px; cursor: pointer; display: grid; place-items: center;
+            transition: 0.15s;
+        }
+        .em-close:hover { background: rgba(244,201,93,0.18); color: #F4C95D; }
+        .em-badge {
+            display: inline-block; padding: 6px 14px;
+            background: linear-gradient(135deg, #F4C95D 0%, #FFE293 100%);
+            color: #1a1407; font-weight: 800; font-size: 12px;
+            border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 16px;
+        }
+        .em-title {
+            font-size: 26px; font-weight: 800; line-height: 1.15;
+            background: linear-gradient(135deg, #FFE293 0%, #F4C95D 100%);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            margin: 0 0 10px;
+        }
+        .em-subtitle { font-size: 14px; color: #c4b89b; line-height: 1.5; margin: 0 0 22px; }
+        .em-field {
+            display: flex; gap: 0; margin-bottom: 14px;
+            border-radius: 14px; overflow: hidden;
+            background: rgba(255,255,255,0.04);
+            border: 1.5px solid rgba(244,201,93,0.22);
+            transition: 0.2s;
+        }
+        .em-field:focus-within { border-color: #F4C95D; box-shadow: 0 0 0 3px rgba(244,201,93,0.12); }
+        .em-field input {
+            flex: 1; background: transparent; border: 0; padding: 14px 16px;
+            color: #fff; font-size: 15px; outline: 0; font-family: inherit;
+        }
+        .em-field input::placeholder { color: #897d63; }
+        .em-submit {
+            background: linear-gradient(135deg, #F4C95D 0%, #FFE293 100%);
+            color: #1a1407; border: 0; padding: 0 22px; font-weight: 800;
+            cursor: pointer; font-size: 14px; letter-spacing: 0.3px;
+            transition: 0.15s;
+        }
+        .em-submit:hover { filter: brightness(1.08); }
+        .em-submit:disabled { opacity: 0.55; cursor: wait; }
+        .em-perks {
+            list-style: none; padding: 0; margin: 14px 0 0;
+            display: flex; flex-direction: column; gap: 8px;
+            font-size: 13px; color: #b8ac90;
+        }
+        .em-perks li { display: flex; align-items: center; gap: 8px; }
+        .em-perks li::before {
+            content: '✓'; color: #F4C95D; font-weight: 800; font-size: 13px;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: rgba(244,201,93,0.15); display: grid; place-items: center;
+        }
+        .em-skip {
+            display: block; width: 100%; background: transparent; border: 0;
+            color: #6e6347; font-size: 12px; cursor: pointer; margin-top: 14px;
+            padding: 6px; text-decoration: underline;
+        }
+        .em-skip:hover { color: #aaa; }
+        .em-success {
+            text-align: center; padding: 8px 0;
+        }
+        .em-success-icon {
+            width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 16px;
+            background: linear-gradient(135deg, #F4C95D 0%, #FFE293 100%);
+            display: grid; place-items: center; font-size: 36px; color: #1a1407;
+            animation: emPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes emPop {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+        .em-coupon {
+            background: rgba(244,201,93,0.10); border: 1.5px dashed #F4C95D;
+            border-radius: 12px; padding: 14px; margin: 16px 0;
+            font-family: 'Courier New', monospace; font-size: 18px; font-weight: 800;
+            letter-spacing: 3px; color: #FFE293;
+        }
+        @media (max-width: 480px) {
+            .em-box { padding: 28px 22px 22px; }
+            .em-title { font-size: 22px; }
+        }
     </style>
 </head>
 
@@ -5528,6 +5632,247 @@
                 }
             }, 280);
         }
+
+        /* ════════════════════════════════════════════════════════
+           EMAIL MARKETING — Captura de leads + Sincronización de carrito
+           ════════════════════════════════════════════════════════ */
+
+        const EMAIL_API = {
+            lead: 'https://up-n8n.7kmtuf.easypanel.host/webhook/email-capture',
+            cart: 'https://up-n8n.7kmtuf.easypanel.host/webhook/cart-sync'
+        };
+
+        // Session ID persistente (para trackear carrito anónimo)
+        function getSessionId() {
+            let sid = localStorage.getItem('ie_session_id');
+            if (!sid) {
+                sid = 'ie_' + Math.random().toString(36).substring(2, 11) + Date.now().toString(36);
+                localStorage.setItem('ie_session_id', sid);
+            }
+            return sid;
+        }
+
+        function getStoredEmail() { return localStorage.getItem('ie_user_email') || null; }
+        function setStoredEmail(email, nombre) {
+            localStorage.setItem('ie_user_email', email);
+            if (nombre) localStorage.setItem('ie_user_name', nombre);
+        }
+
+        // Sincroniza el carrito al backend (debounced)
+        let _cartSyncTimer = null;
+        function syncCartToBackend() {
+            clearTimeout(_cartSyncTimer);
+            _cartSyncTimer = setTimeout(() => {
+                if (!cart.length && !getStoredEmail()) return; // nada que guardar
+                const payload = {
+                    session_id: getSessionId(),
+                    email: getStoredEmail(),
+                    nombre: localStorage.getItem('ie_user_name') || null,
+                    items: cart.map(p => ({ id: p.id, name: p.name, price: p.price, color: p.color, capacidad: p.capacidad })),
+                    total_amount: cart.reduce((s, p) => s + p.price, 0),
+                    url: window.location.href
+                };
+                fetch(EMAIL_API.cart, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                    keepalive: true
+                }).catch(() => {});
+            }, 1500);
+        }
+
+        // Hook al renderCart original para auto-sync
+        const _origRenderCart = renderCart;
+        renderCart = function() {
+            _origRenderCart.apply(this, arguments);
+            syncCartToBackend();
+        };
+
+        /* ─── POPUP DE CAPTURA — 5% OFF ─── */
+        function buildEmailPopup() {
+            const html = `
+                <div class="em-overlay" id="em-popup">
+                    <div class="em-box">
+                        <button class="em-close" onclick="closeEmailPopup(false)" aria-label="Cerrar">×</button>
+                        <span class="em-badge">⚡ OFERTA EXCLUSIVA</span>
+                        <h2 class="em-title">5% OFF en tu primer iPhone</h2>
+                        <p class="em-subtitle">Suscríbete y recibe ofertas, novedades de stock y descuentos directo en tu mail.</p>
+                        <form class="em-field" onsubmit="submitEmailPopup(event)">
+                            <input type="email" id="em-input-email" placeholder="tu@email.com" required autocomplete="email">
+                            <button type="submit" class="em-submit" id="em-submit-btn">Quiero el 5% OFF</button>
+                        </form>
+                        <ul class="em-perks">
+                            <li>Cupón único de 5% OFF</li>
+                            <li>Aviso primero del stock nuevo</li>
+                            <li>Ofertas semanales exclusivas</li>
+                        </ul>
+                        <button class="em-skip" onclick="closeEmailPopup(true)">No, gracias</button>
+                    </div>
+                </div>`;
+            document.body.insertAdjacentHTML('beforeend', html);
+        }
+
+        function showEmailPopup() {
+            if (localStorage.getItem('ie_popup_dismissed')) return;
+            if (getStoredEmail()) return;
+            if (!document.getElementById('em-popup')) buildEmailPopup();
+            requestAnimationFrame(() => document.getElementById('em-popup').classList.add('show'));
+        }
+
+        function closeEmailPopup(persistDismiss) {
+            const el = document.getElementById('em-popup');
+            if (el) el.classList.remove('show');
+            if (persistDismiss) {
+                // No mostrar de nuevo en 7 días
+                localStorage.setItem('ie_popup_dismissed', Date.now().toString());
+            }
+            setTimeout(() => { if (el) el.remove(); }, 350);
+        }
+
+        async function submitEmailPopup(e) {
+            e.preventDefault();
+            const email = document.getElementById('em-input-email').value.trim().toLowerCase();
+            const btn = document.getElementById('em-submit-btn');
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('em-input-email').focus();
+                return;
+            }
+            btn.disabled = true; btn.textContent = 'Enviando...';
+
+            // Generar cupón único
+            const couponCode = 'IE5-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+            setStoredEmail(email);
+            localStorage.setItem('ie_coupon', couponCode);
+            localStorage.setItem('ie_popup_dismissed', Date.now().toString());
+
+            try {
+                await fetch(EMAIL_API.lead, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email,
+                        source: 'popup',
+                        discount_code: couponCode,
+                        session_id: getSessionId(),
+                        url: window.location.href,
+                        cart: cart.map(p => ({ id: p.id, name: p.name, price: p.price }))
+                    }),
+                    keepalive: true
+                });
+            } catch (_) {}
+
+            // Mostrar success state
+            const box = document.querySelector('#em-popup .em-box');
+            box.innerHTML = `
+                <div class="em-success">
+                    <div class="em-success-icon">✓</div>
+                    <h2 class="em-title">¡Listo!</h2>
+                    <p class="em-subtitle">Tu cupón de 5% OFF:</p>
+                    <div class="em-coupon">${couponCode}</div>
+                    <p class="em-subtitle">Te enviamos una copia a <b style="color:#FFE293">${email}</b>. Úsalo al pagar por WhatsApp.</p>
+                    <button class="em-submit" onclick="closeEmailPopup(false)" style="padding:12px 22px;border-radius:12px;margin-top:6px">Seguir explorando</button>
+                </div>`;
+        }
+
+        /* ─── MODAL GUARDAR CARRITO ─── */
+        function buildSaveCartModal() {
+            const total = cart.reduce((s, p) => s + p.price, 0);
+            const itemsHtml = cart.slice(0, 3).map(p =>
+                `<div style="display:flex;justify-content:space-between;padding:6px 0;font-size:13px;color:#c4b89b"><span>${p.name}${p.color ? ' · '+p.color : ''}</span><span style="color:#FFE293">${formatCLP(p.price)}</span></div>`
+            ).join('');
+            const extras = cart.length > 3 ? `<div style="font-size:12px;color:#897d63;margin-top:4px">+ ${cart.length - 3} producto(s) más</div>` : '';
+            const html = `
+                <div class="em-overlay" id="em-cart-modal">
+                    <div class="em-box">
+                        <button class="em-close" onclick="closeSaveCartModal()" aria-label="Cerrar">×</button>
+                        <span class="em-badge">🛒 GUARDA TU CARRITO</span>
+                        <h2 class="em-title">No pierdas tu selección</h2>
+                        <p class="em-subtitle">Te enviamos un link a tu mail para retomar la compra cuando quieras. Sin presión.</p>
+                        <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:14px;margin-bottom:14px;border:1px solid rgba(244,201,93,0.12)">
+                            ${itemsHtml}${extras}
+                            <div style="display:flex;justify-content:space-between;padding-top:10px;margin-top:10px;border-top:1px solid rgba(244,201,93,0.15);font-weight:800;color:#FFE293">
+                                <span>Total</span><span>${formatCLP(total)}</span>
+                            </div>
+                        </div>
+                        <form class="em-field" onsubmit="submitSaveCart(event)">
+                            <input type="email" id="em-cart-email" placeholder="tu@email.com" required autocomplete="email">
+                            <button type="submit" class="em-submit" id="em-cart-btn">Guardar</button>
+                        </form>
+                        <button class="em-skip" onclick="closeSaveCartModal()">Continuar sin guardar</button>
+                    </div>
+                </div>`;
+            document.body.insertAdjacentHTML('beforeend', html);
+        }
+
+        function showSaveCartModal() {
+            if (getStoredEmail()) return;
+            if (localStorage.getItem('ie_cart_modal_shown')) return;
+            if (cart.length < 2) return;
+            if (document.getElementById('em-cart-modal')) return;
+            buildSaveCartModal();
+            requestAnimationFrame(() => document.getElementById('em-cart-modal').classList.add('show'));
+        }
+
+        function closeSaveCartModal() {
+            const el = document.getElementById('em-cart-modal');
+            if (el) el.classList.remove('show');
+            localStorage.setItem('ie_cart_modal_shown', Date.now().toString());
+            setTimeout(() => { if (el) el.remove(); }, 350);
+        }
+
+        async function submitSaveCart(e) {
+            e.preventDefault();
+            const email = document.getElementById('em-cart-email').value.trim().toLowerCase();
+            const btn = document.getElementById('em-cart-btn');
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+            btn.disabled = true; btn.textContent = '...';
+            setStoredEmail(email);
+            try {
+                await fetch(EMAIL_API.lead, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email, source: 'cart',
+                        session_id: getSessionId(),
+                        url: window.location.href,
+                        cart: cart.map(p => ({ id: p.id, name: p.name, price: p.price, color: p.color, capacidad: p.capacidad })),
+                        total_amount: cart.reduce((s, p) => s + p.price, 0)
+                    }),
+                    keepalive: true
+                });
+                syncCartToBackend();
+            } catch (_) {}
+            const box = document.querySelector('#em-cart-modal .em-box');
+            box.innerHTML = `
+                <div class="em-success">
+                    <div class="em-success-icon">✓</div>
+                    <h2 class="em-title">¡Guardado!</h2>
+                    <p class="em-subtitle">Te enviamos el link de tu carrito a <b style="color:#FFE293">${email}</b>. Si lo dejas sin comprar, te recordamos en 24h.</p>
+                    <button class="em-submit" onclick="closeSaveCartModal()" style="padding:12px 22px;border-radius:12px;margin-top:6px">Seguir comprando</button>
+                </div>`;
+        }
+
+        /* ─── DISPARADORES ─── */
+        // Popup tras 25s de navegación
+        setTimeout(() => showEmailPopup(), 25000);
+
+        // Modal de carrito: cuando hay 2+ items y pasan 12s sin checkout
+        let _cartIdleTimer = null;
+        const _addToCartOrig = addToCart;
+        addToCart = function(id) {
+            _addToCartOrig(id);
+            clearTimeout(_cartIdleTimer);
+            if (cart.length >= 2 && !getStoredEmail() && !localStorage.getItem('ie_cart_modal_shown')) {
+                _cartIdleTimer = setTimeout(() => showSaveCartModal(), 12000);
+            }
+        };
+
+        // Exit-intent: mover mouse fuera del viewport en desktop
+        document.addEventListener('mouseleave', e => {
+            if (e.clientY < 5 && !getStoredEmail() && !localStorage.getItem('ie_popup_dismissed')) {
+                showEmailPopup();
+            }
+        });
     </script>
 
 </body>
