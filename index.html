@@ -3156,6 +3156,26 @@
         }
         .d-upsell-btn span:first-child,
         .d-upsell-btn span:last-child { color: var(--ink) !important; }
+
+        /* ─── MENÚ LATERAL (mobile) — antes era bg:#fff con texto blanco invisible ─── */
+        #side-menu {
+            background: var(--bg-card) !important;
+            border-left: 1px solid var(--line) !important;
+        }
+        .side-menu-head {
+            border-bottom: 1px solid var(--line) !important;
+        }
+        .side-menu-title { color: var(--ink) !important; }
+        .side-menu-close { color: var(--ink-soft) !important; }
+        .side-menu-close:hover { color: var(--accent) !important; }
+        .side-menu-group { color: var(--accent) !important; }
+        .side-menu-nav a {
+            color: var(--ink) !important;
+        }
+        .side-menu-nav a:hover {
+            background: rgba(244, 201, 93, 0.08) !important;
+            color: var(--accent-soft) !important;
+        }
     </style>
 </head>
 
@@ -3174,7 +3194,6 @@
 
         <header id="h">
             <a href="#" class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-                <img src="logotipo iphonelite.jpeg" alt="iPhone Elite" onerror="this.style.display='none'">
                 <span id="brand-text">iPhone Elite</span>
             </a>
             <div class="nav-right">
