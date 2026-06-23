@@ -4280,18 +4280,9 @@
 
             <div class="section-head reveal" id="sec-airpods">
                 <h2 class="section-title">AirPods</h2>
-                <span class="section-count">Próximamente</span>
+                <span class="section-count" id="count-air"></span>
             </div>
-            <div class="empty-state reveal">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-                    <path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"></path>
-                </svg>
-                <h4>Sin stock disponible por ahora</h4>
-                <p>Estamos reponiendo AirPods Pro 2 y AirPods 4. Escríbenos para reservar el tuyo con anticipación.</p>
-                <a href="https://wa.me/56985884670?text=Hola%20iPhone%20Elite%20%F0%9F%91%8B%20Me%20interesa%20comprar%20el%20AirPods%20publicado%20en%20su%20web.%20%C2%BFSigue%20disponible%3F%20Quiero%20coordinar%20compra%20hoy%20mismo%20%F0%9F%93%A6" target="_blank"
-                    class="empty-cta">Consultar disponibilidad →</a>
-            </div>
+            <div class="grid reveal" id="air-grid"></div>
 
             <section class="brands reveal">
                 <div class="brands-label">TRABAJAMOS CON LAS MEJORES MARCAS</div>
@@ -4685,6 +4676,9 @@
             { id: 31, cat: 'ip', brand: 'iphone',     condition: 'sellado',   name: 'iPhone 17 Open Box', slug: 'iphone-17',     color: 'Verde',  storage: '256 GB', price: 839990, tag: 'OFERTA' },
             { id: 32, cat: 'ip', brand: 'iphone',     condition: 'sellado',   name: 'iPhone 17 Open Box', slug: 'iphone-17',     color: 'Negro',  storage: '256 GB', price: 839990, tag: 'OFERTA' },
             { id: 33, cat: 'ip', brand: 'iphone-pro', condition: 'sellado',   name: 'iPhone 17 Pro',      slug: 'iphone-17-pro', color: 'Azul',   storage: '256 GB', price: 1219990, tag: 'OFERTA' },
+
+            // ─── AirPods ───
+            { id: 500, cat: 'air', brand: 'apple', condition: 'nuevo', name: 'AirPods Pro', slug: 'airpods-pro', color: 'Blanco', storage: '—', price: 14990, tag: 'NUEVO' },
 
             // ─── Samsung ───
             { id: 200, cat: 'ot', brand: 'samsung', condition: 'seminuevo', name: 'Samsung Galaxy S23 Ultra', slug: 'samsung-s23-ultra', color: 'Blanco', storage: '512 GB', price: 459990 },
@@ -5234,6 +5228,7 @@
                 'negro': 'Combo Negro iPhone 17.png'
             },
             'iphone-17-pro':  { 'azul': 'Combo Azul iPhone 17 Pro.png' },
+            'airpods-pro': { 'blanco': 'Trasera AirPods Pro.png' },
             'samsung-s23-ultra': { 'blanco': 'Delantera Blanco Samsung S23 Ultra.png' },
             'macbook-pro-m3-pro': { 'black': 'Delantera Black MacBook Pro 14 M3 Pro.png' },
             'ipad-air-m3': {
@@ -5471,6 +5466,14 @@
             if (ig) ig.innerHTML = ipadGroups.length ? ipadGroups.map(groupCardHTML).join('') : emptyStock();
             const ipadCountEl = document.getElementById('count-ipad');
             if (ipadCountEl) ipadCountEl.textContent = `${ipadGroups.length} modelo${ipadGroups.length !== 1 ? 's' : ''}`;
+
+            // AirPods
+            const airRaw = stock.filter(p => p.cat === 'air');
+            const airGroups = groupByName(airRaw);
+            const ag = document.getElementById('air-grid');
+            if (ag) ag.innerHTML = airGroups.length ? airGroups.map(groupCardHTML).join('') : emptyStock();
+            const airCountEl = document.getElementById('count-air');
+            if (airCountEl) airCountEl.textContent = `${airGroups.length} modelo${airGroups.length !== 1 ? 's' : ''}`;
 
             document.getElementById('count-ip').textContent = `${ipGroups.length} modelo${ipGroups.length !== 1 ? 's' : ''}`;
             document.getElementById('count-ot').textContent = `${otGroups.length} modelo${otGroups.length !== 1 ? 's' : ''}`;
