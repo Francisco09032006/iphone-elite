@@ -3187,13 +3187,13 @@
         .gallery-main { position: relative; flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; min-height: 460px; background: linear-gradient(160deg, #f6f6f7 0%, #e8e8ea 100%); border-radius: 14px; }
         /* Galería detalle */
         .gallery-main img { max-width: 78% !important; max-height: 86% !important; width: auto !important; height: auto !important; object-fit: contain !important; transition: opacity 0.2s; }
-        /* Cards uniformes — todas las imágenes son 600x800 (3:4) con padding blanco interno */
+        /* Cards uniformes — imágenes Combo (delantera+trasera) son 1100x800 horizontales */
         .img-box, .offer-card .offer-img, .best-img-box {
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             padding: 0 !important;
-            aspect-ratio: 3 / 4 !important;
+            aspect-ratio: 11 / 8 !important;
             background: #ffffff !important;
             overflow: hidden !important;
         }
@@ -5173,64 +5173,64 @@
             'carcasa-silicona': 'accesorio-carcasa.png'
         };
         
-        // Mapa de imagenes TRASERAS (espalda) — fotos nuevas del jefe, todas 600x800 PNG fondo blanco
+        // Mapa de imagenes COMBO (delantera + trasera juntas) — estilo IG stories
         const BACK_MAP = {
-            'iphone-11':      { 'negro': 'Trasera Negro iPhone 11.png' },
-            'iphone-12-pro':  { 'gris': 'Trasera Grafito iPhone 12 Pro.png' },
-            'iphone-12-pm':   { 'gris': 'Trasera Grafito iPhone 12 Pro Max.png' },
+            'iphone-11':      { 'negro': 'Combo Negro iPhone 11.png' },
+            'iphone-12':      {
+                'azul':            'Combo Azul iPhone 12.png',
+                'azul medianoche': 'Combo Azul iPhone 12.png',
+                'medianoche':      'Combo Azul iPhone 12.png'
+            },
+            'iphone-12-pro':  { 'gris': 'Combo Grafito iPhone 12 Pro.png' },
+            'iphone-12-pm':   { 'gris': 'Combo Grafito iPhone 12 Pro Max.png' },
             'iphone-13': {
-                'azul medianoche': 'Trasera Medianoche iPhone 13.png',
-                'medianoche':      'Trasera Medianoche iPhone 13.png',
-                'blanco':          'Trasera Blanco Estrella iPhone 13.png',
-                'rosado':          'Trasera Rosa iPhone 13.png',
-                'rosa':            'Trasera Rosa iPhone 13.png',
-                'verde':           'Trasera Verde iPhone 13.png'
+                'azul medianoche': 'Combo Medianoche iPhone 13.png',
+                'medianoche':      'Combo Medianoche iPhone 13.png',
+                'blanco':          'Combo Blanco Estrella iPhone 13.png',
+                'rosado':          'Combo Rosa iPhone 13.png',
+                'rosa':            'Combo Rosa iPhone 13.png',
+                'verde':           'Combo Verde iPhone 13.png'
             },
             'iphone-13-pro':  {
-                'gris':    'Trasera Grafito iPhone 13 Pro.png',
-                'celeste': 'Trasera Azul Sierra iPhone 13 Pro.png'
+                'gris':    'Combo Grafito iPhone 13 Pro.png',
+                'celeste': 'Combo Azul Sierra iPhone 13 Pro.png'
             },
-            'iphone-13-pm':   { 'dorado': 'Trasera Oro iPhone 13 Pro Max.png' },
-            'iphone-14':      { 'blanco': 'Trasera Blanco Estrella iPhone 14.png' },
+            'iphone-13-pm':   { 'dorado': 'Combo Oro iPhone 13 Pro Max.png' },
+            'iphone-14':      { 'blanco': 'Combo Blanco Estrella iPhone 14.png' },
             'iphone-14-pro':  {
-                'blanco': 'Trasera Plata iPhone 14 Pro.png',
-                'negro':  'Trasera Negra Espacial iPhone 14 Pro.png',
-                'morado': 'Trasera Morado Oscuro iPhone 14 Pro.png'
+                'blanco': 'Combo Plata iPhone 14 Pro.png',
+                'negro':  'Combo Negro iPhone 14 Pro.png',
+                'morado': 'Combo Morado iPhone 14 Pro.png'
             },
             'iphone-14-pm':   {
-                'negro':  'Trasera Negra Espacial iPhone 14 Pro Max.png',
-                'dorado': 'Trasera Oro iPhone 14 Pro Max.png'
+                'negro':  'Combo Negro iPhone 14 Pro Max.png',
+                'dorado': 'Combo Dorado iPhone 14 Pro Max.png'
             },
             'iphone-15':      {
-                'negro':  'Trasera Negro iPhone 15.png',
-                'rosado': 'Trasera Rosa iPhone 15.png',
-                'pink':   'Trasera Rosa iPhone 15.png'
-            },
-            'iphone-16':      {
-                'negro':  'Trasera Negro iPhone 16.png',
-                'rosado': 'Trasera Rosa iPhone 16.png',
-                'rosa':   'Trasera Rosa iPhone 16.png'
-            },
-            'iphone-16-pro':  { 'titanio natural': 'Trasera Titanio Natural iPhone 16 Pro.png' },
-            'iphone-16-pm':   {
-                'blanco':           'Trasera Titanio Blanco iPhone 16 Pro Max (2).png',
-                'titanio natural':  'Trasera Titanio Natural iPhone 16 Pro Max.png'
-            },
-            'iphone-17e':     { 'blanco': 'Trasera Blanco iPhone 17e.png' },
-            'iphone-17-pro':  { 'azul': 'Trasera Azul Cosmico iPhone 17 Pro.png' },
-            'iphone-12':      {
-                'azul':            'Trasera Azul iPhone 12.png',
-                'azul medianoche': 'Trasera Azul iPhone 12.png',
-                'medianoche':      'Trasera Azul iPhone 12.png'
+                'negro':  'Combo Negro iPhone 15.png',
+                'rosado': 'Combo Rosa iPhone 15.png',
+                'pink':   'Combo Rosa iPhone 15.png'
             },
             'iphone-15-pro':  {
-                'titanio natural': 'Trasera Titanio Natural iPhone 15 Pro.png',
-                'azul titanio':    'Trasera Titanio Azul iPhone 15 Pro.png'
+                'titanio natural': 'Combo Titanio Natural iPhone 15 Pro.png',
+                'azul titanio':    'Combo Titanio Azul iPhone 15 Pro.png'
             },
+            'iphone-16':      {
+                'negro':  'Combo Negro iPhone 16.png',
+                'rosado': 'Combo Rosa iPhone 16.png',
+                'rosa':   'Combo Rosa iPhone 16.png'
+            },
+            'iphone-16-pro':  { 'titanio natural': 'Combo Titanio Natural iPhone 16 Pro.png' },
+            'iphone-16-pm':   {
+                'blanco':           'Combo Blanco iPhone 16 Pro Max.png',
+                'titanio natural':  'Combo Titanio Natural iPhone 16 Pro Max.png'
+            },
+            'iphone-17e':     { 'blanco': 'Combo Blanco iPhone 17e.png' },
             'iphone-17':      {
-                'verde': 'Trasera Verde iPhone 17.png',
-                'negro': 'Trasera Negro iPhone 17.png'
+                'verde': 'Combo Verde iPhone 17.png',
+                'negro': 'Combo Negro iPhone 17.png'
             },
+            'iphone-17-pro':  { 'azul': 'Combo Azul iPhone 17 Pro.png' },
             'samsung-s23-ultra': { 'blanco': 'Delantera Blanco Samsung S23 Ultra.png' },
             'macbook-pro-m3-pro': { 'black': 'Delantera Black MacBook Pro 14 M3 Pro.png' },
             'ipad-air-m3': {
@@ -5316,33 +5316,12 @@
             return `<span class="color-dot" style="background:${hex}"></span>`;
         };
 
-        // ── Genera TODAS las variantes de color disponibles según las fotos del IMG_MAP ──
-        // (deduplica por archivo para no repetir sinónimos: 'verde'/'verde noche' = misma foto)
-        (function expandColors() {
-            const pretty = f => {
-                const m = String(f).match(/^Delantera\s+(.+?)\s+(?:iPhone|iPad|MacBook|Samsung)\b/i);
-                return m ? m[1].trim() : null;
-            };
-            const base = {};
-            stock.forEach(p => { if (!p.isAccessory && !base[p.slug]) base[p.slug] = p; });
-            Object.keys(IMG_MAP).forEach(slug => {
-                const b = base[slug];
-                if (!b) return; // slug sin producto en stock → se ignora
-                const seen = new Set();
-                stock.filter(p => p.slug === slug).forEach(p => {
-                    const f = IMG_MAP[slug][(p.color || '').toLowerCase().trim()];
-                    if (f) seen.add(f);
-                });
-                let nid = 9000 + Object.keys(IMG_MAP).indexOf(slug) * 60;
-                Object.values(IMG_MAP[slug]).forEach(file => {
-                    if (seen.has(file)) return;
-                    seen.add(file);
-                    const col = pretty(file);
-                    if (!col) return;
-                    stock.push({ id: ++nid, cat: b.cat, brand: b.brand, condition: b.condition, name: b.name, slug: b.slug, color: col, storage: b.storage, price: b.price });
-                });
-            });
-        })();
+        // ── (DESACTIVADO) auto-expand de variantes desde IMG_MAP ──
+        // El jefe quiere que solo se muestren los colores realmente en stock,
+        // no todos los que tengan foto disponible. Si querés re-activar esto,
+        // descomentá el bloque de abajo.
+        //
+        // (function expandColors() { ... })();
 
         const tagClassFor = t => t === 'OFERTA' ? 'tag-offer' : t === 'NUEVO' ? 'tag-new' : t === 'SELLADO' ? 'tag-sealed' : '';
 
