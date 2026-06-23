@@ -6456,21 +6456,21 @@
             syncCartToBackend();
         };
 
-        /* ─── POPUP DE CAPTURA — 5% OFF ─── */
+        /* ─── POPUP DE CAPTURA — ENVÍO GRATIS ─── */
         function buildEmailPopup() {
             const html = `
                 <div class="em-overlay" id="em-popup">
                     <div class="em-box">
                         <button class="em-close" onclick="closeEmailPopup(false)" aria-label="Cerrar">×</button>
-                        <span class="em-badge">⚡ OFERTA EXCLUSIVA</span>
-                        <h2 class="em-title">5% OFF en tu primer iPhone</h2>
-                        <p class="em-subtitle">Suscríbete y recibe ofertas, novedades de stock y descuentos directo en tu mail.</p>
+                        <span class="em-badge">🚚 BENEFICIO EXCLUSIVO</span>
+                        <h2 class="em-title">ENVÍO GRATIS<br>en tu primera compra</h2>
+                        <p class="em-subtitle">Ingresá tu email y obtené envío <b style="color:#FFE293">gratis</b> a todo Chile. Sin mínimo de compra.</p>
                         <form class="em-field" onsubmit="submitEmailPopup(event)">
                             <input type="email" id="em-input-email" placeholder="tu@email.com" required autocomplete="email">
-                            <button type="submit" class="em-submit" id="em-submit-btn">Quiero el 5% OFF</button>
+                            <button type="submit" class="em-submit" id="em-submit-btn">QUIERO ENVÍO GRATIS</button>
                         </form>
                         <ul class="em-perks">
-                            <li>Cupón único de 5% OFF</li>
+                            <li>Envío gratis a todo Chile (sin mínimo)</li>
                             <li>Aviso primero del stock nuevo</li>
                             <li>Ofertas semanales exclusivas</li>
                         </ul>
@@ -6507,10 +6507,10 @@
             }
             btn.disabled = true; btn.textContent = 'Enviando...';
 
-            // Generar cupón único
-            const couponCode = 'IE5-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+            // Generar código de envío gratis único
+            const shipCode = 'ENVIOGRATIS-' + Math.random().toString(36).substring(2, 8).toUpperCase();
             setStoredEmail(email);
-            localStorage.setItem('ie_coupon', couponCode);
+            localStorage.setItem('ie_ship_code', shipCode);
             localStorage.setItem('ie_popup_dismissed', Date.now().toString());
 
             try {
@@ -6520,7 +6520,8 @@
                     body: JSON.stringify({
                         email,
                         source: 'popup',
-                        discount_code: couponCode,
+                        benefit: 'envio_gratis',
+                        ship_code: shipCode,
                         session_id: getSessionId(),
                         url: window.location.href,
                         cart: cart.map(p => ({ id: p.id, name: p.name, price: p.price }))
@@ -6530,8 +6531,8 @@
             } catch (_) {}
             // 📊 Tracking: Lead (captura de email exitosa)
             window.trackEvent && window.trackEvent('Lead', {
-                content_name: 'Email Capture 5% OFF',
-                value: 5,
+                content_name: 'Email Capture Envío Gratis',
+                value: 1,
                 currency: 'CLP'
             });
 
@@ -6540,10 +6541,10 @@
             box.innerHTML = `
                 <div class="em-success">
                     <div class="em-success-icon">✓</div>
-                    <h2 class="em-title">¡Listo!</h2>
-                    <p class="em-subtitle">Tu cupón de 5% OFF:</p>
-                    <div class="em-coupon">${couponCode}</div>
-                    <p class="em-subtitle">Te enviamos una copia a <b style="color:#FFE293">${email}</b>. Úsalo al pagar por WhatsApp.</p>
+                    <h2 class="em-title">¡Listo!<br>Obtuviste ENVÍO GRATIS</h2>
+                    <p class="em-subtitle">Tu código de envío gratis:</p>
+                    <div class="em-coupon">${shipCode}</div>
+                    <p class="em-subtitle">Te enviamos una copia a <b style="color:#FFE293">${email}</b>. Mostralo al pagar por WhatsApp y tu envío es gratis a todo Chile.</p>
                     <button class="em-submit" onclick="closeEmailPopup(false)" style="padding:12px 22px;border-radius:12px;margin-top:6px">Seguir explorando</button>
                 </div>`;
         }
