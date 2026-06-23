@@ -4118,8 +4118,8 @@
                         </svg>
                     </span>
                     <div>
-                        <div class="condition-heading">Sellados · Nuevos de caja</div>
-                        <div class="condition-desc">Equipos 100% nuevos, jamás abiertos, con boleta original.</div>
+                        <div class="condition-heading">Open Box · Cajas abiertas</div>
+                        <div class="condition-desc">Equipos nuevos abiertos solo para revisión. 100% funcionales, con garantía y boleta.</div>
                     </div>
                 </div>
                 <span class="condition-count" id="count-sellado"></span>
@@ -5452,7 +5452,7 @@
             const tag = g.tags.has('OFERTA') ? 'OFERTA' : g.tags.has('NUEVO') ? 'NUEVO' : g.tags.has('SELLADO') ? 'SELLADO' : '';
             const tagHTML = tag ? `<span class="card-tag ${tagClassFor(tag)}">${tag}</span>` : '';
             const condClass = g.condition || 'seminuevo';
-            const condLabel = condClass === 'sellado' ? 'SELLADO' : condClass === 'reacondicionado' ? 'REACOND.' : 'SEMINUEVO';
+            const condLabel = condClass === 'sellado' ? 'OPEN BOX' : condClass === 'reacondicionado' ? 'REACOND.' : 'SEMINUEVO';
             const condHTML = `<span class="cond-badge ${condClass}">${condLabel}</span>`;
             const multi = g.variants.length > 1;
             const meta = multi
