@@ -9,10 +9,10 @@
     <meta name="description"
         content="iPhone Elite — venta de iPhones, Samsung y tecnología premium en Santiago. Garantía, entrega inmediata y parte de pago.">
 
-    <link rel="icon" type="image/svg+xml" href="logo.svg">
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
-    <link rel="shortcut icon" href="logo.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="logo_ie_64.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="logo_ie_128.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="logo_ie_256.png">
+    <link rel="shortcut icon" href="logo_ie_128.png">
 
     <!-- ═══════════════════════════════════════════════════════════
          📊 MARKETING TAGS — Meta Pixel + Google Analytics 4
@@ -384,7 +384,11 @@
         }
 
         .brand img {
-            height: 36px;
+            height: 38px;
+            width: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 12px rgba(201,162,74,0.35);
         }
 
         .brand span {
@@ -3924,6 +3928,7 @@
 
         <header id="h">
             <a href="#" class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                <img class="brand-logo" src="logo_ie_256.png" alt="iPhone Elite" />
                 <span id="brand-text">iPhone Elite</span>
             </a>
             <div class="nav-right">
