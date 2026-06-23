@@ -384,11 +384,16 @@
         }
 
         .brand img {
-            height: 38px;
-            width: 38px;
+            height: 46px;
+            width: 46px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 0 12px rgba(201,162,74,0.35);
+            box-shadow: 0 0 14px rgba(201,162,74,0.45);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .brand:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 0 22px rgba(201,162,74,0.7);
         }
 
         .brand span {
@@ -3929,7 +3934,6 @@
         <header id="h">
             <a href="#" class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
                 <img class="brand-logo" src="logo_ie_256.png" alt="iPhone Elite" />
-                <span id="brand-text">iPhone Elite</span>
             </a>
             <div class="nav-right">
                 <button class="icon-btn" onclick="toggleSearch()" aria-label="Buscar">
