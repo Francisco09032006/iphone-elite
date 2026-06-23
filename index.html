@@ -4719,10 +4719,10 @@
                 }
                 let updated = 0;
                 products.forEach(p => {
-                    const nameKey = String(p.Modelo || p.name || p.nombre || '').toLowerCase().trim();
-                    const colorKey = String(p.Color || p.color || '').toLowerCase().trim();
-                    const newPrice = Number(p.Precio || p.price) || null;
-                    const newStock = Number(p.Stock || p.stock || 0);
+                    const nameKey = String(p.modelo || p.Modelo || p.name || p.nombre || '').toLowerCase().trim();
+                    const colorKey = String(p.color || p.Color || '').toLowerCase().trim();
+                    const newPrice = Number(p.precio || p.Precio || p.price) || null;
+                    const newStock = Number(p.stock || p.Stock || 0);
                     stock.forEach(s => {
                         if (s.isAccessory) return;
                         const sName = s.name.toLowerCase().trim();
