@@ -13,6 +13,48 @@
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="shortcut icon" href="logo.png">
 
+    <!-- ═══════════════════════════════════════════════════════════
+         📊 MARKETING TAGS — Meta Pixel + Google Analytics 4
+         Reemplazar IDs cuando estén creados:
+           META_PIXEL_ID  → en window.IE_TAGS.META_PIXEL_ID
+           GA4_MEASUREMENT_ID → en window.IE_TAGS.GA4_ID
+         ═══════════════════════════════════════════════════════════ -->
+    <script>
+        window.IE_TAGS = {
+            META_PIXEL_ID: 'PLACEHOLDER_META',  // ← reemplazar (ej: 1234567890123456)
+            GA4_ID: 'PLACEHOLDER_GA4'           // ← reemplazar (ej: G-XXXXXXXXXX)
+        };
+        window.trackEvent = function(name, params) {
+            try { if (window.fbq && window.IE_TAGS.META_PIXEL_ID !== 'PLACEHOLDER_META') window.fbq('track', name, params || {}); } catch(_){}
+            try { if (window.gtag && window.IE_TAGS.GA4_ID !== 'PLACEHOLDER_GA4') window.gtag('event', name.toLowerCase(), params || {}); } catch(_){}
+        };
+    </script>
+
+    <!-- Meta Pixel -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        if (window.IE_TAGS.META_PIXEL_ID !== 'PLACEHOLDER_META') {
+            fbq('init', window.IE_TAGS.META_PIXEL_ID);
+            fbq('track', 'PageView');
+        }
+    </script>
+    <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=PLACEHOLDER_META&ev=PageView&noscript=1"/></noscript>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=PLACEHOLDER_GA4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        if (window.IE_TAGS.GA4_ID !== 'PLACEHOLDER_GA4') {
+            gtag('js', new Date());
+            gtag('config', window.IE_TAGS.GA4_ID, { send_page_view: true });
+        }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -4553,7 +4595,7 @@
                     <span class="cart-total-label">Total estimado</span>
                     <span class="cart-total-val" id="cart-total">$0</span>
                 </div>
-                <a href="#" id="cart-cta" target="_blank" class="cart-cta disabled">
+                <a href="#" id="cart-cta" target="_blank" class="cart-cta disabled" onclick="trackCheckout()">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                         <path
                             d="M21 11.5a8.4 8.4 0 0 1-12.7 7.3L3 21l2.2-5.2A8.4 8.4 0 1 1 21 11.5Z">
@@ -5612,6 +5654,14 @@
             renderDetail();
             document.getElementById('detail-modal').classList.add('open');
             document.body.style.overflow = 'hidden';
+            // 📊 Tracking: ViewContent
+            window.trackEvent && window.trackEvent('ViewContent', {
+                content_name: modelName,
+                content_ids: [String(best.id)],
+                content_type: 'product',
+                value: best.price,
+                currency: 'CLP'
+            });
         }
 
         function closeDetail() {
@@ -5795,6 +5845,27 @@
             cart.push(p);
             renderCart();
             showToast(`${p.name} agregado`);
+            // 📊 Tracking: AddToCart
+            window.trackEvent && window.trackEvent('AddToCart', {
+                content_name: p.name,
+                content_ids: [String(p.id)],
+                content_type: 'product',
+                value: p.price,
+                currency: 'CLP'
+            });
+        }
+
+        // 📊 Tracking: InitiateCheckout (cuando tocan WhatsApp del carrito)
+        function trackCheckout() {
+            if (!cart.length) return;
+            const total = cart.reduce((s, p) => s + p.price, 0);
+            window.trackEvent && window.trackEvent('InitiateCheckout', {
+                content_ids: cart.map(p => String(p.id)),
+                contents: cart.map(p => ({ id: String(p.id), quantity: 1, item_price: p.price })),
+                num_items: cart.length,
+                value: total,
+                currency: 'CLP'
+            });
         }
 
         function removeFromCart(idx) {
@@ -6423,6 +6494,12 @@
                     keepalive: true
                 });
             } catch (_) {}
+            // 📊 Tracking: Lead (captura de email exitosa)
+            window.trackEvent && window.trackEvent('Lead', {
+                content_name: 'Email Capture 5% OFF',
+                value: 5,
+                currency: 'CLP'
+            });
 
             // Mostrar success state
             const box = document.querySelector('#em-popup .em-box');
