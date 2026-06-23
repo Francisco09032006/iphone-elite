@@ -4699,6 +4699,55 @@
             { id: 102, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Carcasa Silicona',        slug: 'carcasa-silicona',   color: 'Transparente', storage: 'Universal', price: 8990, isAccessory: true }
         ];
 
+        /* ═══════════════════════════════════════════════════════════
+           🔄 SINCRONIZACIÓN CON GOOGLE SHEETS (vía API n8n)
+           El bot de Telegram puede agregar/editar productos. Esta función
+           hace fetch al API y actualiza precios/stock en runtime. Si el
+           API no responde o está vacío, mantiene el stock hardcoded.
+           ═══════════════════════════════════════════════════════════ */
+        const CATALOG_API = 'https://up-n8n.7kmtuf.easypanel.host/webhook/catalogo-iphone-elite';
+
+        async function syncFromAPI() {
+            try {
+                const r = await fetch(CATALOG_API, { cache: 'no-store' });
+                if (!r.ok) return;
+                const data = await r.json();
+                const products = Array.isArray(data) ? data : (data.productos || data.products || []);
+                if (!products.length) {
+                    console.log('[sync] API vacío — usando stock local');
+                    return;
+                }
+                let updated = 0;
+                products.forEach(p => {
+                    const nameKey = String(p.Modelo || p.name || p.nombre || '').toLowerCase().trim();
+                    const colorKey = String(p.Color || p.color || '').toLowerCase().trim();
+                    const newPrice = Number(p.Precio || p.price) || null;
+                    const newStock = Number(p.Stock || p.stock || 0);
+                    stock.forEach(s => {
+                        if (s.isAccessory) return;
+                        const sName = s.name.toLowerCase().trim();
+                        const sColor = s.color.toLowerCase().trim();
+                        if ((sName.includes(nameKey) || nameKey.includes(sName)) && sColor === colorKey) {
+                            if (newPrice && newPrice > 0) { s.price = newPrice; updated++; }
+                            s.stockQty = newStock;
+                            if (newStock === 0) s.outOfStock = true;
+                        }
+                    });
+                });
+                if (updated > 0) {
+                    console.log(`[sync] ${updated} precios actualizados desde Sheets`);
+                    if (typeof renderStock === 'function') renderStock();
+                    if (typeof renderBestsellers === 'function') renderBestsellers();
+                    if (typeof renderOfertas === 'function') renderOfertas();
+                }
+            } catch (e) {
+                console.log('[sync] No se pudo sincronizar:', e.message);
+            }
+        }
+        // Sincronizar al entrar al main UI y cada 5 minutos
+        setTimeout(syncFromAPI, 1500);
+        setInterval(syncFromAPI, 5 * 60 * 1000);
+
         const formatCLP = n => '$' + n.toLocaleString('es-CL');
 
         const cart = [];
