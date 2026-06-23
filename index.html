@@ -5319,12 +5319,10 @@
             return `<span class="color-dot" style="background:${hex}"></span>`;
         };
 
-        // ── (DESACTIVADO) auto-expand de variantes desde IMG_MAP ──
-        // El jefe quiere que solo se muestren los colores realmente en stock,
-        // no todos los que tengan foto disponible. Si querés re-activar esto,
-        // descomentá el bloque de abajo.
-        //
-        // (function expandColors() { ... })();
+        // ── auto-expand DESACTIVADO definitivamente ──
+        // Solo se muestran los productos del array `stock` arriba, NO los que
+        // tienen foto disponible. Sin auto-generación de variantes fantasma.
+        // (no descomentar nada — el jefe confirmó esta política varias veces)
 
         const tagClassFor = t => t === 'OFERTA' ? 'tag-offer' : t === 'NUEVO' ? 'tag-new' : t === 'SELLADO' ? 'tag-sealed' : '';
 
