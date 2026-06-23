@@ -4718,19 +4718,22 @@
                     return;
                 }
                 let updated = 0;
+                // POLÍTICA: el HTML manda en precios. El Sheets solo aporta:
+                //   - stockQty (cuántas unidades hay)
+                //   - outOfStock (si stock=0, marcar como agotado)
+                // Los precios del HTML NO se sobrescriben.
                 products.forEach(p => {
                     const nameKey = String(p.modelo || p.Modelo || p.name || p.nombre || '').toLowerCase().trim();
                     const colorKey = String(p.color || p.Color || '').toLowerCase().trim();
-                    const newPrice = Number(p.precio || p.Precio || p.price) || null;
                     const newStock = Number(p.stock || p.Stock || 0);
                     stock.forEach(s => {
                         if (s.isAccessory) return;
                         const sName = s.name.toLowerCase().trim();
                         const sColor = s.color.toLowerCase().trim();
                         if ((sName.includes(nameKey) || nameKey.includes(sName)) && sColor === colorKey) {
-                            if (newPrice && newPrice > 0) { s.price = newPrice; updated++; }
                             s.stockQty = newStock;
-                            if (newStock === 0) s.outOfStock = true;
+                            s.outOfStock = newStock === 0;
+                            updated++;
                         }
                     });
                 });
