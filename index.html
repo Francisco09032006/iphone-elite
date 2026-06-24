@@ -4532,7 +4532,7 @@
             <div style="display:none">
                 <p>iPad Air M2, iPad Pro M4 y iPad 11 pronto en stock. Déjanos tu consulta y te contactamos al ingresar.
                 </p>
-                <a href="https://wa.me/56985884670?text=Hola%20iPhone%20Elite%20%F0%9F%91%8B%20Me%20interesa%20comprar%20el%20iPad%20publicado%20en%20su%20web.%20%C2%BFSigue%20disponible%3F%20Quiero%20coordinar%20compra%20hoy%20mismo%20%F0%9F%93%A6"
+                <a href="#" onclick="this.href=buildWALink('Hola iPhone Elite 👋 Me interesa comprar el iPad publicado en su web. ¿Sigue disponible? Quiero coordinar compra hoy mismo 📦')"
                     target="_blank" class="empty-cta">Consultar disponibilidad →</a>
             </div>
 
@@ -4655,7 +4655,8 @@
                 </svg>
                 INICIO
             </a>
-            <a href="https://wa.me/56985884670?text=Hola%20iPhone%20Elite%20%F0%9F%91%8B%20Vengo%20de%20su%20p%C3%A1gina%20web.%20%C2%BFMe%20pueden%20ayudar%20con%20una%20consulta%3F" target="_blank" class="bot-link">
+            <a id="bot-wa-link" href="#" target="_blank" class="bot-link"
+               onclick="this.href=buildWALink('Hola iPhone Elite 👋 Vengo de su página web. ¿Me pueden ayudar con una consulta?')">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                 </svg>
@@ -4682,8 +4683,9 @@
             </svg>
         </button>
 
-        <a href="https://wa.me/56985884670?text=Hola%20iPhone%20Elite%20%F0%9F%91%8B%20Vengo%20de%20su%20p%C3%A1gina%20web.%20%C2%BFMe%20pueden%20ayudar%20con%20una%20consulta%3F"
-            target="_blank" class="fab-wa" aria-label="Contactar por WhatsApp">
+        <a id="fab-wa-link" href="#"
+            target="_blank" class="fab-wa" aria-label="Contactar por WhatsApp"
+            onclick="this.href=buildWALink('Hola iPhone Elite 👋 Vengo de su página web. ¿Me pueden ayudar con una consulta?')">
             <svg viewBox="0 0 32 32" width="28" height="28">
                 <path fill="#fff"
                     d="M16.003 29.138h-.005a13.15 13.15 0 0 1-6.698-1.834l-.48-.285-4.974 1.305 1.327-4.85-.313-.498a13.13 13.13 0 0 1-2.013-7.01c.003-7.263 5.916-13.175 13.189-13.175 3.52 0 6.83 1.374 9.316 3.865a13.07 13.07 0 0 1 3.858 9.326c-.004 7.263-5.917 13.156-13.207 13.156zm7.24-9.86c-.396-.2-2.348-1.158-2.711-1.29-.364-.132-.628-.198-.892.198-.265.396-1.024 1.29-1.255 1.555-.23.264-.462.297-.858.099-.397-.198-1.675-.617-3.19-1.97-1.18-1.052-1.976-2.354-2.207-2.75-.232-.397-.025-.61.174-.808.179-.178.397-.462.595-.694.198-.232.265-.397.397-.661.132-.265.066-.497-.033-.694-.099-.198-.892-2.15-1.223-2.943-.322-.773-.65-.668-.892-.68-.23-.012-.495-.014-.76-.014s-.694.099-1.058.497c-.363.397-1.388 1.357-1.388 3.309s1.421 3.838 1.62 4.102c.198.265 2.797 4.273 6.777 5.99 2.2.95 3.12 1.058 4.164.902.636-.095 1.951-.797 2.225-1.565.274-.769.274-1.427.192-1.565-.082-.148-.297-.214-.694-.412z">
@@ -4997,6 +4999,28 @@
         const cart = [];
         let activeFilter = 'all';
         const WA_NUMBER = '56985884670';
+
+        // ─── HELPER: adjuntar cupones del cliente al mensaje WhatsApp ───
+        // Si el cliente tiene cupones guardados (envío gratis o 5% OFF reseña),
+        // se anexan automáticamente al mensaje pre-llenado para que el bot/jefe
+        // los detecte y aplique el beneficio sin que el cliente tenga que recordarlo.
+        function getActiveCoupons() {
+            return {
+                shipCode: localStorage.getItem('ie_ship_code') || null,
+                reviewCoupon: localStorage.getItem('ie_review_coupon') || null
+            };
+        }
+        function appendCouponsToWa(baseMsg) {
+            const { shipCode, reviewCoupon } = getActiveCoupons();
+            const lines = [];
+            if (shipCode) lines.push(`🎁 Tengo *ENVÍO GRATIS* con código: *${shipCode}*`);
+            if (reviewCoupon) lines.push(`🎁 Tengo *5% OFF* (cupón reseña): *${reviewCoupon}*`);
+            if (!lines.length) return baseMsg;
+            return baseMsg + '\n\n— — — — —\n' + lines.join('\n');
+        }
+        function buildWALink(baseMsg) {
+            return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(appendCouponsToWa(baseMsg))}`;
+        }
 
         function start() {
             const intro = document.getElementById('intro');
@@ -5934,8 +5958,8 @@
             }).join('');
 
             // WhatsApp link
-            const waTxt = encodeURIComponent(`Hola iPhone Elite 👋 Me interesa comprar el ${sel.name} ${sel.storage} · ${sel.color} publicado en su web por ${formatCLP(sel.price)}. ¿Sigue disponible? Quiero coordinar compra hoy mismo 📦`);
-            document.getElementById('d-wa').href = `https://wa.me/${WA_NUMBER}?text=${waTxt}`;
+            const waBase = `Hola iPhone Elite 👋 Me interesa comprar el ${sel.name} ${sel.storage} · ${sel.color} publicado en su web por ${formatCLP(sel.price)}. ¿Sigue disponible? Quiero coordinar compra hoy mismo 📦`;
+            document.getElementById('d-wa').href = buildWALink(waBase);
 
             // Upsell de accesorios en el modal (solo si no es accesorio)
             const upsellEl = document.getElementById('d-upsell');
@@ -6193,7 +6217,7 @@
                 }).join('\n');
                 waMsg = `Hola iPhone Elite 👋 Me interesa comprar:\n${lista}\n\nTotal: ${formatCLP(total)}\n\n¿Siguen disponibles? Quiero coordinar compra hoy mismo 📦`;
             }
-            cta.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMsg)}`;
+            cta.href = buildWALink(waMsg);
             cta.classList.remove('disabled');
         }
 
@@ -6345,7 +6369,7 @@
                 `1️⃣1️⃣ Fotos: ${fotosTxt}\n\n` +
                 `Quedo atento a la oferta. ¡Gracias!`;
 
-            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+            window.open(buildWALink(msg), '_blank');
             showToast('Abriendo WhatsApp con tu cotización…');
         }
 
