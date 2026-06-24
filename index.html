@@ -1390,6 +1390,55 @@
             stroke-width: 1.8;
         }
 
+        /* ─── FLOATING REVIEW (gemelo del WhatsApp pero a la izquierda) ─── */
+        .fab-review {
+            position: fixed;
+            bottom: 84px;
+            left: 20px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F4C95D 0%, #C9A24A 100%);
+            color: #1a1407;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3500;
+            box-shadow: 0 12px 28px rgba(244, 201, 93, 0.45);
+            text-decoration: none;
+            border: 0;
+            cursor: pointer;
+            animation: fabReviewPulse 2.4s ease-in-out infinite;
+            transition: transform 0.3s;
+        }
+        .fab-review:hover { transform: scale(1.08); }
+        .fab-review svg {
+            width: 26px;
+            height: 26px;
+            stroke-width: 1.8;
+        }
+        .fab-review .fab-badge {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background: #d62828;
+            color: white;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 3px 6px;
+            border-radius: 100px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        @keyframes fabReviewPulse {
+            0%, 100% {
+                box-shadow: 0 12px 28px rgba(244, 201, 93, 0.45), 0 0 0 0 rgba(244, 201, 93, 0.5);
+            }
+            50% {
+                box-shadow: 0 12px 28px rgba(244, 201, 93, 0.45), 0 0 0 14px rgba(244, 201, 93, 0);
+            }
+        }
+
         @keyframes fabPulse {
 
             0%,
@@ -4622,6 +4671,13 @@
             </a>
         </nav>
 
+        <button onclick="goToReview()" class="fab-review" aria-label="Dejá tu reseña y obtené 5% OFF">
+            <span class="fab-badge">5%</span>
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path d="M12 2 14.39 8.26 21 9 16 13.97 17.18 21 12 17.27 6.82 21 8 13.97 3 9 9.61 8.26z"/>
+            </svg>
+        </button>
+
         <a href="https://wa.me/56985884670?text=Hola%20iPhone%20Elite%20%F0%9F%91%8B%20Vengo%20de%20su%20p%C3%A1gina%20web.%20%C2%BFMe%20pueden%20ayudar%20con%20una%20consulta%3F"
             target="_blank" class="fab-wa" aria-label="Contactar por WhatsApp">
             <svg viewBox="0 0 32 32" width="28" height="28">
@@ -6519,6 +6575,29 @@
                 btn.disabled = false;
                 btn.textContent = originalText;
             }
+        }
+
+        // FAB review: scroll suave al form de dejar reseña
+        function goToReview() {
+            const target = document.getElementById('sec-dejar-resena');
+            if (!target) return;
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Pequeño highlight visual al banner de incentivo
+            setTimeout(() => {
+                const banner = document.querySelector('.val-incentive');
+                if (banner) {
+                    banner.style.transition = 'transform .4s ease, box-shadow .4s ease';
+                    banner.style.transform = 'scale(1.04)';
+                    banner.style.boxShadow = '0 0 0 4px rgba(244,201,93,0.25)';
+                    setTimeout(() => {
+                        banner.style.transform = '';
+                        banner.style.boxShadow = '';
+                    }, 600);
+                }
+                // Focus en el primer input
+                const nameInput = document.getElementById('v-name');
+                if (nameInput) setTimeout(() => nameInput.focus({ preventScroll: true }), 700);
+            }, 700);
         }
 
         // Modal de cupón post-reseña
