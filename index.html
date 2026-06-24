@@ -2618,6 +2618,34 @@
             margin-right: auto;
         }
 
+        .val-incentive {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, rgba(244,201,93,0.12) 0%, rgba(244,201,93,0.04) 100%);
+            border: 1.5px dashed rgba(244, 201, 93, 0.55);
+            border-radius: 14px;
+        }
+        .val-incentive-icon {
+            font-size: 28px;
+            line-height: 1;
+        }
+        .val-incentive b {
+            display: block;
+            font-size: 15px;
+            font-weight: 800;
+            color: #FFE293;
+            letter-spacing: 0.01em;
+            margin-bottom: 2px;
+        }
+        .val-incentive span:last-child {
+            font-size: 12px;
+            color: var(--ink-soft);
+            line-height: 1.4;
+        }
+
         .val-form h3 {
             font-family: 'Fraunces', serif;
             font-size: 22px;
@@ -4507,6 +4535,13 @@
                 <div class="rev-grid" id="rev-grid"></div>
 
                 <div class="val-form" id="sec-dejar-resena">
+                    <div class="val-incentive">
+                        <span class="val-incentive-icon">🎁</span>
+                        <div>
+                            <b>5% OFF en tu próxima compra</b>
+                            <span>Te regalamos un cupón al publicar tu reseña</span>
+                        </div>
+                    </div>
                     <h3>Deja tu valoración</h3>
                     <p class="sub">Comparte tu experiencia con otros clientes</p>
                     <div class="val-row">
@@ -6455,8 +6490,19 @@
                 await saveCloudReview({ name: n, location: city, instagram: instagram || null, stars, text: m, photos });
                 await renderReviews();
 
-                const photoTxt = photos.length ? ` con ${photos.length} foto${photos.length > 1 ? 's' : ''}` : '';
-                showToast(`¡Gracias ${n.split(' ')[0]}! Reseña publicada${photoTxt}.`);
+                // Generar cupón 5% OFF por reseña publicada
+                const reviewCoupon = 'IE5-RESENA-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+                localStorage.setItem('ie_review_coupon', reviewCoupon);
+
+                // Trackear evento Lead en Meta Pixel / GA4
+                window.trackEvent && window.trackEvent('Lead', {
+                    content_name: 'Reseña publicada',
+                    value: 5,
+                    currency: 'CLP'
+                });
+
+                // Mostrar modal con cupón
+                showReviewCouponModal(n.split(' ')[0], reviewCoupon);
 
                 document.getElementById('v-name').value = '';
                 document.getElementById('v-city').value = '';
@@ -6473,6 +6519,31 @@
                 btn.disabled = false;
                 btn.textContent = originalText;
             }
+        }
+
+        // Modal de cupón post-reseña
+        function showReviewCouponModal(firstName, coupon) {
+            const existing = document.getElementById('em-review-modal');
+            if (existing) existing.remove();
+            const html = `
+                <div class="em-overlay show" id="em-review-modal">
+                    <div class="em-box">
+                        <button class="em-close" onclick="closeReviewCouponModal()" aria-label="Cerrar">×</button>
+                        <div class="em-success">
+                            <div class="em-success-icon">🎁</div>
+                            <h2 class="em-title">¡Gracias ${firstName}!<br>Aquí tu 5% OFF</h2>
+                            <p class="em-subtitle">Tu reseña fue publicada. Usa este cupón en tu próxima compra:</p>
+                            <div class="em-coupon">${coupon}</div>
+                            <p class="em-subtitle">Mostralo al pagar por WhatsApp y descontamos un <b style="color:#FFE293">5% OFF</b> en tu próximo iPhone, MacBook o iPad. Válido por 60 días.</p>
+                            <button class="em-submit" onclick="closeReviewCouponModal();document.getElementById('rev-grid').scrollIntoView({behavior:'smooth'})" style="padding:12px 22px;border-radius:12px;margin-top:6px">Ver mi reseña →</button>
+                        </div>
+                    </div>
+                </div>`;
+            document.body.insertAdjacentHTML('beforeend', html);
+        }
+        function closeReviewCouponModal() {
+            const el = document.getElementById('em-review-modal');
+            if (el) { el.classList.remove('show'); setTimeout(()=>el.remove(), 350); }
         }
 
         // ESC cierra buscador, detalle, lightbox y menú lateral
