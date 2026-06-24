@@ -3083,6 +3083,50 @@
             display: block; font-size: 11px; color: #3FA67E; font-weight: 600; margin-top: 2px;
         }
 
+        /* Sección AirPods aparte - destacada */
+        .d-upsell-airpods {
+            margin-top: 14px;
+            padding: 14px;
+            background: linear-gradient(135deg, #1a1407 0%, #0f0c05 100%);
+            border: 1.5px solid rgba(244, 201, 93, 0.45);
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(244, 201, 93, 0.12);
+        }
+        .d-upsell-title-airpods {
+            display: flex; justify-content: space-between; align-items: center;
+            color: #FFE293 !important; font-size: 13px; margin-bottom: 10px;
+        }
+        .d-upsell-pill {
+            display: inline-block; padding: 3px 9px;
+            background: rgba(244,201,93,0.18);
+            border: 1px solid rgba(244,201,93,0.5);
+            border-radius: 100px;
+            font-size: 9px; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;
+            color: #FFE293;
+        }
+        .d-upsell-btn-airpods {
+            background: rgba(255,255,255,0.04) !important;
+            border-color: rgba(244,201,93,0.3) !important;
+            color: #f3f3f3 !important;
+        }
+        .d-upsell-btn-airpods:hover {
+            background: rgba(244,201,93,0.08) !important;
+            border-color: rgba(244,201,93,0.7) !important;
+        }
+        .d-upsell-btn-airpods span:first-child {
+            color: #f3f3f3 !important;
+        }
+        .d-upsell-btn-airpods span:first-child b { color: #FFE293; }
+        .d-upsell-btn-airpods span:last-child { color: #FFE293 !important; }
+        .d-upsell-btn-airpods.d-upsell-pack {
+            background: linear-gradient(135deg, rgba(244,201,93,0.12) 0%, rgba(244,201,93,0.04) 100%) !important;
+            border-color: rgba(244,201,93,0.55) !important;
+        }
+        .d-upsell-btn-airpods.d-upsell-pack span:first-child small {
+            color: #67d4a5 !important;
+        }
+
 
         /* Cards y contenedores de imagen con MISMO color que body para que fotos blancas se distingan */
         .card,
@@ -5804,6 +5848,24 @@
                 upsellEl.innerHTML = '';
             } else {
                 const accs = stock.filter(p => p.isAccessory);
+                const airpods = stock.find(p => p.id === 500); // AirPods Pro
+                const airpodsBundlePrice = sel.price + (airpods ? airpods.price : 0) - 3000; // -$3.000 OFF si los suma
+                const airpodsBlock = airpods ? `
+                    <div class="d-upsell-airpods">
+                        <div class="d-upsell-title d-upsell-title-airpods">
+                            <span>🎧 Sumá tus AirPods Pro</span>
+                            <span class="d-upsell-pill">PACK CON DESCUENTO</span>
+                        </div>
+                        <button class="d-upsell-btn d-upsell-btn-airpods" onclick="addToCart(${airpods.id}); showToast('AirPods Pro agregados al carrito')">
+                            <span><b>+ ${airpods.name}</b><br><small style="opacity:.7">Originales · sellados · garantía</small></span>
+                            <span>${formatCLP(airpods.price)}</span>
+                        </button>
+                        <button class="d-upsell-btn d-upsell-btn-airpods d-upsell-pack" onclick="addAirpodsBundle(${sel.id}); showToast('🎉 Pack ${sel.name.split(' ').slice(0,2).join(' ')} + AirPods · ahorrás $3.000')">
+                            <span>📦 Pack <b>${sel.name.split(' ').slice(0,2).join(' ')} + AirPods Pro</b> <small>-$3.000 OFF</small></span>
+                            <span>${formatCLP(airpodsBundlePrice)}</span>
+                        </button>
+                    </div>
+                ` : '';
                 upsellEl.innerHTML = `
                     <div class="d-upsell-title">Sumá accesorios al pedido</div>
                     <div class="d-upsell-list">
@@ -5821,7 +5883,8 @@
                             <span>📦 Pack Lightning + lámina + carcasa <small>-$5.970 OFF</small></span>
                             <span>${formatCLP(9990 + 6990 + 8990 - 5970)}</span>
                         </button>
-                    </div>`;
+                    </div>
+                    ${airpodsBlock}`;
             }
         }
 
@@ -6081,6 +6144,25 @@
             });
             renderCart();
             showToast('🎉 Pack completo agregado · ahorras $5.970');
+        }
+
+        // Pack iPhone (o equipo) + AirPods Pro con $3.000 OFF
+        function addAirpodsBundle(productId) {
+            const phone = stock.find(p => p.id === productId);
+            const airpods = stock.find(p => p.id === 500);
+            if (!phone || !airpods) return;
+            // Agregar teléfono si no está
+            if (!cart.some(p => p.id === phone.id)) cart.push({ ...phone });
+            // Agregar AirPods con descuento aplicado (precio - $3.000 OFF en el bundle)
+            if (!cart.some(p => p.id === 500 || (p.id === 'bundle-airpods'))) {
+                cart.push({
+                    ...airpods,
+                    id: 'bundle-airpods',
+                    name: 'AirPods Pro (Pack -$3.000)',
+                    price: airpods.price - 3000
+                });
+            }
+            renderCart();
         }
 
         // ─── Toast ───
