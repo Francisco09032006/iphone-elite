@@ -4179,6 +4179,36 @@
                 <h1 class="hero-tagline">Tecnología premium,<br><em>confianza garantizada.</em></h1>
                 <p class="hero-sub">4 años entregando iPhones y dispositivos originales en todo Chile. Con boleta,
                     garantía y entrega inmediata.</p>
+                <style>
+                    .ig-hero-pill{display:inline-flex;align-items:center;gap:9px;margin-top:18px;
+                        padding:9px 18px 9px 11px;border-radius:50px;text-decoration:none;
+                        background-image:linear-gradient(var(--bg-card),var(--bg-card)),
+                            linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+                        background-origin:border-box;background-clip:padding-box,border-box;
+                        border:1.6px solid transparent;
+                        box-shadow:0 6px 18px rgba(214,41,118,.18);transition:transform .15s,box-shadow .15s}
+                    .ig-hero-pill:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(214,41,118,.28)}
+                    .ig-hero-pill .ig-pill-ic{width:30px;height:30px;border-radius:50%;flex:none;
+                        display:flex;align-items:center;justify-content:center;
+                        background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
+                    .ig-hero-pill .ig-pill-ic svg{width:17px;height:17px;color:#fff}
+                    .ig-hero-pill .ig-pill-txt{font-size:14px;color:var(--ink);line-height:1.25;text-align:left}
+                    .ig-hero-pill .ig-pill-txt b{background:linear-gradient(45deg,#fa7e1e,#d62976,#962fbf);
+                        -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+                    .ig-hero-pill .ig-pill-arrow{color:#d62976;font-weight:800;font-size:16px}
+                </style>
+                <a class="ig-hero-pill" href="https://instagram.com/iphonelite.cl" target="_blank" rel="noopener"
+                   onclick="window.trackEvent && window.trackEvent('InstagramClick')">
+                    <span class="ig-pill-ic">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                    </span>
+                    <span class="ig-pill-txt"><b>+13.000 seguidores</b> en Instagram · @iphonelite.cl</span>
+                    <span class="ig-pill-arrow">→</span>
+                </a>
             </section>
 
             <!-- ━━━ Banner Bundle: AirPods Pro + Accesorios INCLUIDOS ━━━ -->
@@ -4728,6 +4758,28 @@
                 <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
             </svg>
         </button>
+
+        <style>
+            .fab-ig{position:fixed;bottom:150px;right:20px;width:54px;height:54px;border-radius:50%;
+                background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff;
+                display:flex;align-items:center;justify-content:center;z-index:3500;
+                box-shadow:0 12px 28px rgba(214,41,118,.4);text-decoration:none;transition:transform .15s}
+            .fab-ig:hover{transform:scale(1.08)}
+            .fab-ig svg{width:26px;height:26px;stroke-width:1.8}
+            .fab-ig .fab-ig-badge{position:absolute;top:-7px;right:-9px;background:#fff;color:#d62976;
+                font-size:9.5px;font-weight:800;padding:3px 6px;border-radius:10px;
+                box-shadow:0 2px 6px rgba(0,0,0,.18);letter-spacing:.2px}
+        </style>
+        <a class="fab-ig" href="https://instagram.com/iphonelite.cl" target="_blank" rel="noopener"
+           aria-label="Síguenos en Instagram"
+           onclick="window.trackEvent && window.trackEvent('InstagramClick')">
+            <span class="fab-ig-badge">13K</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+            </svg>
+        </a>
 
         <a id="fab-wa-link" href="#"
             target="_blank" class="fab-wa" aria-label="Contactar por WhatsApp"
