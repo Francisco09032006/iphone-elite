@@ -5068,10 +5068,10 @@
             { id: 300, cat: 'mac', brand: 'apple', condition: 'nuevo', name: 'MacBook Pro 14" M3 Pro', slug: 'macbook-pro-m3-pro', color: 'Black', storage: '1 TB · 18GB RAM', price: 1799990, tag: 'NUEVO' },
 
             // ─── iPads ───
-            { id: 400, cat: 'ipad', brand: 'apple', condition: 'nuevo', name: 'iPad Air 11" M3',          slug: 'ipad-air-m3', color: 'Purple',         storage: '128 GB · WiFi', price: 569990, tag: 'NUEVO' },
-            { id: 401, cat: 'ipad', brand: 'apple', condition: 'nuevo', name: 'iPad Air 11" M3 + Pencil', slug: 'ipad-air-m3', color: 'Purple',         storage: '128 GB · WiFi', price: 659990 },
-            { id: 402, cat: 'ipad', brand: 'apple', condition: 'nuevo', name: 'iPad Air 11" M3',          slug: 'ipad-air-m3', color: 'Blanco Estelar', storage: '128 GB · WiFi', price: 569990, tag: 'NUEVO' },
-            { id: 403, cat: 'ipad', brand: 'apple', condition: 'nuevo', name: 'iPad Air 11" M3 + Pencil', slug: 'ipad-air-m3', color: 'Blanco Estelar', storage: '128 GB · WiFi', price: 659990 },
+            { id: 400, cat: 'ipad', brand: 'apple', condition: 'nuevo', name: 'iPad Air 11" M3', slug: 'ipad-air-m3', color: 'Purple',         storage: '128 GB · Sin lápiz',        price: 569990, tag: 'NUEVO' },
+            { id: 401, cat: 'ipad', brand: 'apple', condition: 'nuevo', name: 'iPad Air 11" M3', slug: 'ipad-air-m3', color: 'Purple',         storage: '128 GB · Con Apple Pencil', price: 659990, tag: 'NUEVO' },
+            { id: 402, cat: 'ipad', brand: 'apple', condition: 'nuevo', name: 'iPad Air 11" M3', slug: 'ipad-air-m3', color: 'Blanco Estelar', storage: '128 GB · Sin lápiz',        price: 569990, tag: 'NUEVO' },
+            { id: 403, cat: 'ipad', brand: 'apple', condition: 'nuevo', name: 'iPad Air 11" M3', slug: 'ipad-air-m3', color: 'Blanco Estelar', storage: '128 GB · Con Apple Pencil', price: 659990, tag: 'NUEVO' },
 
             // ─── Accesorios ───
             { id: 100, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador USB-C 20W',      slug: 'cargador-20w',       color: 'Blanco',       storage: '20W',       price: 9990, isAccessory: true },
@@ -5699,7 +5699,7 @@
         const IPHONES_FOTOS = {"samsung-s24-ultra":{"negro":"ipf-samsung-s24-ultra-negro.jpg"},"iphone-11":{"negro":"ipf-iphone-11-negro.jpg"},"iphone-12":{"azul medianoche":"ipf-iphone-12-azul-medianoche.jpg"},"iphone-12-pro":{"gris":"ipf-iphone-12-pro-gris.jpg"},"iphone-13":{"azul medianoche":"ipf-iphone-13-azul-medianoche.jpg","verde":"ipf-iphone-13-verde.jpg","blanco":"ipf-iphone-13-blanco.jpg","rosado":"ipf-iphone-13-rosado.jpg"},"iphone-13-pro":{"gris":"ipf-iphone-13-pro-gris.jpg","celeste":"ipf-iphone-13-pro-celeste.jpg"},"iphone-14-pro":{"blanco":"ipf-iphone-14-pro-blanco.jpg","negro":"ipf-iphone-14-pro-negro.jpg","morado":"ipf-iphone-14-pro-morado.jpg"},"iphone-15":{"negro":"ipf-iphone-15-negro.jpg","rosado":"ipf-iphone-15-rosado.jpg"},"iphone-15-pro":{"titanio natural":"ipf-iphone-15-pro-titanio-natural.jpg","azul titanio":"ipf-iphone-15-pro-azul-titanio.jpg"},"iphone-15-pm":{"negro":"ipf-iphone-15-pm-negro.jpg"},"iphone-16":{"negro":"ipf-iphone-16-negro.jpg","azul":"ipf-iphone-16-azul.jpg","rosado":"ipf-iphone-16-rosado.jpg"},"iphone-16-pm":{"blanco":"ipf-iphone-16-pm-blanco.jpg"},"iphone-17e":{"blanco":"ipf-iphone-17e-blanco.jpg"},"iphone-17":{"negro":"ipf-iphone-17-negro.jpg","lila":"ipf-iphone-17-lila.jpg","verde":"ipf-iphone-17-verde.jpg"},"iphone-17-pro":{"azul":"ipf-iphone-17-pro-azul.jpg"}};
         for (const __s in IPHONES_FOTOS) { BACK_MAP[__s] = Object.assign({}, BACK_MAP[__s], IPHONES_FOTOS[__s]); }
         // Pro Max que reusan la foto del Pro (mismo diseno) o foto equivalente de la carpeta
-        const IPHONES_FOTOS_2 = {"iphone-12-pm":{"gris":"ipf-iphone-12-pro-gris.jpg"},"iphone-14-pm":{"morado":"ipf-iphone-14-pro-morado.jpg","negro":"ipf-iphone-14-pro-negro.jpg","dorado":"ipf-iphone-14-pm-dorado.jpg"},"iphone-15-pm":{"blanco":"ipf-iphone-15-pm-blanco.jpg"},"iphone-16-pm":{"titanio natural":"ipf-iphone-16-pm-titanio-natural.jpg"}};
+        const IPHONES_FOTOS_2 = {"iphone-12-pm":{"gris":"ipf-iphone-12-pro-gris.jpg"},"iphone-14-pm":{"morado":"ipf-iphone-14-pro-morado.jpg","negro":"ipf-iphone-14-pro-negro.jpg","dorado":"ipf-iphone-14-pm-dorado.jpg"},"iphone-15-pm":{"blanco":"ipf-iphone-15-pm-blanco.jpg"},"iphone-16-pm":{"titanio natural":"ipf-iphone-16-pm-titanio-natural.jpg"},"samsung-s23-ultra":{"blanco":"ipf-samsung-s23-ultra-blanco.jpg"}};
         for (const __s in IPHONES_FOTOS_2) { BACK_MAP[__s] = Object.assign({}, BACK_MAP[__s], IPHONES_FOTOS_2[__s]); }
         // ▲▲
 
