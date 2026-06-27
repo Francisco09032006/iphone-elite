@@ -4606,6 +4606,42 @@
                 </div>
             </div>
 
+            <!-- ════ CLIENTES REALES · PRUEBA SOCIAL ════ -->
+            <style>
+                .clientes-wall{margin:8px 0 6px}
+                .clientes-scroll{display:flex;gap:12px;overflow-x:auto;padding:8px 2px 16px;
+                    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+                .clientes-scroll::-webkit-scrollbar{height:6px}
+                .clientes-scroll::-webkit-scrollbar-track{background:transparent}
+                .clientes-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
+                .cliente-card{position:relative;flex:0 0 auto;width:158px;height:198px;border-radius:16px;
+                    overflow:hidden;scroll-snap-align:start;box-shadow:var(--shadow-md);background:var(--bg-soft)}
+                .cliente-card img{width:100%;height:100%;object-fit:cover;display:block}
+                .cliente-card .cli-badge{position:absolute;left:8px;bottom:8px;display:inline-flex;
+                    align-items:center;gap:5px;background:rgba(26,26,30,.8);color:#fff;font-size:10.5px;
+                    font-weight:700;padding:4px 9px;border-radius:50px}
+                .cli-badge svg{width:12px;height:12px;color:#34d399}
+                @media(min-width:760px){.cliente-card{width:182px;height:228px}}
+            </style>
+            <div class="section-head" id="sec-clientes">
+                <h2 class="section-title">Clientes que ya confiaron</h2>
+                <span class="section-count">Entregas reales 📦</span>
+            </div>
+            <div class="clientes-wall">
+                <div class="clientes-scroll">
+                    <div class="cliente-card"><img src="cliente-1.jpg" alt="Cliente feliz de iPhone Elite" loading="lazy"><span class="cli-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Entrega real</span></div>
+                    <div class="cliente-card"><img src="cliente-2.jpg" alt="Cliente feliz de iPhone Elite" loading="lazy"><span class="cli-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Entrega real</span></div>
+                    <div class="cliente-card"><img src="cliente-3.jpg" alt="Cliente feliz de iPhone Elite" loading="lazy"><span class="cli-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Entrega real</span></div>
+                    <div class="cliente-card"><img src="cliente-4.jpg" alt="Cliente feliz de iPhone Elite" loading="lazy"><span class="cli-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Entrega real</span></div>
+                    <div class="cliente-card"><img src="cliente-5.jpg" alt="Cliente feliz de iPhone Elite" loading="lazy"><span class="cli-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Entrega real</span></div>
+                    <div class="cliente-card"><img src="cliente-6.jpg" alt="Cliente feliz de iPhone Elite" loading="lazy"><span class="cli-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Entrega real</span></div>
+                    <div class="cliente-card"><img src="cliente-7.jpg" alt="Cliente feliz de iPhone Elite" loading="lazy"><span class="cli-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Entrega real</span></div>
+                    <div class="cliente-card"><img src="cliente-8.jpg" alt="Cliente feliz de iPhone Elite" loading="lazy"><span class="cli-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Entrega real</span></div>
+                    <div class="cliente-card"><img src="cliente-9.jpg" alt="Cliente feliz de iPhone Elite" loading="lazy"><span class="cli-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Entrega real</span></div>
+                    <div class="cliente-card"><img src="cliente-10.jpg" alt="Cliente feliz de iPhone Elite" loading="lazy"><span class="cli-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Entrega real</span></div>
+                </div>
+            </div>
+
             <div class="section-head" id="sec-resenas">
                 <h2 class="section-title">Lo que dicen nuestros clientes</h2>
                 <span class="section-count">5.0 · 200+ reseñas</span>
