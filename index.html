@@ -6297,6 +6297,7 @@
                     </div>`;
                 cta.classList.add('disabled');
                 cta.href = '#';
+                var _bEmpty = document.getElementById('cart-buy'); if (_bEmpty) { _bEmpty.classList.add('disabled'); _bEmpty.href = '#'; }
                 return;
             }
 
