@@ -5027,6 +5027,7 @@
         // condition: 'sellado' (nuevo de caja) | 'seminuevo' (usado impecable) | 'reacondicionado' (por piezas originales)
         const IE_SHOPIFY = {"1":47519179374741,"2":47519179407509,"3":47519179440277,"4":47519179604117,"5":47519179636885,"6":47519179669653,"7":47519179702421,"8":47519179767957,"9":47519179800725,"10":47519179833493,"11":47519179866261,"12":47519179899029,"13":47519179964565,"14":47519179997333,"15":47519180030101,"16":47519180062869,"17":47519180128405,"18":47519180161173,"19":47519180193941,"20":47519180226709,"21":47519180259477,"22":47519180292245,"23":47519180325013,"24":47519180357781,"25":47519180423317,"26":47519180456085,"27":47519180488853,"100":47519180947605,"101":47519181013141,"102":47519181045909,"103":47519180980373,"200":47519180718229,"201":47519180750997,"202":47519180783765,"300":47519180816533,"301":47519180849301,"400":47519180882069,"500":47519180521621};
         const IE_STORE = "iphonelite.myshopify.com";
+        const IE_ONLINE_PAGO = false; // <-- CAMBIAR A true cuando Mercado Pago esté conectado (muestra los botones "Comprar online")
         const stock = [
             { id: 1, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 11', slug: 'iphone-11', color: 'Negro', storage: '128 GB', price: 169990 },
             { id: 2, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 12 Pro', slug: 'iphone-12-pro', color: 'Gris', storage: '128 GB', price: 329990 },
@@ -6105,7 +6106,7 @@
             // Comprar online -> checkout seguro de Shopify
             (function(){
                 var vid = (typeof IE_SHOPIFY !== 'undefined') ? IE_SHOPIFY[sel.id] : null;
-                var b = document.getElementById('d-buy');
+                var b = document.getElementById('d-buy'); if (b && (typeof IE_ONLINE_PAGO === 'undefined' || !IE_ONLINE_PAGO)) { b.style.display = 'none'; b = null; }
                 if (b) {
                     if (vid) { b.href = 'https://' + IE_STORE + '/cart/' + vid + ':1'; b.style.display = ''; }
                     else { b.style.display = 'none'; }
@@ -6358,7 +6359,7 @@
 
             // Comprar online: checkout multi-item de Shopify (todos los del carrito)
             (function(){
-                var b = document.getElementById('cart-buy');
+                var b = document.getElementById('cart-buy'); if (b && (typeof IE_ONLINE_PAGO === 'undefined' || !IE_ONLINE_PAGO)) { b.style.display = 'none'; b = null; }
                 if (!b || typeof IE_SHOPIFY === 'undefined') return;
                 var counts = {};
                 cart.forEach(function(p){ var v = IE_SHOPIFY[p.id]; if (v) counts[v] = (counts[v]||0) + 1; });
