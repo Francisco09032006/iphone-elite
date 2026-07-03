@@ -4052,6 +4052,11 @@
             .card, .best-card, .offer-card { transform: none !important; } /* no tilt en touch */
         }
     </style>
+<style>
+.detail-cta-buy{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;border-radius:14px;background:linear-gradient(135deg,#1C1C1E,#3a3a3c);color:#fff;font-weight:700;font-size:15px;text-decoration:none;margin-top:10px;box-shadow:0 8px 22px rgba(28,28,30,.22);transition:transform .15s,box-shadow .15s;border:1.5px solid #8B6F47}
+.detail-cta-buy:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(139,111,71,.3)}
+.detail-cta-buy svg{color:#D4BA94}
+</style>
 </head>
 
 <body>
@@ -4870,6 +4875,10 @@
                         <div class="detail-upsell" id="d-upsell"></div>
                         <div class="detail-actions">
                             <button class="detail-cta" onclick="addSelectedToCart()">Agregar al carrito</button>
+                            <a class="detail-cta-buy" id="d-buy" target="_blank" rel="noopener" onclick="if(window.trackCheckout)trackCheckout()">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+                                Comprar online — pago seguro
+                            </a>
                             <a class="detail-cta-wa" id="d-wa" target="_blank">
                                 <svg viewBox="0 0 32 32" width="18" height="18">
                                     <path fill="#fff"
@@ -5006,6 +5015,8 @@
     <script>
         // Stock completo — todos los modelos con imagen en GitHub (iPhone 11 → 17 Pro Max)
         // condition: 'sellado' (nuevo de caja) | 'seminuevo' (usado impecable) | 'reacondicionado' (por piezas originales)
+        const IE_SHOPIFY = {"1":47519179374741,"2":47519179407509,"3":47519179440277,"4":47519179604117,"5":47519179636885,"6":47519179669653,"7":47519179702421,"8":47519179767957,"9":47519179800725,"10":47519179833493,"11":47519179866261,"12":47519179899029,"13":47519179964565,"14":47519179997333,"15":47519180030101,"16":47519180062869,"17":47519180128405,"18":47519180161173,"19":47519180193941,"20":47519180226709,"21":47519180259477,"22":47519180292245,"23":47519180325013,"24":47519180357781,"25":47519180423317,"26":47519180456085,"27":47519180488853,"100":47519180947605,"101":47519181013141,"102":47519181045909,"103":47519180980373,"200":47519180718229,"201":47519180750997,"202":47519180783765,"300":47519180816533,"301":47519180849301,"400":47519180882069,"500":47519180521621};
+        const IE_STORE = "iphonelite.myshopify.com";
         const stock = [
             { id: 1, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 11', slug: 'iphone-11', color: 'Negro', storage: '128 GB', price: 169990 },
             { id: 2, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 12 Pro', slug: 'iphone-12-pro', color: 'Gris', storage: '128 GB', price: 329990 },
@@ -6080,6 +6091,16 @@
             // WhatsApp link
             const waBase = `Hola iPhone Elite 👋 Me interesa comprar el ${sel.name} ${sel.storage} · ${sel.color} publicado en su web por ${formatCLP(sel.price)}. ¿Sigue disponible? Quiero coordinar compra hoy mismo 📦`;
             document.getElementById('d-wa').href = buildWALink(waBase);
+
+            // Comprar online -> checkout seguro de Shopify
+            (function(){
+                var vid = (typeof IE_SHOPIFY !== 'undefined') ? IE_SHOPIFY[sel.id] : null;
+                var b = document.getElementById('d-buy');
+                if (b) {
+                    if (vid) { b.href = 'https://' + IE_STORE + '/cart/' + vid + ':1'; b.style.display = ''; }
+                    else { b.style.display = 'none'; }
+                }
+            })();
 
             // Upsell de accesorios en el modal (solo si no es accesorio)
             const upsellEl = document.getElementById('d-upsell');
