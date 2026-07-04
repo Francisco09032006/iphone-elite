@@ -4839,26 +4839,28 @@
         </a>
 
         <style>
-        .detail-included{background:linear-gradient(135deg,rgba(139,111,71,.14),rgba(212,186,148,.08));border:1px solid rgba(212,186,148,.45);border-radius:14px;padding:12px 14px;margin:8px 0 2px}
-        .detail-included .di-head{font-weight:800;font-size:14px;color:#2b2b2e;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-        .detail-included .di-head span{font-weight:700;font-size:11px;background:#3FA67E;color:#fff;padding:2px 8px;border-radius:20px}
-        .detail-included .di-items{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 8px}
-        .detail-included .di-items span{background:#fff;border:1px solid #eadfce;border-radius:20px;padding:5px 11px;font-size:12.5px;font-weight:600;color:#3a3a3c}
-        .detail-included .di-foot{font-size:11.5px;color:#6b6b6f;line-height:1.55}
+        .detail-included{background:#F3F9F5;border:1px solid #CFE7D9;border-radius:16px;padding:14px 16px;margin:6px 0}
+        .detail-included .di-head{font-weight:800;font-size:14px;color:#1C1C1E;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+        .detail-included .di-head span{font-weight:700;font-size:10px;letter-spacing:.4px;background:#2E7D5B;color:#fff;padding:3px 9px;border-radius:20px}
+        .detail-included .di-items{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 10px}
+        .detail-included .di-items span{background:#fff;border:1px solid #DBEBE1;border-radius:12px;padding:7px 12px;font-size:13px;font-weight:600;color:#1C1C1E;box-shadow:0 1px 2px rgba(28,28,30,.04)}
+        .detail-included .di-foot{font-size:12px;color:#6E6E73;line-height:1.6}
         .detail-included .di-foot b{color:#8B6F47}
-        .detail-estado{border:1px solid #ececef;border-radius:14px;padding:12px 14px;margin:8px 0 2px;background:#fafafa}
-        .detail-estado .de-badge{display:inline-block;font-weight:800;font-size:12.5px;background:#1C1C1E;color:#D4BA94;padding:4px 12px;border-radius:20px}
-        .detail-estado .de-txt{font-size:12.5px;color:#5a5a5e;line-height:1.55;margin-top:8px}
-        .detail-estado .de-nota{margin-top:9px;font-size:12.5px;color:#8a5a1f;background:#fff6e8;border:1px solid #f0dcae;border-radius:10px;padding:8px 11px;line-height:1.5}
-        .detail-specs{margin:12px 0 2px}
-        .detail-specs .ds-title{font-weight:800;font-size:14px;color:#2b2b2e;margin-bottom:8px}
-        .detail-specs .ds-grid{display:flex;flex-direction:column;border:1px solid #ececef;border-radius:12px;overflow:hidden}
-        .detail-specs .ds-row{display:grid;grid-template-columns:24px 110px 1fr;align-items:center;gap:8px;padding:9px 12px;font-size:12.5px}
-        .detail-specs .ds-row:nth-child(odd){background:#fafafa}
-        .detail-specs .ds-ico{text-align:center}
-        .detail-specs .ds-k{color:#8a8a8e;font-weight:600}
-        .detail-specs .ds-v{color:#2b2b2e;font-weight:600}
-        .detail-specs .ds-note{font-size:10.5px;color:#a8a8ac;margin-top:6px;text-align:right}
+        .detail-estado{background:#FAF7F2;border:1px solid #E8E2D6;border-radius:16px;padding:14px 16px;margin:6px 0}
+        .detail-estado .de-badge{display:inline-block;font-weight:800;font-size:12.5px;background:#1C1C1E;color:#D4BA94;padding:5px 13px;border-radius:20px}
+        .detail-estado .de-txt{font-size:12.5px;color:#6E6E73;line-height:1.6;margin-top:9px}
+        .detail-estado .de-nota{margin-top:10px;font-size:12.5px;color:#7A5B2E;background:#FCF6EA;border:1px solid #EAD9B6;border-radius:12px;padding:9px 12px;line-height:1.55}
+        .detail-estado .de-nota b{color:#8B6F47}
+        .detail-specs{margin:6px 0}
+        .detail-specs .ds-title{font-weight:800;font-size:14px;color:#1C1C1E;margin-bottom:10px}
+        .detail-specs .ds-grid{border:1px solid #E8E2D6;border-radius:16px;overflow:hidden;background:#fff}
+        .detail-specs .ds-row{display:grid;grid-template-columns:26px 116px 1fr;align-items:center;gap:10px;padding:11px 14px;font-size:12.5px}
+        .detail-specs .ds-row:not(:last-child){border-bottom:1px solid #F0EBE0}
+        .detail-specs .ds-row:nth-child(even){background:#FAF7F2}
+        .detail-specs .ds-ico{text-align:center;font-size:14px}
+        .detail-specs .ds-k{color:#A1A1A6;font-weight:600}
+        .detail-specs .ds-v{color:#1C1C1E;font-weight:600}
+        .detail-specs .ds-note{font-size:10.5px;color:#A1A1A6;margin-top:8px;text-align:right}
         </style>
         <div id="detail-modal" onclick="if(event.target===this)closeDetail()">
             <div class="detail-box">
@@ -6083,10 +6085,12 @@
             if (c === 'reacondicionado') return { i: '🔧', l: 'Reacondicionado', t: 'Restaurado con piezas Apple originales (puede incluir batería o pantalla nueva original). Garantía Elite.' };
             return { i: '✅', l: 'Semi-nuevo', t: 'Usado en excelente estado, revisado y 100% funcional. Piezas originales, salvo lo que se detalle abajo.' };
         }
-        function notaMeaningful(n) {
-            const x = String(n || '').toLowerCase().trim();
-            if (x.length < 3) return false;
-            return !['oferta', 'destacado', 'nuevo', 'sellado', 'open box', 'reacondicionado', 'seminuevo', 'semi-nuevo', 'nuevo sellado', 'bestseller', 'más vendido', 'mas vendido', 'top'].includes(x);
+        function limpiarNota(n) {
+            const tags = ['oferta', 'destacado', 'destacada', 'nuevo', 'sellado', 'open box', 'reacondicionado', 'seminuevo', 'semi-nuevo', 'nuevo sellado', 'bestseller', 'más vendido', 'mas vendido', 'top'];
+            return String(n || '').split(/\s*[·|]\s*/)
+                .map(s => s.trim())
+                .filter(s => s.length > 0 && !tags.includes(s.toLowerCase()))
+                .join(' · ');
         }
         function renderDetailExtras(sel) {
             const esTelefono = !sel.isAccessory && (sel.cat === 'ip' || sel.cat === 'ot');
@@ -6107,7 +6111,8 @@
                     est.style.display = '';
                     const m = metaEstado(sel.condition);
                     let extra = '';
-                    if (notaMeaningful(sel.nota)) extra = `<div class="de-nota">🔧 <b>Detalle de esta unidad:</b> ${String(sel.nota)}</div>`;
+                    const notaLimpia = limpiarNota(sel.nota);
+                    if (notaLimpia.length >= 3) extra = `<div class="de-nota">🔧 <b>Detalle de esta unidad:</b> ${notaLimpia}</div>`;
                     est.innerHTML = `<div class="de-head"><span class="de-badge">${m.i} ${m.l}</span></div><div class="de-txt">${m.t}</div>${extra}`;
                 } else { est.style.display = 'none'; est.innerHTML = ''; }
             }
