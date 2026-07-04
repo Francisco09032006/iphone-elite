@@ -4838,6 +4838,28 @@
             </svg>
         </a>
 
+        <style>
+        .detail-included{background:linear-gradient(135deg,rgba(139,111,71,.14),rgba(212,186,148,.08));border:1px solid rgba(212,186,148,.45);border-radius:14px;padding:12px 14px;margin:8px 0 2px}
+        .detail-included .di-head{font-weight:800;font-size:14px;color:#2b2b2e;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+        .detail-included .di-head span{font-weight:700;font-size:11px;background:#3FA67E;color:#fff;padding:2px 8px;border-radius:20px}
+        .detail-included .di-items{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 8px}
+        .detail-included .di-items span{background:#fff;border:1px solid #eadfce;border-radius:20px;padding:5px 11px;font-size:12.5px;font-weight:600;color:#3a3a3c}
+        .detail-included .di-foot{font-size:11.5px;color:#6b6b6f;line-height:1.55}
+        .detail-included .di-foot b{color:#8B6F47}
+        .detail-estado{border:1px solid #ececef;border-radius:14px;padding:12px 14px;margin:8px 0 2px;background:#fafafa}
+        .detail-estado .de-badge{display:inline-block;font-weight:800;font-size:12.5px;background:#1C1C1E;color:#D4BA94;padding:4px 12px;border-radius:20px}
+        .detail-estado .de-txt{font-size:12.5px;color:#5a5a5e;line-height:1.55;margin-top:8px}
+        .detail-estado .de-nota{margin-top:9px;font-size:12.5px;color:#8a5a1f;background:#fff6e8;border:1px solid #f0dcae;border-radius:10px;padding:8px 11px;line-height:1.5}
+        .detail-specs{margin:12px 0 2px}
+        .detail-specs .ds-title{font-weight:800;font-size:14px;color:#2b2b2e;margin-bottom:8px}
+        .detail-specs .ds-grid{display:flex;flex-direction:column;border:1px solid #ececef;border-radius:12px;overflow:hidden}
+        .detail-specs .ds-row{display:grid;grid-template-columns:24px 110px 1fr;align-items:center;gap:8px;padding:9px 12px;font-size:12.5px}
+        .detail-specs .ds-row:nth-child(odd){background:#fafafa}
+        .detail-specs .ds-ico{text-align:center}
+        .detail-specs .ds-k{color:#8a8a8e;font-weight:600}
+        .detail-specs .ds-v{color:#2b2b2e;font-weight:600}
+        .detail-specs .ds-note{font-size:10.5px;color:#a8a8ac;margin-top:6px;text-align:right}
+        </style>
         <div id="detail-modal" onclick="if(event.target===this)closeDetail()">
             <div class="detail-box">
                 <button class="detail-close" onclick="closeDetail()" aria-label="Cerrar">
@@ -4878,6 +4900,9 @@
                             </label>
                             <div class="variant-chips" id="d-storages"></div>
                         </div>
+                        <div class="detail-included" id="d-included"></div>
+                        <div class="detail-estado" id="d-estado"></div>
+                        <div class="detail-specs" id="d-specs"></div>
                         <div class="detail-upsell" id="d-upsell"></div>
                         <div class="detail-actions">
                             <button class="detail-cta" onclick="addSelectedToCart()">Agregar al carrito</button>
@@ -5025,53 +5050,54 @@
     <script>
         // Stock completo — todos los modelos con imagen en GitHub (iPhone 11 → 17 Pro Max)
         // condition: 'sellado' (nuevo de caja) | 'seminuevo' (usado impecable) | 'reacondicionado' (por piezas originales)
-        const IE_SHOPIFY = {"1":47530749657237,"2":47530749264021,"3":47530749919381,"4":47530749886613,"5":47530749853845,"6":47530749722773,"7":47530749755541,"8":47530749788309,"9":47530749821077,"10":47530749591701,"11":47530749624469,"12":47530749296789,"13":47530749690005,"14":47530749329557,"15":47530749362325,"16":47530749395093,"17":47530749427861,"18":47530749100181,"19":47530749001877,"20":47530749067413,"21":47530749034645,"22":47530749460629,"23":47530749493397,"24":47530748903573,"25":47530748870805,"26":47530748772501,"27":47530748805269,"28":47530749198485,"29":47530749132949,"30":47530749165717,"31":47530749231253,"32":47530748739733,"33":47530748706965,"34":47530749526165,"35":47530748575893,"36":47530748608661,"37":47530748641429,"38":47530748674197,"39":47530749558933,"40":47530748838037,"41":47530748543125,"42":47530748969109,"43":47530748936341};
+        const IE_SHOPIFY = {"1":47530749657237,"2":47530749264021,"4":47530749886613,"5":47530749853845,"6":47530749722773,"7":47530749755541,"8":47530749788309,"9":47530749821077,"10":47530749591701,"11":47530749624469,"12":47530749296789,"13":47530749690005,"14":47530749329557,"15":47530749362325,"16":47530749395093,"17":47530749427861,"18":47530749100181,"19":47530749001877,"20":47530749067413,"21":47530749034645,"22":47530749460629,"23":47530749493397,"24":47530748903573,"25":47530748870805,"26":47530748772501,"27":47530748805269,"28":47530749198485,"29":47530749132949,"30":47530749165717,"31":47530749231253,"32":47530748739733,"33":47530748706965,"34":47530749526165,"35":47530748575893,"36":47530748608661,"37":47530748641429,"38":47530748674197,"39":47530749558933,"40":47530748838037,"41":47530748543125,"42":47530748969109,"43":47530748936341,"100":47530749984917,"101":47530750050453,"102":47530750083221,"103":47530750017685,"500":47530749952149};
         const IE_STORE = "iphonelite.myshopify.com";
         const IE_ONLINE_PAGO = true; // <-- CAMBIAR A true cuando Mercado Pago esté conectado (muestra los botones "Comprar online")
         const stock = [
-            { id: 41, cat: 'mac', brand: 'apple', condition: 'seminuevo', name: 'MacBook Pro 14" M3 Pro', slug: 'macbook-pro-m3-pro', color: 'Negro', storage: '512 GB · 18GB RAM', price: 1799990, tag: 'NUEVO' },
+            { id: 41, cat: 'mac', brand: 'apple', condition: 'seminuevo', name: 'MacBook Pro 14" M3 Pro', slug: 'macbook-pro-m3-pro', color: 'Negro', storage: '512 GB · 18GB RAM', price: 1799990 },
             { id: 35, cat: 'ip', brand: 'iphone', condition: 'sellado', name: 'iPhone 17', slug: 'iphone-17', color: 'Negro', storage: '512 GB', price: 919990, tag: 'SELLADO' },
             { id: 33, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 16 Pro Max', slug: 'iphone-16-pm', color: 'Titanio natural', storage: '256 GB', price: 849990, tag: 'OFERTA' },
             { id: 36, cat: 'ip', brand: 'iphone', condition: 'open box', name: 'iPhone 17', slug: 'iphone-17', color: 'Verde', storage: '256 GB', price: 839990, tag: 'OPEN BOX' },
             { id: 37, cat: 'ip', brand: 'iphone', condition: 'open box', name: 'iPhone 17', slug: 'iphone-17', color: 'Negro', storage: '256 GB', price: 839990, tag: 'OPEN BOX' },
             { id: 32, cat: 'ip', brand: 'iphone-pm', condition: 'reacondicionado', name: 'iPhone 16 Pro Max', slug: 'iphone-16-pm', color: 'Blanco', storage: '256 GB', price: 799990, tag: 'OFERTA' },
-            { id: 38, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 17', slug: 'iphone-17', color: 'Lila', storage: '256 GB', price: 799990, tag: 'NUEVO' },
-            { id: 26, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm', color: 'Negro', storage: '256 GB', price: 749990, tag: 'NUEVO' },
-            { id: 27, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm', color: 'Blanco', storage: '256 GB', price: 749990, tag: 'NUEVO' },
-            { id: 40, cat: 'mac', brand: 'apple', condition: 'seminuevo', name: 'MacBook Pro 14" M1 Pro', slug: 'macbook-pro-m1-pro', color: 'Gris espacial', storage: '1 TB · 16GB RAM', price: 749990, tag: 'NUEVO' },
-            { id: 25, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 15 Pro', slug: 'iphone-15-pro', color: 'Azul titanio', storage: '128 GB', price: 669990, tag: 'NUEVO' },
+            { id: 38, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 17', slug: 'iphone-17', color: 'Lila', storage: '256 GB', price: 799990 },
+            { id: 26, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm', color: 'Negro', storage: '256 GB', price: 749990 },
+            { id: 27, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 15 Pro Max', slug: 'iphone-15-pm', color: 'Blanco', storage: '256 GB', price: 749990 },
+            { id: 40, cat: 'mac', brand: 'apple', condition: 'seminuevo', name: 'MacBook Pro 14" M1 Pro', slug: 'macbook-pro-m1-pro', color: 'Gris espacial', storage: '1 TB · 16GB RAM', price: 749990 },
+            { id: 25, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 15 Pro', slug: 'iphone-15-pro', color: 'Azul titanio', storage: '128 GB', price: 669990 },
             { id: 43, cat: 'ipad', brand: 'apple', condition: 'nuevo', name: 'iPad Air 11" M3', slug: 'ipad-air-m3', color: 'Blanco Estelar', storage: '128 GB · WiFi · Con lápiz', price: 659990, tag: 'NUEVO' },
-            { id: 19, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', color: 'Dorado', storage: '128 GB', price: 649990, tag: 'NUEVO' },
-            { id: 21, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', color: 'Morado', storage: '128 GB', price: 649990, tag: 'NUEVO' },
-            { id: 29, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 16', slug: 'iphone-16', color: 'Negro', storage: '128 GB', price: 649990, tag: 'NUEVO' },
-            { id: 30, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 16', slug: 'iphone-16', color: 'Azul', storage: '128 GB', price: 649990, tag: 'NUEVO' },
-            { id: 20, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', color: 'Blanco', storage: '128 GB', price: 629990, tag: 'NUEVO' },
-            { id: 24, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 15 Pro', slug: 'iphone-15-pro', color: 'Titanio natural', storage: '128 GB', price: 629990, tag: 'NUEVO' },
-            { id: 28, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 16', slug: 'iphone-16', color: 'Negro', storage: '256 GB', price: 629990, tag: 'NUEVO' },
-            { id: 18, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', color: 'Negro', storage: '256 GB', price: 599990, tag: 'NUEVO' },
-            { id: 31, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 16', slug: 'iphone-16', color: 'Rosado', storage: '128 GB', price: 599990, tag: 'NUEVO' },
-            { id: 2, cat: 'ot', brand: 'samsung', condition: 'seminuevo', name: 'Samsung Galaxy S24 Ultra', slug: 'samsung-s24-ultra', color: 'Negro', storage: '512 GB · 12GB RAM', price: 579990, tag: 'NUEVO' },
+            { id: 19, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', color: 'Dorado', storage: '128 GB', price: 649990 },
+            { id: 21, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', color: 'Morado', storage: '128 GB', price: 649990 },
+            { id: 29, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 16', slug: 'iphone-16', color: 'Negro', storage: '128 GB', price: 649990 },
+            { id: 30, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 16', slug: 'iphone-16', color: 'Azul', storage: '128 GB', price: 649990 },
+            { id: 20, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', color: 'Blanco', storage: '128 GB', price: 629990 },
+            { id: 24, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 15 Pro', slug: 'iphone-15-pro', color: 'Titanio natural', storage: '128 GB', price: 629990 },
+            { id: 28, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 16', slug: 'iphone-16', color: 'Negro', storage: '256 GB', price: 629990 },
+            { id: 18, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 14 Pro Max', slug: 'iphone-14-pm', color: 'Negro', storage: '256 GB', price: 599990 },
+            { id: 31, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 16', slug: 'iphone-16', color: 'Rosado', storage: '128 GB', price: 599990 },
+            { id: 2, cat: 'ot', brand: 'samsung', condition: 'seminuevo', name: 'Samsung Galaxy S24 Ultra', slug: 'samsung-s24-ultra', color: 'Negro', storage: '512 GB · 12GB RAM', price: 579990 },
             { id: 42, cat: 'ipad', brand: 'apple', condition: 'nuevo', name: 'iPad Air 11" M3', slug: 'ipad-air-m3', color: 'Purple', storage: '128 GB · WiFi · Sin lápiz', price: 569990, tag: 'NUEVO' },
-            { id: 12, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 13 Pro Max', slug: 'iphone-13-pm', color: 'Dorado', storage: '128 GB', price: 549990, tag: 'NUEVO' },
-            { id: 14, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro', slug: 'iphone-14-pro', color: 'Blanco', storage: '128 GB', price: 549990, tag: 'NUEVO' },
-            { id: 15, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro', slug: 'iphone-14-pro', color: 'Blanco', storage: '256 GB', price: 549990, tag: 'NUEVO' },
-            { id: 16, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro', slug: 'iphone-14-pro', color: 'Negro', storage: '128 GB', price: 549990, tag: 'NUEVO' },
-            { id: 17, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro', slug: 'iphone-14-pro', color: 'Morado', storage: '128 GB', price: 549990, tag: 'NUEVO' },
-            { id: 22, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 15', slug: 'iphone-15', color: 'Negro', storage: '128 GB', price: 549990, tag: 'NUEVO' },
-            { id: 23, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 15', slug: 'iphone-15', color: 'Rosado', storage: '128 GB', price: 549990, tag: 'NUEVO' },
+            { id: 12, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 13 Pro Max', slug: 'iphone-13-pm', color: 'Dorado', storage: '128 GB', price: 549990 },
+            { id: 14, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro', slug: 'iphone-14-pro', color: 'Blanco', storage: '128 GB', price: 549990 },
+            { id: 15, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro', slug: 'iphone-14-pro', color: 'Blanco', storage: '256 GB', price: 549990 },
+            { id: 16, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro', slug: 'iphone-14-pro', color: 'Negro', storage: '128 GB', price: 549990 },
+            { id: 17, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 14 Pro', slug: 'iphone-14-pro', color: 'Morado', storage: '128 GB', price: 549990 },
+            { id: 22, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 15', slug: 'iphone-15', color: 'Negro', storage: '128 GB', price: 549990 },
+            { id: 23, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 15', slug: 'iphone-15', color: 'Rosado', storage: '128 GB', price: 549990 },
             { id: 34, cat: 'ip', brand: 'iphone', condition: 'open box', name: 'iPhone 17e', slug: 'iphone-17e', color: 'Blanco', storage: '256 GB', price: 549990, tag: 'OPEN BOX' },
-            { id: 39, cat: 'mac', brand: 'apple', condition: 'seminuevo', name: 'MacBook Air 13" M1', slug: 'macbook-air-13-m1', color: 'Gris espacial', storage: '256 GB · 8GB RAM', price: 499990, tag: 'NUEVO' },
-            { id: 10, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 13 Pro', slug: 'iphone-13-pro', color: 'Celeste', storage: '256 GB', price: 459990, tag: 'NUEVO' },
-            { id: 11, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 13 Pro', slug: 'iphone-13-pro', color: 'Gris', storage: '256 GB', price: 459990, tag: 'NUEVO' },
-            { id: 1, cat: 'ot', brand: 'samsung', condition: 'seminuevo', name: 'Samsung Galaxy S23 Ultra', slug: 'samsung-s23-ultra', color: 'Blanco', storage: '512 GB · 12GB RAM', price: 449990, tag: 'NUEVO' },
-            { id: 13, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 14', slug: 'iphone-14', color: 'Blanco', storage: '128 GB', price: 429990, tag: 'NUEVO' },
-            { id: 6, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 12 Pro Max', slug: 'iphone-12-pm', color: 'Gris', storage: '128 GB', price: 389990, tag: 'NUEVO' },
-            { id: 7, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 13', slug: 'iphone-13', color: 'Blanco', storage: '128 GB', price: 359990, tag: 'NUEVO' },
-            { id: 8, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 13', slug: 'iphone-13', color: 'Verde', storage: '128 GB', price: 359990, tag: 'NUEVO' },
-            { id: 9, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 13', slug: 'iphone-13', color: 'Azul medianoche', storage: '128 GB', price: 359990, tag: 'NUEVO' },
-            { id: 5, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 12 Pro', slug: 'iphone-12-pro', color: 'Gris', storage: '128 GB', price: 329990, tag: 'NUEVO' },
-            { id: 4, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 12', slug: 'iphone-12', color: 'Azul medianoche', storage: '64 GB', price: 239990, tag: 'NUEVO' },
-            { id: 3, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 11', slug: 'iphone-11', color: 'Negro', storage: '64 GB', price: 169990, tag: 'NUEVO' },
+            { id: 39, cat: 'mac', brand: 'apple', condition: 'seminuevo', name: 'MacBook Air 13" M1', slug: 'macbook-air-13-m1', color: 'Gris espacial', storage: '256 GB · 8GB RAM', price: 499990 },
+            { id: 10, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 13 Pro', slug: 'iphone-13-pro', color: 'Celeste', storage: '256 GB', price: 459990 },
+            { id: 11, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 13 Pro', slug: 'iphone-13-pro', color: 'Gris', storage: '256 GB', price: 459990 },
+            { id: 1, cat: 'ot', brand: 'samsung', condition: 'seminuevo', name: 'Samsung Galaxy S23 Ultra', slug: 'samsung-s23-ultra', color: 'Blanco', storage: '512 GB · 12GB RAM', price: 449990 },
+            { id: 13, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 14', slug: 'iphone-14', color: 'Blanco', storage: '128 GB', price: 429990 },
+            { id: 6, cat: 'ip', brand: 'iphone-pm', condition: 'seminuevo', name: 'iPhone 12 Pro Max', slug: 'iphone-12-pm', color: 'Gris', storage: '128 GB', price: 389990 },
+            { id: 7, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 13', slug: 'iphone-13', color: 'Blanco', storage: '128 GB', price: 359990 },
+            { id: 8, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 13', slug: 'iphone-13', color: 'Verde', storage: '128 GB', price: 359990 },
+            { id: 9, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 13', slug: 'iphone-13', color: 'Azul medianoche', storage: '128 GB', price: 359990 },
+            { id: 5, cat: 'ip', brand: 'iphone-pro', condition: 'seminuevo', name: 'iPhone 12 Pro', slug: 'iphone-12-pro', color: 'Gris', storage: '128 GB', price: 329990 },
+            { id: 4, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 12', slug: 'iphone-12', color: 'Azul medianoche', storage: '64 GB', price: 239990 },
+            { id: 44, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 12 mini', slug: 'iphone-12-mini', color: 'Azul medianoche', storage: '64 GB', price: 199990 },
+            { id: 3, cat: 'ip', brand: 'iphone', condition: 'seminuevo', name: 'iPhone 11', slug: 'iphone-11', color: 'Negro', storage: '64 GB', price: 159990 },
             { id: 500, cat: 'air', brand: 'apple', condition: 'nuevo', name: 'AirPods Pro', slug: 'airpods-pro', color: 'Blanco', storage: '—', price: 14990, tag: 'NUEVO' },
             { id: 100, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador USB-C 20W', slug: 'cargador-20w', color: 'Blanco', storage: '20W', price: 9990, isAccessory: true },
             { id: 103, cat: 'ac', brand: 'accesorio', condition: 'nuevo', name: 'Cargador Lightning 20W', slug: 'cargador-lightning', color: 'Blanco', storage: '20W', price: 9990, isAccessory: true },
@@ -5113,6 +5139,8 @@
                         if ((sName.includes(nameKey) || nameKey.includes(sName)) && sColor === colorKey) {
                             s.stockQty = newStock;
                             s.outOfStock = newStock === 0;
+                            const nota = p.notas || p.Notas || p.nota || '';
+                            if (nota) s.nota = String(nota).trim();
                             updated++;
                         }
                     });
@@ -6019,6 +6047,83 @@
         // ─── DETAIL MODAL ───
         const detailState = { name: '', color: '', storage: '' };
 
+        // ─── Especificaciones por modelo (referenciales del modelo) ───
+        const SPECS = {
+            'iphone-11':      [['📱','Pantalla','6.1" Liquid Retina LCD'],['⚡','Chip','A13 Bionic'],['📷','Cámara','Doble 12 MP (gran angular + ultra gran angular)'],['🔋','Batería','Hasta 17 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68 (agua y polvo)'],['🔌','Conector','Lightning'],['📶','Red','4G LTE']],
+            'iphone-12-mini': [['📱','Pantalla','5.4" Super Retina XDR OLED'],['⚡','Chip','A14 Bionic'],['📷','Cámara','Doble 12 MP'],['🔋','Batería','Hasta 15 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','Lightning'],['📶','Red','5G']],
+            'iphone-12':      [['📱','Pantalla','6.1" Super Retina XDR OLED'],['⚡','Chip','A14 Bionic'],['📷','Cámara','Doble 12 MP'],['🔋','Batería','Hasta 17 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','Lightning'],['📶','Red','5G']],
+            'iphone-12-pro':  [['📱','Pantalla','6.1" Super Retina XDR OLED'],['⚡','Chip','A14 Bionic'],['📷','Cámara','Triple 12 MP + LiDAR'],['🔋','Batería','Hasta 17 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','Lightning'],['📶','Red','5G']],
+            'iphone-12-pm':   [['📱','Pantalla','6.7" Super Retina XDR OLED'],['⚡','Chip','A14 Bionic'],['📷','Cámara','Triple 12 MP + LiDAR'],['🔋','Batería','Hasta 20 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','Lightning'],['📶','Red','5G']],
+            'iphone-13':      [['📱','Pantalla','6.1" Super Retina XDR OLED'],['⚡','Chip','A15 Bionic'],['📷','Cámara','Doble 12 MP'],['🔋','Batería','Hasta 19 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','Lightning'],['📶','Red','5G']],
+            'iphone-13-pro':  [['📱','Pantalla','6.1" OLED ProMotion 120 Hz'],['⚡','Chip','A15 Bionic'],['📷','Cámara','Triple 12 MP + LiDAR'],['🔋','Batería','Hasta 22 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','Lightning'],['📶','Red','5G']],
+            'iphone-13-pm':   [['📱','Pantalla','6.7" OLED ProMotion 120 Hz'],['⚡','Chip','A15 Bionic'],['📷','Cámara','Triple 12 MP + LiDAR'],['🔋','Batería','Hasta 28 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','Lightning'],['📶','Red','5G']],
+            'iphone-14':      [['📱','Pantalla','6.1" Super Retina XDR OLED'],['⚡','Chip','A15 Bionic'],['📷','Cámara','Doble 12 MP'],['🔋','Batería','Hasta 20 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','Lightning'],['📶','Red','5G']],
+            'iphone-14-pro':  [['📱','Pantalla','6.1" OLED ProMotion + Dynamic Island'],['⚡','Chip','A16 Bionic'],['📷','Cámara','Triple 48 MP'],['🔋','Batería','Hasta 23 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','Lightning'],['📶','Red','5G']],
+            'iphone-14-pm':   [['📱','Pantalla','6.7" OLED ProMotion + Dynamic Island'],['⚡','Chip','A16 Bionic'],['📷','Cámara','Triple 48 MP'],['🔋','Batería','Hasta 29 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','Lightning'],['📶','Red','5G']],
+            'iphone-15':      [['📱','Pantalla','6.1" OLED + Dynamic Island'],['⚡','Chip','A16 Bionic'],['📷','Cámara','Doble 48 MP'],['🔋','Batería','Hasta 20 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','USB-C'],['📶','Red','5G']],
+            'iphone-15-pro':  [['📱','Pantalla','6.1" OLED ProMotion + Dynamic Island'],['⚡','Chip','A17 Pro'],['📷','Cámara','Triple 48 MP (teleobjetivo 3x)'],['🔋','Batería','Hasta 23 h de video'],['🔒','Desbloqueo','Face ID'],['💎','Material','Titanio + Botón Acción'],['🔌','Conector','USB-C'],['📶','Red','5G']],
+            'iphone-15-pm':   [['📱','Pantalla','6.7" OLED ProMotion + Dynamic Island'],['⚡','Chip','A17 Pro'],['📷','Cámara','Triple 48 MP (teleobjetivo 5x)'],['🔋','Batería','Hasta 29 h de video'],['🔒','Desbloqueo','Face ID'],['💎','Material','Titanio'],['🔌','Conector','USB-C'],['📶','Red','5G']],
+            'iphone-16':      [['📱','Pantalla','6.1" OLED + Dynamic Island'],['⚡','Chip','A18'],['📷','Cámara','Doble 48 MP'],['🔋','Batería','Hasta 22 h de video'],['🔒','Desbloqueo','Face ID'],['🎛️','Extra','Botón Acción + Control de Cámara'],['🔌','Conector','USB-C'],['📶','Red','5G']],
+            'iphone-16-pm':   [['📱','Pantalla','6.9" OLED ProMotion + Dynamic Island'],['⚡','Chip','A18 Pro'],['📷','Cámara','Triple 48 MP (teleobjetivo 5x)'],['🔋','Batería','Hasta 33 h de video'],['🔒','Desbloqueo','Face ID'],['💎','Material','Titanio'],['🔌','Conector','USB-C'],['📶','Red','5G']],
+            'iphone-17':      [['📱','Pantalla','6.3" OLED ProMotion 120 Hz'],['⚡','Chip','A19'],['📷','Cámara','Doble 48 MP'],['🔋','Batería','Hasta 24 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','USB-C'],['📶','Red','5G']],
+            'iphone-17e':     [['📱','Pantalla','6.1" OLED'],['⚡','Chip','A19'],['📷','Cámara','48 MP'],['🔋','Batería','Hasta 22 h de video'],['🔒','Desbloqueo','Face ID'],['💧','Resistencia','IP68'],['🔌','Conector','USB-C'],['📶','Red','5G']],
+            'samsung-s23-ultra':[['📱','Pantalla','6.8" Dynamic AMOLED 2X 120 Hz'],['⚡','Procesador','Snapdragon 8 Gen 2'],['📷','Cámara','Cuádruple 200 MP'],['🔋','Batería','5000 mAh'],['🔒','Desbloqueo','Huella ultrasónica en pantalla'],['✍️','Extra','S Pen incluido'],['🔌','Conector','USB-C'],['📶','Red','5G']],
+            'samsung-s24-ultra':[['📱','Pantalla','6.8" Dynamic AMOLED 2X 120 Hz'],['⚡','Procesador','Snapdragon 8 Gen 3'],['📷','Cámara','Cuádruple 200 MP'],['🔋','Batería','5000 mAh'],['🔒','Desbloqueo','Huella ultrasónica en pantalla'],['💎','Material','Titanio + S Pen incluido'],['🔌','Conector','USB-C'],['📶','Red','5G']],
+            'macbook-air-13-m1':[['🖥️','Pantalla','13.3" Retina'],['⚡','Chip','Apple M1 (CPU 8 núcleos)'],['🧠','Memoria','8 GB'],['🔋','Batería','Hasta 18 h'],['🔒','Desbloqueo','Touch ID'],['🔌','Puertos','2× Thunderbolt / USB-4'],['🔇','Extra','Sin ventilador (100% silencioso)']],
+            'macbook-pro-m1-pro':[['🖥️','Pantalla','14.2" Liquid Retina XDR 120 Hz'],['⚡','Chip','Apple M1 Pro'],['🧠','Memoria','16 GB'],['🔋','Batería','Hasta 17 h'],['🔒','Desbloqueo','Touch ID'],['🔌','Puertos','3× Thunderbolt + HDMI + SDXC + MagSafe']],
+            'macbook-pro-m3-pro':[['🖥️','Pantalla','14.2" Liquid Retina XDR 120 Hz'],['⚡','Chip','Apple M3 Pro'],['🧠','Memoria','18 GB'],['🔋','Batería','Hasta 18 h'],['🔒','Desbloqueo','Touch ID'],['🔌','Puertos','Thunderbolt 4 + HDMI + SDXC + MagSafe']],
+            'ipad-air-m3':    [['🖥️','Pantalla','11" Liquid Retina'],['⚡','Chip','Apple M3'],['🔒','Desbloqueo','Touch ID'],['✏️','Lápiz','Compatible Apple Pencil Pro'],['🔌','Conector','USB-C'],['📶','Conectividad','WiFi 6E']],
+            'airpods-pro':    [['⚡','Chip','H2'],['🔇','Ruido','Cancelación activa de ruido'],['🎧','Audio','Audio espacial personalizado'],['🔋','Batería','Hasta 6 h (30 h con estuche)'],['🔌','Estuche','USB-C con MagSafe'],['💧','Resistencia','IPX4']]
+        };
+        function metaEstado(cond) {
+            const c = (cond || '').toLowerCase().trim();
+            if (c === 'sellado') return { i: '📦', l: 'Nuevo sellado', t: 'Producto nuevo, sellado de fábrica. Todas las piezas 100% originales.' };
+            if (c === 'nuevo') return { i: '✨', l: 'Nuevo', t: 'Equipo nuevo. Todas las piezas 100% originales.' };
+            if (c === 'open box') return { i: '📦', l: 'Open Box', t: 'Abierto pero prácticamente sin uso. Piezas 100% originales.' };
+            if (c === 'reacondicionado') return { i: '🔧', l: 'Reacondicionado', t: 'Restaurado con piezas Apple originales (puede incluir batería o pantalla nueva original). Garantía Elite.' };
+            return { i: '✅', l: 'Semi-nuevo', t: 'Usado en excelente estado, revisado y 100% funcional. Piezas originales, salvo lo que se detalle abajo.' };
+        }
+        function notaMeaningful(n) {
+            const x = String(n || '').toLowerCase().trim();
+            if (x.length < 3) return false;
+            return !['oferta', 'destacado', 'nuevo', 'sellado', 'open box', 'reacondicionado', 'seminuevo', 'semi-nuevo', 'nuevo sellado', 'bestseller', 'más vendido', 'mas vendido', 'top'].includes(x);
+        }
+        function renderDetailExtras(sel) {
+            const esTelefono = !sel.isAccessory && (sel.cat === 'ip' || sel.cat === 'ot');
+            // 1) Ya incluye (solo teléfonos)
+            const inc = document.getElementById('d-included');
+            if (inc) {
+                if (esTelefono) {
+                    inc.style.display = '';
+                    inc.innerHTML = `<div class="di-head">✅ Este equipo YA incluye <span>SIN COSTO EXTRA</span></div>
+                        <div class="di-items"><span>🔌 Cargador</span><span>🛡️ Lámina de vidrio</span><span>📱 Carcasa</span><span>🎧 AirPods Pro</span></div>
+                        <div class="di-foot">Liberado para todas las compañías · Garantía 3 meses + garantía de señal de por vida · Entrega inmediata.<br><b>¿Quieres accesorios extra? Puedes sumarlos aparte más abajo. 👇</b></div>`;
+                } else { inc.style.display = 'none'; inc.innerHTML = ''; }
+            }
+            // 2) Estado del equipo / piezas
+            const est = document.getElementById('d-estado');
+            if (est) {
+                if (!sel.isAccessory) {
+                    est.style.display = '';
+                    const m = metaEstado(sel.condition);
+                    let extra = '';
+                    if (notaMeaningful(sel.nota)) extra = `<div class="de-nota">🔧 <b>Detalle de esta unidad:</b> ${String(sel.nota)}</div>`;
+                    est.innerHTML = `<div class="de-head"><span class="de-badge">${m.i} ${m.l}</span></div><div class="de-txt">${m.t}</div>${extra}`;
+                } else { est.style.display = 'none'; est.innerHTML = ''; }
+            }
+            // 3) Especificaciones
+            const sp = document.getElementById('d-specs');
+            if (sp) {
+                const rows = SPECS[sel.slug];
+                if (rows && !sel.isAccessory) {
+                    sp.style.display = '';
+                    sp.innerHTML = `<div class="ds-title">📋 Especificaciones</div><div class="ds-grid">` +
+                        rows.map(r => `<div class="ds-row"><span class="ds-ico">${r[0]}</span><span class="ds-k">${r[1]}</span><span class="ds-v">${r[2]}</span></div>`).join('') +
+                        `</div><div class="ds-note">Especificaciones generales del modelo · referenciales</div>`;
+                } else { sp.style.display = 'none'; sp.innerHTML = ''; }
+            }
+        }
+
         function openDetail(modelName) {
             const variants = stock.filter(p => p.name === modelName);
             if (!variants.length) return;
@@ -6117,12 +6222,23 @@
             // Comprar online -> checkout seguro de Shopify
             (function(){
                 var vid = (typeof IE_SHOPIFY !== 'undefined') ? IE_SHOPIFY[sel.id] : null;
-                var b = document.getElementById('d-buy'); if (b && (typeof IE_ONLINE_PAGO === 'undefined' || !IE_ONLINE_PAGO)) { b.style.display = 'none'; b = null; }
+                var onlineOn = !(typeof IE_ONLINE_PAGO === 'undefined' || !IE_ONLINE_PAGO);
+                var tieneOnline = onlineOn && !!vid;
+                var b = document.getElementById('d-buy');
                 if (b) {
-                    if (vid) { b.href = 'https://' + IE_STORE + '/cart/' + vid + ':1'; b.style.display = ''; }
+                    if (tieneOnline) { b.href = 'https://' + IE_STORE + '/cart/' + vid + ':1'; b.style.display = ''; }
                     else { b.style.display = 'none'; }
                 }
+                // Accesorios / AirPods: solo pago online, sin WhatsApp (si hay opción online)
+                var wa = document.getElementById('d-wa');
+                if (wa) {
+                    var soloOnline = (sel.isAccessory || sel.cat === 'air') && tieneOnline;
+                    wa.style.display = soloOnline ? 'none' : '';
+                }
             })();
+
+            // Secciones: incluye / estado-piezas / especificaciones
+            renderDetailExtras(sel);
 
             // Upsell de accesorios en el modal (solo si no es accesorio)
             const upsellEl = document.getElementById('d-upsell');
@@ -6394,6 +6510,13 @@
             }
             cta.href = buildWALink(waMsg);
             cta.classList.remove('disabled');
+            // Si el carrito es SOLO accesorios/AirPods y hay pago online → ocultar WhatsApp
+            (function(){
+                var bOnline = document.getElementById('cart-buy');
+                var onlineOk = bOnline && !bOnline.classList.contains('disabled') && bOnline.style.display !== 'none';
+                var soloAcc = cart.every(function(p){ return p.isAccessory || p.cat === 'air'; });
+                cta.style.display = (soloAcc && onlineOk) ? 'none' : '';
+            })();
         }
 
         // ===== Render Accesorios =====
