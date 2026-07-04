@@ -6229,12 +6229,9 @@
                     if (tieneOnline) { b.href = 'https://' + IE_STORE + '/cart/' + vid + ':1'; b.style.display = ''; }
                     else { b.style.display = 'none'; }
                 }
-                // Accesorios / AirPods: solo pago online, sin WhatsApp (si hay opción online)
+                // WhatsApp disponible en TODOS los productos (teléfonos y accesorios)
                 var wa = document.getElementById('d-wa');
-                if (wa) {
-                    var soloOnline = (sel.isAccessory || sel.cat === 'air') && tieneOnline;
-                    wa.style.display = soloOnline ? 'none' : '';
-                }
+                if (wa) wa.style.display = '';
             })();
 
             // Secciones: incluye / estado-piezas / especificaciones
@@ -6510,13 +6507,7 @@
             }
             cta.href = buildWALink(waMsg);
             cta.classList.remove('disabled');
-            // Si el carrito es SOLO accesorios/AirPods y hay pago online → ocultar WhatsApp
-            (function(){
-                var bOnline = document.getElementById('cart-buy');
-                var onlineOk = bOnline && !bOnline.classList.contains('disabled') && bOnline.style.display !== 'none';
-                var soloAcc = cart.every(function(p){ return p.isAccessory || p.cat === 'air'; });
-                cta.style.display = (soloAcc && onlineOk) ? 'none' : '';
-            })();
+            cta.style.display = ''; // WhatsApp siempre disponible en el carrito
         }
 
         // ===== Render Accesorios =====
