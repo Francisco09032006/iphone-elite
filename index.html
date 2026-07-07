@@ -6135,8 +6135,10 @@
             const variants = stock.filter(p => p.name === modelName);
             if (!variants.length) return;
             detailState.name = modelName;
-            // preferir variante con oferta si existe
-            const best = variants.find(v => v.tag === 'OFERTA') || variants.find(v => v.oldPrice) || variants[0];
+            // abrir en la variante MÁS BARATA disponible (para que coincida con el "Desde $X" de la tarjeta)
+            const _disp = variants.filter(v => !v.outOfStock);
+            const _pool = _disp.length ? _disp : variants;
+            const best = _pool.slice().sort((a, b) => a.price - b.price)[0];
             detailState.color = best.color;
             detailState.storage = best.storage;
             renderDetail();
